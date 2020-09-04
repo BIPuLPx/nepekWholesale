@@ -5,7 +5,7 @@ import 'package:skite_buyer/styles/colors.dart';
 searchAppBar(
     context, currentSuffix, searchTerm, Function setSearchTerm, searchHolder) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(60.0), // here the desired height
+    preferredSize: Size.fromHeight(50.0), // here the desired height
     child: AppBar(
       leading: Container(),
       flexibleSpace: Center(

@@ -29,6 +29,7 @@ dependencies:
   http: ^0.12.2
   flutter_spinkit: ^4.1.2
   cached_network_image: ^2.3.1
+  smooth_star_rating: ^1.1.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -73,6 +74,10 @@ flutter:
       fonts:
         - asset: icons/BottomNavIcons.ttf
 
+    - family : ResultPageIcons
+      fonts:
+        - asset: icons/ResultPageIcons.ttf
+        
   # Fonts
     - family : BalsamiqSans
       fonts:

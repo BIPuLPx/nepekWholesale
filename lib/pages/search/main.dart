@@ -23,7 +23,16 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: searchAppBar(
           context, currentSuffix, searchTerm, setSearchTerm, _searchHolder),
-      body: Text('Search'),
+      body: Container(
+        padding: EdgeInsets.only(left: 20, right: 10, top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            searchTerm == '' ? SizedBox() : Text('Find items for $searchTerm'),
+            Text('other autocomplete')
+          ],
+        ),
+      ),
     );
   }
 }

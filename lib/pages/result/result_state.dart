@@ -20,13 +20,20 @@ class ResultState with ChangeNotifier {
         await http.get('$productApi/products/fetch/search?term=$query');
     final res = jsonDecode(response.body);
     if (res is List) {
-      result = ResultLayout(products: jsonDecode(response.body));
+      result = ResultLayout(
+        products: jsonDecode(response.body),
+        searchText: searchText,
+      );
       products = true;
     } else if (res is Map) {
       result = NoProductsSearch(query: searchText);
     }
     fetchedResult = true;
     notifyListeners();
+  }
+
+  filterPrice() {
+    print('filter Price');
   }
 
   // void fetchSearch(query) {
