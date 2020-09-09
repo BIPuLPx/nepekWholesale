@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/appBars/filter.dart';
 import 'package:skite_buyer/styles/colors.dart';
-
-class FilterPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: filterAppBar(context),
-      body: Container(
-        margin: EdgeInsets.only(left: 10, right: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FilterItemContainer(text: 'Price', route: 'filter_price'),
-            SizedBox(height: 10),
-            FilterItemContainer(text: 'Brand')
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class FilterItemContainer extends StatelessWidget {
   final String text;

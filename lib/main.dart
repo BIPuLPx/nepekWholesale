@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/result/result_state.dart';
 import 'package:skite_buyer/routes/main.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
@@ -28,13 +26,10 @@ void main() async {
 class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ResultState>(
-      create: (context) => ResultState(),
-      child: MaterialApp(
-        // theme: ThemeData(primaryColor: Color(0xff256eff)),
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RouteGenerator.generateRoute,
-      ),
+    return MaterialApp(
+      // theme: ThemeData(primaryColor: Color(0xff256eff)),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
