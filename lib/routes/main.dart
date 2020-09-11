@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skite_buyer/pages/search/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/main.dart';
+import 'package:skite_buyer/pages/searchResult/filter/subPages/brand/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/filterPrice.dart';
 import 'package:skite_buyer/pages/home/main.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
@@ -26,6 +27,9 @@ class RouteGenerator {
 
       case 'filter_price':
         return MaterialPageRoute(builder: (_) => FilterPrice());
+
+      case 'filter_brands':
+        return MaterialPageRoute(builder: (_) => FilterBrandsPage(args: args));
 
       case 'cart':
         return MaterialPageRoute(builder: (_) => CartTab(outside: true));

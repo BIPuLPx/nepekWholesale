@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skite_buyer/styles/colors.dart';
 
 class FilterPrice extends StatelessWidget {
   @override
@@ -18,6 +19,7 @@ class FilterPrice extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: FlatButton(
+            color: AppColors().primaryBlue(),
             onPressed: () {},
             child: Text('Apply'),
           ),

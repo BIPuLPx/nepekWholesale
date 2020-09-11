@@ -6,8 +6,16 @@ import 'package:skite_buyer/pages/searchResult/sort/main.dart';
 import 'package:skite_buyer/pages/searchResult/styles/appbar_nav_button.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
-resultAppBar(resultContext, Function changeLayout, IconData currentIcon,
-    String searchText, int itemLength, Function setSort, Map filterPageProps) {
+resultAppBar(
+  resultContext,
+  Function changeLayout,
+  IconData currentIcon,
+  String searchText,
+  int itemLength,
+  Function setSort,
+  Map filterPageProps,
+  Function setFilter,
+) {
   return SliverAppBar(
     leading: IconButton(
       onPressed: () => Navigator.of(resultContext).pop(),
@@ -77,7 +85,10 @@ resultAppBar(resultContext, Function changeLayout, IconData currentIcon,
                   onClick: () => Navigator.pushNamed(
                     resultContext,
                     'filter_search_result',
-                    arguments: filterPageProps,
+                    arguments: {
+                      'args': filterPageProps,
+                      'filterFn': setFilter,
+                    },
                   ),
                 ),
                 BottomNavBtn(

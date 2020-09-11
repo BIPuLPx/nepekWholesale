@@ -71,7 +71,7 @@ class _ResultLayoutState extends State<ResultLayout> {
 
     Map filterPageProps = <String, Map>{
       'filterBy': result.filterBy,
-      'filterOptions': result.filterOptions
+      'filterOptions': result.filterOptions,
     };
 
     return Scaffold(
@@ -79,8 +79,15 @@ class _ResultLayoutState extends State<ResultLayout> {
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         controller: _scrollController,
         slivers: <Widget>[
-          resultAppBar(context, changeListType, current, result.searchText,
-              result.productsNo, result.setSort, filterPageProps),
+          resultAppBar(
+              context,
+              changeListType,
+              current,
+              result.searchText,
+              result.productsNo,
+              result.setSort,
+              filterPageProps,
+              result.setFilter),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: listType == 'grid' ? 2 : 1,

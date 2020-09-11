@@ -109,8 +109,8 @@ class ResultState with ChangeNotifier {
     fetchInitialSearch();
   }
 
-  filterPrice() {
-    print('filter Price');
+  void setFilter() {
+    print('hii from filters');
   }
 
   // void fetchSearch(query) {

@@ -6,6 +6,7 @@ class AppColors {
   bottomNavbarUnselected() => Colors.grey[600];
   transparentAppbar() => Color.fromRGBO(255, 255, 255, 0.9);
   searchBarItems() => Colors.grey[600];
+  primaryGray() => Colors.grey[600];
 }
 
 Map appColors = {
