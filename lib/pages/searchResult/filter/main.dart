@@ -22,17 +22,24 @@ class FilterPageRoot extends StatelessWidget {
   FilterPageRoot({this.args});
   @override
   Widget build(BuildContext context) {
-    print(args);
+    // print(args['args']['filteredOptions']);
+
     final filter = Provider.of<FilterSearchState>(context);
 
     if (filter.initialState == false) {
+      filter.optionsToFilter = [...args['args']['filterOptions']['options']];
+//
+
+      //
       final filterBy = args['args']['filterBy'];
+      filter.populateFilteredOptions(args['args']['filteredOptions']);
       filter.filteredBy['price']['\$gte'] = filterBy['price']['\$gte'];
       filter.filteredBy['price']['\$lt'] = filterBy['price']['\$lt'];
       filter.filteredBy['brand'] = [...filterBy['brand']];
       filter.filteredBy['options'] = filterBy['options'];
       filter.brands = args['args']['filterOptions']['brands'];
       filter.initialState = true;
+      // print(filter.filteredBy);
     }
 
     return Scaffold(
@@ -44,10 +51,20 @@ class FilterPageRoot extends StatelessWidget {
               BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           children: [
             SizedBox(height: 10),
-            FilterItemContainer(text: 'Price', route: 'filter_price'),
+            FilterItemContainer(
+              text: 'Price',
+              route: 'filter_price',
+              args: {
+                'min': filter.filteredBy['\$gte'],
+                'max': filter.filteredBy['\$lt'],
+                'changeFn': filter.setPrice
+              },
+              bottom: [filter.minPrice, filter.maxPrice],
+              isPrice: true,
+            ),
             //Brands
             FilterItemContainer(
-              text: 'Brands',
+              text: 'Brand',
               route: 'filter_brands',
               args: {
                 'brands': filter.brands,
@@ -56,6 +73,28 @@ class FilterPageRoot extends StatelessWidget {
               },
               bottom: filter.filteredBy['brand'],
             ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: filter.optionsToFilter
+                  .map<Widget>(
+                    (options) => FilterItemContainer(
+                      text: options['name'],
+                      route: 'filter_options',
+                      args: {
+                        'args': {
+                          'name': options['name'],
+                          'values': options['values'],
+                          'currentValues':
+                              filter.pickrequiredOptions(options['name']),
+                          'setOptions': filter.setOptions,
+                        },
+                      },
+                      bottom: filter.pickrequiredOptions(options['name']),
+                    ),
+                  )
+                  .toList(),
+            )
           ],
         ),
       ),

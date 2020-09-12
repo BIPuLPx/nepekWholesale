@@ -4,57 +4,60 @@ import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/extensions.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
 
-class FilterBrandsPage extends StatefulWidget {
+class FilterOptionsPage extends StatefulWidget {
   final args;
-  FilterBrandsPage({this.args});
+  FilterOptionsPage({this.args});
 
   @override
-  _FilterBrandsPageState createState() => _FilterBrandsPageState();
+  _FilterOptionsPageState createState() => _FilterOptionsPageState();
 }
 
-class _FilterBrandsPageState extends State<FilterBrandsPage> {
-  List currentBrands;
-  List allBrands;
+class _FilterOptionsPageState extends State<FilterOptionsPage> {
+  List currentOptions;
+  List allOptions;
+  String optionName;
 
   void clicked(String val, bool keep) {
     setState(() {
       if (keep == true) {
-        currentBrands.add(val);
+        currentOptions.add(val);
       } else {
-        currentBrands.remove(val);
-        currentBrands.join(', ');
+        currentOptions.remove(val);
+        currentOptions.join(', ');
       }
     });
-    widget.args['setBrand'](currentBrands);
+    // print(name);
+    widget.args['args']['setOptions'](optionName, currentOptions);
+    // widget.args['setBrand'](currentOptions);
   }
 
   @override
   void initState() {
     setState(() {
-      currentBrands = [...widget.args['currentBrands']];
-      allBrands = [...widget.args['brands']];
+      currentOptions = [...widget.args['args']['currentValues']];
+      optionName = widget.args['args']['name'];
+      allOptions = [...widget.args['args']['values']];
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // print(args);
-
     return Scaffold(
       appBar: filterAppBar(context),
       body: SafeArea(
         child: ListView(
           physics:
               BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          children: allBrands
+          children: allOptions
               .map<Widget>(
                 (val) => CheckboxListTile(
                   title: Text(
                     capitalize(val),
                     style: AppFontStyle().subFilters(),
                   ),
-                  value: currentBrands.contains(val),
+                  value: currentOptions.contains(val),
+                  // value: false,
                   onChanged: (bool value) {
                     clicked(val, value);
                   },

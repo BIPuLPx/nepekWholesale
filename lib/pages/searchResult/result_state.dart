@@ -22,7 +22,7 @@ class ResultState with ChangeNotifier {
   bool isbeingFiltered = false;
 
   Map filterBy = {
-    "price": {"\$gte": 0, "\$lt": 0},
+    "price": {"\$gte": '', "\$lt": ''},
     "brand": [],
     "options": []
   };
@@ -32,6 +32,8 @@ class ResultState with ChangeNotifier {
     "options": {},
   };
 
+  List filteredOptions = [];
+
   Widget endOfSearch = Container(
     padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
     child: Text(
@@ -39,6 +41,14 @@ class ResultState with ChangeNotifier {
       style: GoogleFonts.abel(fontSize: 17),
     ),
   );
+
+  void populateFilteredOptions(options) {
+    // print(options);
+    for (var option in options) {
+      final letsAdd = {'name': option['name'], 'values': []};
+      filteredOptions.add(letsAdd);
+    }
+  }
 
   Future fetchInitialSearch() async {
     final response = await http.post(
@@ -67,6 +77,7 @@ class ResultState with ChangeNotifier {
     if (initialFetch == false) {
       filterOptions['brands'] = res['brands'];
       filterOptions['options'] = res['options'];
+      populateFilteredOptions(res['options']);
     }
     initialFetch = true;
 

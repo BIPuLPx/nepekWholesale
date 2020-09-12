@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/extensions.dart';
 
 class FilterItemContainer extends StatelessWidget {
   final String text;
   final String route;
   final args;
   final List bottom;
-  FilterItemContainer({this.text, this.route, this.args, this.bottom});
+  final bool isPrice;
+  FilterItemContainer(
+      {this.text, this.route, this.args, this.bottom, this.isPrice});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,23 +53,36 @@ class FilterItemContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  text,
+                  capitalize(text),
                   style: GoogleFonts.openSans(
                       fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10),
-                  child: Wrap(
-                    children: bottom == null
-                        ? []
-                        : bottom
-                            .map(
-                              (e) => bottom.length > 1
-                                  ? BottomText(child: '$e, ')
-                                  : BottomText(child: e),
-                            )
-                            .toList(),
-                  ),
+                  child: isPrice == true
+                      ? Wrap(
+                          children: bottom.length < 2
+                              ? []
+                              : [
+                                  bottom[0] == ''
+                                      ? Container()
+                                      : BottomText(child: bottom[0]),
+                                  bottom[1] == ''
+                                      ? Container()
+                                      : BottomText(child: bottom[1])
+                                ])
+                      : Wrap(
+                          children: bottom == null
+                              ? []
+                              : bottom
+                                  .map(
+                                    (e) =>
+                                        bottom.indexOf(e) != bottom.length - 1
+                                            ? BottomText(child: '$e, ')
+                                            : BottomText(child: e),
+                                  )
+                                  .toList(),
+                        ),
                 )
               ],
             ),
@@ -82,6 +98,6 @@ class BottomText extends StatelessWidget {
   BottomText({this.child});
   @override
   Widget build(BuildContext context) {
-    return Text(child, style: GoogleFonts.openSans(fontSize: 12));
+    return Text(capitalize(child), style: GoogleFonts.openSans(fontSize: 12));
   }
 }

@@ -69,9 +69,10 @@ class _ResultLayoutState extends State<ResultLayout> {
 
     _scrollController.addListener(_onScroll);
 
-    Map filterPageProps = <String, Map>{
+    Map filterPageProps = <String, dynamic>{
       'filterBy': result.filterBy,
       'filterOptions': result.filterOptions,
+      'filteredOptions': result.filteredOptions
     };
 
     return Scaffold(
