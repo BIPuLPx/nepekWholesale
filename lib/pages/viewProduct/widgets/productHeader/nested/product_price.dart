@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:skite_buyer/styles/colors.dart';
 
 class ProductPrice extends StatelessWidget {
   final String price;
@@ -11,11 +12,18 @@ class ProductPrice extends StatelessWidget {
         children: [
           Text(
             'NPR  ',
-            style: ProductPageFonts().productPrice(FontWeight.w700),
+            style: GoogleFonts.openSans(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppColors().primaryText(),
+            ),
           ),
           Text(
             '$price.00',
-            style: ProductPageFonts().productPrice(FontWeight.w600),
+            style: GoogleFonts.roboto(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
           )
         ],
       ),

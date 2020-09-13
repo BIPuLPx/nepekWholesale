@@ -15,6 +15,9 @@ class ViewProductState with ChangeNotifier {
   String productBrand;
   String productName;
   String productPrice;
+  List productOptions;
+  List buyOptions = [];
+  String productDescription;
 
   Future fetchProduct() async {
     var response;
@@ -25,9 +28,28 @@ class ViewProductState with ChangeNotifier {
     productBrand = res['brand'];
     productName = res['productName'];
     productPrice = res['price'].toString();
+    productOptions = res['options'];
+    populateBuyOptions(res['options']);
+    productDescription = res['description'];
     initialFetch = true;
     result = ViewProductLayout();
 
     notifyListeners();
+  }
+
+  void populateBuyOptions(List options) {
+    for (var option in options) {
+      final newOtpn = {'name': option['name'], 'value': option['default']};
+      buyOptions.add(newOtpn);
+    }
+  }
+
+  void changeOption(String name, String value) {
+    for (var option in buyOptions) {
+      if (option['name'] == name) {
+        option['value'] = value;
+      }
+    }
+    print(buyOptions);
   }
 }
