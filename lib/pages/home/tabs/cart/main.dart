@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skite_buyer/pages/home/tabs/cart/empty_cart.dart';
 import 'package:skite_buyer/styles/appBars/cart.dart';
 
 class CartTab extends StatelessWidget {
@@ -9,9 +10,7 @@ class CartTab extends StatelessWidget {
     return Scaffold(
       appBar: outside == true ? cartAppBar(context) : null,
       body: SafeArea(
-        child: Center(
-          child: Text('Cart'),
-        ),
+        child: EmptyCart(),
       ),
     );
   }

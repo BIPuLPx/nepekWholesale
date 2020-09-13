@@ -5,9 +5,9 @@ class FilterSearchState with ChangeNotifier {
   bool initialState = false;
 
   Map filteredBy = {
-    "price": {"\$gte": '', "\$lt": ''},
+    "price": {"min": '', "max": ''},
     "brand": [],
-    "options": []
+    'options': []
   };
 
   String minPrice = '';
@@ -15,11 +15,10 @@ class FilterSearchState with ChangeNotifier {
   List filteredOptions = [];
   List brands;
   List optionsToFilter;
-  Function setFilter;
 
   void setPrice(Map prices) {
-    filteredBy['price']['\$gte'] = prices['min'];
-    filteredBy['price']['\$lt'] = prices['max'];
+    filteredBy['price']['min'] = prices['min'];
+    filteredBy['price']['max'] = prices['max'];
     minPrice = 'NPR ${prices['min']} - ';
     maxPrice = 'NPR ${prices['max']}';
     // print(prices['min'] is String);
@@ -39,10 +38,18 @@ class FilterSearchState with ChangeNotifier {
         option['values'] = values;
       }
     }
+    // for (var val in values) {
+    //   if (!filteredBy['options'].contains(val)) {
+    //     filteredBy['options'].add(val);
+    //   }
+    // }
+    // print(filteredBy);
     notifyListeners();
   }
 
   void populateFilteredOptions(options) {
+    // print('filter');
+    // print(options);
     for (var option in options) {
       final newOpt = {'name': option['name'], 'values': option['values']};
       filteredOptions.add(newOpt);

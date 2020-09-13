@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:skite_buyer/pages/searchResult/filter_again.dart';
 import 'package:skite_buyer/pages/searchResult/no_products_search.dart';
 import 'package:skite_buyer/pages/searchResult/result_layout.dart';
 import 'dart:convert';
@@ -29,7 +30,7 @@ class ResultState with ChangeNotifier {
 
   Map filterOptions = {
     "brands": [],
-    "options": {},
+    "options": [],
   };
 
   List filteredOptions = [];
@@ -51,8 +52,20 @@ class ResultState with ChangeNotifier {
   }
 
   Future fetchInitialSearch() async {
-    final response = await http.post(
-        '$productApi/products/fetch/search?term=$searchText&page=1&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}');
+    var response;
+    if (isbeingFiltered == false) {
+      response = await http.post(
+          '$productApi/products/fetch/search?term=$searchText&page=1&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}');
+    } else {
+      response = await http.post(
+        '$productApi/products/fetch/search?term=$searchText&page=1&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(filterBy),
+      );
+      print(jsonDecode(response.body));
+    }
 
     final res = jsonDecode(response.body);
 
@@ -62,7 +75,20 @@ class ResultState with ChangeNotifier {
 
       productsNo = res['resultNo'];
     } else {
-      result = NoProductsSearch(query: searchText);
+      if (isbeingFiltered == false) {
+        result = NoProductsSearch(query: searchText);
+      } else {
+        result = FilterAgain(
+          args: {
+            'args': {
+              'filterBy': filterBy,
+              'filterOptions': filterOptions,
+              'filteredOptions': filteredOptions
+            },
+            'filterFn': setFilter,
+          },
+        );
+      }
     }
 
     if (res['next'] == null) {
@@ -120,8 +146,29 @@ class ResultState with ChangeNotifier {
     fetchInitialSearch();
   }
 
-  void setFilter() {
-    print('hii from filters');
+  void setFilter(Map data) {
+    // print(data);
+    List options = [];
+    for (var optn in data['filteredOptions']) {
+      options.addAll(optn['values']);
+    }
+    final filteredBy = data['filteredBy'];
+    filterBy['price']['\$gte'] = filteredBy['price']['min'];
+    filterBy['price']['\$lt'] = filteredBy['price']['max'];
+    filterBy['brand'] = filteredBy['brand'];
+    filterBy['options'] = options;
+    filteredOptions = data['filteredOptions'];
+    notifyListeners();
+    // print(filterBy);
+    isbeingFiltered = true;
+    nextPage = 1;
+    loadingMore = loading_more;
+    result = spinkit;
+    notifyListeners();
+    fetchInitialSearch();
+
+    // print('result');
+    // print(filteredOptions);
   }
 
   // void fetchSearch(query) {

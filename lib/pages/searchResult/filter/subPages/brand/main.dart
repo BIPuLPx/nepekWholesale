@@ -25,7 +25,6 @@ class _FilterBrandsPageState extends State<FilterBrandsPage> {
         currentBrands.join(', ');
       }
     });
-    widget.args['setBrand'](currentBrands);
   }
 
   @override
@@ -70,7 +69,10 @@ class _FilterBrandsPageState extends State<FilterBrandsPage> {
           width: double.infinity,
           child: FlatButton(
             color: AppColors().primaryBlue(),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              widget.args['setBrand'](currentBrands);
+              Navigator.pop(context);
+            },
             child: Text(
               'Apply',
               style: AppFontStyle().button(Colors.white),

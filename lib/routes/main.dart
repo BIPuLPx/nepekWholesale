@@ -7,6 +7,7 @@ import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/options/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/price/main.dart';
 import 'package:skite_buyer/pages/searchResult/main.dart';
+import 'package:skite_buyer/pages/viewProduct/main.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -35,6 +36,9 @@ class RouteGenerator {
       case 'filter_options':
         return MaterialPageRoute(builder: (_) => FilterOptionsPage(args: args));
 
+      case 'view_product':
+        return MaterialPageRoute(builder: (_) => ViewProductPage(args: args));
+
       case 'cart':
         return MaterialPageRoute(builder: (_) => CartTab(outside: true));
 
@@ -44,7 +48,15 @@ class RouteGenerator {
         // builder: (_) => UserPreferences().getLoggedIn() == true
         //     ? HomePage()
         //     : DoYouHaveAccount());
-        return MaterialPageRoute(builder: (_) => HomePage(index: 0));
+        // return MaterialPageRoute(builder: (_) => HomePage(index: 0));
+        return MaterialPageRoute(
+            builder: (_) => ViewProductPage(
+                  args: {
+                    'product_id': '5f5472bf1d840e021b123c44',
+                    'product_uid': 'hc38ozkbfipgrwso7t9mec50w'
+                  },
+                ));
+
       // return MaterialPageRoute(builder: (_) => SliverTest());
     }
   }

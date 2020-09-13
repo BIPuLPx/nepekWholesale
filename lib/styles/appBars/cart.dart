@@ -7,7 +7,7 @@ cartAppBar(context) {
     preferredSize: Size.fromHeight(50.0), // here the desired height
     child: AppBar(
       brightness: Brightness.light,
-      backgroundColor: AppColors().transparentAppbar(),
+      backgroundColor: Colors.white,
       elevation: 1,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios,

@@ -115,104 +115,120 @@ class _ResultLayoutState extends State<ResultLayout> {
     );
   }
 
-  Card listLayout(int index, result) {
-    return Card(
-      child: GridTile(
-        child: Container(
-          padding: EdgeInsets.all(5),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CachedNetworkImage(
-                imageUrl:
-                    // '$productApi/images/${widget.products[index]['uid']}/${widget.products[index]['miniThumb']}',
-                    'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
-                placeholder: (context, url) =>
-                    Container(height: 120, child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
-              SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  Text(result.products[index]['productName'].toString()),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text('NPR ',
-                          style: TextStyle(fontWeight: FontWeight.w800)),
-                      Text(result.products[index]['price'].toString()),
-                    ],
-                  ),
-                ],
-              )
-            ],
+  Widget listLayout(int index, result) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'view_product', arguments: {
+          'product_id': result.products[index]['_id'].toString(),
+          'product_uid': result.products[index]['uid'].toString()
+        });
+      },
+      child: Card(
+        child: GridTile(
+          child: Container(
+            padding: EdgeInsets.all(5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CachedNetworkImage(
+                  imageUrl:
+                      // '$productApi/images/${widget.products[index]['uid']}/${widget.products[index]['miniThumb']}',
+                      'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
+                  placeholder: (context, url) => Container(
+                      height: 120, child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    Text(result.products[index]['productName'].toString()),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Text('NPR ',
+                            style: TextStyle(fontWeight: FontWeight.w800)),
+                        Text(result.products[index]['price'].toString()),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
-        footer: Container(
-          padding: EdgeInsets.all(8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SmoothStarRating(
-                starCount: result.products[index]['rating'] == 0
-                    ? 5
-                    : result.products[index]['rating'],
-                rating: 5,
-                size: 18,
-                isReadOnly: true,
-                color: Colors.yellow[800],
-              ),
-            ],
+          footer: Container(
+            padding: EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SmoothStarRating(
+                  starCount: result.products[index]['rating'] == 0
+                      ? 5
+                      : result.products[index]['rating'],
+                  rating: 5,
+                  size: 18,
+                  isReadOnly: true,
+                  color: Colors.yellow[800],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Card gridLayout(int index, result) {
-    return Card(
-      child: GridTile(
-        child: Container(
-          padding: EdgeInsets.all(5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CachedNetworkImage(
-                imageUrl:
-                    // '$productApi/images/${widget.products[index]['uid']}/${widget.products[index]['miniThumb']}',
-                    'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
-                placeholder: (context, url) =>
-                    Container(height: 120, child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
-              SizedBox(height: 10),
-              Text(result.products[index]['productName'].toString()),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Text('NPR ', style: TextStyle(fontWeight: FontWeight.w800)),
-                  Text(result.products[index]['price'].toString()),
-                ],
-              ),
-            ],
-          ), //just for testing, will fill with image later
-        ),
-        footer: Container(
-          padding: EdgeInsets.all(8),
-          child: Row(
-            children: [
-              SmoothStarRating(
-                starCount: result.products[index]['rating'] == 0
-                    ? 5
-                    : result.products[index]['rating'],
-                rating: 5,
-                size: 18,
-                isReadOnly: true,
-                color: Colors.yellow[800],
-              ),
-            ],
+  Widget gridLayout(int index, result) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'view_product', arguments: {
+          'product_id': result.products[index]['_id'].toString(),
+          'product_uid': result.products[index]['uid'].toString()
+        });
+      },
+      child: Card(
+        child: GridTile(
+          child: Container(
+            padding: EdgeInsets.all(5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CachedNetworkImage(
+                  imageUrl:
+                      // '$productApi/images/${widget.products[index]['uid']}/${widget.products[index]['miniThumb']}',
+                      'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
+                  placeholder: (context, url) => Container(
+                      height: 120, child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
+                SizedBox(height: 10),
+                Text(result.products[index]['productName'].toString()),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Text('NPR ', style: TextStyle(fontWeight: FontWeight.w800)),
+                    Text(result.products[index]['price'].toString()),
+                  ],
+                ),
+              ],
+            ), //just for testing, will fill with image later
+          ),
+          footer: Container(
+            padding: EdgeInsets.all(8),
+            child: Row(
+              children: [
+                SmoothStarRating(
+                  starCount: result.products[index]['rating'] == 0
+                      ? 5
+                      : result.products[index]['rating'],
+                  rating: 5,
+                  size: 18,
+                  isReadOnly: true,
+                  color: Colors.yellow[800],
+                ),
+              ],
+            ),
           ),
         ),
       ),

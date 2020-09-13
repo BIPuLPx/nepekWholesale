@@ -25,18 +25,9 @@ resultAppBar(
         size: 17,
       ),
     ),
-    centerTitle: true,
     floating: true,
     elevation: 50,
     brightness: Brightness.light,
-    title: Text(
-      'Result',
-      style: GoogleFonts.ptSans(
-        color: AppColors().primaryBlue(),
-        fontSize: 17,
-        fontWeight: FontWeight.w600,
-      ),
-    ),
     actions: [
       IconButton(
         icon: Icon(

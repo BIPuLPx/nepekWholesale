@@ -22,8 +22,6 @@ class FilterPageRoot extends StatelessWidget {
   FilterPageRoot({this.args});
   @override
   Widget build(BuildContext context) {
-    // print(args['args']['filteredOptions']);
-
     final filter = Provider.of<FilterSearchState>(context);
 
     if (filter.initialState == false) {
@@ -33,10 +31,12 @@ class FilterPageRoot extends StatelessWidget {
       //
       final filterBy = args['args']['filterBy'];
       filter.populateFilteredOptions(args['args']['filteredOptions']);
-      filter.filteredBy['price']['\$gte'] = filterBy['price']['\$gte'];
-      filter.filteredBy['price']['\$lt'] = filterBy['price']['\$lt'];
+      filter.filteredBy['price']['min'] = filterBy['price']['\$gte'];
+      filter.filteredBy['price']['max'] = filterBy['price']['\$lt'];
+      filter.minPrice = 'NPR ${filterBy['price']['\$gte']} - ';
+      filter.maxPrice = 'NPR ${filterBy['price']['\$lt']}';
       filter.filteredBy['brand'] = [...filterBy['brand']];
-      filter.filteredBy['options'] = filterBy['options'];
+      filter.filteredBy['options'] = [...filterBy['options']];
       filter.brands = args['args']['filterOptions']['brands'];
       filter.initialState = true;
       // print(filter.filteredBy);
@@ -125,7 +125,13 @@ class FilterPageRoot extends StatelessWidget {
                 height: 45,
                 width: 170,
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    args['filterFn']({
+                      'filteredBy': filter.filteredBy,
+                      'filteredOptions': filter.filteredOptions
+                    });
+                    Navigator.pop(context);
+                  },
                   color: AppColors().primaryBlue(),
                   child: Text(
                     'Apply',
