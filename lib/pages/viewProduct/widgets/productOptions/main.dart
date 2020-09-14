@@ -8,7 +8,8 @@ class ProductOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = Provider.of<ViewProductState>(context);
     return Container(
-      padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+      margin: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(left: 15, right: 15, bottom: 10),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

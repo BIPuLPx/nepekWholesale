@@ -9,7 +9,8 @@ class ProductDescription extends StatelessWidget {
     final product = Provider.of<ViewProductState>(context);
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 10, bottom: 10),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,7 +22,7 @@ class ProductDescription extends StatelessWidget {
           SizedBox(height: 5),
           Text(
             product.productDescription,
-            style: GoogleFonts.roboto(height: 1.2),
+            style: GoogleFonts.roboto(height: 1.3),
           )
         ],
       ),

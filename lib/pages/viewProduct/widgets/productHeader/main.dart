@@ -12,7 +12,7 @@ class ProductHeader extends StatelessWidget {
     final product = Provider.of<ViewProductState>(context);
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.only(left: 15, right: 15, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

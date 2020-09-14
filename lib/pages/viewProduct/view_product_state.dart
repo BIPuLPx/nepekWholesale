@@ -18,6 +18,9 @@ class ViewProductState with ChangeNotifier {
   List productOptions;
   List buyOptions = [];
   String productDescription;
+  List productHighlights;
+  List productSpecifications;
+  List productReviews;
 
   Future fetchProduct() async {
     var response;
@@ -31,6 +34,9 @@ class ViewProductState with ChangeNotifier {
     productOptions = res['options'];
     populateBuyOptions(res['options']);
     productDescription = res['description'];
+    productHighlights = res['highlights'];
+    productSpecifications = res['specifications'];
+    productReviews = res['reviews'];
     initialFetch = true;
     result = ViewProductLayout();
 

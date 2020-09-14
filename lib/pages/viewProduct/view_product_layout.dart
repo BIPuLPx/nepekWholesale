@@ -4,14 +4,15 @@ import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/main.da
 import 'package:skite_buyer/pages/viewProduct/widgets/productDescription/main.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/productHeader/main.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/productOptions/main.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/swipe_images.dart';
+import 'package:skite_buyer/pages/viewProduct/widgets/productImages/swipe_images.dart';
+import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/main.dart';
 
 class ViewProductLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Colors.grey[200],
         child: CustomScrollView(
           physics:
               BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -24,7 +25,8 @@ class ViewProductLayout extends StatelessWidget {
                   ProductHeader(),
                   ProductOptions(),
                   ProductDescription(),
-                  HighLightsAndSpecs()
+                  HighLightsAndSpecs(),
+                  ProductReviews()
                 ],
               ),
             )

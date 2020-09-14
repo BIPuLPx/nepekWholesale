@@ -52,7 +52,7 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => ViewProductPage(
                   args: {
-                    'product_id': '5f5472bf1d840e021b123c44',
+                    'product_id': '5f5f21abaea4a6058cb46fcd',
                     'product_uid': 'hc38ozkbfipgrwso7t9mec50w'
                   },
                 ));
