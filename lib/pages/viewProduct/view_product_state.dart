@@ -14,6 +14,8 @@ class ViewProductState with ChangeNotifier {
   dynamic result = spinkit;
   String productBrand;
   String productName;
+  double productRating;
+  int noOfReviews;
   String productPrice;
   List productOptions;
   List buyOptions = [];
@@ -21,6 +23,10 @@ class ViewProductState with ChangeNotifier {
   List productHighlights;
   List productSpecifications;
   List productReviews;
+  List productQnas;
+  List productQNames;
+  String qtyToBuy = '1';
+  List<String> totalQty = [];
 
   Future fetchProduct() async {
     var response;
@@ -30,6 +36,8 @@ class ViewProductState with ChangeNotifier {
     // print(res);
     productBrand = res['brand'];
     productName = res['productName'];
+    productRating = res['rating'];
+    noOfReviews = res['ratingNo'];
     productPrice = res['price'].toString();
     productOptions = res['options'];
     populateBuyOptions(res['options']);
@@ -37,10 +45,44 @@ class ViewProductState with ChangeNotifier {
     productHighlights = res['highlights'];
     productSpecifications = res['specifications'];
     productReviews = res['reviews'];
+    productQnas = res['qna'];
+    getQnames(res['qna']);
+    populateQty(res['qty']);
     initialFetch = true;
     result = ViewProductLayout();
 
     notifyListeners();
+  }
+
+  Future getQnames(List qnas) async {
+    List quids = [];
+    for (var qna in qnas) {
+      if (!quids.contains(qna['customer_uid'])) {
+        quids.add(qna['customer_uid']);
+      }
+    }
+    final response = await http.post(
+      '$peopleApi/customers/get_name',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({'uids': quids}),
+    );
+    productQNames = jsonDecode(response.body);
+  }
+
+  getQnamesLocal(uid) {
+    for (var names in productQNames) {
+      if (names['uid'] == uid) {
+        return names['displayName'];
+      }
+    }
+  }
+
+  void populateQty(int qty) {
+    for (var i = 1; i <= qty; i++) {
+      totalQty.add(i.toString());
+    }
   }
 
   void populateBuyOptions(List options) {
@@ -57,5 +99,9 @@ class ViewProductState with ChangeNotifier {
       }
     }
     print(buyOptions);
+  }
+
+  void changeQty(String val) {
+    qtyToBuy = val;
   }
 }

@@ -13,6 +13,7 @@ class _SwipeImagesState extends State<SwipeImages> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        padding: EdgeInsets.only(top: 15),
         color: Colors.white,
         height: 445,
         width: double.infinity,

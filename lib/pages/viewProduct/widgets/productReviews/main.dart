@@ -22,6 +22,8 @@ class ProductReviews extends StatelessWidget {
                       review: review['review'],
                       rating: review['rating'],
                       date: review['date'],
+                      index: product.productReviews.indexOf(review),
+                      length: product.productReviews.length,
                     ))
                 .toList(),
           ),

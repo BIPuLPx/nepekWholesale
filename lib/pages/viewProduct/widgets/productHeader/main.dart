@@ -26,7 +26,8 @@ class ProductHeader extends StatelessWidget {
             style: ProductPageFonts().brand(),
           ),
           ProductName(name: product.productName),
-          RatingNo(rating: 4, noOfReviews: 5),
+          RatingNo(
+              rating: product.productRating, noOfReviews: product.noOfReviews),
           ProductPrice(price: product.productPrice),
         ],
       ),

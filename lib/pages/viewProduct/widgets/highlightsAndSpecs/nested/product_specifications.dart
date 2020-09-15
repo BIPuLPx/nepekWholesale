@@ -30,7 +30,7 @@ class SpecificationsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: index % 2 == 0 ? Colors.grey[350] : Colors.grey[200],
+      color: index % 2 == 0 ? Colors.grey[200] : Colors.grey[350],
       padding: EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

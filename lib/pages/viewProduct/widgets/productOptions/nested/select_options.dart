@@ -34,10 +34,11 @@ class _SelectOptionsState extends State<SelectOptions> {
         children: [
           Text(
             capitalize(widget.title),
-            style: GoogleFonts.openSans(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: AppColors().primaryText()),
+            style: GoogleFonts.roboto(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: AppColors().primaryBlue(),
+            ),
           ),
           SizedBox(height: 5),
           // Center(
