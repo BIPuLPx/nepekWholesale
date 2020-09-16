@@ -1,19 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/main.dart';
 import 'package:skite_buyer/styles/colors.dart';
 // import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-//Homepage
-class HomePage extends StatefulWidget {
-  final int index;
-  HomePage({this.index});
+class HomePage extends StatelessWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Hive.openBox('cart'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError)
+            return Text(snapshot.error.toString());
+          else
+            return HomePageRoot(index: 0);
+        }
+        // Although opening a Box takes a very short time,
+        // we still need to return something before the Future completes.
+        else
+          return Scaffold();
+      },
+    );
+  }
 }
 
-class _HomePageState extends State<HomePage> {
+//HomePageRoot
+class HomePageRoot extends StatefulWidget {
+  final int index;
+  HomePageRoot({this.index});
+  @override
+  _HomePageRootState createState() => _HomePageRootState();
+}
+
+class _HomePageRootState extends State<HomePageRoot> {
   int _currentIndex = 0;
 
   final tabs = [
@@ -32,11 +54,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    //     statusBarColor: Colors.white,
-    //     // statusBarBrightness: Brightness.light,
-    //     statusBarIconBrightness: Brightness.dark,
-    //     systemNavigationBarColor: Colors.white));
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

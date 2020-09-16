@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:skite_buyer/pages/viewProduct/view_product_layout.dart';
@@ -9,9 +10,14 @@ import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/styles/spinkit.dart';
 
 class ViewProductState with ChangeNotifier {
+  final cart = Hive.box('cart');
+
   String productID;
   bool initialFetch = false;
   dynamic result = spinkit;
+
+  String productUid;
+  String sellerUid;
   String productBrand;
   String productName;
   double productRating;
@@ -34,6 +40,8 @@ class ViewProductState with ChangeNotifier {
 
     final res = jsonDecode(response.body);
     // print(res);
+    productUid = res['uid'];
+    sellerUid = res['seller_id'];
     productBrand = res['brand'];
     productName = res['productName'];
     productRating = res['rating'];
@@ -49,7 +57,9 @@ class ViewProductState with ChangeNotifier {
     getQnames(res['qna']);
     populateQty(res['qty']);
     initialFetch = true;
-    result = ViewProductLayout();
+    if (initialFetch == true) {
+      result = ViewProductLayout();
+    }
 
     notifyListeners();
   }
@@ -103,5 +113,18 @@ class ViewProductState with ChangeNotifier {
 
   void changeQty(String val) {
     qtyToBuy = val;
+  }
+
+  void addTocart() {
+    // print('Add To cart');
+    cart.add({
+      'product_uid': productUid,
+      'name': productName,
+      'qty': qtyToBuy,
+      'totalQty': totalQty,
+      'seller_uid': sellerUid,
+      'options': buyOptions,
+      'price': productPrice
+    });
   }
 }
