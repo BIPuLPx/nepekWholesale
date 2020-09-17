@@ -139,20 +139,24 @@ class _ResultLayoutState extends State<ResultLayout> {
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
                 SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10),
-                    Text(result.products[index]['productName'].toString()),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text('NPR ',
-                            style: TextStyle(fontWeight: FontWeight.w800)),
-                        Text(result.products[index]['price'].toString()),
-                      ],
-                    ),
-                  ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10),
+                      Container(
+                          child: Text(result.products[index]['productName']
+                              .toString())),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Text('NPR ',
+                              style: TextStyle(fontWeight: FontWeight.w800)),
+                          Text(result.products[index]['price'].toString()),
+                        ],
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -163,10 +167,10 @@ class _ResultLayoutState extends State<ResultLayout> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SmoothStarRating(
-                  starCount: result.products[index]['rating'] == 0
+                  rating: result.products[index]['rating'] == 0
                       ? 5
                       : result.products[index]['rating'],
-                  rating: 5,
+                  starCount: 5,
                   size: 18,
                   isReadOnly: true,
                   color: Colors.yellow[800],
@@ -219,10 +223,10 @@ class _ResultLayoutState extends State<ResultLayout> {
             child: Row(
               children: [
                 SmoothStarRating(
-                  starCount: result.products[index]['rating'] == 0
+                  rating: result.products[index]['rating'] == 0
                       ? 5
                       : result.products[index]['rating'],
-                  rating: 5,
+                  starCount: 5,
                   size: 18,
                   isReadOnly: true,
                   color: Colors.yellow[800],
@@ -235,3 +239,10 @@ class _ResultLayoutState extends State<ResultLayout> {
     );
   }
 }
+
+// class GridLayout extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }

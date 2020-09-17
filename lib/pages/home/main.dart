@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
+import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/main.dart';
 import 'package:skite_buyer/styles/colors.dart';
@@ -84,9 +85,9 @@ class _HomePageRootState extends State<HomePageRoot> {
               ),
               title: TextContainer(child: 'Profile')),
           BottomNavigationBarItem(
-            icon: Icon(
-              BottomNavIcons.cart,
+            icon: CartNoListener(
               size: 18,
+              labelColor: Colors.white,
             ),
             title: TextContainer(child: '  Cart'),
           ),

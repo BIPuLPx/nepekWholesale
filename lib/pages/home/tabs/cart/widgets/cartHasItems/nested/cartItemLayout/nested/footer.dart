@@ -23,7 +23,7 @@ class CartItemFooter extends StatelessWidget {
 
 class QtySelector extends StatefulWidget {
   final String qty;
-  final List totalQty;
+  final List<String> totalQty;
   final int index;
   QtySelector({this.qty, this.totalQty, this.index});
 
@@ -32,17 +32,6 @@ class QtySelector extends StatefulWidget {
 }
 
 class _QtySelectorState extends State<QtySelector> {
-  String dropdownValue;
-  List<String> qtys;
-  @override
-  void initState() {
-    setState(() {
-      dropdownValue = widget.qty;
-      qtys = widget.totalQty;
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -73,17 +62,15 @@ class _QtySelectorState extends State<QtySelector> {
               alignedDropdown: true,
               child: DropdownButton<String>(
                 isExpanded: true,
-                value: dropdownValue,
+                value: widget.qty,
                 style: AppFontStyle().button(AppColors().primaryText()),
                 onChanged: (String newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
+                  cart.changeQty(widget.index, newValue);
                 },
-                items: qtys.map<DropdownMenuItem<String>>((String value) {
+                items: widget.totalQty
+                    .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    onTap: () => cart.changeQty(widget.index, value),
                     child: Center(child: Text(value)),
                   );
                 }).toList(),

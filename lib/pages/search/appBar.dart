@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
+import 'package:skite_buyer/pages/search/search_provider.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 searchAppBar(
     context, currentSuffix, searchTerm, Function setSearchTerm, searchHolder) {
+  final search = Provider.of<SearchState>(context);
   return PreferredSize(
     preferredSize: Size.fromHeight(50.0), // here the desired height
     child: AppBar(
@@ -35,10 +39,17 @@ searchAppBar(
                   child: TextField(
                     controller: searchHolder,
                     autocorrect: false,
-                    onChanged: setSearchTerm,
+                    onChanged: (val) {
+                      setSearchTerm(val);
+                      search.autoComplete(val);
+                    },
                     textInputAction: TextInputAction.search,
                     onSubmitted: (val) {
                       if (val != '') {
+                        final search = Hive.box('search');
+                        if (!search.values.toList().contains(val)) {
+                          search.add(val);
+                        }
                         Navigator.pushReplacementNamed(context, 'result',
                             arguments: {'type': 'search', 'query': val});
                       }

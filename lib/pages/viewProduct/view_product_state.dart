@@ -44,7 +44,7 @@ class ViewProductState with ChangeNotifier {
     sellerUid = res['seller_id'];
     productBrand = res['brand'];
     productName = res['productName'];
-    productRating = res['rating'];
+    productRating = double.parse(res['rating'].toString());
     noOfReviews = res['ratingNo'];
     productPrice = res['price'].toString();
     productOptions = res['options'];

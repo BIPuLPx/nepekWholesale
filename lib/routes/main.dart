@@ -19,14 +19,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => HomePage());
 
       case 'search':
-        // return MaterialPageRoute(builder: (_) => SearchPage());
-        return MaterialPageRoute(
-            builder: (_) => ViewProductPage(
-                  args: {
-                    'product_id': '5f5f21abaea4a6058cb46fcd',
-                    'product_uid': 'hc38ozkbfipgrwso7t9mec50w'
-                  },
-                ));
+        return MaterialPageRoute(builder: (_) => SearchPage());
+      // return MaterialPageRoute(
+      //     builder: (_) => ViewProductPage(
+      //           args: {
+      //             'product_id': '5f5f21abaea4a6058cb46fcd',
+      //             'product_uid': 'hc38ozkbfipgrwso7t9mec50w'
+      //           },
+      //         ));
 
       case 'result':
         return MaterialPageRoute(builder: (_) => ResultPage(args: args));

@@ -9,32 +9,45 @@ class CartState with ChangeNotifier {
   Widget body = spinkit;
   Widget yesProducts = CartHasItem();
   Widget noProducts = EmptyCart();
-
-  final cart = Hive.box('cart');
   bool initialgetCart = false;
   List cartItems = [];
 
   void getAllcartItems() {
     // cart.clear();
+    cartItems = [];
+    final cart = Hive.box('cart');
+    // print(cart.values.toList());
     if (cart.length > 0) {
       for (var i = 0; i < cart.length; i++) {
         // print(cart.getAt(i));
         cartItems.add({'index': i, 'item': cart.getAt(i)});
         // cart.deleteAt(i);
         // print()
-        // print(cartItems);
       }
     }
+    // print(cartItems);
     checkCart();
 
-    initialgetCart = true;
+    // initialgetCart = true;
   }
 
   void deleteItem(int index) {
-    cartItems.removeAt(index);
+    final cart = Hive.box('cart');
+
+    // print(index);
+    // print(cartItems);
+    // cartItems.removeAt(findLocalindex(index));
     cart.deleteAt(index);
-    checkCart();
+    // print(cartItems);
     notifyListeners();
+  }
+
+  findLocalindex(i) {
+    for (var item in cartItems) {
+      if (i == item['index']) {
+        return cartItems.indexOf(item);
+      }
+    }
   }
 
   void checkCart() {
@@ -46,6 +59,8 @@ class CartState with ChangeNotifier {
   }
 
   void changeQty(int index, String value) {
+    final cart = Hive.box('cart');
+
     // print('$index need value $value');
     for (var item in cartItems) {
       if (item['index'] == index) {
@@ -54,5 +69,6 @@ class CartState with ChangeNotifier {
         // print(item);
       }
     }
+    notifyListeners();
   }
 }

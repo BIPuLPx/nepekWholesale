@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
+// import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/iconsClass/result_page_icons_icons.dart';
+import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/pages/searchResult/sort/main.dart';
 import 'package:skite_buyer/pages/searchResult/styles/appbar_nav_button.dart';
 import 'package:skite_buyer/styles/colors.dart';
@@ -30,10 +31,10 @@ resultAppBar(
     brightness: Brightness.light,
     actions: [
       IconButton(
-        icon: Icon(
-          BottomNavIcons.cart,
-          color: AppColors().primaryBlue(),
+        icon: CartNoListener(
           size: 19,
+          labelColor: Colors.white,
+          iconColor: AppColors().primaryBlue(),
         ),
         onPressed: () => Navigator.pushNamed(resultContext, 'cart'),
       ),

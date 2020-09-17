@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
+import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 viewProductAppBar(viewProductContext) {
@@ -17,10 +17,10 @@ viewProductAppBar(viewProductContext) {
     brightness: Brightness.light,
     actions: [
       IconButton(
-        icon: Icon(
-          BottomNavIcons.cart,
-          color: AppColors().primaryBlue(),
+        icon: CartNoListener(
           size: 19,
+          labelColor: Colors.white,
+          iconColor: AppColors().primaryBlue(),
         ),
         onPressed: () => Navigator.pushNamed(viewProductContext, 'cart'),
       ),
