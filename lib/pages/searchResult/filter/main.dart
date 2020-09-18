@@ -22,6 +22,7 @@ class FilterPageRoot extends StatelessWidget {
   FilterPageRoot({this.args});
   @override
   Widget build(BuildContext context) {
+    // print(args);
     final filter = Provider.of<FilterSearchState>(context);
 
     if (filter.initialState == false) {
@@ -55,8 +56,8 @@ class FilterPageRoot extends StatelessWidget {
               text: 'Price',
               route: 'filter_price',
               args: {
-                'min': filter.filteredBy['\$gte'],
-                'max': filter.filteredBy['\$lt'],
+                'min': filter.filteredBy['price']['min'],
+                'max': filter.filteredBy['price']['max'],
                 'changeFn': filter.setPrice
               },
               bottom: [filter.minPrice, filter.maxPrice],
@@ -114,7 +115,10 @@ class FilterPageRoot extends StatelessWidget {
                   highlightedBorderColor: AppColors().primaryBlue(),
                   borderSide:
                       BorderSide(color: AppColors().primaryBlue(), width: 1.5),
-                  onPressed: () {},
+                  onPressed: () {
+                    args['filterFn']('reset');
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     'Reset',
                     style: AppFontStyle().button(AppColors().primaryBlue()),

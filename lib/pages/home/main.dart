@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
+import 'package:skite_buyer/pages/home/tabs/categories/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/main.dart';
 import 'package:skite_buyer/styles/colors.dart';
 // import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
           if (snapshot.hasError)
             return Text(snapshot.error.toString());
           else
-            return HomePageRoot(index: 0);
+            return HomePageRoot(index: 1);
         }
         // Although opening a Box takes a very short time,
         // we still need to return something before the Future completes.
@@ -37,11 +38,11 @@ class HomePageRoot extends StatefulWidget {
 }
 
 class _HomePageRootState extends State<HomePageRoot> {
-  int _currentIndex = 0;
+  int _currentIndex;
 
   final tabs = [
     HomeTab(),
-    Text('Catrgories'),
+    Categories(),
     Text('Profile'),
     CartTab(outside: false)
   ];

@@ -45,7 +45,7 @@ searchAppBar(
                     },
                     textInputAction: TextInputAction.search,
                     onSubmitted: (val) {
-                      if (val != '') {
+                      if (val.trim() != '') {
                         final search = Hive.box('search');
                         if (!search.values.toList().contains(val)) {
                           search.add(val);

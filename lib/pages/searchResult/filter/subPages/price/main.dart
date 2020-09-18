@@ -30,6 +30,13 @@ class _FilterPricePageState extends State<FilterPricePage> {
   }
 
   @override
+  void initState() {
+    price['min'] = widget.args['min'];
+    price['max'] = widget.args['max'];
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // print(widget.args);
     return Scaffold(
@@ -40,9 +47,18 @@ class _FilterPricePageState extends State<FilterPricePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InputPrice(label: 'Min', autofocus: true, changeFn: priceChanged),
               InputPrice(
-                  label: 'Max', autofocus: false, changeFn: priceChanged),
+                label: 'Min',
+                autofocus: true,
+                changeFn: priceChanged,
+                initialValue: price['min'],
+              ),
+              InputPrice(
+                label: 'Max',
+                autofocus: false,
+                changeFn: priceChanged,
+                initialValue: price['max'],
+              ),
             ],
           ),
         ),
@@ -69,10 +85,11 @@ class _FilterPricePageState extends State<FilterPricePage> {
 }
 
 class InputPrice extends StatelessWidget {
+  final String initialValue;
   final String label;
   final bool autofocus;
   final Function changeFn;
-  InputPrice({this.label, this.autofocus, this.changeFn});
+  InputPrice({this.initialValue, this.label, this.autofocus, this.changeFn});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -85,7 +102,8 @@ class InputPrice extends StatelessWidget {
         SizedBox(
           width: 110,
           // height: 30,
-          child: TextField(
+          child: TextFormField(
+            initialValue: initialValue,
             onChanged: (value) {
               changeFn(label, value);
             },

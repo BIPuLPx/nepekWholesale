@@ -20,7 +20,6 @@ class ResultRoot extends StatelessWidget {
     final result = Provider.of<ResultState>(context);
     if (result.initialFetch == false) {
       result.searchText = args['query'];
-
       result.fetchInitialSearch();
     }
     return Scaffold(

@@ -41,7 +41,7 @@ class _SearchPageRootState extends State<SearchPageRoot> {
   setSearchTerm(val) {
     setState(() {
       val == '' ? currentSuffix = Icons.search : currentSuffix = Icons.cancel;
-      searchTerm = val;
+      searchTerm = val.trim();
     });
   }
 
@@ -64,5 +64,11 @@ class _SearchPageRootState extends State<SearchPageRoot> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    Hive.box('search').close();
+    super.dispose();
   }
 }

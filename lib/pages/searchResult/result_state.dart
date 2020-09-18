@@ -22,6 +22,8 @@ class ResultState with ChangeNotifier {
   Map sortBy = {'sort': 'clicks', 'by': 'asc'};
   bool isbeingFiltered = false;
 
+  List filteredOptions;
+
   Map filterBy = {
     "price": {"\$gte": '', "\$lt": ''},
     "brand": [],
@@ -33,8 +35,6 @@ class ResultState with ChangeNotifier {
     "options": [],
   };
 
-  List filteredOptions = [];
-
   Widget endOfSearch = Container(
     padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
     child: Text(
@@ -44,6 +44,8 @@ class ResultState with ChangeNotifier {
   );
 
   void populateFilteredOptions(options) {
+    filteredOptions = [];
+
     // print(options);
     for (var option in options) {
       final letsAdd = {'name': option['name'], 'values': []};
@@ -64,7 +66,7 @@ class ResultState with ChangeNotifier {
         },
         body: jsonEncode(filterBy),
       );
-      print(jsonDecode(response.body));
+      // print(jsonDecode(response.body));
     }
 
     final res = jsonDecode(response.body);
@@ -146,27 +148,36 @@ class ResultState with ChangeNotifier {
     fetchInitialSearch();
   }
 
-  void setFilter(Map data) {
-    // print(data);
-    List options = [];
-    for (var optn in data['filteredOptions']) {
-      options.addAll(optn['values']);
+  void setFilter(dynamic data) {
+    if (data == 'reset') {
+      // print('reset');
+      filterBy = {
+        "price": {"\$gte": '', "\$lt": ''},
+        "brand": [],
+        "options": []
+      };
+      initialFetch = false;
+    } else {
+      // print(data);
+      List options = [];
+      for (var optn in data['filteredOptions']) {
+        options.addAll(optn['values']);
+      }
+      final filteredBy = data['filteredBy'];
+      filterBy['price']['\$gte'] = filteredBy['price']['min'];
+      filterBy['price']['\$lt'] = filteredBy['price']['max'];
+      filterBy['brand'] = filteredBy['brand'];
+      filterBy['options'] = options;
+      filteredOptions = data['filteredOptions'];
+      notifyListeners();
+      // print(filterBy);
+      isbeingFiltered = true;
     }
-    final filteredBy = data['filteredBy'];
-    filterBy['price']['\$gte'] = filteredBy['price']['min'];
-    filterBy['price']['\$lt'] = filteredBy['price']['max'];
-    filterBy['brand'] = filteredBy['brand'];
-    filterBy['options'] = options;
-    filteredOptions = data['filteredOptions'];
-    notifyListeners();
-    // print(filterBy);
-    isbeingFiltered = true;
     nextPage = 1;
     loadingMore = loading_more;
     result = spinkit;
     notifyListeners();
     fetchInitialSearch();
-
     // print('result');
     // print(filteredOptions);
   }
