@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Neptune</string>
+
+<string name="facebook_app_id">977850002687609</string>
+<string name="fb_login_protocol_scheme">fb977850002687609</string>
+</resources>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "413884093288",
+    "firebase_url": "https://neptune-a3815.firebaseio.com",
+    "project_id": "neptune-a3815",
+    "storage_bucket": "neptune-a3815.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413884093288:android:111dcaf74158db49dc3cdd",
+        "android_client_info": {
+          "package_name": "com.example.seller_zone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIznVOBVJFFzA9mT_LGko8SNULhPEGj3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413884093288:android:8b218ab7c4ff8c44dc3cdd",
+        "android_client_info": {
+          "package_name": "com.example.skite_buyer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIznVOBVJFFzA9mT_LGko8SNULhPEGj3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skite_buyer/pages/account/main.dart';
 import 'package:skite_buyer/pages/search/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/brand/main.dart';
@@ -7,6 +8,8 @@ import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/options/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/price/main.dart';
 import 'package:skite_buyer/pages/searchResult/main.dart';
+import 'package:skite_buyer/pages/userInfoInput/address/main.dart';
+import 'package:skite_buyer/pages/userInfoInput/phoneNumber/main.dart';
 import 'package:skite_buyer/pages/viewProduct/main.dart';
 
 class RouteGenerator {
@@ -49,6 +52,15 @@ class RouteGenerator {
       case 'cart':
         return MaterialPageRoute(builder: (_) => CartTab(outside: true));
 
+      case 'input_phone_number':
+        return MaterialPageRoute(builder: (_) => VerifyPhoneNumber(args: args));
+
+      case 'input_delivery_address':
+        return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
+
+      case 'account':
+        return MaterialPageRoute(builder: (_) => AccountPage());
+
       default:
         // return
         // MaterialPageRoute(
@@ -56,6 +68,12 @@ class RouteGenerator {
         //     ? HomePage()
         //     : DoYouHaveAccount());
         return MaterialPageRoute(builder: (_) => HomePage());
+      // return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
+      // return MaterialPageRoute(
+      // builder: (_) => Scaffold(body: SafeArea(child: SignedIn())));
+
+      // return MaterialPageRoute(builder: (_) => VerifyPhoneNumber());
+
       // return MaterialPageRoute(
       //     builder: (_) => ViewProductPage(
       //           args: {
