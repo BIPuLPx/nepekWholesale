@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/sending_code.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/wrong_ver_code.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/code_input.dart';
@@ -9,6 +10,7 @@ import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/phone_number
 import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
+import 'package:skite_buyer/styles/toast.dart';
 
 class PhoneInputState extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -47,6 +49,7 @@ class PhoneInputState extends ChangeNotifier {
   }
 
   Future addToBackend(BuildContext context) async {
+    print(UserPreferences().getJwtToken());
     var response = await http.put(
       '$peopleApi/customers/addPhone',
       headers: {
@@ -59,6 +62,8 @@ class PhoneInputState extends ChangeNotifier {
     if (response.statusCode == 200) {
       UserPreferences().phoneNumber(phoneNumber);
       Navigator.of(context).pop();
+      // print('here');
+      showToast(context, 'Sucessfully added your phone number');
       if (isNextScreenAddress == true) {
         Navigator.pushReplacementNamed(context, 'input_delivery_address');
       } else {
@@ -94,14 +99,24 @@ class PhoneInputState extends ChangeNotifier {
     try {
       final result = await _auth.signInWithCredential(credential);
       final user = result.user;
-      print(user);
+      // print(user);
+      // print('verified');
       if (user.phoneNumber == '+977$phoneNumber') {
+        // print('verified');
         addToBackend(context);
       }
     } catch (e) {
-      Navigator.of(context).pop();
-      wrongCode(context);
-      print(e);
+      print(e.code);
+      if (e.code == 'invalid-verification-code') {
+        Navigator.of(context).pop();
+        codeExceptions(
+            context, "The verification code is invalid, please try again ");
+      }
+
+      // PlatformException(code: '');
+      // Navigator.of(context).pop();
+      // wrongCode(context);
+      // print(e);
     }
   }
 
@@ -128,8 +143,13 @@ class PhoneInputState extends ChangeNotifier {
           //This callback would gets called when verification is done auto maticlly
         },
         verificationFailed: (FirebaseAuthException e) {
-          print(e);
+          print(e.toString());
           print('failed');
+          // print(e.code);
+          // if(e.code ==
+          if (e.code == 'invalid-verification-code') {
+            print('The provided phone number is not valid.');
+          }
         },
         codeSent: (String verificationId, int resendToken) {
           verCodeid = verificationId;

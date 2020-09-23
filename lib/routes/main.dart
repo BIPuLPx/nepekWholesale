@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skite_buyer/pages/account/main.dart';
+import 'package:skite_buyer/pages/reviews/main.dart';
 import 'package:skite_buyer/pages/search/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/subPages/brand/main.dart';
@@ -59,7 +60,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
 
       case 'account':
-        return MaterialPageRoute(builder: (_) => AccountPage());
+        return MaterialPageRoute(builder: (_) => AccountPage(args: args));
+
+      case 'reviews':
+        return MaterialPageRoute(builder: (_) => ReviewsPage(args: args));
 
       default:
         // return
@@ -68,6 +72,10 @@ class RouteGenerator {
         //     ? HomePage()
         //     : DoYouHaveAccount());
         return MaterialPageRoute(builder: (_) => HomePage());
+      // return MaterialPageRoute(
+      //     builder: (_) =>
+      //         ReviewsPage(args: {'id': '5f5f21abaea4a6058cb46fcd'}));
+
       // return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
       // return MaterialPageRoute(
       // builder: (_) => Scaffold(body: SafeArea(child: SignedIn())));

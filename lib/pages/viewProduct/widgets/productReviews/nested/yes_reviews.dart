@@ -7,6 +7,7 @@ class YesReviews extends StatelessWidget {
   YesReviews({this.reviews});
   @override
   Widget build(BuildContext context) {
+    print(reviews);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +16,7 @@ class YesReviews extends StatelessWidget {
           children: reviews
               .map((review) => ReviewLayout(
                     review: review['review'],
-                    rating: review['rating'],
+                    rating: review['rating'].toDouble(),
                     date: review['date'],
                     index: reviews.indexOf(review),
                     length: reviews.length,

@@ -26,7 +26,7 @@ FlatButton updateBtn(String changeRoute, BuildContext context) => FlatButton(
       color: Colors.pink[50],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       onPressed: () {
-        Navigator.pushReplacementNamed(context, changeRoute);
+        Navigator.pushNamed(context, changeRoute);
       },
       child: Text(
         'Update',

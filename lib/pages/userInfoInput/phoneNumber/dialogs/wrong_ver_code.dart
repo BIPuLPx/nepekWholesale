@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
-Future<void> wrongCode(BuildContext context) async {
+Future<void> codeExceptions(BuildContext context, String message) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false,
@@ -11,12 +11,11 @@ Future<void> wrongCode(BuildContext context) async {
           'Wrong Code',
           style: TextStyle(fontWeight: FontWeight.w800),
         ),
-        content: SingleChildScrollView(
-            child: Text('The code you entered was wrong')),
+        content: SingleChildScrollView(child: Text(message)),
         actions: [
           FlatButton(
             child: Text(
-              'Try Again',
+              'Okay',
               style: TextStyle(color: AppColors().primaryBlue()),
             ),
             onPressed: () {

@@ -50,7 +50,7 @@ class EmptyCartLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       child,
-      style: GoogleFonts.ptSans(
+      style: TextStyle(
         fontSize: size,
         fontWeight: FontWeight.w800,
         color: AppColors().primaryBlue(),

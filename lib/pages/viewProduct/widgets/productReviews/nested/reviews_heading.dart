@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 class Heading extends StatelessWidget {
@@ -7,6 +9,7 @@ class Heading extends StatelessWidget {
   Heading({this.heading});
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<ViewProductState>(context);
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: Row(
@@ -27,7 +30,10 @@ class Heading extends StatelessWidget {
               highlightedBorderColor: AppColors().primaryBlue(),
               borderSide:
                   BorderSide(color: AppColors().primaryBlue(), width: 1.6),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'reviews',
+                    arguments: {'id': product.productID});
+              },
               child: Text(
                 'View All',
                 style: GoogleFonts.roboto(

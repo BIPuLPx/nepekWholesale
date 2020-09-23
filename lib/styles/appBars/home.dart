@@ -12,13 +12,18 @@ homeAppbar(context) {
         child: Image.asset(
           'icons/Brand.png',
           height: 16,
-          // color: Colors.green,
+          color: AppColors().primaryBlue(),
         ),
       ),
       // backgroundColor: Colors.white,
       actions: [
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, 'search'),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, 'result',
+                arguments: {'type': 'search', 'query': 'iphone'});
+
+            //  Navigator.pushNamed(context, 'search');
+          },
           child: Container(
             margin: EdgeInsets.only(top: 10, bottom: 10, right: 20),
             padding: EdgeInsets.only(left: 5, right: 5),

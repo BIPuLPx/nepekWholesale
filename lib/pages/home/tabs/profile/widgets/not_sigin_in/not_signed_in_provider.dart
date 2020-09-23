@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/dialogs/connecting.dart';
 import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
+import 'package:skite_buyer/styles/toast.dart';
 
 class NotSignedInState extends ChangeNotifier {
   bool initState = false;
@@ -42,6 +43,7 @@ class NotSignedInState extends ChangeNotifier {
     UserPreferences().jwtToken(backendData['token']);
     UserPreferences().displayName(backendData['data']['displayName']);
     UserPreferences().loggedIn(true);
+    showToast(context, 'Sucessfully Signed In');
     checkLogged();
 
     if (backendData['left'] == 'all' || backendData['left'] == 'phone') {

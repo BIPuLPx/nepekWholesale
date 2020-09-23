@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
-showToast(BuildContext context) {
+showToast(BuildContext context, String message) {
   FToast fToast;
   fToast = FToast();
   fToast.init(context);
@@ -17,17 +17,26 @@ showToast(BuildContext context) {
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(Icons.check, color: Colors.white),
+        Icon(
+          Icons.check,
+          color: Colors.white,
+          size: 17,
+        ),
         SizedBox(
           width: 15.0,
         ),
+        // Expanded(
+        //  child:
+
         Text(
-          "This is a Custom Toast",
-          style: GoogleFonts.openSans(
+          message,
+          style: GoogleFonts.cabin(
+            fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w600,
           ),
         ),
+        // )
       ],
     ),
   );
@@ -35,7 +44,7 @@ showToast(BuildContext context) {
   fToast.showToast(
     child: toast,
     gravity: ToastGravity.BOTTOM,
-    toastDuration: Duration(seconds: 1),
+    toastDuration: Duration(seconds: 2),
   );
 
   // // Custom Toast Position

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
 
 class RoutesContainer extends StatelessWidget {
   final String label;
@@ -12,11 +14,19 @@ class RoutesContainer extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final profile = Provider.of<ProfileState>(context);
     return Material(
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, route);
+          // print(route);
+          Navigator.pushNamed(
+            context,
+            route,
+            arguments: route == 'account'
+                ? {'checkProfile': profile.checkLogged}
+                : null,
+          );
         },
         child: Container(
           padding: EdgeInsets.only(top: 15, bottom: 15),

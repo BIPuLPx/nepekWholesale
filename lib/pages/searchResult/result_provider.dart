@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/pages/searchResult/filter_again.dart';
-import 'package:skite_buyer/pages/searchResult/no_products_search.dart';
-import 'package:skite_buyer/pages/searchResult/result_layout.dart';
+import 'package:skite_buyer/pages/searchResult/screens/filter_again.dart';
+import 'package:skite_buyer/pages/searchResult/screens/no_products_search.dart';
+import 'package:skite_buyer/pages/searchResult/resultLayout/main.dart';
+import 'package:skite_buyer/pages/searchResult/styles/end_of_result.dart';
 import 'dart:convert';
 import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/styles/loading_more.dart';
+import 'package:skite_buyer/pages/searchResult/styles/loading_more.dart';
 import 'package:skite_buyer/styles/spinkit.dart';
 
 class ResultState with ChangeNotifier {
@@ -34,14 +34,6 @@ class ResultState with ChangeNotifier {
     "brands": [],
     "options": [],
   };
-
-  Widget endOfSearch = Container(
-    padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-    child: Text(
-      'End of Result',
-      style: GoogleFonts.abel(fontSize: 17),
-    ),
-  );
 
   void populateFilteredOptions(options) {
     filteredOptions = [];
@@ -96,7 +88,7 @@ class ResultState with ChangeNotifier {
     if (res['next'] == null) {
       // print('there is no next');
       isNextPage = false;
-      loadingMore = endOfSearch;
+      loadingMore = EndOfResult();
     } else {
       // print('there is next');
       isNextPage = true;
@@ -133,7 +125,7 @@ class ResultState with ChangeNotifier {
         nextPage = nextPage + 1;
       }
     } else {
-      loadingMore = endOfSearch;
+      loadingMore = EndOfResult();
     }
 
     notifyListeners();
