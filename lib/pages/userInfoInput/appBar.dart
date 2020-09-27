@@ -5,6 +5,12 @@ userInputAppbar(context) {
   return PreferredSize(
     preferredSize: Size.fromHeight(50.0), // here the desired height
     child: AppBar(
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(100),
+          bottomRight: Radius.circular(100),
+        ),
+      ),
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,

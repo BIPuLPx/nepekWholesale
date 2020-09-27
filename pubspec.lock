@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.1"
+  carousel_slider:
+    dependency: "direct main"
+    description:
+      name: carousel_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.1"
   characters:
     dependency: transitive
     description:
@@ -260,6 +267,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.11"
+  flare_dart:
+    dependency: transitive
+    description:
+      name: flare_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.4"
+  flare_flutter:
+    dependency: "direct main"
+    description:
+      name: flare_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -287,7 +308,7 @@ packages:
     source: hosted
     version: "0.2.4"
   flutter_page_indicator:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_page_indicator
       url: "https://pub.dartlang.org"

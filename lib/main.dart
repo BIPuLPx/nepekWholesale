@@ -55,6 +55,11 @@ class RootApp extends StatelessWidget {
       // theme: ThemeData(primaryColor: Color(0xff256eff)),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.generateRoute,
+      theme: ThemeData(
+        fontFamily: 'Cabin',
+        scaffoldBackgroundColor: Colors.white,
+        splashColor: Colors.grey[100],
+      ),
       // home: Scaffold(),
     );
   }

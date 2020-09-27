@@ -31,30 +31,56 @@ class AccountPageRoot extends StatelessWidget {
     // print(args);
     // print(account.phoneNumber);
     return Scaffold(
-      appBar: profileAppBar(context),
-      body: Container(
-        width: double.infinity,
-        padding: EdgeInsets.only(left: 15, right: 15),
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 15),
-            AccountContent(
-              heading: 'Phone Number',
-              value: [account.phoneNumber],
-              hasValue: account.phoneNumber == null ? false : true,
-              changeRoute: 'input_phone_number',
+      // appBar:
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        slivers: [
+          profileAppBar(context),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox(height: 50),
+                AccountContent(
+                  heading: 'Phone Number',
+                  value: [account.phoneNumber],
+                  hasValue: account.phoneNumber == null ? false : true,
+                  changeRoute: 'input_phone_number',
+                ),
+                AccountContent(
+                  heading: 'Shipping Address',
+                  value: [account.state, account.district, account.area],
+                  hasValue: account.area == null ? false : true,
+                  changeRoute: 'input_delivery_address',
+                )
+              ],
             ),
-            AccountContent(
-              heading: 'Shipping Address',
-              value: [account.state, account.district, account.area],
-              hasValue: account.area == null ? false : true,
-              changeRoute: 'input_delivery_address',
-            )
-          ],
-        ),
+          )
+        ],
       ),
+
+      // Container(
+      //   width: double.infinity,
+      //   padding: EdgeInsets.only(left: 15, right: 15),
+      //   color: Colors.white,
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       SizedBox(height: 15),
+      //       AccountContent(
+      //         heading: 'Phone Number',
+      //         value: [account.phoneNumber],
+      //         hasValue: account.phoneNumber == null ? false : true,
+      //         changeRoute: 'input_phone_number',
+      //       ),
+      //       AccountContent(
+      //         heading: 'Shipping Address',
+      //         value: [account.state, account.district, account.area],
+      //         hasValue: account.area == null ? false : true,
+      //         changeRoute: 'input_delivery_address',
+      //       )
+      //     ],
+      //   ),
+      // ),
       bottomNavigationBar: ProfileBottomNav(
         checkProfile: args['checkProfile'],
       ),
@@ -70,7 +96,11 @@ class ProfileBottomNav extends StatelessWidget {
     return BottomAppBar(
       child: SizedBox(
         height: 50,
-        child: FlatButton(
+        child: FlatButton.icon(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.red,
+          ),
           onPressed: () {
             UserPreferences().displayName(null);
             UserPreferences().jwtToken(null);
@@ -83,11 +113,11 @@ class ProfileBottomNav extends StatelessWidget {
             showToast(context, 'Signed Out');
             Navigator.of(context).pop();
           },
-          color: Colors.pink[50],
+          // color: Colors.red[50],
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          child: Text(
+          label: Text(
             'Sign Out',
-            style: AppFontStyle().button(Colors.pink),
+            style: AppFontStyle().button(Colors.red),
           ),
         ),
       ),

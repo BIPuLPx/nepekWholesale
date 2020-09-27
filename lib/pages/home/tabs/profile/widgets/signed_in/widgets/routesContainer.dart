@@ -29,7 +29,7 @@ class RoutesContainer extends StatelessWidget {
           );
         },
         child: Container(
-          padding: EdgeInsets.only(top: 15, bottom: 15),
+          padding: EdgeInsets.all(15),
           // decoration: BoxDecoration(
           //   borderRadius: BorderRadius.circular(1),
           //   color: Colors.white,

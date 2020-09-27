@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/sending_code.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/wrong_ver_code.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/code_input.dart';

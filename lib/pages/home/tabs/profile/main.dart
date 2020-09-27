@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
 
 class Profile extends StatelessWidget {
   @override

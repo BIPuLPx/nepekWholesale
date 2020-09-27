@@ -60,6 +60,5 @@ class GridLayout extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

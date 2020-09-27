@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/pages/account/content/account_heading.dart';
+import 'package:skite_buyer/styles/colors.dart';
 
 class AccountContentHeader extends StatelessWidget {
   final String changeroute;
@@ -23,7 +24,7 @@ class AccountContentHeader extends StatelessWidget {
 }
 
 FlatButton updateBtn(String changeRoute, BuildContext context) => FlatButton(
-      color: Colors.pink[50],
+      color: Colors.blue[50],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       onPressed: () {
         Navigator.pushNamed(context, changeRoute);
@@ -35,6 +36,6 @@ FlatButton updateBtn(String changeRoute, BuildContext context) => FlatButton(
     );
 
 TextStyle updateBtnText() => GoogleFonts.rubik(
-      color: Colors.pink,
+      color: AppColors().primaryBlue(),
       fontWeight: FontWeight.w500,
     );

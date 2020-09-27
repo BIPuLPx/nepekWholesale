@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/not_signed_in_provider.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
 
 class NotSignedIn extends StatelessWidget {
   @override
@@ -59,6 +58,10 @@ class NotSignedInRoot extends StatelessWidget {
             labelColor: Color.fromRGBO(63, 66, 80, 1),
             imgPath: 'icons/Email.png',
             iconSize: 20,
+          ),
+
+          Row(
+            children: [Text('Copyright (c) skite.com')],
           )
         ],
       ),

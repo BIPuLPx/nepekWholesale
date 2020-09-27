@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skite_buyer/styles/colors.dart';
 
 class Hi extends StatelessWidget {
   final String name;
@@ -8,10 +9,11 @@ class Hi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 0, top: 30, bottom: 60),
+      color: AppColors().primaryBlue(),
+      padding: EdgeInsets.only(left: 60, right: 30, top: 60, bottom: 60),
       child: Text(
         'Hey $name !',
-        style: hiHeading(30),
+        style: hiHeading(60),
       ),
     );
   }
@@ -20,4 +22,5 @@ class Hi extends StatelessWidget {
 TextStyle hiHeading(double size) => GoogleFonts.cabin(
       fontSize: size,
       fontWeight: FontWeight.w600,
+      color: Colors.white,
     );
