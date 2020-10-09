@@ -40,3 +40,16 @@ class ProductPageFonts {
         fontSize: 18,
       );
 }
+
+class HomeFonts {
+  Container heading(String text) => Container(
+        margin: EdgeInsets.only(bottom: 0, left: 15),
+        child: Text(
+          text,
+          style: GoogleFonts.cabin(
+            fontWeight: FontWeight.w800,
+            fontSize: 15,
+          ),
+        ),
+      );
+}

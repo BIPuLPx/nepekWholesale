@@ -32,7 +32,7 @@ class ReviewsState extends ChangeNotifier {
     reviewData = data['reviewData'];
     rating = data['rating'].toDouble();
     totalRating = data['ratingNo'].toInt();
-    fetchNames(data['reviews']);
+    fetchNames(data['reviews']).then((value) => null);
     reviews = data['reviews'];
 
     if (data['next'] == null) {
@@ -46,6 +46,7 @@ class ReviewsState extends ChangeNotifier {
     if (initialFetch = true) {
       body = ReviewsLayout();
     }
+
     notifyListeners();
   }
 
@@ -96,7 +97,7 @@ class ReviewsState extends ChangeNotifier {
     // }
 
     customersNames.addAll(data);
-    notifyListeners();
+    // return customersNames;
 
     // print(jsonDecode(response.body));
   }

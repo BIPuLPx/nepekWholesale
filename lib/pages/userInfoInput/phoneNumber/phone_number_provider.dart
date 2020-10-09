@@ -98,7 +98,7 @@ class PhoneInputState extends ChangeNotifier {
     try {
       final result = await _auth.signInWithCredential(credential);
       final user = result.user;
-      // print(user);
+      print(user);
       // print('verified');
       if (user.phoneNumber == '+977$phoneNumber') {
         // print('verified');
@@ -128,20 +128,18 @@ class PhoneInputState extends ChangeNotifier {
         phoneNumber: '+977$phoneNumber',
         verificationCompleted: (AuthCredential credential) async {
           // Navigator.of(context).pop();
-
+          sendingCode(context);
           final result = await _auth.signInWithCredential(credential);
-
           final user = result.user;
-          print(user);
-
-          if (user != null) {
-            print(user);
-          } else {
-            print("Error");
+          // print(user);
+          if (user.phoneNumber == '+977$phoneNumber') {
+            // print('verified');
+            addToBackend(context);
           }
           //This callback would gets called when verification is done auto maticlly
         },
         verificationFailed: (FirebaseAuthException e) {
+          print(e);
           print(e.toString());
           print('failed');
           // print(e.code);
@@ -159,7 +157,7 @@ class PhoneInputState extends ChangeNotifier {
         codeAutoRetrievalTimeout: (String verificationId) {
           print('timeOut');
         },
-        timeout: Duration(seconds: 60));
+        timeout: Duration(seconds: 0));
   }
 }
 

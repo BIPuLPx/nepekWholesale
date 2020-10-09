@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skite_buyer/pages/account/main.dart';
+import 'package:skite_buyer/pages/carasoulLanding/main.dart';
+import 'package:skite_buyer/pages/featuredBrandLanding/main.dart';
 import 'package:skite_buyer/pages/reviews/main.dart';
 import 'package:skite_buyer/pages/search/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/main.dart';
@@ -64,6 +66,13 @@ class RouteGenerator {
 
       case 'reviews':
         return MaterialPageRoute(builder: (_) => ReviewsPage(args: args));
+
+      case 'carasoul_landing':
+        return MaterialPageRoute(builder: (_) => CarasoulLanding(args: args));
+
+      case 'featured_brand_landing':
+        return MaterialPageRoute(
+            builder: (_) => FeaturedBrandLanding(args: args));
 
       default:
         // return

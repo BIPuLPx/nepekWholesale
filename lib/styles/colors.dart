@@ -14,6 +14,10 @@ class AppColors {
   secondaryText() => Colors.black54;
 }
 
+class HomeColors {
+  primaryBlueShade() => Color.fromRGBO(37, 100, 255, 0.2);
+}
+
 Map appColors = {
   'officialColor': Color(0xfffeee00),
 };

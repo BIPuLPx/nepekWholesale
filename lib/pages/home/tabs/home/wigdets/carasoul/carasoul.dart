@@ -1,30 +1,57 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:skite_buyer/styles/spinkit.dart';
 
-class FrontCarasoul extends StatelessWidget {
+class FrontCarasoul extends StatefulWidget {
+  @override
+  _FrontCarasoulState createState() => _FrontCarasoulState();
+}
+
+class _FrontCarasoulState extends State<FrontCarasoul>
+    with AutomaticKeepAliveClientMixin {
+  final List images = [
+    "https://k.nooncdn.com/cms/pages/20200716/abf4444484c38bb83b7904fd0da79641/en_slider-01.gif",
+    "https://k.nooncdn.com/cms/pages/20200716/ce62ea4055d312dad38b0c6fee2aed94/en_slider-01.gif",
+    "https://k.nooncdn.com/cms/pages/20200716/0fcc704bdebf9f3f841a899468ed9e06/en_slider-01.gif"
+  ];
+
+  int currentIndex = 0;
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
-      padding: EdgeInsets.only(top: 15, bottom: 15),
+      padding: EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
       child: CarouselSlider(
         options: CarouselOptions(
           viewportFraction: 1,
           autoPlay: true,
-          height: 100.0,
+          height: 90,
           autoPlayInterval: Duration(seconds: 5),
+          initialPage: currentIndex,
         ),
-        items: [1, 2, 3, 4, 5].map((i) {
+        items: images.map((img) {
           return Builder(
             builder: (BuildContext context) {
-              return Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 15.0),
-                  decoration: BoxDecoration(color: Colors.green),
-                  child: Text(
-                    'text $i',
-                    style: TextStyle(fontSize: 16.0),
-                  ));
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'carasoul_landing',
+                      arguments: {'img': img});
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: CachedNetworkImage(
+                    imageUrl: img,
+                    placeholder: (context, url) =>
+                        Container(height: 150, child: Center(child: spinkit)),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
+              );
             },
           );
         }).toList(),
@@ -32,60 +59,3 @@ class FrontCarasoul extends StatelessWidget {
     );
   }
 }
-
-// class FrontCarasoul extends StatefulWidget {
-//   @override
-//   _FrontCarasoulState createState() => new _FrontCarasoulState();
-// }
-
-// class _FrontCarasoulState extends State<FrontCarasoul> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Container(
-//         padding: EdgeInsets.only(left: 15, right: 15),
-//         // padding: EdgeInsets.only(top: 20,bottom: ),
-//         // color: Colors.green,
-//         // padding: EdgeInsets.only(top: 15),
-//         // color: Colors.white,
-//         height: 150,
-//         width: double.infinity,
-//         child: new Swiper(
-//           curve: Curves.easeInOut,
-//           duration: 500,
-
-//           // containerHeight: 200,
-//           autoplay: true,
-//           // autoplayDelay: ,
-//           itemBuilder: (BuildContext context, int index) {
-//             // print(index);
-//             return Container(
-//               decoration:
-//                   BoxDecoration(borderRadius: BorderRadius.circular(20)),
-//               padding: EdgeInsets.only(top: 15, bottom: 15),
-//               child: new Image.network(
-//                 "http://via.placeholder.com/600x300",
-//                 fit: BoxFit.fitWidth,
-//               ),
-//             );
-//           },
-//           itemCount: 6,
-//           viewportFraction: 0.7,
-//           scale: 1,
-//           // pagination: ,
-//           pagination: new SwiperPagination(
-//             margin: EdgeInsets.only(bottom: 20),
-//             builder: DotSwiperPaginationBuilder(
-//               color: Colors.grey[350],
-//               activeColor: AppColors().primaryBlue(),
-//               space: 5,
-//               size: 3,
-//               activeSize: 5,
-//             ),
-//           ),
-//           control: new SwiperControl(size: 0),
-//         ),
-//       ),
-//     );
-//   }
-// }

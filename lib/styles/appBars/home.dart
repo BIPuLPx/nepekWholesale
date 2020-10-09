@@ -19,10 +19,10 @@ homeAppbar(context) {
       actions: [
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacementNamed(context, 'result',
-                arguments: {'type': 'search', 'query': 'iphone'});
+            // Navigator.pushReplacementNamed(context, 'result',
+            //     arguments: {'type': 'search', 'query': 'iphone'});
 
-            //  Navigator.pushNamed(context, 'search');
+            Navigator.pushNamed(context, 'search');
           },
           child: Container(
             margin: EdgeInsets.only(top: 10, bottom: 10, right: 20),
