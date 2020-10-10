@@ -22,7 +22,7 @@ class GridLayout extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: GridTile(
           child: Container(
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

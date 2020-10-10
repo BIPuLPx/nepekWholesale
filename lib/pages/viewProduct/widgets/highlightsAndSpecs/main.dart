@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_highlights.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_specifications.dart';
-import 'package:skite_buyer/styles/colors.dart';
 
 class HighLightsAndSpecs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HighlightsAndSpecTopic(topic: 'Highlights'),
-          ProductHighlights(),
-          SizedBox(height: 20),
-          HighlightsAndSpecTopic(topic: 'Specifications'),
-          ProductSpecifications()
-        ],
+    return Card(
+      child: Container(
+        // color: Colors.white,
+        padding: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HighlightsAndSpecTopic(topic: 'Highlights'),
+            ProductHighlights(),
+            SizedBox(height: 20),
+            HighlightsAndSpecTopic(topic: 'Specifications'),
+            ProductSpecifications()
+          ],
+        ),
       ),
     );
   }
@@ -30,11 +31,11 @@ class HighlightsAndSpecTopic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 3),
+      padding: EdgeInsets.only(bottom: 15),
       child: Text(
         topic,
-        style: GoogleFonts.openSans(
-          color: AppColors().primaryText(),
+        style: GoogleFonts.cabin(
+          // color: AppColors().primaryText(),
           fontWeight: FontWeight.w600,
           fontSize: 15,
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductPrice extends StatelessWidget {
   final int price;
@@ -9,8 +10,8 @@ class ProductPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('NPR ', style: TextStyle(fontWeight: FontWeight.w800)),
-        Text(price.toString()),
+        Text('NPR ', style: GoogleFonts.cabin(fontWeight: FontWeight.w800)),
+        Text(price.toString(), style: GoogleFonts.cabin()),
       ],
     );
   }

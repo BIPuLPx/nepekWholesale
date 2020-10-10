@@ -6,30 +6,21 @@ import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 class CartNoListener extends StatelessWidget {
-  final double size;
-  final Color iconColor;
+  final Widget icon;
   final Color labelColor;
-  CartNoListener({this.size, this.iconColor, this.labelColor});
+  CartNoListener({this.labelColor, this.icon});
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: Hive.box('cart').listenable(),
       builder: (context, box, widget) {
         return box.length == 0
-            ? Icon(
-                BottomNavIcons.cart,
-                size: size,
-                color: iconColor,
-              )
+            ? icon
             : Stack(
                 // fit: StackFit.loose,
                 overflow: Overflow.visible,
                 children: [
-                  Icon(
-                    BottomNavIcons.cart,
-                    size: size,
-                    color: iconColor,
-                  ),
+                  icon,
                   Positioned(
                     right: -10,
                     top: -8,
@@ -37,6 +28,13 @@ class CartNoListener extends StatelessWidget {
                       height: 13,
                       width: 13,
                       decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors().primaryGreen(),
+                            spreadRadius: 0.25,
+                            blurRadius: 1,
+                          ),
+                        ],
                         color: AppColors().primaryGreen(),
                         borderRadius: BorderRadius.circular(12),
                       ),

@@ -5,13 +5,13 @@ import 'package:skite_buyer/styles/extensions.dart';
 
 Row header(String productName, String productPrice) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Flexible(
         child: ProductName(
           name: capitalize(productName),
         ),
       ),
-      SizedBox(width: 15),
       ProductPrice(price: productPrice)
     ],
   );

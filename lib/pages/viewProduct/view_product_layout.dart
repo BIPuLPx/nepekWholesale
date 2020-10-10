@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/viewProduct/styles/appBar.dart';
+import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/bottomAppBar/main.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/main.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/productDescription/main.dart';
@@ -12,9 +14,9 @@ import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/main.dart';
 class ViewProductLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<ViewProductState>(context);
     return Scaffold(
         body: Container(
-          color: Colors.grey[200],
           child: CustomScrollView(
             physics:
                 BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -25,7 +27,7 @@ class ViewProductLayout extends StatelessWidget {
                   [
                     SwipeImages(),
                     ProductHeader(),
-                    ProductOptions(),
+                    ProductOptions(product: product),
                     ProductDescription(),
                     HighLightsAndSpecs(),
                     ProductReviews(),

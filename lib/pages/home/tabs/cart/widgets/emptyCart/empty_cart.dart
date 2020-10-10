@@ -7,7 +7,7 @@ class EmptyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      // color: Colors.white,
       padding: EdgeInsets.only(left: 15, right: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

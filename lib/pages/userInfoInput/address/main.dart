@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/userInfoInput/address/address_provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/address/input_delivery_address/main.dart';
+import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
 
 class AddDeliveryAddress extends StatelessWidget {
@@ -20,46 +20,31 @@ class AddDeliveryAddressRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deliveryadd = Provider.of<AddDeliveryAddressState>(context);
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     if (deliveryadd.initInjection == false) {
       deliveryadd.makeInitinjection();
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.only(left: 15, right: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Your Delivery Address', style: addDeliveryAddHeading()),
-              InputDeliveryAddress(),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(child: AddAddressBottomAppBar()),
+      appBar: defaultAppBar(context, 'Address', darkTheme),
+      body: deliveryadd.body,
     );
   }
 }
-
-TextStyle addDeliveryAddHeading() => GoogleFonts.ptSans(
-      fontSize: 23,
-      fontWeight: FontWeight.w600,
-    );
 
 class AddAddressBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deliveryadd = Provider.of<AddDeliveryAddressState>(context);
-
+    final darktheme = Provider.of<DarkThemeProvider>(context);
     return BottomAppBar(
       child: SizedBox(
         height: 50,
         child: FlatButton(
           onPressed: () {
-            deliveryadd.finalizedLocation(context);
+            darktheme.darkTheme = !darktheme.darkTheme;
+            // deliveryadd.finalizedLocation(context);
           },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           color: AppColors().primaryBlue(),

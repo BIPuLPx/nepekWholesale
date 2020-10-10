@@ -9,7 +9,7 @@ class RightPanel extends StatelessWidget {
     final catagoriesAndSubcategories =
         Provider.of<CategoriesState>(context).categoriesForClasses;
     return Container(
-      padding: EdgeInsets.only(left: 15, right: 15),
+      padding: EdgeInsets.only(left: 27, right: 27),
       child: ListView(
           key: ObjectKey(catagoriesAndSubcategories),
           physics:

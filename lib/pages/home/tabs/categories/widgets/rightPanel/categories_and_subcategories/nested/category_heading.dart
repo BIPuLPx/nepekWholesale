@@ -9,9 +9,8 @@ class CategoryHeading extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Text(heading,
-          style: GoogleFonts.openSans(
-            color: Colors.black,
-            fontSize: 14.5,
+          style: GoogleFonts.cabin(
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           )),
     );

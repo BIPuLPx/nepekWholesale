@@ -10,20 +10,9 @@ import 'package:skite_buyer/pages/search/widgets/history/main.dart';
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Hive.openBox('search'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError)
-            return Text(snapshot.error.toString());
-          else
-            return ChangeNotifierProvider(
-              create: ((context) => SearchState()),
-              child: SearchPageRoot(),
-            );
-        } else
-          return Scaffold();
-      },
+    return ChangeNotifierProvider(
+      create: ((context) => SearchState()),
+      child: SearchPageRoot(),
     );
   }
 }
@@ -47,7 +36,8 @@ class _SearchPageRootState extends State<SearchPageRoot> {
 
   @override
   Widget build(BuildContext context) {
-    final autocompletes = Provider.of<SearchState>(context).autoCompletes;
+    final provider = Provider.of<SearchState>(context);
+    final autocompletes = provider.autoCompletes;
 
     return Scaffold(
       appBar: searchAppBar(
@@ -66,9 +56,9 @@ class _SearchPageRootState extends State<SearchPageRoot> {
     );
   }
 
-  @override
-  void dispose() {
-    Hive.box('search').close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   Hive.box('search').close();
+  //   super.dispose();
+  // }
 }

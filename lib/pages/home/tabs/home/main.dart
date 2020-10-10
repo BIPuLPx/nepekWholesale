@@ -1,19 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/advertisement/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/carasoul/carasoul.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/featuredSlider/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/shopByCategory/main.dart';
 import 'package:skite_buyer/styles/appBars/home.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: homeAppbar(context),
+        appBar: homeAppbar(context, darkTheme),
         body: Container(
           child: ListView(
             physics:

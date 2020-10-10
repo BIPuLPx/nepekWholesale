@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
 
+import '../../../../../../../styles/extensions.dart';
+
 class RoutesContainer extends StatelessWidget {
   final String label;
   final String route;
@@ -14,21 +16,19 @@ class RoutesContainer extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<ProfileState>(context);
+    // final profile = Provider.of<ProfileState>(context);
     return Material(
-      color: Colors.white,
+      // color: Colors.white,
       child: InkWell(
         onTap: () {
           // print(route);
-          Navigator.pushNamed(
-            context,
-            route,
-            arguments: route == 'account'
-                ? {'checkProfile': profile.checkLogged}
-                : null,
-          );
+          Navigator.pushNamed(context, route, arguments: route == 'account'
+              // ? {'checkProfile': profile.checkLogged}
+              // : null,
+              );
         },
         child: Container(
+          height: 50,
           padding: EdgeInsets.all(15),
           // decoration: BoxDecoration(
           //   borderRadius: BorderRadius.circular(1),
@@ -42,16 +42,27 @@ class RoutesContainer extends StatelessWidget {
           //   ],
           // ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: iconColor,
-                size: 20,
+              Row(
+                children: [
+                  SizedBox(
+                    width: 80,
+                    child: Image.asset(
+                      'assets/profileTab/$label.png',
+                      height: 17,
+                    ),
+                  ),
+                  Text(
+                    capitalize(label),
+                    style: routesContainerLabel(),
+                  ),
+                ],
               ),
-              SizedBox(width: 15),
-              Text(
-                label,
-                style: routesContainerLabel(),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 12,
               ),
             ],
           ),
@@ -61,7 +72,7 @@ class RoutesContainer extends StatelessWidget {
   }
 }
 
-TextStyle routesContainerLabel() => GoogleFonts.openSans(
+TextStyle routesContainerLabel() => GoogleFonts.cabin(
       fontSize: 16,
       fontWeight: FontWeight.w600,
     );

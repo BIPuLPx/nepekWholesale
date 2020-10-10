@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/categories/categoriesprovider.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/pages/home/tabs/categories/widgets/leftPanel/nested/classes_text.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class LeftPanel extends StatefulWidget {
   @override
@@ -26,52 +27,13 @@ class _LeftPanelState extends State<LeftPanel> {
         children: classes
             .map(
               (cls) => ClassesText(
+                index: classes.indexOf(cls),
                 cls: cls,
                 currentID: currentID,
                 changeID: changeCurrentID,
               ),
             )
             .toList(),
-      ),
-    );
-  }
-}
-
-class ClassesText extends StatelessWidget {
-  final Map cls;
-  final int currentID;
-  final Function changeID;
-  ClassesText({this.cls, this.currentID, this.changeID});
-  @override
-  Widget build(BuildContext context) {
-    final classClicked = Provider.of<CategoriesState>(context).classClicked;
-    return Container(
-      height: 50,
-      margin: EdgeInsets.only(top: 1),
-      child: Material(
-        color: currentID == cls['id'] ? Colors.white : Colors.grey[200],
-        child: InkWell(
-          // splashColor: Colors.black,
-          // highlightColor: Colors.grey,
-          onTap: () {
-            changeID(cls['id']);
-            classClicked(cls);
-          },
-
-          // padding: EdgeInsets.only(left: 10),
-          child: Center(
-            child: Text(
-              cls['name'],
-              style: GoogleFonts.robotoCondensed(
-                fontSize: 11,
-                color: currentID == cls['id']
-                    ? AppColors().primaryBlue()
-                    : AppColors().primaryText(),
-              ),
-            ),
-            // ),
-          ),
-        ),
       ),
     );
   }

@@ -7,24 +7,28 @@ class ProductDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ViewProductState>(context);
-    return Container(
-      color: Colors.white,
-      margin: EdgeInsets.only(top: 10, bottom: 10),
-      padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Description',
-            style:
-                GoogleFonts.openSans(fontSize: 15, fontWeight: FontWeight.w600),
-          ),
-          SizedBox(height: 5),
-          Text(
-            product.productDescription,
-            style: GoogleFonts.roboto(height: 1.3),
-          )
-        ],
+    return Card(
+      child: Container(
+        margin: EdgeInsets.only(top: 10, bottom: 10),
+        padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Description',
+              style: GoogleFonts.cabin(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                // color: AppColors().primaryText(),
+              ),
+            ),
+            SizedBox(height: 15),
+            Text(
+              product.productDescription,
+              style: GoogleFonts.cabin(height: 1.7),
+            )
+          ],
+        ),
       ),
     );
   }

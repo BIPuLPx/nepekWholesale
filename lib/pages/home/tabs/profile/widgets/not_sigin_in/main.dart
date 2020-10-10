@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/nested/sign_in_button.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/not_signed_in_provider.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+
+import '../../../../../../styles/extensions.dart';
 
 class NotSignedIn extends StatelessWidget {
   @override
@@ -25,106 +30,116 @@ class NotSignedInRoot extends StatelessWidget {
     }
 
     return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(left: 15, right: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+      // color: Colors.white,
+      child: ListView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
+          SizedBox(height: 100),
+
           NotSignedInHeading(text: 'You are not Signed In', fontSize: 25),
           NotSignedInHeading(text: 'Please Continue,', fontSize: 20),
-          SignInButton(
+          SizedBox(height: 50),
+          NotSignedInContainer(
             label: 'Continue with Facebook',
-            labelColor: Color.fromRGBO(9, 126, 235, 1),
-            imgPath: 'icons/Facebook.png',
-            iconSize: 30,
-            signinFn: signin.signInWithFacebook,
+            icon: 'Facebook',
+            onTap: signin.signInWithFacebook,
           ),
-          SignInButton(
+          NotSignedInContainer(
             label: 'Continue with Google',
-            labelColor: Color.fromRGBO(234, 67, 53, 1),
-            imgPath: 'icons/Google.png',
-            iconSize: 30,
-            signinFn: profile.checkLogged,
+            icon: 'Google',
+            onTap: profile.checkLogged,
           ),
+          NotSignedInContainer(
+            label: 'Continue with Email',
+            icon: 'Email',
+            onTap: signin.signInWithFacebook,
+          ),
+
           //           SignInButton(
           //   label: 'Continue with Apple',
           //   labelColor: Color.fromRGBO(63, 66, 80, 1),
           //   imgPath: 'icons/Email.png',
           //   iconSize: 20,
           // ),
-          SignInButton(
-            label: 'Continue with Email',
-            labelColor: Color.fromRGBO(63, 66, 80, 1),
-            imgPath: 'icons/Email.png',
-            iconSize: 20,
-          ),
 
-          Row(
-            children: [Text('Copyright (c) skite.com')],
-          )
+          Common()
         ],
       ),
     );
   }
 }
 
-class SignInButton extends StatelessWidget {
+class NotSignedInContainer extends StatelessWidget {
   final String label;
-  final String imgPath;
-  final Color labelColor;
-  final double iconSize;
-  final Function signinFn;
-  const SignInButton(
-      {Key key,
-      this.label,
-      this.imgPath,
-      this.labelColor,
-      this.iconSize,
-      this.signinFn})
-      : super(key: key);
+  final String route;
+  final String icon;
+  final onTap;
+
+  const NotSignedInContainer({
+    Key key,
+    this.label,
+    this.route,
+    this.icon,
+    this.onTap,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 15),
-      child: RaisedButton(
-        color: Colors.white,
-        onPressed: () {
-          signinFn(context);
-          // signinFn();
-        },
+    final bool darkMode = Provider.of<DarkThemeProvider>(context).darkTheme;
+    // final profile = Provider.of<ProfileState>(context);
+    return Material(
+      // color: Colors.white,
+      child: InkWell(
+        onTap: () => onTap(),
         child: Container(
-          padding: EdgeInsets.only(
-            // top: 15,
-            // bottom: 15,
-            left: 20,
-            right: 20,
-          ),
-          width: double.infinity,
-          height: 55,
+          height: 50,
+          padding: EdgeInsets.all(15),
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(1),
+          //   color: Colors.white,
+          //   boxShadow: [
+          //     BoxShadow(
+          //       color: AppColors().primaryBlue(),
+          //       spreadRadius: 0.2,
+          //       blurRadius: 2,
+          //     ),
+          //   ],
+          // ),
           child: Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                imgPath,
-                height: iconSize,
-                // color: Colors.green,
+              Row(
+                children: [
+                  SizedBox(
+                    width: 80,
+                    child: Image.asset(
+                      'icons/$icon.png',
+                      height: icon == 'Email' ? 13 : 17,
+                      color:
+                          icon == 'Email' && darkMode ? Colors.white54 : null,
+                    ),
+                  ),
+                  Text(
+                    capitalize(label),
+                    style: _containerLabel(),
+                  ),
+                ],
               ),
-              SizedBox(width: 60),
-              Text(
-                label,
-                style: GoogleFonts.cabin(
-                  color: labelColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              )
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 12,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  TextStyle _containerLabel() => GoogleFonts.cabin(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      );
 }
 
 class NotSignedInHeading extends StatelessWidget {
@@ -136,6 +151,7 @@ class NotSignedInHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 15, right: 15),
       child: Text(
         text,
         style: GoogleFonts.cabin(

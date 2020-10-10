@@ -10,16 +10,16 @@ class ProductPrice extends StatelessWidget {
       children: [
         Text(
           'NPR ',
-          style: GoogleFonts.openSans(
-            fontSize: 20,
+          style: GoogleFonts.cabin(
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             // color: Colors.black54,
           ),
         ),
         Text(
           '$price.00',
-          style: GoogleFonts.roboto(
-            fontSize: 20,
+          style: GoogleFonts.cabin(
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),

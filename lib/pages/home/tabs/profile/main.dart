@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/main.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/main.dart';
+
+import '../../../../savedData/user_data.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -20,6 +24,13 @@ class ProfileRoot extends StatelessWidget {
       profile.checkLogged();
     }
     // UserPreferences().loggedIn(false);
+
+    // if (UserPreferences().getLoggedIn() == true) {
+    //   return SignedIn();
+    // } else {
+    //   return NotSignedIn();
+    // }
+
     return SafeArea(
       child: Container(
         child: profile.currentScreen,

@@ -10,7 +10,7 @@ class SubCategoryTitle extends StatelessWidget {
       margin: EdgeInsets.only(top: 4),
       child: Text(
         title,
-        style: GoogleFonts.robotoCondensed(fontSize: 13),
+        style: GoogleFonts.cabinCondensed(fontSize: 13),
       ),
     );
   }

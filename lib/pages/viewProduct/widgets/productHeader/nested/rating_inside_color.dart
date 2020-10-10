@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
 
@@ -9,7 +12,7 @@ class RatingNo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 5, bottom: 5),
+      padding: EdgeInsets.only(top: 15, bottom: 5),
       child: Row(
         children: [
           Container(
@@ -27,7 +30,10 @@ class RatingNo extends StatelessWidget {
           SizedBox(width: 10),
           Text(
             '$noOfReviews reviews',
-            style: ProductPageFonts().ratingNumberSideReviews(),
+            style: GoogleFonts.cabinCondensed(
+              fontSize: 12.5,
+              decoration: TextDecoration.underline,
+            ),
           )
         ],
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/styles/extensions.dart';
 
 class SelectOptions extends StatefulWidget {
@@ -27,6 +29,11 @@ class _SelectOptionsState extends State<SelectOptions> {
 
   @override
   Widget build(BuildContext context) {
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+
+    final Color primaryColor =
+        darkTheme ? Colors.white : AppColors().primaryBlue();
+
     return Container(
       padding: EdgeInsets.only(top: 10),
       child: Column(
@@ -34,19 +41,22 @@ class _SelectOptionsState extends State<SelectOptions> {
         children: [
           Text(
             capitalize(widget.title),
-            style: GoogleFonts.roboto(
-              fontSize: 14,
+            style: GoogleFonts.cabin(
+              fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: AppColors().primaryBlue(),
+              color: primaryColor,
             ),
           ),
           SizedBox(height: 5),
           // Center(
           // child:
           Wrap(
-              children: widget.options
-                  .map((e) => customRadio(e, widget.options.indexOf(e)))
-                  .toList()),
+            children: widget.options
+                .map((e) =>
+                    customRadio(e, widget.options.indexOf(e), primaryColor))
+                .toList(),
+          ),
+
           // ),
         ],
       ),
@@ -60,25 +70,24 @@ class _SelectOptionsState extends State<SelectOptions> {
     widget.changeOption(widget.title, text);
   }
 
-  Widget customRadio(String txt, int index) {
+  Widget customRadio(String txt, int index, Color primaryColor) {
     return Container(
-      margin: EdgeInsets.only(left: 10, right: 10),
+      margin: EdgeInsets.only(left: 2, right: 2),
       child: OutlineButton(
         onPressed: () => changeIndex(index, txt),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
         borderSide: BorderSide(
-          color:
-              selectedIndex == index ? AppColors().primaryBlue() : Colors.grey,
+          color: selectedIndex == index ? primaryColor : Colors.grey,
           width: 1.5,
         ),
         child: Text(
           capitalize(txt),
           style: GoogleFonts.roboto(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: selectedIndex == index
-                  ? AppColors().primaryBlue()
-                  : Colors.grey),
+            fontSize: 13,
+            fontWeight:
+                selectedIndex == index ? FontWeight.w800 : FontWeight.w400,
+            color: selectedIndex == index ? primaryColor : Colors.grey,
+          ),
         ),
       ),
     );

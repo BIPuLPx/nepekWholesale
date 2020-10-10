@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/iconsClass/profile_tab_icons_icons.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:skite_buyer/styles/colors.dart';
@@ -22,31 +23,32 @@ class SignedIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        // color: Colors.white,
         child: CustomScrollView(
           physics:
               BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverAppBar(
               elevation: 10,
-              shape: ContinuousRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(100),
-                ),
-              ),
+              // shape: ContinuousRectangleBorder(
+              //   borderRadius: BorderRadius.only(
+              //     bottomLeft: Radius.circular(100),
+              //     bottomRight: Radius.circular(100),
+              //   ),
+              // ),
               expandedHeight: 200,
               pinned: true,
               // stretchTriggerOffset: 50,
               floating: true,
               // pinned: true,
-              backgroundColor: Colors.white,
+              // backgroundColor: Colors.white,
               toolbarHeight: 60,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 // centerTitle: true,
                 title: Text(
-                  UserPreferences().getDisplayName(),
+                  // UserPreferences().getDisplayName(),
+                  'Bipul',
                   style: GoogleFonts.cabin(
                     // color: AppColors().primaryBlue(),
                     color: AppColors().primaryBlue(),
@@ -63,31 +65,22 @@ class SignedIn extends StatelessWidget {
                 [
                   SizedBox(height: 50),
                   RoutesContainer(
-                    label: 'Account',
-                    icon: ProfileTabIcons.account,
-                    iconColor: Colors.black87,
+                    label: 'account',
                     route: 'account',
                   ),
                   RoutesContainer(
-                    label: 'Questions',
-                    icon: ProfileTabIcons.questions,
-                    iconColor: Colors.greenAccent[700],
+                    label: 'questions',
                   ),
                   RoutesContainer(
-                    label: 'Orders',
-                    icon: ProfileTabIcons.orders,
-                    iconColor: AppColors().primaryBlue(),
+                    label: 'orders',
                   ),
                   RoutesContainer(
-                    label: 'Reviews',
-                    icon: ProfileTabIcons.reviews,
-                    iconColor: Colors.amber[900],
+                    label: 'reviews',
                   ),
                   RoutesContainer(
-                    label: 'Returns',
-                    icon: ProfileTabIcons.returns,
-                    iconColor: Colors.red,
+                    label: 'returns',
                   ),
+                  Common(),
                 ],
               ),
             )

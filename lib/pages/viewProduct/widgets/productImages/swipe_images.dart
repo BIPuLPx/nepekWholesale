@@ -14,7 +14,7 @@ class _SwipeImagesState extends State<SwipeImages> {
     return Center(
       child: Container(
         padding: EdgeInsets.only(top: 15),
-        color: Colors.white,
+        // color: Colors.white,
         height: 445,
         width: double.infinity,
         child: new Swiper(

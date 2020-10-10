@@ -74,15 +74,16 @@ class _ResultLayoutState extends State<ResultLayout> {
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         controller: _scrollController,
         slivers: <Widget>[
-          resultAppBar(
-              context,
-              changeListType,
-              current,
-              result.searchText,
-              result.productsNo,
-              result.setSort,
-              filterPageProps,
-              result.setFilter),
+          ResultAppBar(
+            resultContext: context,
+            changeLayout: changeListType,
+            currentIcon: current,
+            searchText: result.searchText,
+            itemLength: result.productsNo,
+            setSort: result.setSort,
+            filterPageProps: filterPageProps,
+            setFilter: result.setFilter,
+          ),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: listType == 'grid' ? 2 : 1,

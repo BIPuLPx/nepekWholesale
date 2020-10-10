@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/styles/extensions.dart';
 
 class ProductSpecifications extends StatelessWidget {
@@ -29,8 +30,11 @@ class SpecificationsLayout extends StatelessWidget {
   SpecificationsLayout({this.left, this.right, this.index});
   @override
   Widget build(BuildContext context) {
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+    final Color odd = darkTheme ? Colors.grey[800] : Colors.grey[350];
+    final Color even = darkTheme ? Colors.grey[700] : Colors.grey[200];
     return Container(
-      color: index % 2 == 0 ? Colors.grey[200] : Colors.grey[350],
+      color: index % 2 == 0 ? even : odd,
       padding: EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

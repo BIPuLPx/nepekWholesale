@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skite_buyer/pages/account/main.dart';
 import 'package:skite_buyer/pages/carasoulLanding/main.dart';
 import 'package:skite_buyer/pages/featuredBrandLanding/main.dart';
+import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/main.dart';
 import 'package:skite_buyer/pages/reviews/main.dart';
 import 'package:skite_buyer/pages/search/main.dart';
 import 'package:skite_buyer/pages/searchResult/filter/main.dart';
@@ -80,7 +81,11 @@ class RouteGenerator {
         // builder: (_) => UserPreferences().getLoggedIn() == true
         //     ? HomePage()
         //     : DoYouHaveAccount());
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(builder: (_) =>
+        //  AddDeliveryAddress()
+            HomePage()
+            // SignedIn(),
+            );
       // return MaterialPageRoute(
       //     builder: (_) =>
       //         ReviewsPage(args: {'id': '5f5f21abaea4a6058cb46fcd'}));

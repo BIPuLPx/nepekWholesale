@@ -8,7 +8,7 @@ class ProductName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       name,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.cabin(
         height: 1.3,
         fontSize: 15,
         fontWeight: FontWeight.w600,

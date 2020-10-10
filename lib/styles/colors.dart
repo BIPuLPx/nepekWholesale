@@ -14,6 +14,13 @@ class AppColors {
   secondaryText() => Colors.black54;
 }
 
+class TextInputColors {
+  darkThemeBackground() => Colors.grey[900];
+  darkThemeText() => Colors.grey[900];
+  darkThemeHintText() => Colors.grey;
+  lightThemeHintText() => Colors.grey[500];
+}
+
 class HomeColors {
   primaryBlueShade() => Color.fromRGBO(37, 100, 255, 0.2);
 }

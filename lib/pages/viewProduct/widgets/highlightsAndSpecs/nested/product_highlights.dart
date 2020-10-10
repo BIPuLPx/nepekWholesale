@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ProductHighlights extends StatelessWidget {
   @override
@@ -23,23 +24,29 @@ class HighlightsText extends StatelessWidget {
   HighlightsText({this.text});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 2),
-          height: 8,
-          width: 8,
-          decoration: BoxDecoration(
-              color: AppColors().secondaryText(),
-              borderRadius: BorderRadius.circular(5)),
-        ),
-        SizedBox(width: 7),
-        Text(
-          text,
-          style: GoogleFonts.roboto(height: 1.5),
-        ),
-      ],
+    final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+      child: Row(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 2),
+            height: 8,
+            width: 8,
+            decoration: BoxDecoration(
+                color: darktheme ? Colors.white : Colors.black,
+                borderRadius: BorderRadius.circular(5)),
+          ),
+          SizedBox(width: 15),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.cabin(height: 1.7),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
