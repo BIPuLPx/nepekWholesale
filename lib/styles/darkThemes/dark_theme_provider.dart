@@ -6,8 +6,8 @@ class DarkThemeProvider with ChangeNotifier {
   bool isInit = true;
   bool _darkTheme;
 
-  // bool get darkTheme => _darkTheme;
-  bool get darkTheme => false;
+  bool get darkTheme => _darkTheme;
+  // bool get darkTheme => false;
 
   set localTheme(bool value) {
     if (isInit) {
