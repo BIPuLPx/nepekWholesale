@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/searchResult/filter/styles/appBar.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
 
 class FilterPricePage extends StatefulWidget {
@@ -31,14 +33,25 @@ class _FilterPricePageState extends State<FilterPricePage> {
 
   @override
   void initState() {
-    price['min'] = widget.args['min'];
-    price['max'] = widget.args['max'];
+    // final args = widget.args;
+    // if (args['queryFilter'] == null) {
+    _fromfetchedFilter();
+    // }
     super.initState();
+  }
+
+  void _fromfetchedFilter() {
+    price['min'] = widget.args['fetchedFilter']['min'].toString();
+    price['max'] = widget.args['fetchedFilter']['max'].toString();
   }
 
   @override
   Widget build(BuildContext context) {
-    // print(widget.args);
+    final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+    final Color buttonColor =
+        darktheme ? Colors.white : AppColors().primaryBlue();
+    final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
+    print(widget.args);
     return Scaffold(
       appBar: filterAppBar(context),
       body: Center(
@@ -63,19 +76,20 @@ class _FilterPricePageState extends State<FilterPricePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      floatingActionButton: BottomAppBar(
         child: SizedBox(
-          height: 50,
-          width: double.infinity,
+          height: 42,
+          // width: double.infinity,
           child: FlatButton(
-            color: AppColors().primaryBlue(),
+            color: buttonColor,
             onPressed: () {
               widget.args['changeFn'](price);
               Navigator.pop(context);
             },
             child: Text(
               'Apply',
-              style: AppFontStyle().button(Colors.white),
+              style:GoogleFonts.cabin(color:buttonTextColor,fontWeight: FontWeight.w600,
+              )
             ),
           ),
         ),
@@ -96,26 +110,27 @@ class InputPrice extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
+          style: GoogleFonts.cabin(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 10),
         SizedBox(
           width: 110,
           // height: 30,
           child: TextFormField(
+            style: GoogleFonts.cabin(),
             initialValue: initialValue,
             onChanged: (value) {
               changeFn(label, value);
             },
             decoration: InputDecoration(
-              focusedBorder: OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: AppColors().primaryBlue(), width: 1.0),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: AppColors().primaryGray(), width: 1.0),
-              ),
+              // focusedBorder: OutlineInputBorder(
+              //   borderSide:
+              //       BorderSide(color: AppColors().primaryBlue(), width: 1.0),
+              // ),
+              // enabledBorder: OutlineInputBorder(
+              //   borderSide:
+              //       BorderSide(color: AppColors().primaryGray(), width: 1.0),
+              // ),
               hintText: 'NPR',
               isDense: true,
               contentPadding: EdgeInsets.all(10),
@@ -124,7 +139,7 @@ class InputPrice extends StatelessWidget {
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
             ],
-            autofocus: autofocus,
+            // autofocus: autofocus,
           ),
         ),
       ],

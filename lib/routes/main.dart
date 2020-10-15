@@ -38,8 +38,8 @@ class RouteGenerator {
       case 'result':
         return MaterialPageRoute(builder: (_) => ResultPage(args: args));
 
-      case 'filter_search_result':
-        return MaterialPageRoute(builder: (_) => SearchFilterPage(args: args));
+      case 'filter_result':
+        return MaterialPageRoute(builder: (_) => FilterPage(args: args));
 
       case 'filter_price':
         return MaterialPageRoute(builder: (_) => FilterPricePage(args: args));

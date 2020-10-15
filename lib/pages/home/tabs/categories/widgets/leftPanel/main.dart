@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/categoriesprovider.dart';
+import 'package:skite_buyer/pages/home/tabs/categories/provider/main.dart';
 import 'package:skite_buyer/pages/home/tabs/categories/widgets/leftPanel/nested/classes_text.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class LeftPanel extends StatefulWidget {
   @override
@@ -21,6 +19,7 @@ class _LeftPanelState extends State<LeftPanel> {
   @override
   Widget build(BuildContext context) {
     final classes = Provider.of<CategoriesState>(context).allClasses;
+    // print(classes);
     return Container(
       child: ListView(
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),

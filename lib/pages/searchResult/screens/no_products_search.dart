@@ -29,7 +29,7 @@ class NoProductsSearch extends StatelessWidget {
               SizedBox(height: 20),
               FlatButton(
                 color: AppColors().primaryBlue(),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.pushReplacementNamed(context,'search'),
                 child: Text(
                   'Go Back',
                   style: GoogleFonts.ptSans(

@@ -52,22 +52,19 @@ class _ResultLayoutState extends State<ResultLayout> {
     });
 
     void _onScroll() {
-      final _scrollThreshold = 40;
+      final _scrollThreshold = 500;
       final maxScroll = _scrollController.position.maxScrollExtent;
       final currentScroll = _scrollController.position.pixels;
       if (maxScroll - currentScroll <= _scrollThreshold) {
         _scrollController.removeListener(_onScroll);
-        result.fetchSearch(result.nextPage);
+        if (result.isNextPage == true) {
+          result.infiniteScroll(result.nextPage);
+        }
       }
     }
 
     _scrollController.addListener(_onScroll);
 
-    Map filterPageProps = <String, dynamic>{
-      'filterBy': result.filterBy,
-      'filterOptions': result.filterOptions,
-      'filteredOptions': result.filteredOptions
-    };
 
     return Scaffold(
       body: CustomScrollView(
@@ -80,9 +77,6 @@ class _ResultLayoutState extends State<ResultLayout> {
             currentIcon: current,
             searchText: result.searchText,
             itemLength: result.productsNo,
-            setSort: result.setSort,
-            filterPageProps: filterPageProps,
-            setFilter: result.setFilter,
           ),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

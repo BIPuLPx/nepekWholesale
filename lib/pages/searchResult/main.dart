@@ -19,8 +19,11 @@ class ResultRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = Provider.of<ResultState>(context);
     if (result.initialFetch == false) {
+      print(args);
+      // result.queryFilter = {...args['queryFilter']};
       result.searchText = args['query'];
       result.fetchInitialSearch();
+      result.initialFetch = true;
     }
     return Scaffold(
       body: result.result,

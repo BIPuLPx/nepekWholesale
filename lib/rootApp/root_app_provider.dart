@@ -1,10 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:skite_buyer/rootApp/widgets/RouterApp/main.dart';
 import 'package:skite_buyer/rootApp/widgets/loadingScreen/main.dart';
+
+import 'package:skite_buyer/savedData/apis.dart';
+
+import 'dataFetch/main.dart';
 
 class RootProvider with ChangeNotifier {
   bool initCheck = false;
@@ -12,18 +18,27 @@ class RootProvider with ChangeNotifier {
 
   Future initChecks() async {
     openDBS().then(
-      (_) => Timer(Duration(seconds: 5), () {
-        body = RouterApp();
-        initCheck = true;
-        notifyListeners();
-        // 5s over, navigate to a new page
-        // Navigator.pushNamed(context, MaterialPageRoute(builder: (_) => Screen2()));
-      }),
+      (_) => InjectDatas().testClassification().then(
+        (value) {
+          if (!value) {
+            InjectDatas().fetchClassification().then((_) => changeScreen());
+          } else {
+            changeScreen();
+          }
+        },
+      ),
     );
   }
 
   Future openDBS() async {
     await Hive.openBox('search');
     await Hive.openBox('cart');
+    await Hive.openBox('classifications');
+  }
+
+  changeScreen() {
+    body = RouterApp();
+    initCheck = true;
+    notifyListeners();
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/pages/searchResult/screens/filter_again.dart';
 import 'package:skite_buyer/pages/searchResult/screens/no_products_search.dart';
 import 'package:skite_buyer/pages/searchResult/resultLayout/main.dart';
 import 'package:skite_buyer/pages/searchResult/styles/end_of_result.dart';
@@ -11,6 +10,8 @@ import 'package:skite_buyer/pages/searchResult/styles/loading_more.dart';
 import 'package:skite_buyer/styles/spinkit.dart';
 
 class ResultState with ChangeNotifier {
+  final _backends = BackEnd();
+  final _frontends = FrontEnd();
   bool initialFetch = false;
   dynamic result = spinkit;
   List products;
@@ -21,163 +22,96 @@ class ResultState with ChangeNotifier {
   dynamic loadingMore = loading_more;
   Map sortBy = {'sort': 'clicks', 'by': 'asc'};
   bool isbeingFiltered = false;
+  Map fetchedFilter;
 
-  List filteredOptions;
-
-  Map filterBy = {
-    "price": {"\$gte": '', "\$lt": ''},
+  Map queryFilter = {
+    "price": {"\$gte": "", "\$lt": ""},
     "brand": [],
     "options": []
   };
 
-  Map filterOptions = {
-    "brands": [],
-    "options": [],
-  };
-
-  void populateFilteredOptions(options) {
-    filteredOptions = [];
-
-    // print(options);
-    for (var option in options) {
-      final letsAdd = {'name': option['name'], 'values': []};
-      filteredOptions.add(letsAdd);
-    }
-  }
-
   Future fetchInitialSearch() async {
-    var response;
-    if (isbeingFiltered == false) {
-      response = await http.post(
-          '$productApi/products/fetch/search?term=$searchText&page=1&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}');
-    } else {
-      response = await http.post(
-        '$productApi/products/fetch/search?term=$searchText&page=1&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(filterBy),
-      );
-      // print(jsonDecode(response.body));
-    }
-
-    final res = jsonDecode(response.body);
-
-    if (res['results'].length > 0) {
-      products = res['results'];
-      result = ResultLayout();
-
-      productsNo = res['resultNo'];
-    } else {
-      if (isbeingFiltered == false) {
-        result = NoProductsSearch(query: searchText);
-      } else {
-        result = FilterAgain(
-          args: {
-            'args': {
-              'filterBy': filterBy,
-              'filterOptions': filterOptions,
-              'filteredOptions': filteredOptions
-            },
-            'filterFn': setFilter,
-          },
-        );
-      }
-    }
-
-    if (res['next'] == null) {
-      // print('there is no next');
-      isNextPage = false;
-      loadingMore = EndOfResult();
-    } else {
-      // print('there is next');
-      isNextPage = true;
-      nextPage = nextPage + 1;
-    }
-    if (initialFetch == false) {
-      filterOptions['brands'] = res['brands'];
-      filterOptions['options'] = res['options'];
-      populateFilteredOptions(res['options']);
-    }
-    initialFetch = true;
-
-    notifyListeners();
+    await _backends
+        .searchProducts(searchText, sortBy['sort'], sortBy['by'], 1)
+        .then((res) async {
+      products = res['products'];
+      productsNo = res['totalProductsNo'];
+      fetchedFilter = res['filters'];
+      await _frontends
+          .checkFetchedProducts(res['products'].length, searchText)
+          .then((screen) async {
+        result = screen;
+        await _frontends.checkNextPage(res['pages']).then((isNext) async {
+          if (isNext) {
+            isNextPage = true;
+            nextPage = nextPage + 1;
+          } else {
+            isNextPage = false;
+            loadingMore = EndOfResult();
+          }
+          initialFetch = true;
+          notifyListeners();
+        });
+      });
+    });
   }
 
-  Future fetchSearch(int page) async {
-    if (isNextPage == true) {
-      final response = await http.post(
-          '$productApi/products/fetch/search?term=$searchText&page=$page&limit=8&sort=${sortBy['sort']}&by=${sortBy['by']}');
-
-      final res = jsonDecode(response.body);
-
-      if (res['results'].length > 0) {
-        products.addAll(res['results']);
+  Future infiniteScroll(int page) async {
+    _backends
+        .searchProducts(searchText, sortBy['sort'], sortBy['by'], page)
+        .then((res) async {
+      if (res['products'].length > 0) {
+        products.addAll(res['products']);
       }
-
-      if (res['next'] == null) {
-        // print('there is no next');
-        isNextPage = false;
-        // print(isNextPage);
-      } else {
-        // print('there is next');
-        isNextPage = true;
-        nextPage = nextPage + 1;
-      }
-    } else {
-      loadingMore = EndOfResult();
-    }
-
-    notifyListeners();
+      _frontends.checkNextPage(res['pages']).then((isNext) {
+        if (isNext) {
+          isNextPage = true;
+          nextPage = nextPage + 1;
+        } else {
+          isNextPage = false;
+          loadingMore = EndOfResult();
+        }
+        notifyListeners();
+      });
+    });
   }
 
-  void setSort(Map sort) {
-    nextPage = 1;
-    loadingMore = loading_more;
-    sortBy = sort;
+  void refreshPageWithFilter(Map queryFilter) {
+    queryFilter = queryFilter;
     result = spinkit;
-    notifyListeners();
-    fetchInitialSearch();
-  }
-
-  void setFilter(dynamic data) {
-    if (data == 'reset') {
-      // print('reset');
-      filterBy = {
-        "price": {"\$gte": '', "\$lt": ''},
-        "brand": [],
-        "options": []
-      };
-      initialFetch = false;
-    } else {
-      // print(data);
-      List options = [];
-      for (var optn in data['filteredOptions']) {
-        options.addAll(optn['values']);
-      }
-      final filteredBy = data['filteredBy'];
-      filterBy['price']['\$gte'] = filteredBy['price']['min'];
-      filterBy['price']['\$lt'] = filteredBy['price']['max'];
-      filterBy['brand'] = filteredBy['brand'];
-      filterBy['options'] = options;
-      filteredOptions = data['filteredOptions'];
-      notifyListeners();
-      // print(filterBy);
-      isbeingFiltered = true;
-    }
-    nextPage = 1;
+    initialFetch = false;
+    // bool isNextPage = true;
+    nextPage = 0;
     loadingMore = loading_more;
-    result = spinkit;
-    notifyListeners();
-    fetchInitialSearch();
-    // print('result');
-    // print(filteredOptions);
+    isbeingFiltered = false;
+  }
+}
+
+class FrontEnd {
+  Future checkFetchedProducts(int productsLength, String query) async {
+    if (productsLength > 0) {
+      return ResultLayout();
+    } else {
+      return NoProductsSearch(query: query);
+    }
   }
 
-  // void fetchSearch(query) {
-  //   print(query);
-  //   fetchedResult = true;
-  //   result.add('product');
-  //   // notifyListeners();
-  // }
+  Future checkNextPage(Map pages) async {
+    if (pages.isEmpty) {
+      return false;
+    } else if (pages['next'] == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+class BackEnd {
+  Future searchProducts(
+      String searchText, String sortfor, String sortBy, int page) async {
+    final response = await http.post(
+        '$productApi/products/fetch/get?type=search&searchTerm=$searchText&page=${page.toString()}&limit=8&sort=$sortfor&by=${sortBy.toString()}');
+    return jsonDecode(response.body);
+  }
 }

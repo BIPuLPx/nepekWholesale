@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 // import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/iconsClass/result_page_icons_icons.dart';
 import 'package:skite_buyer/listeners/cart_no_listener.dart';
+import 'package:skite_buyer/pages/searchResult/result_provider.dart';
 import 'package:skite_buyer/pages/searchResult/sort/main.dart';
 import 'package:skite_buyer/pages/searchResult/styles/appbar_nav_button.dart';
 import 'package:skite_buyer/styles/colors.dart';
@@ -15,26 +16,29 @@ class ResultAppBar extends StatelessWidget {
   final IconData currentIcon;
   final String searchText;
   final int itemLength;
-  final Function setSort;
-  final Map filterPageProps;
-  final Function setFilter;
 
-  const ResultAppBar(
-      {Key key,
-      this.resultContext,
-      this.changeLayout,
-      this.currentIcon,
-      this.searchText,
-      this.itemLength,
-      this.setSort,
-      this.filterPageProps,
-      this.setFilter})
-      : super(key: key);
+  const ResultAppBar({
+    Key key,
+    this.resultContext,
+    this.changeLayout,
+    this.currentIcon,
+    this.searchText,
+    this.itemLength,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final bool darktheme =
         Provider.of<DarkThemeProvider>(resultContext).darkTheme;
+
+    final result = Provider.of<ResultState>(context);
+
+    final filterPageArgs = {
+      'fetchedFilter': result.fetchedFilter,
+      'refreshResultWithFilter': result.refreshPageWithFilter,
+      'queryFilter': result.queryFilter,
+      'searchText':result.searchText
+    };
 
     Color itemColor = darktheme ? Colors.white : AppColors().primaryBlue();
 
@@ -52,7 +56,7 @@ class ResultAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _queryText(),
-              _resultActions(itemColor),
+              _resultActions(itemColor,filterPageArgs),
             ],
           ),
         ),
@@ -78,7 +82,7 @@ class ResultAppBar extends StatelessWidget {
         ),
       );
 
-  Container _resultActions(Color color) => Container(
+  Container _resultActions(Color color,Object filterPageArgs) => Container(
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,11 +95,8 @@ class ResultAppBar extends StatelessWidget {
               iconSize: 15,
               onClick: () => Navigator.pushNamed(
                 resultContext,
-                'filter_search_result',
-                arguments: {
-                  'args': filterPageProps,
-                  'filterFn': setFilter,
-                },
+                'filter_result',
+                arguments: filterPageArgs,
               ),
             ),
             BottomNavBtn(
@@ -104,7 +105,7 @@ class ResultAppBar extends StatelessWidget {
               label: 'Sort',
               iconSize: 12,
               onClick: () {
-                searchResultSort(resultContext, setSort);
+                // searchResultSort(resultContext, setSort);
               },
             ),
             IconButton(
