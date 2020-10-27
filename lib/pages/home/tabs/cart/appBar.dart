@@ -6,7 +6,7 @@ cartAppBar(context) {
   return PreferredSize(
     preferredSize: Size.fromHeight(50.0), // here the desired height
     child: AppBar(
-      brightness: Brightness.light,
+      // brightness: Brightness.light,
       backgroundColor: Colors.white,
       elevation: 1,
       leading: IconButton(

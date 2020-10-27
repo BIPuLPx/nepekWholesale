@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/nested/sign_in_button.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/not_signed_in_provider.dart';
+import 'package:skite_buyer/provider_head.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 import '../../../../../../styles/extensions.dart';
@@ -26,6 +26,7 @@ class NotSignedInRoot extends StatelessWidget {
     final profile = Provider.of<ProfileState>(context);
 
     if (signin.initState == false) {
+      signin.thirdPartyRoute = profile.externalRoute;
       signin.checkLogged = profile.checkLogged;
     }
 
@@ -35,7 +36,6 @@ class NotSignedInRoot extends StatelessWidget {
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           SizedBox(height: 100),
-
           NotSignedInHeading(text: 'You are not Signed In', fontSize: 25),
           NotSignedInHeading(text: 'Please Continue,', fontSize: 20),
           SizedBox(height: 50),
@@ -47,22 +47,14 @@ class NotSignedInRoot extends StatelessWidget {
           NotSignedInContainer(
             label: 'Continue with Google',
             icon: 'Google',
-            onTap: profile.checkLogged,
+            // onTap: profile.checkLogged,
           ),
           NotSignedInContainer(
             label: 'Continue with Email',
             icon: 'Email',
-            onTap: signin.signInWithFacebook,
+            onTap: signin.continueWithEmail,
           ),
-
-          //           SignInButton(
-          //   label: 'Continue with Apple',
-          //   labelColor: Color.fromRGBO(63, 66, 80, 1),
-          //   imgPath: 'icons/Email.png',
-          //   iconSize: 20,
-          // ),
-
-          Common()
+          signin.thirdPartyRoute == null ? Common() : Container()
         ],
       ),
     );
@@ -71,14 +63,12 @@ class NotSignedInRoot extends StatelessWidget {
 
 class NotSignedInContainer extends StatelessWidget {
   final String label;
-  final String route;
   final String icon;
   final onTap;
 
   const NotSignedInContainer({
     Key key,
     this.label,
-    this.route,
     this.icon,
     this.onTap,
   }) : super(key: key);
@@ -89,21 +79,10 @@ class NotSignedInContainer extends StatelessWidget {
     return Material(
       // color: Colors.white,
       child: InkWell(
-        onTap: () => onTap(),
+        onTap: () => onTap(context),
         child: Container(
           height: 50,
           padding: EdgeInsets.all(15),
-          // decoration: BoxDecoration(
-          //   borderRadius: BorderRadius.circular(1),
-          //   color: Colors.white,
-          //   boxShadow: [
-          //     BoxShadow(
-          //       color: AppColors().primaryBlue(),
-          //       spreadRadius: 0.2,
-          //       blurRadius: 2,
-          //     ),
-          //   ],
-          // ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

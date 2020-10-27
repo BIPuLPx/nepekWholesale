@@ -104,9 +104,6 @@ class ProfileBottomNav extends StatelessWidget {
           onPressed: () {
             UserPreferences().displayName(null);
             UserPreferences().jwtToken(null);
-            UserPreferences().state(null);
-            UserPreferences().district(null);
-            UserPreferences().area(null);
             UserPreferences().phoneNumber(null);
             UserPreferences().loggedIn(false);
             checkProfile();

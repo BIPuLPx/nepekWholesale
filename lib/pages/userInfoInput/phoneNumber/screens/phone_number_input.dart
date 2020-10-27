@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/userInfoInput/appBar.dart';
 import 'package:skite_buyer/pages/userInfoInput/phoneNumber/phone_number_provider.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
 
 class PhoneNumberInput extends StatelessWidget {
@@ -51,31 +52,21 @@ class InputNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final phonenumber = Provider.of<PhoneInputState>(context);
+    final isdark = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     return Container(
-      height: 70,
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(top: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(1),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors().primaryBlue(),
-            spreadRadius: 0.2,
-            blurRadius: 2,
-          ),
-        ],
+        color: isdark ? Colors.grey[800] : Colors.grey[200],
       ),
-      padding: EdgeInsets.only(top: 10, bottom: 10),
-      margin: EdgeInsets.only(left: 2, right: 2),
       child: TextFormField(
         onChanged: (value) => phonenumber.phoneNumberChanged(value),
         validator: (value) => phonenumber.validatePhoneNumber(value),
         decoration: InputDecoration(
-            errorStyle: errorStyle(),
-            border: InputBorder.none,
-            hintText: '98........',
-            contentPadding: EdgeInsets.only(left: 20, right: 20, bottom: 3),
-            hintStyle: inputPhoneNumberStyle()),
+          labelText: "98..",
+        ),
         keyboardType: TextInputType.number,
         style: inputPhoneNumberStyle(),
       ),

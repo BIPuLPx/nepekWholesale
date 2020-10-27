@@ -12,7 +12,7 @@ class QnaLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: EdgeInsets.only(bottom: index == length - 1 ? 5 : 12, top: 5),
+      margin: EdgeInsets.only(bottom: index == length - 1 ? 20 : 12, top: 5),
       child: Column(
         children: [
           Question(
@@ -30,7 +30,7 @@ class QnaLayout extends StatelessWidget {
           index == length - 1
               ? Container()
               : Container(
-                  margin: EdgeInsets.only(top: 15, bottom: 15),
+                  margin: EdgeInsets.only(top: 15, bottom: 5),
                   height: 2,
                   color: Colors.grey[300],
                 )

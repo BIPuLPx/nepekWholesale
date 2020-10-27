@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:skite_buyer/pages/result/styles/end_of_result.dart';
+import 'package:skite_buyer/pages/result/styles/loading_more.dart';
 import 'package:skite_buyer/pages/reviews/reviewsLayout/main.dart';
-import 'package:skite_buyer/pages/searchResult/styles/end_of_result.dart';
-import 'package:skite_buyer/pages/searchResult/styles/loading_more.dart';
 import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/styles/spinkit.dart';
 
@@ -26,7 +26,7 @@ class ReviewsState extends ChangeNotifier {
   Future fetchInitialReviews() async {
     var response;
     response = await http
-        .get('$productApi/products/fetch/reviews?id=$productId&limit=5&page=1');
+        .get('$productApi/products/fetch/reviews?id=$productId&limit=8&page=1');
     var data = jsonDecode(response.body);
     reviewData = data['reviewData'];
     rating = data['rating'].toDouble();

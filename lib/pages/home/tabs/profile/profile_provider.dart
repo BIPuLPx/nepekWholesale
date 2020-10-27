@@ -7,8 +7,10 @@ import 'package:skite_buyer/savedData/user_data.dart';
 class ProfileState extends ChangeNotifier {
   bool initCheck = false;
   Widget currentScreen;
+  String externalRoute;
 
   void checkLogged() {
+    // print("checklogged is here");
     if (UserPreferences().getLoggedIn() == true) {
       currentScreen = SignedIn();
     } else {

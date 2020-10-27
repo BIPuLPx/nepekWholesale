@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 defaultAppBar(context, String title, bool darktheme) {
-  return PreferredSize(
-    preferredSize: Size.fromHeight(50.0), // here the desired height
-    child: AppBar(
+  return 
+    // preferredSize: Size.fromHeight(50.0), // here the desired height
+     AppBar(
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -14,7 +14,7 @@ defaultAppBar(context, String title, bool darktheme) {
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      centerTitle: true,
+      // centerTitle: true,
       // backgroundColor: AppColors().transparentAppbar(),
       elevation: 1,
       title: Text(
@@ -28,6 +28,5 @@ defaultAppBar(context, String title, bool darktheme) {
 
       // backgroundColor: Colors.white,
       actions: [],
-    ),
   );
 }

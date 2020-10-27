@@ -20,7 +20,7 @@ class Common extends StatelessWidget {
           icon: 'theme',
         ),
         SizedBox(height: 100),
-        _reserved()
+        // _reserved()
       ],
     );
   }

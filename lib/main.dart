@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:skite_buyer/provider_head.dart';
 import 'package:skite_buyer/rootApp/main.dart';
 import 'package:skite_buyer/savedData/changed_data.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_prefences.dart';
@@ -11,6 +12,7 @@ import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -48,8 +50,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => DarkThemeProvider(),
-      child: RootApp(),
+      create: (context) => HeadProvider(),
+      child: ChangeNotifierProvider(
+        create: (context) => DarkThemeProvider(),
+        child: RootApp(),
+      ),
     );
   }
 }

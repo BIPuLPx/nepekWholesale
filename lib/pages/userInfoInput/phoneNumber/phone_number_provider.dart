@@ -9,6 +9,7 @@ import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/phone_number
 import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
+import 'package:skite_buyer/styles/popUps/loading_popup.dart';
 import 'package:skite_buyer/styles/toast.dart';
 
 class PhoneInputState extends ChangeNotifier {
@@ -48,7 +49,8 @@ class PhoneInputState extends ChangeNotifier {
   }
 
   Future addToBackend(BuildContext context) async {
-    print(UserPreferences().getJwtToken());
+    // print(UserPreferences().getJwtToken());
+    loadingPopUP(context, "Adding phone number");
     var response = await http.put(
       '$peopleApi/customers/addPhone',
       headers: {
@@ -84,7 +86,8 @@ class PhoneInputState extends ChangeNotifier {
   void sendPhoneNumber(BuildContext context) {
     // print(UserPreferences().getJwtToken());
     if (formKey.currentState.validate()) {
-      verifyNumber(context);
+      // verifyNumber(context);
+      addToBackend(context);
     } else {
       autoValidate = true;
       notifyListeners();

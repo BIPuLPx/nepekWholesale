@@ -8,7 +8,7 @@ class RightPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final catagoriesAndSubcategories =
         Provider.of<CategoriesState>(context).selectedCategories;
-   print(catagoriesAndSubcategories);
+  //  print(catagoriesAndSubcategories);
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: ListView(

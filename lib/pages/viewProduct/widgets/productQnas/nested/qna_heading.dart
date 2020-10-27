@@ -12,6 +12,7 @@ class QnaHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final buttonColor = darkTheme ? Colors.white : AppColors().primaryBlue();
+    final provider = Provider.of<ViewProductState>(context);
     return Container(
       margin: EdgeInsets.only(bottom: 30),
       child: Row(
@@ -31,7 +32,10 @@ class QnaHeading extends StatelessWidget {
             child: OutlineButton(
               highlightedBorderColor: buttonColor,
               borderSide: BorderSide(color: buttonColor, width: 1.6),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'qnas',
+                    arguments: {'id': provider.productID});
+              },
               child: Text(
                 'View All',
                 style: GoogleFonts.roboto(

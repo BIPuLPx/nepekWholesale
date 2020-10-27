@@ -19,7 +19,7 @@ featuredAppBar(context) {
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      brightness: Brightness.light,
+      // brightness: Brightness.light,
       backgroundColor: Colors.white,
       elevation: 1,
       title: Image.asset(

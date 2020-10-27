@@ -23,6 +23,7 @@ viewProductAppBar(viewProductContext) {
     elevation: 5,
     // brightness: Brightness.light,
     actions: [
+      IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
       IconButton(
         icon: CartNoListener(
           icon: Image.asset(

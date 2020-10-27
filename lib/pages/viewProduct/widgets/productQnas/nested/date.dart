@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:skite_buyer/styles/colors.dart';
 
 class Date extends StatelessWidget {
   final String date;
@@ -11,8 +10,7 @@ class Date extends StatelessWidget {
     return Container(
       child: Text(
         DateFormat.yMMMd('en_US').format(DateTime.parse(date)),
-        style: GoogleFonts.roboto(
-          color: AppColors().secondaryText(),
+        style: GoogleFonts.cabin(
           fontSize: 12,
         ),
       ),

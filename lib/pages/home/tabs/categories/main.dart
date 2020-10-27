@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/categories/provider/main.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/leftPanel/main.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/main.dart';
 
 class Categories extends StatelessWidget {
   @override

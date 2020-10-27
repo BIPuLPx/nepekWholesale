@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/iconsClass/profile_tab_icons_icons.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:skite_buyer/styles/colors.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 // import 'package:provider/provider.dart';
 // import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/signed_in_provider.dart';
 
@@ -21,6 +23,7 @@ import 'package:skite_buyer/styles/colors.dart';
 class SignedIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
       body: Container(
         // color: Colors.white,
@@ -47,11 +50,11 @@ class SignedIn extends StatelessWidget {
                 collapseMode: CollapseMode.parallax,
                 // centerTitle: true,
                 title: Text(
-                  // UserPreferences().getDisplayName(),
-                  'Bipul',
+                  UserPreferences().getDisplayName(),
+                  // 'Bipul',
                   style: GoogleFonts.cabin(
                     // color: AppColors().primaryBlue(),
-                    color: AppColors().primaryBlue(),
+                    color: darkTheme ? Colors.white : AppColors().primaryBlue(),
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
                     // fontStyle: FontStyle.italic

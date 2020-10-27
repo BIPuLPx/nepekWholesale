@@ -13,9 +13,9 @@ class AccountState extends ChangeNotifier {
   void getUserData() {
     displayName = UserPreferences().getDisplayName();
     phoneNumber = UserPreferences().getphoneNumber();
-    state = UserPreferences().getState();
-    district = UserPreferences().getDistrict();
-    area = UserPreferences().getarea();
+    // state = UserPreferences().getState();
+    // district = UserPreferences().getDistrict();
+    // area = UserPreferences().getarea();
     initState = true;
   }
 }

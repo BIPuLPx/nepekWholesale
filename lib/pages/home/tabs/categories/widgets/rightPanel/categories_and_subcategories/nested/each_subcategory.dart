@@ -4,7 +4,8 @@ import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/catego
 
 class EachSubCategory extends StatelessWidget {
   final String text;
-  EachSubCategory({this.text});
+  final String id;
+  EachSubCategory({this.text, this.id});
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
@@ -12,17 +13,23 @@ class EachSubCategory extends StatelessWidget {
       margin: EdgeInsets.all(6),
       // color: Colors.grey,
       width: deviceWidth * 0.16,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: SubCategoryImage(
-              url:
-                  'https://love4bags.co.uk/wp-content/uploads/2018/11/testss.jpg',
-            ),
+      child: Material(
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, 'result',
+                arguments: {'type': 'subcategory', 'query': id, 'name': text});
+          },
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SubCategoryImage(
+                url:
+                    'https://love4bags.co.uk/wp-content/uploads/2018/11/testss.jpg',
+              ),
+              SubCategoryTitle(title: text),
+            ],
           ),
-          SubCategoryTitle(title: text),
-        ],
+        ),
       ),
     );
   }

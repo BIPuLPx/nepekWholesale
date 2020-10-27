@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_prefences.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';

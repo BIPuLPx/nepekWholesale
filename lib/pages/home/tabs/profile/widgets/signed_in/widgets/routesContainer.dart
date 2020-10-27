@@ -16,15 +16,15 @@ class RoutesContainer extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // final profile = Provider.of<ProfileState>(context);
+    final profile = Provider.of<ProfileState>(context);
     return Material(
       // color: Colors.white,
       child: InkWell(
         onTap: () {
           // print(route);
           Navigator.pushNamed(context, route, arguments: route == 'account'
-              // ? {'checkProfile': profile.checkLogged}
-              // : null,
+              ? {'checkProfile': profile.checkLogged}
+              : null,
               );
         },
         child: Container(

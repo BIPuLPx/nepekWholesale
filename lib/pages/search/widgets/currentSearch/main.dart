@@ -23,7 +23,7 @@ class SearchText extends StatelessWidget {
           search.add(text);
         }
         Navigator.pushReplacementNamed(context, 'result',
-            arguments: {'type': 'search', 'query': text});
+            arguments: {'type': 'search', 'query': text, 'name': text});
       },
       child: Container(
         padding: EdgeInsets.all(12.0),

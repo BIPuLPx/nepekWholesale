@@ -14,12 +14,9 @@ class CategoriesState extends ChangeNotifier {
   List selectedCategories = [];
 
   void doInitState() {
-    // allClasses = classifications.get('categories');
     allClasses = classifications.get('classes');
 
-    final firstClass =
-        allClasses.where((classs) => classs['index'] == 1).toList();
-    PopulateDatas().populateCategories(firstClass[0]['_id']).then((categories) {
+    PopulateDatas().populateCategories(allClasses[0]['_id']).then((categories) {
       selectedCategories = categories;
       initState = true;
       body = DataPopulated();

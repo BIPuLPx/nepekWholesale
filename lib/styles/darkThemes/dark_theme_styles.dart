@@ -1,11 +1,34 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:skite_buyer/styles/colors.dart';
 
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
+    InputDecorationTheme _textInput() => InputDecorationTheme(
+          labelStyle: GoogleFonts.cabin(
+            color: isDarkTheme ? Colors.white54 : Colors.black54,
+          ),
+          hintStyle: TextStyle(
+            color: isDarkTheme ? Colors.white24 : Colors.black26,
+          ),
+          contentPadding: EdgeInsets.only(left: 10),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: isDarkTheme ? Colors.white54 : Colors.black54,
+              width: 1,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: isDarkTheme ? Colors.white54 : Colors.black54,
+              width: 2,
+            ),
+          ),
+        );
+
     return ThemeData(
-      primarySwatch: Colors.red,
+      // primarySwatch: Colors.pink,
       primaryColor: isDarkTheme ? Colors.black : Colors.white,
       backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
@@ -22,8 +45,12 @@ class Styles {
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
           colorScheme: isDarkTheme ? ColorScheme.dark() : ColorScheme.light()),
       appBarTheme: AppBarTheme(
+        color: isDarkTheme ? Colors.black : Colors.white,
         elevation: 1.0,
       ),
+      //TextInput
+      inputDecorationTheme: _textInput(),
+      cursorColor: isDarkTheme ? Colors.white54 : Colors.black54,
     );
   }
 }

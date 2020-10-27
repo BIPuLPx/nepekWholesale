@@ -55,7 +55,11 @@ searchAppBar(
                         search.add(val);
                       }
                       Navigator.pushReplacementNamed(context, 'result',
-                          arguments: {'type': 'search', 'query': val});
+                          arguments: {
+                            'type': 'search',
+                            'query': val,
+                            'name': val
+                          });
                     }
                   },
                   cursorColor: Colors.grey,

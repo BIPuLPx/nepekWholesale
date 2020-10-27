@@ -15,7 +15,6 @@ class ViewProductState with ChangeNotifier {
   String productID;
   bool initialFetch = false;
   dynamic result = spinkit;
-
   String productUid;
   String sellerUid;
   String productBrand;
@@ -30,7 +29,8 @@ class ViewProductState with ChangeNotifier {
   List productSpecifications;
   List productReviews;
   List productQnas;
-  List productQNames;
+  List buyerNames = [];
+  List buyerIds = [];
   String qtyToBuy = '1';
   List<String> totalQty = [];
 
@@ -53,40 +53,51 @@ class ViewProductState with ChangeNotifier {
     productHighlights = res['highlights'];
     productSpecifications = res['specifications'];
     productReviews = res['reviews'];
-    productQnas = res['qna'];
-    getQnames(res['qna']);
+    // productQnas = res['qna'];
+    // getQnames(res['qna']);
     populateQty(res['qty']);
-    initialFetch = true;
-    if (initialFetch == true) {
-      result = ViewProductLayout();
-    }
-
-    notifyListeners();
+    getQnas().then(
+      (_) => getQnames().then(
+        (_) {
+          initialFetch = true;
+          result = ViewProductLayout();
+          notifyListeners();
+        },
+      ),
+    );
   }
 
-  Future getQnames(List qnas) async {
-    List quids = [];
-    for (var qna in qnas) {
-      if (!quids.contains(qna['customer_uid'])) {
-        quids.add(qna['customer_uid']);
+  Future getQnas() async {
+    final response =
+        await http.get('$productApi/qna/buyer/only_four?key=$productID');
+    productQnas = jsonDecode(response.body);
+    if (productQnas.length > 0) {
+      for (var qna in productQnas) {
+        if (!buyerIds.contains(qna['buyer_id'])) {
+          buyerIds.add(qna['buyer_id']);
+        }
       }
     }
+  }
+
+  Future getQnames() async {
     final response = await http.post(
       '$peopleApi/customers/get_name',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode({'uids': quids}),
+      body: jsonEncode({'uids': buyerIds}),
     );
-    productQNames = jsonDecode(response.body);
+    buyerNames = jsonDecode(response.body);
   }
 
-  getQnamesLocal(uid) {
-    for (var names in productQNames) {
+  String getBuyerName(uid) {
+    for (var names in buyerNames) {
       if (names['uid'] == uid) {
         return names['displayName'];
       }
     }
+    return "No name";
   }
 
   void populateQty(int qty) {

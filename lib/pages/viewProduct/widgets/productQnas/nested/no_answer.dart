@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/qa_graphics.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
@@ -12,8 +13,8 @@ class NoAnswer extends StatelessWidget {
         Flexible(
           child: Text(
             'Not Answered',
-            style: TextStyle(
-              color: AppColors().secondaryText(),
+            style: GoogleFonts.cabin(
+              // color: AppColors().secondaryText(),
             ),
           ),
         ),

@@ -38,23 +38,23 @@ class UserPreferences {
 
   getphoneNumber() => _prefs.getString('phoneNumber');
 
-  state(String value) {
-    _prefs.setString('state', value);
-  }
+  // area1(String value) {
+  //   _prefs.setString('area1', value);
+  // }
 
-  getState() => _prefs.getString('state');
+  // getArea1() => _prefs.getString('area1');
 
-  district(String value) {
-    _prefs.setString('district', value);
-  }
+  // area2(String value) {
+  //   _prefs.setString('area2', value);
+  // }
 
-  getDistrict() => _prefs.getString('district');
+  // getArea2() => _prefs.getString('area2');
 
-  area(String value) {
-    _prefs.setString('area', value);
-  }
+  // area3(String value) {
+  //   _prefs.setString('area3', value);
+  // }
 
-  getarea() => _prefs.getString('area');
+  // getArea3() => _prefs.getString('area3');
 
   // email(String val) {
   //   _prefs.setString('email', val);

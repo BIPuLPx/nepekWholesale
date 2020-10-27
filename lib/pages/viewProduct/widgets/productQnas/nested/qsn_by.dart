@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
 
 class QsnBy extends StatelessWidget {
   final String name;
@@ -9,8 +8,7 @@ class QsnBy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       name,
-      style: GoogleFonts.roboto(
-        color: AppColors().secondaryText(),
+      style: GoogleFonts.cabin(
         fontSize: 12,
       ),
     );

@@ -13,20 +13,20 @@ class YesQnAs extends StatelessWidget {
         QnaHeading(
           heading: 'Questions and Answers',
         ),
-        // Column(
-        //   children: product.productQnas
-        //       .map((qna) => QnaLayout(
-        //             question: {
-        //               'text': qna['qsn'],
-        //               'date': qna['qsn_date'],
-        //               'name': product.getQnamesLocal(qna['customer_uid'])
-        //             },
-        //             answer: {'text': qna['ans'], 'date': qna['ans_date']},
-        //             index: product.productQnas.indexOf(qna),
-        //             length: product.productQnas.length,
-        //           ))
-        //       .toList(),
-        // ),
+        Column(
+          children: product.productQnas
+              .map((qna) => QnaLayout(
+                    question: {
+                      'text': qna['question'],
+                      'date': qna['questionedIn'],
+                      'name': product.getBuyerName(qna['buyer_id'])
+                    },
+                    answer: {'text': qna['answer'], 'date': qna['answeredIn']},
+                    index: product.productQnas.indexOf(qna),
+                    length: product.productQnas.length,
+                  ))
+              .toList(),
+        ),
       ],
     );
   }

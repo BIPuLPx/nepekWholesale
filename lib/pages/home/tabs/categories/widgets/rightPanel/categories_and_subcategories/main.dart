@@ -11,7 +11,7 @@ class CategoryAndSubCategories extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10, bottom: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: Mai,
         children: [
           Align(
