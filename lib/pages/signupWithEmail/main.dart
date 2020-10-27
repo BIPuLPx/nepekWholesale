@@ -34,7 +34,7 @@ class SignUpWithEmailRoot extends StatelessWidget {
               SizedBox(height: 100),
               Text(
                 'Enter your details',
-                style: GoogleFonts.cabin(
+                style: GoogleFonts.nunitoSans(
                   fontSize: 23,
                   fontWeight: FontWeight.w800,
                 ),
@@ -82,7 +82,7 @@ class SignUpWithEmailRoot extends StatelessWidget {
           },
           child: Text(
             'Sign up',
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
                 fontWeight: FontWeight.w600,
                 color: darktheme ? Colors.black : Colors.white),
           ),

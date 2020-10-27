@@ -29,7 +29,7 @@ showErrorToast(BuildContext context, String message) {
 
         Text(
           message,
-          style: GoogleFonts.cabin(
+          style: GoogleFonts.nunitoSans(
             fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -47,7 +47,7 @@ showErrorToast(BuildContext context, String message) {
   );
 
   // // Custom Toast Position
-  // fToast.showToast(
+  // fToast.sucessToast(
   //     child: toast,
   //     toastDuration: Duration(seconds: 2),
   //     positionedToastBuilder: (context, child) {

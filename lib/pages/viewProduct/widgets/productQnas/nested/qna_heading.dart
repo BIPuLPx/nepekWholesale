@@ -20,7 +20,7 @@ class QnaHeading extends StatelessWidget {
         children: [
           Text(
             heading,
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               // color: AppColors().primaryText(),
               fontWeight: FontWeight.w600,
               fontSize: 15,

@@ -21,7 +21,7 @@ class Heading extends StatelessWidget {
         children: [
           Text(
             heading,
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               // color: AppColors().primaryText(),
               fontWeight: FontWeight.w600,
               fontSize: 15,
@@ -39,7 +39,7 @@ class Heading extends StatelessWidget {
               },
               child: Text(
                 'View All',
-                style: GoogleFonts.cabin(
+                style: GoogleFonts.nunitoSans(
                   color: buttonColor,
                   fontSize: 12,
                   fontWeight: FontWeight.w600,

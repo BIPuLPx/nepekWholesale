@@ -37,7 +37,7 @@ class ProductName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       capitalize(name),
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.nunitoSans(
         fontWeight: FontWeight.w500,
         height: 1.3,
       ),
@@ -51,10 +51,11 @@ class ProductPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           'NPR ',
-          style: GoogleFonts.openSans(
+          style: GoogleFonts.nunito(
             fontSize: 17,
             fontWeight: FontWeight.w700,
             // color: Colors.black54,
@@ -62,11 +63,16 @@ class ProductPrice extends StatelessWidget {
         ),
         Text(
           '$price.00',
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.nunito(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
+        SizedBox(width: 10),
+        Text(
+          '(VAT included)',
+          style: GoogleFonts.robotoCondensed(fontSize: 11.2),
+        )
       ],
     );
   }

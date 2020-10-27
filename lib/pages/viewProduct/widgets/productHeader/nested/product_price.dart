@@ -8,10 +8,11 @@ class ProductPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'NPR  ',
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               fontSize: 18,
               fontWeight: FontWeight.w700,
               // color: AppColors().primaryText(),
@@ -19,10 +20,15 @@ class ProductPrice extends StatelessWidget {
           ),
           Text(
             '$price.00',
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
+          ),
+          SizedBox(width: 10),
+          Text(
+            '(VAT included)',
+            style: GoogleFonts.robotoCondensed(fontSize: 11.2),
           )
         ],
       ),

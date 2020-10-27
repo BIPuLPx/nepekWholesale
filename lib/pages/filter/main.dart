@@ -186,7 +186,7 @@ class BottomNav extends StatelessWidget {
 
   Text _buttonText(Color color, String label) => Text(
         label,
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           color: color,
           fontWeight: FontWeight.w600,
         ),

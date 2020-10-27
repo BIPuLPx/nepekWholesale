@@ -17,4 +17,4 @@ class AccountHeading extends StatelessWidget {
 }
 
 TextStyle accountHeadingStyle() =>
-    GoogleFonts.cabin(fontSize: 22, fontWeight: FontWeight.w600);
+    GoogleFonts.nunitoSans(fontSize: 22, fontWeight: FontWeight.w700);

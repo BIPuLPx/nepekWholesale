@@ -57,7 +57,7 @@ class _HomePageRootState extends State<HomePageRoot> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         showSelectedLabels: false,
-        unselectedLabelStyle: GoogleFonts.cabin(
+        unselectedLabelStyle: GoogleFonts.nunitoSans(
           height: 1.7,
           fontSize: 12,
           fontWeight: FontWeight.w600,

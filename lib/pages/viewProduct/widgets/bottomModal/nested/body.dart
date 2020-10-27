@@ -22,7 +22,7 @@ Container body() {
         ),
         Text(
           'Sucessfully added to cart',
-          style: GoogleFonts.cabin(
+          style: GoogleFonts.nunitoSans(
             fontWeight: FontWeight.w400,
             fontSize: 13,
             // color: AppColors().secondaryText(),

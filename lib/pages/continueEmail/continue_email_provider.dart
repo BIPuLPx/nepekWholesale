@@ -6,7 +6,7 @@ import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:skite_buyer/styles/popUps/errorPopUp.dart';
 import 'package:http/http.dart' as http;
 import 'package:skite_buyer/styles/popUps/loading_popup.dart';
-import 'package:skite_buyer/styles/toast.dart';
+import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
 
 class ContinueWithEmailProvider with ChangeNotifier {
   String thirdPartyRoute;
@@ -54,7 +54,7 @@ class ContinueWithEmailProvider with ChangeNotifier {
         UserPreferences().displayName(resData['data']['displayName']);
         UserPreferences().buyerKey(resData['data']['uid']);
         UserPreferences().loggedIn(true);
-        showToast(context, 'Sucessfully Signed In');
+        sucessToast(context, 'Sucessfully Signed In');
         refresh();
         if (thirdPartyRoute == null) {
           notThirdPartyRoute(resData, context);

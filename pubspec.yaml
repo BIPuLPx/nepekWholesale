@@ -110,15 +110,15 @@ flutter:
       fonts:
         - asset: fonts/BalsamiqSans.ttf
 
-    - family: Cabin
-      fonts:
-        - asset: fonts/Cabin-Regular.ttf
-        - asset: fonts/Cabin-Bold.ttf
-        - asset: fonts/Cabin-BoldItalic.ttf
-        - asset: fonts/Cabin-Italic.ttf
-        - asset: fonts/Cabin-Medium.ttf
-        - asset: fonts/Cabin-MediumItalic.ttf
-        - asset: fonts/Cabin-SemiBold.ttf
+    # - family: nunitoSans
+    #   fonts:
+    #     - asset: fonts/nunitoSans-Regular.ttf
+    #     - asset: fonts/nunitoSans-Bold.ttf
+    #     - asset: fonts/nunitoSans-BoldItalic.ttf
+    #     - asset: fonts/nunitoSans-Italic.ttf
+    #     - asset: fonts/nunitoSans-Medium.ttf
+    #     - asset: fonts/nunitoSans-MediumItalic.ttf
+    #     - asset: fonts/nunitoSans-SemiBold.ttf
 
 
 

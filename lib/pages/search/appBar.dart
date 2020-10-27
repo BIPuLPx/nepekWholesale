@@ -67,7 +67,7 @@ searchAppBar(
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'What are you looking for ?',
-                    hintStyle: GoogleFonts.cabin(
+                    hintStyle: GoogleFonts.nunitoSans(
                       color: darkTheme
                           ? TextInputColors().darkThemeHintText()
                           : TextInputColors().lightThemeHintText(),

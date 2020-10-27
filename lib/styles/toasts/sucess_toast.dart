@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
-showToast(BuildContext context, String message) {
+sucessToast(BuildContext context, String message) {
   FToast fToast;
   fToast = FToast();
   fToast.init(context);
@@ -30,7 +30,7 @@ showToast(BuildContext context, String message) {
 
         Text(
           message,
-          style: GoogleFonts.cabin(
+          style: GoogleFonts.nunitoSans(
             fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -48,7 +48,7 @@ showToast(BuildContext context, String message) {
   );
 
   // // Custom Toast Position
-  // fToast.showToast(
+  // fToast.sucessToast(
   //     child: toast,
   //     toastDuration: Duration(seconds: 2),
   //     positionedToastBuilder: (context, child) {

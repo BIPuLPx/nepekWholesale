@@ -41,7 +41,7 @@ class _SelectOptionsState extends State<SelectOptions> {
         children: [
           Text(
             capitalize(widget.title),
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               fontSize: 13,
               fontWeight: FontWeight.w600,
               color: primaryColor,

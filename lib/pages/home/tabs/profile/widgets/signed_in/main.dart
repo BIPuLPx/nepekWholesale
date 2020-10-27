@@ -52,12 +52,11 @@ class SignedIn extends StatelessWidget {
                 title: Text(
                   UserPreferences().getDisplayName(),
                   // 'Bipul',
-                  style: GoogleFonts.cabin(
+                  style: GoogleFonts.nunitoSans(
                     // color: AppColors().primaryBlue(),
                     color: darkTheme ? Colors.white : AppColors().primaryBlue(),
                     fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    // fontStyle: FontStyle.italic
+                    fontWeight: FontWeight.w800, // fontStyle: FontStyle.italic
                     // fontWeight: FontWeight.5old,
                   ),
                 ),

@@ -10,7 +10,7 @@ Future<void> sucessFulPopup(context, String title) async {
       return AlertDialog(
         title: Text(
           'Sucessful',
-          style: GoogleFonts.cabin(fontWeight: FontWeight.w800),
+          style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w800),
         ),
         actions: [
           FlatButton(

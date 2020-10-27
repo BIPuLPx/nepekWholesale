@@ -33,7 +33,7 @@ class PercentageRating extends StatelessWidget {
   }
 }
 
-TextStyle linearPer(bool bold) => GoogleFonts.cabin(
+TextStyle linearPer(bool bold) => GoogleFonts.nunitoSans(
       fontWeight: bold == true ? FontWeight.bold : FontWeight.normal,
       fontSize: 12,
     );

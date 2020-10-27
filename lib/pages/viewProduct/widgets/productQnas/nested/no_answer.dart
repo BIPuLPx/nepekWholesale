@@ -13,7 +13,7 @@ class NoAnswer extends StatelessWidget {
         Flexible(
           child: Text(
             'Not Answered',
-            style: GoogleFonts.cabin(
+            style: GoogleFonts.nunitoSans(
               // color: AppColors().secondaryText(),
             ),
           ),

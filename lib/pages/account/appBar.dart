@@ -13,8 +13,8 @@ SliverAppBar profileAppBar(context) {
     leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
+          color: darkTheme ? Colors.white : AppColors().primaryBlue(),
           size: 18,
-          color: AppColors().primaryBlue(),
         ),
         onPressed: () {
           Navigator.of(context).pop();
@@ -30,18 +30,18 @@ SliverAppBar profileAppBar(context) {
     // stretchTriggerOffset: 50,
     floating: true,
     // pinned: true,
-    backgroundColor: Colors.white,
+    // backgroundColor: Colors.white,
     toolbarHeight: 60,
     flexibleSpace: FlexibleSpaceBar(
       collapseMode: CollapseMode.parallax,
       // centerTitle: true,
       title: Text(
         UserPreferences().getDisplayName(),
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           // color: AppColors().primaryBlue(),
           color: darkTheme ? Colors.white : AppColors().primaryBlue(),
           fontSize: 20,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w800,
           // fontStyle: FontStyle.italic
           // fontWeight: FontWeight.5old,
         ),

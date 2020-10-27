@@ -14,4 +14,4 @@ class AccountContentValue extends StatelessWidget {
   }
 }
 
-TextStyle accContentValStyle() => GoogleFonts.cabin(height: 1.5);
+TextStyle accContentValStyle() => GoogleFonts.nunitoSans(height: 1.5);

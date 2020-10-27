@@ -59,7 +59,7 @@ selectOptions(context, productName, price, product, darkTheme) {
                       },
                       child: Text(
                         'Done',
-                        style: GoogleFonts.cabin(color: buttonTextColor),
+                        style: GoogleFonts.nunitoSans(color: buttonTextColor),
                       ))),
             ]);
       });

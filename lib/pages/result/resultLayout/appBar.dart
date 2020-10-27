@@ -81,10 +81,10 @@ class ResultAppBar extends StatelessWidget {
           children: [
             Text(
               '$itemLength items found for ',
-              style: GoogleFonts.cabin(fontWeight: FontWeight.w400),
+              style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w400),
             ),
             Text(searchText,
-                style: GoogleFonts.cabin(fontWeight: FontWeight.w600))
+                style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w600))
           ],
         ),
       );

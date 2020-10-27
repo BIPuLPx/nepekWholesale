@@ -1,11 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import '../../../styles/spinkit.dart';
+import 'package:skite_buyer/savedData/apis.dart';
+import 'package:skite_buyer/savedData/user_data.dart';
+import 'package:skite_buyer/styles/popUps/loading_popup.dart';
+import 'package:http/http.dart' as http;
+import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
 import 'input_delivery_address/main.dart';
 
 class AddDeliveryAddressState extends ChangeNotifier {
-  Widget body = spinkit;
+  Widget body = Container();
   dynamic deliveryAddressbox = Hive.box('deliveryAddresses');
   bool initInjection = false;
   Map currentState;
@@ -82,26 +88,23 @@ class AddDeliveryAddressState extends ChangeNotifier {
     deliveryAreas = getAreas;
   }
 
-  // Future finalizedLocation(BuildContext context) async {
-  //   saving(context);
-  //   var response = await http.put(
-  //     '$peopleApi/customers/shippingAddress',
-  //     headers: {
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //       'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
-  //     },
-  //     body: jsonEncode({
-  //       "province": currentState['label'],
-  //       "district": currentDistrict['label'],
-  //       "area": currentArea['label']
-  //     }),
-  //   );
-  //   if (response.statusCode == 200) {
-  //     Navigator.of(context).pop();
-  //     UserPreferences().state(currentState['label']);
-  //     UserPreferences().district(currentDistrict['label']);
-  //     UserPreferences().area(currentArea['label']);
-  //     Navigator.of(context).pop();
-  //   }
-  // }
+  Future finalizedLocation(BuildContext context) async {
+    loadingPopUP(context, 'Adding Address');
+    var response = await http.put(
+      '$peopleApi/customers/shippingaddress?type=add',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
+      },
+      body: jsonEncode(currentArea),
+    );
+    if (response.statusCode == 200) {
+       final newDeliveryAddress = jsonDecode(response.body);
+      Navigator.of(context).pop();
+      final deliveryAddBox = Hive.box('deliveryAddresses');
+      deliveryAddBox.put('userAreas', newDeliveryAddress);
+      sucessToast(context, "Sucessfully updated your address");
+      Navigator.of(context).pop();
+    }
+  }
 }

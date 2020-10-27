@@ -8,7 +8,7 @@ class NoReviewsYet extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 5),
       child: Text(
         'There are no reviews yet',
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           fontWeight: FontWeight.w600,
           fontSize: 17,
           // color: AppColors().secondaryText(),

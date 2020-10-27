@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/account/account_provider.dart';
 import 'package:skite_buyer/pages/account/appBar.dart';
 import 'package:skite_buyer/pages/account/content/main.dart';
+import 'package:skite_buyer/pages/account/shippingaddress/main.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:skite_buyer/styles/font_styles.dart';
-import 'package:skite_buyer/styles/toast.dart';
+import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
 
 class AccountPage extends StatelessWidget {
   final args;
@@ -46,12 +48,7 @@ class AccountPageRoot extends StatelessWidget {
                   hasValue: account.phoneNumber == null ? false : true,
                   changeRoute: 'input_phone_number',
                 ),
-                AccountContent(
-                  heading: 'Shipping Address',
-                  value: [account.state, account.district, account.area],
-                  hasValue: account.area == null ? false : true,
-                  changeRoute: 'input_delivery_address',
-                )
+                ShippingAddress()
               ],
             ),
           )
@@ -97,6 +94,7 @@ class ProfileBottomNav extends StatelessWidget {
       child: SizedBox(
         height: 50,
         child: FlatButton.icon(
+          color: Colors.red[100],
           icon: Icon(
             Icons.arrow_back,
             color: Colors.red,
@@ -107,14 +105,17 @@ class ProfileBottomNav extends StatelessWidget {
             UserPreferences().phoneNumber(null);
             UserPreferences().loggedIn(false);
             checkProfile();
-            showToast(context, 'Signed Out');
+            sucessToast(context, 'Signed Out');
             Navigator.of(context).pop();
           },
           // color: Colors.red[50],
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           label: Text(
             'Sign Out',
-            style: AppFontStyle().button(Colors.red),
+            style: GoogleFonts.nunitoSans(
+              fontWeight: FontWeight.w600,
+              color: Colors.red,
+            ),
           ),
         ),
       ),

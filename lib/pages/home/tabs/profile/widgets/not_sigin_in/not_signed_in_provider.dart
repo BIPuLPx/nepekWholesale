@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/dialogs/connecting.dart';
 import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/toast.dart';
+import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
 
 class NotSignedInState extends ChangeNotifier {
   bool initState = false;
@@ -61,7 +61,7 @@ class NotSignedInState extends ChangeNotifier {
     UserPreferences().displayName(backendData['data']['displayName']);
     UserPreferences().buyerKey(backendData['data']['uid']);
     UserPreferences().loggedIn(true);
-    showToast(context, 'Sucessfully Signed In');
+    sucessToast(context, 'Sucessfully Signed In');
     checkLogged();
     if (thirdPartyRoute == null) {
       notThirdPartyRoute(backendData, context);

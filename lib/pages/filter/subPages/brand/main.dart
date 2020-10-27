@@ -65,7 +65,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
                 ? applySpinKit(buttonTextColor)
                 : Text(
                     'Apply',
-                    style: GoogleFonts.cabin(
+                    style: GoogleFonts.nunitoSans(
                       color: buttonTextColor,
                       fontWeight: FontWeight.w600,
                     ),
@@ -92,7 +92,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
   }
 
   Row _checkBoxTexts(val, provider) {
-    _labelStyle() => GoogleFonts.cabin(
+    _labelStyle() => GoogleFonts.nunitoSans(
         fontWeight: provider.currentBrands.contains(val['name'])
             ? FontWeight.w800
             : FontWeight.w400,

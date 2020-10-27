@@ -42,7 +42,7 @@ class HighlightsText extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: GoogleFonts.cabin(height: 1.7),
+              style: GoogleFonts.nunitoSans(height: 1.7),
             ),
           ),
         ],

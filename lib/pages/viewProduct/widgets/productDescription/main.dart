@@ -16,7 +16,7 @@ class ProductDescription extends StatelessWidget {
           children: [
             Text(
               'Description',
-              style: GoogleFonts.cabin(
+              style: GoogleFonts.nunitoSans(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
                 // color: AppColors().primaryText(),
@@ -25,7 +25,7 @@ class ProductDescription extends StatelessWidget {
             SizedBox(height: 15),
             Text(
               product.productDescription,
-              style: GoogleFonts.cabin(height: 1.7),
+              style: GoogleFonts.nunitoSans(height: 1.7),
             )
           ],
         ),

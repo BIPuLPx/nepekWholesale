@@ -10,7 +10,7 @@ import 'package:skite_buyer/savedData/apis.dart';
 import 'package:skite_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:skite_buyer/styles/popUps/loading_popup.dart';
-import 'package:skite_buyer/styles/toast.dart';
+import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
 
 class PhoneInputState extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -64,7 +64,7 @@ class PhoneInputState extends ChangeNotifier {
       UserPreferences().phoneNumber(phoneNumber);
       Navigator.of(context).pop();
       // print('here');
-      showToast(context, 'Sucessfully added your phone number');
+      sucessToast(context, 'Sucessfully updated your phone number');
       if (isNextScreenAddress == true) {
         Navigator.pushReplacementNamed(context, 'input_delivery_address');
       } else {

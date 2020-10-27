@@ -41,7 +41,7 @@ class Heading extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 10),
       child: Text(
         'Select your prefered options',
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           fontSize: 15,
           fontWeight: FontWeight.w600,
           // color: AppColors().primaryText(),

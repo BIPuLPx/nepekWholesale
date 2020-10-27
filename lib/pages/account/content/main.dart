@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/account/content/content_header.dart';
 import 'package:skite_buyer/pages/account/content/content_value.dart';
 import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class AccountContent extends StatelessWidget {
   final String heading;
@@ -19,6 +21,7 @@ class AccountContent extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
       margin: EdgeInsets.only(bottom: 30, left: 30, right: 30),
       child: Column(
@@ -38,14 +41,15 @@ class AccountContent extends StatelessWidget {
                           ))
                       .toList(),
                 )
-              : addVal(changeRoute, 'Add $heading', context)
+              : addVal(darktheme, changeRoute, 'Add $heading', context)
         ],
       ),
     );
   }
 }
 
-Widget addVal(String routeName, String label, BuildContext context) =>
+Widget addVal(
+        bool darktheme, String routeName, String label, BuildContext context) =>
     Container(
       margin: EdgeInsets.only(top: 15),
       child: SizedBox(
@@ -54,10 +58,13 @@ Widget addVal(String routeName, String label, BuildContext context) =>
           onPressed: () {
             Navigator.pushReplacementNamed(context, routeName);
           },
-          color: AppColors().primaryBlue(),
+          color: darktheme ? Colors.white : AppColors().primaryBlue(),
           child: Text(
             label,
-            style: AppFontStyle().button(Colors.white),
+            style: GoogleFonts.nunitoSans(
+              color: darktheme ? Colors.black : Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),

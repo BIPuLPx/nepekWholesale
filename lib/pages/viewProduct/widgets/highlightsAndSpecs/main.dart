@@ -34,7 +34,7 @@ class HighlightsAndSpecTopic extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 15),
       child: Text(
         topic,
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           // color: AppColors().primaryText(),
           fontWeight: FontWeight.w600,
           fontSize: 15,

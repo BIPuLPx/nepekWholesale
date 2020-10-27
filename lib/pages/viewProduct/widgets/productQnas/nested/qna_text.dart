@@ -17,7 +17,7 @@ class QnaText extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: GoogleFonts.cabin(height: 1.3),
+              style: GoogleFonts.nunitoSans(height: 1.3),
             ),
           ),
         ],

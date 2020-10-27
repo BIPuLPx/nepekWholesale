@@ -42,8 +42,8 @@ class InputDeliveryAddress extends StatelessWidget {
     );
   }
 
-  TextStyle _addDeliveryAddHeading() => GoogleFonts.cabin(
+  TextStyle _addDeliveryAddHeading() => GoogleFonts.nunitoSans(
         fontSize: 23,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w800,
       );
 }

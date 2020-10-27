@@ -50,7 +50,7 @@ class TotalRating extends StatelessWidget {
   }
 }
 
-TextStyle totalRatingText(String type) => GoogleFonts.cabin(
+TextStyle totalRatingText(String type) => GoogleFonts.nunitoSans(
       fontWeight: type == 'rating' ? FontWeight.w800 : FontWeight.w400,
       fontSize: type == 'rating' ? 25 : 12,
       color: type == 'rating'

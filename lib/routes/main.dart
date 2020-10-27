@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skite_buyer/pages/account/main.dart';
 import 'package:skite_buyer/pages/ask_a_question/main.dart';
 import 'package:skite_buyer/pages/carasoulLanding/main.dart';
+import 'package:skite_buyer/pages/checkout/main.dart';
 import 'package:skite_buyer/pages/continueEmail/main.dart';
 import 'package:skite_buyer/pages/featuredBrandLanding/main.dart';
 import 'package:skite_buyer/pages/filter/main.dart';
@@ -90,6 +91,9 @@ class RouteGenerator {
       case 'featured_brand_landing':
         return MaterialPageRoute(
             builder: (_) => FeaturedBrandLanding(args: args));
+
+      case 'checkout':
+        return MaterialPageRoute(builder: (_) => CheckOut(args: args));
 
       default:
         // return

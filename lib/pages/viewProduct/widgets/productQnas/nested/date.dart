@@ -10,7 +10,7 @@ class Date extends StatelessWidget {
     return Container(
       child: Text(
         DateFormat.yMMMd('en_US').format(DateTime.parse(date)),
-        style: GoogleFonts.cabin(
+        style: GoogleFonts.nunitoSans(
           fontSize: 12,
         ),
       ),

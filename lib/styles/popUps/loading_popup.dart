@@ -16,7 +16,7 @@ Future<void> loadingPopUP(context, String title) async {
       return AlertDialog(
         title: Text(
           'Loading',
-          style: GoogleFonts.cabin(fontWeight: FontWeight.w800),
+          style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w800),
         ),
         content: SingleChildScrollView(
           child: Column(
@@ -25,7 +25,7 @@ Future<void> loadingPopUP(context, String title) async {
               SizedBox(height: 20),
               Text(
                 title,
-                style: GoogleFonts.cabin(color: appColors['secondaryText']),
+                style: GoogleFonts.nunitoSans(color: appColors['secondaryText']),
               )
             ],
           ),

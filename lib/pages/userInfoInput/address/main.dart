@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/userInfoInput/address/address_provider.dart';
 import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
@@ -37,20 +38,23 @@ class AddAddressBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deliveryadd = Provider.of<AddDeliveryAddressState>(context);
-    final darktheme = Provider.of<DarkThemeProvider>(context);
+    final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return BottomAppBar(
       child: SizedBox(
         height: 50,
         child: FlatButton(
           onPressed: () {
-            darktheme.darkTheme = !darktheme.darkTheme;
-            // deliveryadd.finalizedLocation(context);
+            // darktheme.darkTheme = !darktheme.darkTheme;
+            deliveryadd.finalizedLocation(context);
           },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          color: AppColors().primaryBlue(),
+          color: darktheme ? Colors.white : AppColors().primaryBlue(),
           child: Text(
             'Done',
-            style: AppFontStyle().button(Colors.white),
+            style: GoogleFonts.nunitoSans(
+              fontWeight: FontWeight.w600,
+              color: darktheme ? Colors.black : null,
+            ),
           ),
         ),
       ),

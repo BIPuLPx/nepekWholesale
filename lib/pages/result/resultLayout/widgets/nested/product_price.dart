@@ -10,8 +10,8 @@ class ProductPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('NPR ', style: GoogleFonts.cabin(fontWeight: FontWeight.w800)),
-        Text(price.toString(), style: GoogleFonts.cabin()),
+        Text('NPR ', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w800)),
+        Text(price.toString(), style: GoogleFonts.nunitoSans()),
       ],
     );
   }

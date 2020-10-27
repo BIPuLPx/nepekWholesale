@@ -8,7 +8,7 @@ class QsnBy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       name,
-      style: GoogleFonts.cabin(
+      style: GoogleFonts.nunitoSans(
         fontSize: 12,
       ),
     );

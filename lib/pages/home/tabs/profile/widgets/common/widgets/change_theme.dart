@@ -29,7 +29,7 @@ changeTheme(BuildContext context, darkTheme, Function isDarkTheme) {
                   ),
                   Text(
                     capitalize(label),
-                    style: GoogleFonts.cabin(
+                    style: GoogleFonts.nunitoSans(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: forDark ? Colors.white : Colors.black,
