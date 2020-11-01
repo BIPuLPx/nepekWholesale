@@ -66,6 +66,10 @@ searchAppBar(
                   autofocus: true,
                   decoration: InputDecoration(
                     border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
                     hintText: 'What are you looking for ?',
                     hintStyle: GoogleFonts.nunitoSans(
                       color: darkTheme

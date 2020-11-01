@@ -21,7 +21,9 @@ class AskaQuestionProvider with ChangeNotifier {
       "productID": args['productID'],
       "question": question,
       "buyer_id": UserPreferences().getBuyerKey(),
-      "seller_id": args['sellerID']
+      "seller_id": args['sellerID'],
+      "productName": args['productName'],
+      "qsnBy": UserPreferences().getDisplayName()
     };
 
     if (question.isEmpty) {

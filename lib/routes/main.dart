@@ -93,7 +93,7 @@ class RouteGenerator {
             builder: (_) => FeaturedBrandLanding(args: args));
 
       case 'checkout':
-        return MaterialPageRoute(builder: (_) => CheckOut(args: args));
+        return MaterialPageRoute(builder: (_) => Checkout(args: args));
 
       default:
         // return

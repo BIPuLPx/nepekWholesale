@@ -95,7 +95,7 @@ class ResultAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            BottomNavBtn(
+            FLSortBTn(
               color: color,
               icon: ResultPageIcons.filter,
               label: 'Filter',
@@ -106,7 +106,7 @@ class ResultAppBar extends StatelessWidget {
                 arguments: filterPageArgs,
               ),
             ),
-            BottomNavBtn(
+            FLSortBTn(
               color: color,
               icon: ResultPageIcons.sort,
               label: 'Sort',
@@ -157,4 +157,44 @@ class ResultAppBar extends StatelessWidget {
           onPressed: () => Navigator.pushNamed(resultContext, 'search'),
         ),
       ];
+}
+
+class FLSortBTn extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Function onClick;
+  final double iconSize;
+  final Color color;
+  FLSortBTn({this.icon, this.label, this.onClick, this.iconSize, this.color});
+  @override
+  Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: deviceWidth * 0.33,
+      height: 35,
+      child: OutlineButton(
+          highlightedBorderColor: color,
+          borderSide: BorderSide(color: color, width: 1.6),
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(0),
+          ),
+          onPressed: () => onClick(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: 1),
+              Icon(icon, size: iconSize, color: color),
+              SizedBox(width: 15),
+              Text(
+                label,
+                style: GoogleFonts.nunitoSans(
+                  fontWeight: FontWeight.w600,
+                  color: color,
+                ),
+              ),
+              SizedBox(width: 15),
+            ],
+          )),
+    );
+  }
 }

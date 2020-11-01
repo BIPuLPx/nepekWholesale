@@ -27,7 +27,7 @@ Container footer(context) {
               'Continue Shopping',
               style: GoogleFonts.nunitoSans(
                 fontWeight: FontWeight.w800,
-                fontSize: 13,
+                fontSize: 11.2,
                 color: buttonColor,
               ),
             ),
@@ -47,7 +47,7 @@ Container footer(context) {
               style: GoogleFonts.nunitoSans(
                 color: darkTheme ? Colors.black : Colors.white,
                 fontWeight: FontWeight.w800,
-                fontSize: 13,
+                fontSize: 11.2,
               ),
             ),
           ),

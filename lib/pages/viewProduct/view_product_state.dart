@@ -68,6 +68,7 @@ class ViewProductState with ChangeNotifier {
   }
 
   Future getQnas() async {
+    print('$productApi/qna/buyer/only_four?key=$productID');
     final response =
         await http.get('$productApi/qna/buyer/only_four?key=$productID');
     productQnas = jsonDecode(response.body);
