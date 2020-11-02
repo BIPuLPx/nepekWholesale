@@ -40,7 +40,7 @@ class CartNoListener extends StatelessWidget {
                       child: Center(
                         child: Text(
                           box.length.toString(),
-                          style: GoogleFonts.nunito(
+                          style: GoogleFonts.quicksand(
                             fontSize: 9,
                             fontWeight: FontWeight.w700,
                             color: labelColor,

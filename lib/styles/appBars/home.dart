@@ -43,7 +43,7 @@ homeAppbar(context, bool darkTheme) {
             children: [
               Text(
                 'What are you looking for ?',
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   color: darkTheme
                       ? TextInputColors().darkThemeHintText()
                       : TextInputColors().lightThemeHintText(),

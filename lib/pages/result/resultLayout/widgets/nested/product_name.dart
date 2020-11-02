@@ -10,7 +10,9 @@ class ProductName extends StatelessWidget {
     return Container(
       child: Text(
         name,
-        style: GoogleFonts.nunitoSans(),
+        style: GoogleFonts.quicksand(
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }

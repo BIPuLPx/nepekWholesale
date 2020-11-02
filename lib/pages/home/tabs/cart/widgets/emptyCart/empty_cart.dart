@@ -58,7 +58,7 @@ class EmptyCartLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       child,
-      style: GoogleFonts.nunitoSans(
+      style: GoogleFonts.quicksand(
         fontSize: size,
         height: 1.5,
         fontWeight: FontWeight.w800,

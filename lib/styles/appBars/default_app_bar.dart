@@ -19,7 +19,7 @@ defaultAppBar(context, String title, bool darktheme) {
       elevation: 1,
       title: Text(
         title,
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
           fontSize: 18,
           color: darktheme ? Colors.white : AppColors().primaryBlue(),
           fontWeight: FontWeight.w600

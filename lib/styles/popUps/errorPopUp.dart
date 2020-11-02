@@ -10,13 +10,13 @@ Future<void> errorPopup(context, String title) async {
       return AlertDialog(
           title: Text(
             'Error',
-            style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w800),
+            style: GoogleFonts.quicksand(fontWeight: FontWeight.w800),
           ),
           actions: [
             TextButton(
               child: Text(
                 'Ok',
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w800,
                   color: AppColors().primaryBlue(),
                 ),

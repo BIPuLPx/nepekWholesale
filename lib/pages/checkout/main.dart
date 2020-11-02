@@ -32,7 +32,7 @@ class CheckOutRoot extends StatelessWidget {
           onPressed: () {},
           child: Text(
             'Buy Now',
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
               fontWeight: FontWeight.w600,
               color: darktheme.darkTheme ? Colors.black : Colors.white,
             ),

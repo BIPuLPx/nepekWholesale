@@ -66,7 +66,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
                         isExpanded: true,
                         value: widget.current['label'],
 
-                        style: GoogleFonts.nunitoSans(
+                        style: GoogleFonts.quicksand(
                           fontSize: 16,
                           color: darkTheme ? Colors.white : Colors.black,
                         ),
@@ -114,7 +114,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
   }
 }
 
-TextStyle dropdownHeading() => GoogleFonts.nunitoSans(
+TextStyle dropdownHeading() => GoogleFonts.quicksand(
       // color: AppColors().primaryText(),
       fontSize: 17.5,
       fontWeight: FontWeight.w500,

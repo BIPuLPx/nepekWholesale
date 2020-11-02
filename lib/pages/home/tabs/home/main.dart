@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:skite_buyer/library/product_slider/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/advertisement/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/carasoul/carasoul.dart';
 import 'package:skite_buyer/pages/home/tabs/home/wigdets/featuredSlider/main.dart';
@@ -34,39 +35,12 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
             children: [
               FrontCarasoul(),
               FeaturedSlider(),
+              ProductsSlider(),
               ShopByCategory(),
               HomeAd(),
-              Container(
-                color: Colors.grey,
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 15.0),
-                // child:
-              ),
-              Text(
-                'Home',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'Text',
-                style: GoogleFonts.roboto(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
-              Container(height: 150, color: Colors.redAccent),
-              SizedBox(height: 50),
+              ProductsSlider(),
+              HomeAd(),
+              ProductsSlider(),
             ],
           ),
         ),

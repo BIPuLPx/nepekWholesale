@@ -39,7 +39,7 @@ class PhoneNumberHeading extends StatelessWidget {
     return Container(
       child: Text(
         heading,
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
           fontSize: 22,
           fontWeight: FontWeight.w800,
           height: 1.5,
@@ -192,7 +192,7 @@ TextStyle resendStyle() => GoogleFonts.rubik(
       fontWeight: FontWeight.w500,
     );
 
-TextStyle inputPhoneNumberStyle() => GoogleFonts.nunitoSans(
+TextStyle inputPhoneNumberStyle() => GoogleFonts.quicksand(
       fontWeight: FontWeight.w600,
       fontSize: 18,
     );

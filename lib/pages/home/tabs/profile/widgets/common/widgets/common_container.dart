@@ -83,7 +83,7 @@ class CommonContainer extends StatelessWidget {
   }
 }
 
-TextStyle commonContainerLabel() => GoogleFonts.nunitoSans(
+TextStyle commonContainerLabel() => GoogleFonts.quicksand(
       fontSize: 16,
       fontWeight: FontWeight.w600,
     );

@@ -29,7 +29,7 @@ class ProductQnas extends StatelessWidget {
             product.productQnas.length > 0 ? YesQnAs() : NoQnAsYet(),
             SizedBox(
               width: double.infinity,
-              height: 30,
+              height: 40,
               child: OutlineButton(
                 highlightedBorderColor: buttonColor,
                 borderSide: BorderSide(color: buttonColor, width: 1.6),
@@ -50,10 +50,10 @@ class ProductQnas extends StatelessWidget {
                 },
                 child: Text(
                   'Ask a Question',
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     color: buttonColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ),

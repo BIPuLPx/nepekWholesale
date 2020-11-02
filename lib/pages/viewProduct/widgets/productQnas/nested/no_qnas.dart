@@ -8,7 +8,7 @@ class NoQnAsYet extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 20),
       child: Text(
         'No questions has been asked yet',
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
           fontWeight: FontWeight.w600,
           fontSize: 17,
         ),

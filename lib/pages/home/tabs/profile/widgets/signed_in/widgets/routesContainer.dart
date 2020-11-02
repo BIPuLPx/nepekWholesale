@@ -72,7 +72,7 @@ class RoutesContainer extends StatelessWidget {
   }
 }
 
-TextStyle routesContainerLabel() => GoogleFonts.nunitoSans(
+TextStyle routesContainerLabel() => GoogleFonts.quicksand(
       fontSize: 16,
       fontWeight: FontWeight.w600,
     );

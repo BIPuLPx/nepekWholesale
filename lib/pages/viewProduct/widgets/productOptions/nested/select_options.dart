@@ -41,23 +41,19 @@ class _SelectOptionsState extends State<SelectOptions> {
         children: [
           Text(
             capitalize(widget.title),
-            style: GoogleFonts.nunitoSans(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
+            style: GoogleFonts.quicksand(
+              fontSize: 15,
+              fontWeight: FontWeight.w800,
               color: primaryColor,
             ),
           ),
           SizedBox(height: 5),
-          // Center(
-          // child:
           Wrap(
             children: widget.options
                 .map((e) =>
                     customRadio(e, widget.options.indexOf(e), primaryColor))
                 .toList(),
           ),
-
-          // ),
         ],
       ),
     );

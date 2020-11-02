@@ -6,7 +6,7 @@ import 'package:skite_buyer/styles/colors.dart';
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     InputDecorationTheme _textInput() => InputDecorationTheme(
-          labelStyle: GoogleFonts.nunitoSans(
+          labelStyle: GoogleFonts.quicksand(
             color: isDarkTheme ? Colors.white54 : Colors.black54,
           ),
           hintStyle: TextStyle(
@@ -28,6 +28,8 @@ class Styles {
         );
 
     return ThemeData(
+      // bottomAppBarColor: isDarkTheme ? Colors.black : Colors.white,
+      // bottomNavigationBarTheme: ,
       // primarySwatch: Colors.pink,
       primaryColor: isDarkTheme ? Colors.black : Colors.white,
       backgroundColor: isDarkTheme ? Colors.black : Color(0xffF1F5FB),

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 Text applyText(Color color) => Text(
       'Apply',
-      style: GoogleFonts.nunitoSans(
+      style: GoogleFonts.quicksand(
         fontWeight: FontWeight.w600,
         color: color,
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/search/search_provider.dart';
 import 'package:skite_buyer/pages/search/appBar.dart';
@@ -43,11 +42,9 @@ class _SearchPageRootState extends State<SearchPageRoot> {
       appBar: searchAppBar(
           context, currentSuffix, searchTerm, setSearchTerm, _searchHolder),
       body: Container(
-        // padding: EdgeInsets.only(left: 20, right: 10, top: 10),
         child: ListView(
           children: [
             searchTerm == '' ? SearchHistory() : CurrentSearch(val: searchTerm),
-            // Text('other autocomplete'),
             autocompletes.length == 0 ? Container() : AutoCompletes(),
           ],
         ),
@@ -55,9 +52,4 @@ class _SearchPageRootState extends State<SearchPageRoot> {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   Hive.box('search').close();
-  //   super.dispose();
-  // }
 }

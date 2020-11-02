@@ -25,7 +25,7 @@ Container footer(context) {
             },
             child: Text(
               'Continue Shopping',
-              style: GoogleFonts.nunitoSans(
+              style: GoogleFonts.quicksand(
                 fontWeight: FontWeight.w800,
                 fontSize: 11.2,
                 color: buttonColor,
@@ -44,7 +44,7 @@ Container footer(context) {
             color: buttonColor,
             child: Text(
               'Go to Cart',
-              style: GoogleFonts.nunitoSans(
+              style: GoogleFonts.quicksand(
                 color: darkTheme ? Colors.black : Colors.white,
                 fontWeight: FontWeight.w800,
                 fontSize: 11.2,

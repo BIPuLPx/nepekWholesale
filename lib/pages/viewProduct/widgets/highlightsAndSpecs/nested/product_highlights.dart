@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ProductHighlights extends StatelessWidget {
@@ -28,7 +27,6 @@ class HighlightsText extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Row(
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             margin: EdgeInsets.only(top: 2),
@@ -42,7 +40,7 @@ class HighlightsText extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: GoogleFonts.nunitoSans(height: 1.7),
+              style: GoogleFonts.quicksand(height: 1.7),
             ),
           ),
         ],

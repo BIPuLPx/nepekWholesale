@@ -19,7 +19,7 @@ class Hi extends StatelessWidget {
   }
 }
 
-TextStyle hiHeading(double size) => GoogleFonts.nunitoSans(
+TextStyle hiHeading(double size) => GoogleFonts.quicksand(
       fontSize: size,
       fontWeight: FontWeight.w600,
       color: Colors.white,

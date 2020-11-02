@@ -37,7 +37,7 @@ SliverAppBar profileAppBar(context) {
       // centerTitle: true,
       title: Text(
         UserPreferences().getDisplayName(),
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
           // color: AppColors().primaryBlue(),
           color: darkTheme ? Colors.white : AppColors().primaryBlue(),
           fontSize: 20,

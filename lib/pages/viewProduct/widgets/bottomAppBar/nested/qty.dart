@@ -9,8 +9,8 @@ class Qty extends StatelessWidget {
       children: [
         Text(
           "QTY",
-          style: GoogleFonts.nunitoSans(
-            fontWeight: FontWeight.w600,
+          style: GoogleFonts.quicksand(
+            fontWeight: FontWeight.w800,
           ),
         ),
         SizedBox(width: 10),

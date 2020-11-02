@@ -58,6 +58,17 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^0.7.1
   build_runner:
+  flutter_launcher_icons: ^0.8.1
+  
+
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/launcher/icon.png"
+  image_path_android: "assets/launcher/icon.png"
+  adaptive_icon_background: "assets/launcher/background.png"
+  adaptive_icon_foreground: "assets/launcher/foreground.png"  
 
 
 # For information on the generic Dart part of this file, see the
@@ -75,6 +86,7 @@ flutter:
   assets:
     - assets/bottomNavBar/
     - assets/profileTab/
+    - assets/noProductsFound/
     - animations/
     - icons/Brand.png 
     - images/emptycart.png
@@ -112,15 +124,15 @@ flutter:
       fonts:
         - asset: fonts/BalsamiqSans.ttf
 
-    # - family: nunitoSans
+    # - family: quicksand
     #   fonts:
-    #     - asset: fonts/nunitoSans-Regular.ttf
-    #     - asset: fonts/nunitoSans-Bold.ttf
-    #     - asset: fonts/nunitoSans-BoldItalic.ttf
-    #     - asset: fonts/nunitoSans-Italic.ttf
-    #     - asset: fonts/nunitoSans-Medium.ttf
-    #     - asset: fonts/nunitoSans-MediumItalic.ttf
-    #     - asset: fonts/nunitoSans-SemiBold.ttf
+    #     - asset: fonts/quicksand-Regular.ttf
+    #     - asset: fonts/quicksand-Bold.ttf
+    #     - asset: fonts/quicksand-BoldItalic.ttf
+    #     - asset: fonts/quicksand-Italic.ttf
+    #     - asset: fonts/quicksand-Medium.ttf
+    #     - asset: fonts/quicksand-MediumItalic.ttf
+    #     - asset: fonts/quicksand-SemiBold.ttf
 
 
 

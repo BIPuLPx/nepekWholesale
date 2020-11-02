@@ -8,7 +8,7 @@ class EndOfResult extends StatelessWidget {
       padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
       child: Text(
         'End of Result',
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
           fontSize: 15,
           fontWeight: FontWeight.bold,
         ),

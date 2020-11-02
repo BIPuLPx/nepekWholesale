@@ -9,9 +9,22 @@ class ProductPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text('NPR ', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w800)),
-        Text(price.toString(), style: GoogleFonts.nunitoSans()),
+        Text(
+          'NPR ',
+          style: GoogleFonts.quicksand(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          price.toString(),
+          style: GoogleFonts.quicksand(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }

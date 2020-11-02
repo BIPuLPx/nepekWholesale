@@ -115,7 +115,7 @@ class NotSignedInContainer extends StatelessWidget {
     );
   }
 
-  TextStyle _containerLabel() => GoogleFonts.nunitoSans(
+  TextStyle _containerLabel() => GoogleFonts.quicksand(
         fontSize: 16,
         fontWeight: FontWeight.w600,
       );
@@ -133,7 +133,7 @@ class NotSignedInHeading extends StatelessWidget {
       padding: EdgeInsets.only(left: 15, right: 15),
       child: Text(
         text,
-        style: GoogleFonts.nunitoSans(
+        style: GoogleFonts.quicksand(
             fontSize: fontSize, fontWeight: FontWeight.w800, height: 1.5),
       ),
     );

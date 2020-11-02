@@ -42,7 +42,7 @@ class InputDeliveryAddress extends StatelessWidget {
     );
   }
 
-  TextStyle _addDeliveryAddHeading() => GoogleFonts.nunitoSans(
+  TextStyle _addDeliveryAddHeading() => GoogleFonts.quicksand(
         fontSize: 23,
         fontWeight: FontWeight.w800,
       );

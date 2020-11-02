@@ -56,7 +56,7 @@ class CheckoutLayoutCalculations extends StatelessWidget {
     );
   }
 
-  TextStyle _bill(bool mainHeading) => GoogleFonts.nunitoSans(
+  TextStyle _bill(bool mainHeading) => GoogleFonts.quicksand(
         fontWeight: mainHeading ? FontWeight.w700 : FontWeight.w600,
         fontSize: mainHeading ? 19 : 15,
       );

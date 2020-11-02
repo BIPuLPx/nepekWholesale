@@ -45,7 +45,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
               SizedBox(height: 100),
               Text(
                 'Enter your credentials',
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   fontSize: 23,
                   fontWeight: FontWeight.w800,
                 ),
@@ -102,7 +102,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         onPressed: () {},
         child: Text(
           'Forgot Password ?',
-          style: GoogleFonts.nunitoSans(
+          style: GoogleFonts.quicksand(
             fontSize: 12,
             color: darkTheme ? Colors.white : AppColors().primaryBlue(),
           ),
@@ -125,7 +125,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         },
         child: Text(
           'Sign in',
-          style: GoogleFonts.nunitoSans(
+          style: GoogleFonts.quicksand(
             fontWeight: FontWeight.w600,
             color: darkTheme ? Colors.black : Colors.white,
           ),
@@ -134,7 +134,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(bool isBold, bool darkTheme) => GoogleFonts.nunitoSans(
+  TextStyle _textStyle(bool isBold, bool darkTheme) => GoogleFonts.quicksand(
         fontWeight: isBold ? FontWeight.w800 : null,
         color: isBold
             ? darkTheme

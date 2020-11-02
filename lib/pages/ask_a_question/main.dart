@@ -48,7 +48,7 @@ class AskaQuestionRoot extends StatelessWidget {
                 maxLines: 5,
                 onChanged: (val) => provider.questionChanged(val),
                 // obscureText: obscureText ?? false,
-                style: GoogleFonts.nunitoSans(height: 1.3),
+                style: GoogleFonts.quicksand(height: 1.3),
                 decoration: InputDecoration(
                   labelText: "Write a question",
                 ),
@@ -69,7 +69,7 @@ class AskaQuestionRoot extends StatelessWidget {
             children: [
               Text(
                 "Ask",
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w800,
                   color: darktheme ? Colors.black : AppColors().primaryBlue(),
                 ),
@@ -108,7 +108,7 @@ class AskaQuestionRoot extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(bool gray) => GoogleFonts.nunitoSans(
+  TextStyle _textStyle(bool gray) => GoogleFonts.quicksand(
       fontSize: 18,
       fontWeight: FontWeight.w600,
       color: gray ? Colors.grey : null);

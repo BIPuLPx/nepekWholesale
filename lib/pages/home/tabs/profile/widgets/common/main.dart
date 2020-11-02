@@ -38,6 +38,6 @@ class Common extends StatelessWidget {
 
   Text _copyright(String val) => Text(
         val,
-        style: GoogleFonts.nunitoSans(),
+        style: GoogleFonts.quicksand(),
       );
 }

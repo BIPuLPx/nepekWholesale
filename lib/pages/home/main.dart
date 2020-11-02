@@ -67,10 +67,11 @@ class _HomePageRootState extends State<HomePageRoot> {
       // ),
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: isDark ? Colors.black : Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         showSelectedLabels: false,
-        unselectedLabelStyle: GoogleFonts.nunitoSans(
+        unselectedLabelStyle: GoogleFonts.quicksand(
           height: 1.7,
           fontSize: 12,
           fontWeight: FontWeight.w600,

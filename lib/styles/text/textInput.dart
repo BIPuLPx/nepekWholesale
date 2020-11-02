@@ -28,7 +28,7 @@ class TextInput extends StatelessWidget {
         validator: validator ?? null,
         onChanged: (val) => onChanged(val),
         obscureText: obscureText ?? false,
-        style: GoogleFonts.nunitoSans(),
+        style: GoogleFonts.quicksand(),
         decoration: InputDecoration(
           labelText: labelText,
         ),

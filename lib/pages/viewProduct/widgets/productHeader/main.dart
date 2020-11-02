@@ -24,9 +24,10 @@ class ProductHeader extends StatelessWidget {
             // ),
             Text(
               product.productBrand,
-              style: GoogleFonts.nunitoSans(
+              style: GoogleFonts.quicksand(
                 fontSize: 13,
-                // color: Colors.grey[600],
+                fontWeight: FontWeight.w700,
+                color: Colors.grey[500],
               ),
             ),
             ProductName(name: product.productName),

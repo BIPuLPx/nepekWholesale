@@ -31,7 +31,7 @@ sucessToast(BuildContext context, String message) {
 
         Text(
           message,
-          style: GoogleFonts.nunitoSans(
+          style: GoogleFonts.quicksand(
             fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w600,

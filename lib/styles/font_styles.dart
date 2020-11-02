@@ -46,9 +46,9 @@ class HomeFonts {
         margin: EdgeInsets.only(bottom: 0, left: 15),
         child: Text(
           text,
-          style: GoogleFonts.nunito(
+          style: GoogleFonts.quicksand(
             fontWeight: FontWeight.w800,
-            fontSize: 17,
+            fontSize: 18,
           ),
         ),
       );

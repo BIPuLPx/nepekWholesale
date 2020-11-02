@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:skite_buyer/iconsClass/result_page_icons_icons.dart';
 import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/pages/result/provider/main.dart';
-import 'package:skite_buyer/pages/result/styles/appbar_nav_button.dart';
 import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
@@ -81,10 +80,14 @@ class ResultAppBar extends StatelessWidget {
           children: [
             Text(
               '$itemLength items found for ',
-              style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w400),
+              style: GoogleFonts.quicksand(fontWeight: FontWeight.w500),
             ),
-            Text(searchText,
-                style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w600))
+            Text(
+              searchText,
+              style: GoogleFonts.quicksand(
+                fontWeight: FontWeight.w800,
+              ),
+            )
           ],
         ),
       );
@@ -187,8 +190,8 @@ class FLSortBTn extends StatelessWidget {
               SizedBox(width: 15),
               Text(
                 label,
-                style: GoogleFonts.nunitoSans(
-                  fontWeight: FontWeight.w600,
+                style: GoogleFonts.quicksand(
+                  fontWeight: FontWeight.w700,
                   color: color,
                 ),
               ),

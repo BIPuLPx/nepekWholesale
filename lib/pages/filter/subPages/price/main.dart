@@ -88,7 +88,7 @@ class _FilterPricePageState extends State<FilterPricePage> {
             },
             child: Text(
               'Apply',
-              style:GoogleFonts.nunitoSans(color:buttonTextColor,fontWeight: FontWeight.w600,
+              style:GoogleFonts.quicksand(color:buttonTextColor,fontWeight: FontWeight.w600,
               )
             ),
           ),
@@ -110,14 +110,14 @@ class InputPrice extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w600),
+          style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 10),
         SizedBox(
           width: 110,
           // height: 30,
           child: TextFormField(
-            style: GoogleFonts.nunitoSans(),
+            style: GoogleFonts.quicksand(),
             initialValue: initialValue,
             onChanged: (value) {
               changeFn(label, value);

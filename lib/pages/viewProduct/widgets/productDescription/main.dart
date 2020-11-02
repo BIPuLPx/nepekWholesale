@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:skite_buyer/pages/viewProduct/styles/heading.dart';
 import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
 
 class ProductDescription extends StatelessWidget {
@@ -14,18 +15,11 @@ class ProductDescription extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Description',
-              style: GoogleFonts.nunitoSans(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                // color: AppColors().primaryText(),
-              ),
-            ),
+            heading('Description'),
             SizedBox(height: 15),
             Text(
               product.productDescription,
-              style: GoogleFonts.nunitoSans(height: 1.7),
+              style: GoogleFonts.quicksand(height: 1.7),
             )
           ],
         ),

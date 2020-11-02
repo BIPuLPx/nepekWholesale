@@ -34,7 +34,7 @@ class ShopByCategoryContainer extends StatelessWidget {
             child: Text(
               label,
               style:
-                  GoogleFonts.nunitoSans(fontSize: 13, fontWeight: FontWeight.w600),
+                  GoogleFonts.quicksand(fontSize: 13, fontWeight: FontWeight.w600),
             ),
           )
         ],

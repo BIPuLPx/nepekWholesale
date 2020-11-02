@@ -13,7 +13,9 @@ class ProductName extends StatelessWidget {
         children: [
           Text(
             capitalize(name),
-            style: GoogleFonts.nunitoSans(),
+            style: GoogleFonts.quicksand(
+              fontWeight: FontWeight.w500
+            ),
           ),
         ],
       ),

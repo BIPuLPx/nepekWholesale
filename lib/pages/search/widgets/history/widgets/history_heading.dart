@@ -13,7 +13,7 @@ class SearchHistoryHeading extends StatelessWidget {
         children: [
           Text(
             'Recents',
-            style: TextStyle(
+            style: GoogleFonts.quicksand(
               fontWeight: FontWeight.w800,
             ),
           ),

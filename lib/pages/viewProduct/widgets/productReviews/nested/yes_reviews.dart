@@ -11,7 +11,7 @@ class YesReviews extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Heading(heading: 'Reviews'),
+        Heading(),
         Column(
           children: reviews
               .map((review) => ReviewLayout(

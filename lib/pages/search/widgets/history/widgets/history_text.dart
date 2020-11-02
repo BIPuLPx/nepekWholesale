@@ -24,7 +24,7 @@ class HistoryText extends StatelessWidget {
           children: [
             Text(
               text,
-              style: GoogleFonts.roboto(
+              style: GoogleFonts.quicksand(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
               ),

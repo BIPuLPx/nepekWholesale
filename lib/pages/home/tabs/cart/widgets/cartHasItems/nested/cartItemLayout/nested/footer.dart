@@ -42,7 +42,7 @@ class _QtySelectorState extends State<QtySelector> {
       children: [
         Text(
           'QTY',
-          style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w600),
+          style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 10),
         Container(
@@ -65,7 +65,7 @@ class _QtySelectorState extends State<QtySelector> {
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: widget.qty,
-                style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w600),
+                style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
                 onChanged: (String newValue) {
                   cart.changeQty(widget.index, newValue);
                 },
@@ -76,7 +76,7 @@ class _QtySelectorState extends State<QtySelector> {
                     child: Center(
                       child: Text(
                         value,
-                        style: GoogleFonts.nunitoSans(
+                        style: GoogleFonts.quicksand(
                           fontWeight: FontWeight.w600,
                           color: darktheme ? Colors.white : Colors.black,
                         ),
@@ -113,7 +113,7 @@ class RemoveButton extends StatelessWidget {
           SizedBox(width: 5),
           Text(
             'Remove',
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
                 color: darktheme ? Colors.white54 : Colors.black54
                 // color: AppColors().secondaryText(),
                 ),

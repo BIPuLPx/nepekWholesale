@@ -27,7 +27,7 @@ class CouponCode extends StatelessWidget {
             onPressed: () {},
             child: Text(
               'Apply',
-              style: GoogleFonts.nunitoSans(
+              style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w600,
                   color: darkTheme ? Colors.black : Colors.white),
             ),
@@ -37,7 +37,7 @@ class CouponCode extends StatelessWidget {
     );
   }
 
-  TextStyle _couponCode() => GoogleFonts.nunitoSans(
+  TextStyle _couponCode() => GoogleFonts.quicksand(
         fontWeight: FontWeight.w700,
         fontSize: 19,
       );

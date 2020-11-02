@@ -10,9 +10,7 @@ class YesQnAs extends StatelessWidget {
     final product = Provider.of<ViewProductState>(context);
     return Column(
       children: [
-        QnaHeading(
-          heading: 'Questions and Answers',
-        ),
+        QnaHeading(),
         Column(
           children: product.productQnas
               .map((qna) => QnaLayout(

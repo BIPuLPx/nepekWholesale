@@ -31,9 +31,9 @@ class AddToCart extends StatelessWidget {
             },
             child: Text(
               'Add To Cart',
-              style: GoogleFonts.nunitoSans(
+              style: GoogleFonts.quicksand(
                 color: buttonTextColor,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w800,
               ),
             ),
           ),

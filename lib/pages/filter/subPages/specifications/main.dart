@@ -84,7 +84,7 @@ class FilterSpecificationsRoot extends StatelessWidget {
   }
 
   Row _checkBoxTexts(val, provider) {
-    _labelStyle() => GoogleFonts.nunitoSans(
+    _labelStyle() => GoogleFonts.quicksand(
         fontWeight: provider.currentOptions.contains(val['value'])
             ? FontWeight.w800
             : FontWeight.w400,

@@ -61,7 +61,7 @@ Widget addVal(
           color: darktheme ? Colors.white : AppColors().primaryBlue(),
           child: Text(
             label,
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
               color: darktheme ? Colors.black : Colors.white,
               fontWeight: FontWeight.w600,
             ),

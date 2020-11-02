@@ -48,7 +48,7 @@ class SignInButton extends StatelessWidget {
               SizedBox(width: 60),
               Text(
                 label,
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   color: labelColor,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

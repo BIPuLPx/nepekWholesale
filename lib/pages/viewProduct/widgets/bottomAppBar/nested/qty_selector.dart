@@ -40,7 +40,7 @@ class _QtySelectorState extends State<QtySelector> {
           child: DropdownButton<String>(
             isExpanded: true,
             value: dropdownValue,
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
                 color: darkTheme ? Colors.white : Colors.black,
                 fontWeight: FontWeight.w600),
             onChanged: (String newValue) {

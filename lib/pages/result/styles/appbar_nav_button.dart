@@ -29,7 +29,7 @@ class BottomNavBtn extends StatelessWidget {
               SizedBox(width: 15),
               Text(
                 label,
-                style: GoogleFonts.nunitoSans(
+                style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w600,
                   color: color,
                 ),

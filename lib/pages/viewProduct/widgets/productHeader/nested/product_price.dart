@@ -8,19 +8,19 @@ class ProductPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
             'NPR  ',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 18,
+            style: GoogleFonts.quicksand(
+              fontSize: 16,
               fontWeight: FontWeight.w700,
               // color: AppColors().primaryText(),
             ),
           ),
           Text(
             '$price.00',
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),

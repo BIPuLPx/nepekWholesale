@@ -112,7 +112,7 @@ class ProfileBottomNav extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           label: Text(
             'Sign Out',
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
               fontWeight: FontWeight.w600,
               color: Colors.red,
             ),

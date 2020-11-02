@@ -50,7 +50,7 @@ class AddAddressBottomAppBar extends StatelessWidget {
           color: darktheme ? Colors.white : AppColors().primaryBlue(),
           child: Text(
             'Done',
-            style: GoogleFonts.nunitoSans(
+            style: GoogleFonts.quicksand(
               fontWeight: FontWeight.w600,
               color: darktheme ? Colors.black : null,
             ),

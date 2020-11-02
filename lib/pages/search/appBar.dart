@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/search/search_provider.dart';
 import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 searchAppBar(
     context, currentSuffix, searchTerm, Function setSearchTerm, searchHolder) {
-  final search = Provider.of<SearchState>(context);
   final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
   final deviceWidth = MediaQuery.of(context).size.width;
   return AppBar(
@@ -71,7 +69,7 @@ searchAppBar(
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     hintText: 'What are you looking for ?',
-                    hintStyle: GoogleFonts.nunitoSans(
+                    hintStyle: GoogleFonts.quicksand(
                       color: darkTheme
                           ? TextInputColors().darkThemeHintText()
                           : TextInputColors().lightThemeHintText(),
@@ -107,8 +105,9 @@ searchAppBar(
                 child: Center(
                   child: Text(
                     'Cancel',
-                    style: GoogleFonts.ptSans(
-                      color: AppColors().primaryBlue(),
+                    style: GoogleFonts.quicksand(
+                      color:
+                          darkTheme ? Colors.white : AppColors().primaryBlue(),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
