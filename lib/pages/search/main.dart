@@ -44,8 +44,7 @@ class _SearchPageRootState extends State<SearchPageRoot> {
           context, currentSuffix, searchTerm, setSearchTerm, _searchHolder),
       body: Container(
         // padding: EdgeInsets.only(left: 20, right: 10, top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             searchTerm == '' ? SearchHistory() : CurrentSearch(val: searchTerm),
             // Text('other autocomplete'),

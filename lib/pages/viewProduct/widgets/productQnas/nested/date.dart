@@ -12,6 +12,8 @@ class Date extends StatelessWidget {
         DateFormat.yMMMd('en_US').format(DateTime.parse(date)),
         style: GoogleFonts.nunitoSans(
           fontSize: 12,
+          color: Colors.grey,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );

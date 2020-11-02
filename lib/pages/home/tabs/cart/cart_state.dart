@@ -43,12 +43,15 @@ class CartState with ChangeNotifier {
         totalPrice += int.parse(item['price']);
       }
     }
+    initialgetCart = true;
     checkCart();
   }
 
   void deleteItem(int index) {
+    cartItems.removeAt(index);
     final cart = Hive.box('cart');
     cart.deleteAt(index);
+    checkCart();
     notifyListeners();
   }
 

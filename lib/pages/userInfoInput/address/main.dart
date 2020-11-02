@@ -5,7 +5,6 @@ import 'package:skite_buyer/pages/userInfoInput/address/address_provider.dart';
 import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
 import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
 
 class AddDeliveryAddress extends StatelessWidget {
   @override

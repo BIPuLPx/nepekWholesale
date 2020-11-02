@@ -11,8 +11,7 @@ class SubCategoryImage extends StatelessWidget {
       width: 60,
       child: CachedNetworkImage(
         imageUrl: url,
-        placeholder: (context, url) =>
-            Center(child: CircularProgressIndicator()),
+        placeholder: (context, url) => Container(),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );

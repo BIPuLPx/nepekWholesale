@@ -1,20 +1,14 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/listeners/cart_no_listener.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
 import 'package:skite_buyer/pages/home/tabs/categories/main.dart';
 import 'package:skite_buyer/pages/home/tabs/home/main.dart';
 import 'package:skite_buyer/pages/home/tabs/profile/main.dart';
-import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-
 import '../../styles/extensions.dart';
-import '../userInfoInput/address/main.dart';
 // import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,6 +36,7 @@ class _HomePageRootState extends State<HomePageRoot> {
     CartTab(outside: false),
     // AddDeliveryAddress()
   ];
+  final PageController _pageController = PageController();
 
   @override
   void initState() {
@@ -52,7 +47,25 @@ class _HomePageRootState extends State<HomePageRoot> {
   Widget build(BuildContext context) {
     final bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
-      body: tabs[_currentIndex],
+      body: PageView(
+        //  physics: N(),
+        // physics: NeverScrollableScrollPhysics(),
+        // physics: ClampingScrollPhysics(),
+        controller: _pageController,
+        children: tabs,
+        onPageChanged: (page) {
+          setState(() {
+            _currentIndex = page;
+            // print(page);
+          });
+        },
+      ),
+
+      // body: IndexedStack(
+      //   index: _currentIndex,
+      //   children: tabs,
+      // ),
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
@@ -73,7 +86,9 @@ class _HomePageRootState extends State<HomePageRoot> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            // print(index);
           });
+          _pageController.jumpToPage(index);
         },
       ),
     );
@@ -96,10 +111,16 @@ class _HomePageRootState extends State<HomePageRoot> {
       activeIcon: Container(
           margin: EdgeInsets.only(top: 7),
           child: label == 'cart'
-              ? CartNoListener(icon: _selected(label))
+              ? CartNoListener(
+                  icon: _selected(label),
+                  labelColor: Colors.white,
+                )
               : _selected(label)),
       icon: label == 'cart'
-          ? CartNoListener(icon: _unselected(label))
+          ? CartNoListener(
+              icon: _unselected(label),
+              labelColor: Colors.white,
+            )
           : _unselected(label),
     );
   }

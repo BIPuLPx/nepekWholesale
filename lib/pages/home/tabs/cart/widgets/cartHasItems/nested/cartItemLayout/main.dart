@@ -8,8 +8,17 @@ class CartItemLayout extends StatelessWidget {
   final int index;
   final String quantity;
   final List totalQty;
-  CartItemLayout(
-      {this.name, this.price, this.index, this.quantity, this.totalQty});
+  final String imgName;
+  final String uid;
+  CartItemLayout({
+    this.name,
+    this.price,
+    this.index,
+    this.quantity,
+    this.totalQty,
+    this.imgName,
+    this.uid,
+  });
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,7 +31,7 @@ class CartItemLayout extends StatelessWidget {
             name: name,
             price: price,
             imageurl:
-                'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
+                'https://skiteimages.ams3.digitaloceanspaces.com/productImages/$uid/miniThumb/$imgName',
           ),
           CartItemFooter(
             index: index,

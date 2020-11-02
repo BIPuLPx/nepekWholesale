@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/qa_graphics.dart';
-import 'package:skite_buyer/styles/colors.dart';
 
 class NoAnswer extends StatelessWidget {
   @override
@@ -9,11 +7,11 @@ class NoAnswer extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        QAGraphics(text: 'A'),
         Flexible(
           child: Text(
             'Not Answered',
             style: GoogleFonts.nunitoSans(
+              color: Colors.grey,
               // color: AppColors().secondaryText(),
             ),
           ),

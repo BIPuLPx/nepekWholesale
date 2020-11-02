@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   primaryBlue() => Color(0xff256eff);
-  primaryGreen() => Color.fromRGBO(11, 124, 132, 1);
+  primaryGreen() => Color.fromRGBO(11, 180, 32, 1);
   primaryYellow() => Color.fromRGBO(254, 238, 0, 1);
   inkWellSplash() => Color.fromRGBO(37, 110, 255, 0.58);
   bottomNavbarUnselected() => Colors.grey[600];

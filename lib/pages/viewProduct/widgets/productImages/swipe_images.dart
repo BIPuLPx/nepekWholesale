@@ -1,38 +1,49 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:provider/provider.dart';
+import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
 import 'package:skite_buyer/styles/colors.dart';
+
+// @override
+// void initState() {
+//   super.initState();
+// }
+
+// @override
+// Widget build(BuildContext context) {
 
 class SwipeImages extends StatefulWidget {
   @override
   _SwipeImagesState createState() => new _SwipeImagesState();
 }
 
-class _SwipeImagesState extends State<SwipeImages> {
+class _SwipeImagesState extends State<SwipeImages>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+    final ViewProductState provider = Provider.of(context);
+    // print(provider.productImgs);
     return Center(
       child: Container(
-        padding: EdgeInsets.only(top: 15),
+        padding: EdgeInsets.only(top: 1, bottom: 10),
         // color: Colors.white,
-        height: 445,
+        height: 440,
         width: double.infinity,
         child: new Swiper(
           itemBuilder: (BuildContext context, int index) {
             // print(index);
-            return Container(
-              padding: EdgeInsets.only(top: 5, bottom: 40),
-              child: new Image.network(
-                "http://via.placeholder.com/600x800",
-                fit: BoxFit.fill,
-              ),
-            );
+            return ProductImage(imgName: provider.productImgs[index]);
           },
-          itemCount: 4,
-          viewportFraction: 0.8,
-          scale: 0.8,
+          itemCount: provider.productImgs.length,
+          // viewportFraction: 0.8,
+          scale: 0.7,
           pagination: new SwiperPagination(
-            margin: EdgeInsets.only(top: 20),
+            margin: EdgeInsets.only(top: 40),
             builder: DotSwiperPaginationBuilder(
               color: Colors.grey[350],
               activeColor: AppColors().primaryBlue(),
@@ -44,6 +55,37 @@ class _SwipeImagesState extends State<SwipeImages> {
           control: new SwiperControl(size: 0),
         ),
       ),
+    );
+  }
+}
+
+class ProductImage extends StatelessWidget {
+  final String imgName;
+  const ProductImage({Key key, this.imgName}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final ViewProductState provider = Provider.of(context);
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: Container(
+            height: 500,
+            // width: 600,
+          ),
+        ),
+        Center(
+          child: Container(
+            margin: EdgeInsets.only(top: 10, bottom: 40),
+            child: Image.network(
+              'https://skiteimages.ams3.digitaloceanspaces.com/productImages/${provider.productUid}/other/$imgName',
+              height: 600,
+              // height: 800,
+              // width: 600,
+              // placeholder: kTransparentImage,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

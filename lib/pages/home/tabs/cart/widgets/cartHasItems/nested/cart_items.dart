@@ -17,6 +17,8 @@ class CartItems extends StatelessWidget {
               index: item['index'],
               quantity: item['item']['qty'],
               totalQty: item['item']['totalQty'],
+              imgName: item['item']['miniThumb'],
+              uid:item['item']['product_uid']
             ),
           )
           .toList(),

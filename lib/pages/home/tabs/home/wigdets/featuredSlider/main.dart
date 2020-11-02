@@ -19,14 +19,14 @@ class _FeaturedSliderState extends State<FeaturedSlider>
         HomeFonts().heading('Featured'),
         Container(
           // color: Colors.red,
-          height: 100,
+          height: 200,
           child: ListView(
             physics:
                 BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             scrollDirection: Axis.horizontal,
             children: [
               BrandsContainer(text: 'Apple'),
-              BrandsContainer(text: 'Samsung Electronics'),
+              BrandsContainer(text: 'Samsung'),
               BrandsContainer(text: 'Huawei'),
               BrandsContainer(text: 'LG'),
               BrandsContainer(text: 'Dulla'),

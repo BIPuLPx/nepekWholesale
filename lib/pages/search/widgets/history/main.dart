@@ -7,7 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class SearchHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final searchHistory = Hive.box('search').values.toList().reversed;
+    final searchHistory = Hive.box('search').values.toList();
     return ValueListenableBuilder(
       valueListenable: Hive.box('search').listenable(),
       builder: (context, box, widget) {

@@ -10,6 +10,8 @@ class QsnBy extends StatelessWidget {
       name,
       style: GoogleFonts.nunitoSans(
         fontSize: 12,
+        fontWeight: FontWeight.w600,
+        color: Colors.grey
       ),
     );
   }

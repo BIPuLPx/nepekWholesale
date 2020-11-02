@@ -36,15 +36,15 @@ class ProductQnas extends StatelessWidget {
                 onPressed: () {
                   if (!UserPreferences().getLoggedIn()) {
                     providerHead.thirdPartyProfileRoute = 'view_product';
-                    showErrorToast(
-                        context, "Please sign in before asking question");
+                    showErrorToast(context, "Please sign in");
                     Navigator.pushNamed(context, 'profile',
                         arguments: {"page": "view_product"});
                   } else {
                     Navigator.pushNamed(context, 'ask_a_qsn', arguments: {
                       'productName': product.productName,
                       'productID': product.productID,
-                      'sellerID': product.sellerUid
+                      'sellerID': product.sellerUid,
+                      'refresh': product.refresh
                     });
                   }
                 },

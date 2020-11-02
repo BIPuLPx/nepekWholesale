@@ -15,6 +15,8 @@ class ViewProductState with ChangeNotifier {
   String productID;
   bool initialFetch = false;
   dynamic result = spinkit;
+  List productImgs;
+  String miniThumb;
   String productUid;
   String sellerUid;
   String productBrand;
@@ -40,6 +42,7 @@ class ViewProductState with ChangeNotifier {
 
     final res = jsonDecode(response.body);
     // print(res);
+    productID = res['_id'];
     productUid = res['uid'];
     sellerUid = res['seller_id'];
     productBrand = res['brand'];
@@ -53,6 +56,8 @@ class ViewProductState with ChangeNotifier {
     productHighlights = res['highlights'];
     productSpecifications = res['specifications'];
     productReviews = res['reviews'];
+    productImgs = res['imgs'];
+    miniThumb = res['miniThumb'];
     // productQnas = res['qna'];
     // getQnames(res['qna']);
     populateQty(res['qty']);
@@ -68,7 +73,6 @@ class ViewProductState with ChangeNotifier {
   }
 
   Future getQnas() async {
-    print('$productApi/qna/buyer/only_four?key=$productID');
     final response =
         await http.get('$productApi/qna/buyer/only_four?key=$productID');
     productQnas = jsonDecode(response.body);
@@ -102,6 +106,7 @@ class ViewProductState with ChangeNotifier {
   }
 
   void populateQty(int qty) {
+    totalQty = [];
     for (var i = 1; i <= qty; i++) {
       totalQty.add(i.toString());
     }
@@ -131,12 +136,20 @@ class ViewProductState with ChangeNotifier {
     // print('Add To cart');
     cart.add({
       'product_uid': productUid,
+      'product_id': productID,
       'name': productName,
       'qty': qtyToBuy,
       'totalQty': totalQty,
+      'miniThumb': miniThumb,
       'seller_uid': sellerUid,
       'options': buyOptions,
       'price': productPrice
     });
+  }
+
+  void refresh() {
+    result = spinkit;
+    notifyListeners();
+    fetchProduct();
   }
 }

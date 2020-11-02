@@ -54,7 +54,7 @@ class ContinueWithEmailProvider with ChangeNotifier {
         UserPreferences().displayName(resData['data']['displayName']);
         UserPreferences().buyerKey(resData['data']['uid']);
         UserPreferences().loggedIn(true);
-        sucessToast(context, 'Sucessfully Signed In');
+        sucessToast(context, 'Signed in');
         refresh();
         if (thirdPartyRoute == null) {
           notThirdPartyRoute(resData, context);

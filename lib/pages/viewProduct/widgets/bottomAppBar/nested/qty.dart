@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:skite_buyer/pages/viewProduct/widgets/bottomAppBar/nested/qty_selector.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
 
 class Qty extends StatelessWidget {
   @override
@@ -10,7 +9,9 @@ class Qty extends StatelessWidget {
       children: [
         Text(
           "QTY",
-          style: AppFontStyle().button(AppColors().primaryText()),
+          style: GoogleFonts.nunitoSans(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         SizedBox(width: 10),
         QtySelector(),

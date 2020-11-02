@@ -8,6 +8,7 @@ class BrandsContainer extends StatelessWidget {
   const BrandsContainer({Key key, this.text, this.args}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width * 0.35;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, 'featured_brand_landing', arguments: args);
@@ -16,11 +17,11 @@ class BrandsContainer extends StatelessWidget {
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: AppColors().primaryYellow(),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
         ),
-        margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-        height: 100,
-        width: 150,
+        margin: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
+        // height: 50,
+        width: width,
         child: Center(
           child: Text(
             text,

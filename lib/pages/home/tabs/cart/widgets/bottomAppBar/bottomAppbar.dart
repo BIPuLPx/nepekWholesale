@@ -22,7 +22,7 @@ class CartBottomNavBar extends StatelessWidget {
             provider.populateForCheckout(context);
           },
           label: Text(
-            'Proceed to Checkout for NPR ${provider.totalPrice.toString()}',
+            'Checkout for NPR ${provider.totalPrice.toString()}.00',
             style: GoogleFonts.nunitoSans(
               fontWeight: FontWeight.w600,
               color: darkTheme ? Colors.black : Colors.white,

@@ -5,7 +5,6 @@ import 'nested/product_name.dart';
 import 'nested/product_price.dart';
 import 'nested/star_rating.dart';
 
-
 class GridLayout extends StatelessWidget {
   final int index;
   final result;
@@ -28,7 +27,10 @@ class GridLayout extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ResultProductImage(),
+                ResultProductImage(
+                  dir: result.products[index]['uid'],
+                  imgName: result.products[index]['thumbnail'],
+                ),
                 SizedBox(height: 10),
                 Expanded(
                   child: Container(

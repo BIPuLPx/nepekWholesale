@@ -1,18 +1,26 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ResultProductImage extends StatelessWidget {
+  final String dir;
+  final String imgName;
+  const ResultProductImage({Key key, this.dir, this.imgName}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CachedNetworkImage(
-        imageUrl:
-            // '$productApi/images/${widget.products[index]['uid']}/${widget.products[index]['miniThumb']}',
-            'http://rachelwojo.com/wp-content/uploads/2015/05/nature-square.jpg',
-        placeholder: (context, url) =>
-            Container(height: 120, child: CircularProgressIndicator()),
-        errorWidget: (context, url, error) => Icon(Icons.error),
-      ),
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: Container(
+            height: 150,
+            // width: 120,
+          ),
+        ),
+        Center(
+          child: Image.network(
+            'https://skiteimages.ams3.digitaloceanspaces.com/productImages/$dir/thumb/$imgName',
+          ),
+        ),
+      ],
     );
   }
 }

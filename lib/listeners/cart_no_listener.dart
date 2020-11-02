@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:skite_buyer/styles/colors.dart';
 
 class CartNoListener extends StatelessWidget {
@@ -30,20 +29,20 @@ class CartNoListener extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors().primaryGreen(),
-                            spreadRadius: 0.25,
-                            blurRadius: 1,
+                            color: AppColors().primaryBlue(),
+                            spreadRadius: 0.025,
+                            blurRadius: 0.11,
                           ),
                         ],
-                        color: AppColors().primaryGreen(),
+                        color: AppColors().primaryBlue(),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
                         child: Text(
                           box.length.toString(),
-                          style: GoogleFonts.ptSans(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
+                          style: GoogleFonts.nunito(
+                            fontSize: 9,
+                            fontWeight: FontWeight.w700,
                             color: labelColor,
                           ),
                         ),

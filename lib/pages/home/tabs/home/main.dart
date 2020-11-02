@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,9 +8,18 @@ import 'package:skite_buyer/pages/home/tabs/home/wigdets/shopByCategory/main.dar
 import 'package:skite_buyer/styles/appBars/home.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return SafeArea(
       child: Scaffold(

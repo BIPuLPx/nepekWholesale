@@ -39,9 +39,10 @@ class AskaQuestionProvider with ChangeNotifier {
         body: jsonEncode(data),
       );
       if (response.statusCode == 200) {
+        args['refresh']();
         Navigator.of(context).pop();
         Navigator.of(context).pop();
-        sucessFulPopup(context, "Sucessfully asked question");
+        sucessFulPopup(context, "Asked question");
       }
     }
   }

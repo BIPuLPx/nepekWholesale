@@ -25,7 +25,10 @@ class ListLayout extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ResultProductImage(),
+                ResultProductImage(
+                  dir: result.products[index]['uid'],
+                  imgName: result.products[index]['thumbnail'],
+                ),
                 SizedBox(width: 10),
                 Expanded(
                   child: Stack(

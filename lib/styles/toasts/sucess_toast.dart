@@ -9,6 +9,7 @@ sucessToast(BuildContext context, String message) {
   fToast.init(context);
 
   Widget toast = Container(
+    margin: EdgeInsets.only(bottom: 15),
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(25.0),

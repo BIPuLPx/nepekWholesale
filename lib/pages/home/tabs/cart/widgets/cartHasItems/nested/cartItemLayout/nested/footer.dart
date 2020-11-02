@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:skite_buyer/pages/home/tabs/cart/cart_state.dart';
 import 'package:skite_buyer/styles/colors.dart';
 import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
 
 class CartItemFooter extends StatelessWidget {
   final String quantity;
