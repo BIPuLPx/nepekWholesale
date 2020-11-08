@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/continueEmail/continue_email_provider.dart';
-import 'package:skite_buyer/provider_head.dart';
-import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/text/textInput.dart';
+import 'package:nepek_buyer/pages/continueEmail/continue_email_provider.dart';
+import 'package:nepek_buyer/provider_head.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/text/textInput.dart';
 
 class ContinueWithEmail extends StatelessWidget {
   final args;
@@ -45,9 +45,9 @@ class ContinueWithEmailRoot extends StatelessWidget {
               SizedBox(height: 100),
               Text(
                 'Enter your credentials',
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   fontSize: 23,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(height: 20),
@@ -102,7 +102,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         onPressed: () {},
         child: Text(
           'Forgot Password ?',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 12,
             color: darkTheme ? Colors.white : AppColors().primaryBlue(),
           ),
@@ -125,7 +125,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         },
         child: Text(
           'Sign in',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
             color: darkTheme ? Colors.black : Colors.white,
           ),
@@ -134,8 +134,8 @@ class ContinueWithEmailRoot extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(bool isBold, bool darkTheme) => GoogleFonts.quicksand(
-        fontWeight: isBold ? FontWeight.w800 : null,
+  TextStyle _textStyle(bool isBold, bool darkTheme) => GoogleFonts.poppins(
+        fontWeight: isBold ? FontWeight.w700 : null,
         color: isBold
             ? darkTheme
                 ? Colors.white

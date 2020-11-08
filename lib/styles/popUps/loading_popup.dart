@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 final spinkit = SpinKitDoubleBounce(
   color: AppColors().primaryBlue(),
@@ -16,7 +16,7 @@ Future<void> loadingPopUP(context, String title) async {
       return AlertDialog(
         title: Text(
           'Loading',
-          style: GoogleFonts.quicksand(fontWeight: FontWeight.w800),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         content: SingleChildScrollView(
           child: Column(
@@ -25,7 +25,7 @@ Future<void> loadingPopUP(context, String title) async {
               SizedBox(height: 20),
               Text(
                 title,
-                style: GoogleFonts.quicksand(color: appColors['secondaryText']),
+                style: GoogleFonts.poppins(color: appColors['secondaryText']),
               )
             ],
           ),

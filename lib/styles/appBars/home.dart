@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 homeAppbar(context, bool darkTheme) {
   return // here the desired height
@@ -43,7 +43,7 @@ homeAppbar(context, bool darkTheme) {
             children: [
               Text(
                 'What are you looking for ?',
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   color: darkTheme
                       ? TextInputColors().darkThemeHintText()
                       : TextInputColors().lightThemeHintText(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class FilterItemContainer extends StatelessWidget {
   final String text;

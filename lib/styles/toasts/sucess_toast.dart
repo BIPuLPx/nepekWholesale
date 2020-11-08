@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 sucessToast(BuildContext context, String message) {
   FToast fToast;
@@ -31,10 +31,10 @@ sucessToast(BuildContext context, String message) {
 
         Text(
           message,
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 14,
             color: Colors.white,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
           ),
         ),
         // )

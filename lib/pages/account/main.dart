@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/account/account_provider.dart';
-import 'package:skite_buyer/pages/account/appBar.dart';
-import 'package:skite_buyer/pages/account/content/main.dart';
-import 'package:skite_buyer/pages/account/shippingaddress/main.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
-import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
+import 'package:nepek_buyer/pages/account/account_provider.dart';
+import 'package:nepek_buyer/pages/account/appBar.dart';
+import 'package:nepek_buyer/pages/account/content/main.dart';
+import 'package:nepek_buyer/pages/account/shippingaddress/default.dart';
+import 'package:nepek_buyer/pages/account/shippingaddress/main.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class AccountPage extends StatelessWidget {
   final args;
@@ -27,13 +29,15 @@ class AccountPageRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final account = Provider.of<AccountState>(context);
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     if (account.initState == false) {
+      account.args = args;
       account.getUserData();
     }
     // print(args);
     // print(account.phoneNumber);
     return Scaffold(
-      // appBar:
+      backgroundColor: darkTheme ? Colors.black : Colors.white,
       body: CustomScrollView(
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         slivers: [
@@ -48,39 +52,18 @@ class AccountPageRoot extends StatelessWidget {
                   hasValue: account.phoneNumber == null ? false : true,
                   changeRoute: 'input_phone_number',
                 ),
+                DefaultDeliveryAddress(),
                 ShippingAddress()
               ],
             ),
           )
         ],
       ),
-
-      // Container(
-      //   width: double.infinity,
-      //   padding: EdgeInsets.only(left: 15, right: 15),
-      //   color: Colors.white,
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       SizedBox(height: 15),
-      //       AccountContent(
-      //         heading: 'Phone Number',
-      //         value: [account.phoneNumber],
-      //         hasValue: account.phoneNumber == null ? false : true,
-      //         changeRoute: 'input_phone_number',
-      //       ),
-      //       AccountContent(
-      //         heading: 'Shipping Address',
-      //         value: [account.state, account.district, account.area],
-      //         hasValue: account.area == null ? false : true,
-      //         changeRoute: 'input_delivery_address',
-      //       )
-      //     ],
-      //   ),
-      // ),
-      bottomNavigationBar: ProfileBottomNav(
-        checkProfile: args['checkProfile'],
-      ),
+      bottomNavigationBar: args['logout'] == true
+          ? Container(height: 0, width: 0)
+          : ProfileBottomNav(
+              checkProfile: args['checkProfile'],
+            ),
     );
   }
 }
@@ -100,7 +83,10 @@ class ProfileBottomNav extends StatelessWidget {
             color: Colors.red,
           ),
           onPressed: () {
+            final deliveryAddBox = Hive.box('deliveryAddresses');
+            deliveryAddBox.put('userAreas', null);
             UserPreferences().displayName(null);
+            UserPreferences().buyerKey(null);
             UserPreferences().jwtToken(null);
             UserPreferences().phoneNumber(null);
             UserPreferences().loggedIn(false);
@@ -112,7 +98,7 @@ class ProfileBottomNav extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           label: Text(
             'Sign Out',
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
               fontWeight: FontWeight.w600,
               color: Colors.red,
             ),

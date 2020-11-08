@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class ProductSpecifications extends StatelessWidget {
   @override

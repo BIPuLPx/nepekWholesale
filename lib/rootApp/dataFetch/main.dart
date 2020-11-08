@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
 
 class InjectDatas {
   Future testDeliveryAddress() async {

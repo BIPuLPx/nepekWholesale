@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/reviews/reviews_provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/pages/reviews/reviews_provider.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class TotalRating extends StatelessWidget {
   @override
@@ -50,8 +50,8 @@ class TotalRating extends StatelessWidget {
   }
 }
 
-TextStyle totalRatingText(String type) => GoogleFonts.quicksand(
-      fontWeight: type == 'rating' ? FontWeight.w800 : FontWeight.w400,
+TextStyle totalRatingText(String type) => GoogleFonts.poppins(
+      fontWeight: type == 'rating' ? FontWeight.w700 : FontWeight.w400,
       fontSize: type == 'rating' ? 25 : 12,
       color: type == 'rating'
           ? AppColors().primaryText()

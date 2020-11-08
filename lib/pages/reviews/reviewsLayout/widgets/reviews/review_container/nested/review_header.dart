@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class ReviewHeader extends StatelessWidget {
   final String name;

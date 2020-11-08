@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/filter/styles/appBar.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/pages/filter/styles/appBar.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 class FilterPricePage extends StatefulWidget {
   final args;
@@ -88,7 +88,7 @@ class _FilterPricePageState extends State<FilterPricePage> {
             },
             child: Text(
               'Apply',
-              style:GoogleFonts.quicksand(color:buttonTextColor,fontWeight: FontWeight.w600,
+              style:GoogleFonts.poppins(color:buttonTextColor,fontWeight: FontWeight.w600,
               )
             ),
           ),
@@ -110,14 +110,14 @@ class InputPrice extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 10),
         SizedBox(
           width: 110,
           // height: 30,
           child: TextFormField(
-            style: GoogleFonts.quicksand(),
+            style: GoogleFonts.poppins(),
             initialValue: initialValue,
             onChanged: (value) {
               changeFn(label, value);

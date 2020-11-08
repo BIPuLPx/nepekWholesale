@@ -2,21 +2,22 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/sending_code.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/dialogs/wrong_ver_code.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/code_input.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/screens/phone_number_input.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/dialogs/sending_code.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/dialogs/wrong_ver_code.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/screens/code_input.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/screens/phone_number_input.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/styles/popUps/loading_popup.dart';
-import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
+import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class PhoneInputState extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
 //
   bool initInject = false;
   bool isNextScreenAddress;
+  var argss;
   int currentScreen = 0;
 
   List<Widget> screens = [
@@ -32,10 +33,13 @@ class PhoneInputState extends ChangeNotifier {
   bool autoValidate = false;
 
   void initInjection(args) {
+    argss = args;
     if (args == null) {
       isNextScreenAddress = false;
     } else {
-      isNextScreenAddress = args['deliveryAdd'];
+      if (args['pg'] == null) {
+        isNextScreenAddress = args['deliveryAdd'];
+      }
     }
     initInject = false;
   }
@@ -64,9 +68,12 @@ class PhoneInputState extends ChangeNotifier {
       UserPreferences().phoneNumber(phoneNumber);
       Navigator.of(context).pop();
       // print('here');
-      sucessToast(context, 'Sucessfully updated your phone number');
+      sucessToast(context, 'Updated phone number');
       if (isNextScreenAddress == true) {
         Navigator.pushReplacementNamed(context, 'input_delivery_address');
+      } else if (argss['pg'] != null) {
+        argss['refresh']();
+        Navigator.of(context).pop();
       } else {
         Navigator.of(context).pop();
       }

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/not_signed_in_provider.dart';
-import 'package:skite_buyer/provider_head.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-
-import '../../../../../../styles/extensions.dart';
+import 'package:nepek_buyer/library/commonContainers/right_arrow_containers.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/profile_provider.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/common/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/not_sigin_in/not_signed_in_provider.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class NotSignedIn extends StatelessWidget {
   @override
@@ -24,6 +22,7 @@ class NotSignedInRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     final signin = Provider.of<NotSignedInState>(context);
     final profile = Provider.of<ProfileState>(context);
+    final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     if (signin.initState == false) {
       signin.thirdPartyRoute = profile.externalRoute;
@@ -31,7 +30,7 @@ class NotSignedInRoot extends StatelessWidget {
     }
 
     return Container(
-      // color: Colors.white,
+      color: darktheme ? Colors.black : Colors.white,
       child: ListView(
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
@@ -42,7 +41,7 @@ class NotSignedInRoot extends StatelessWidget {
           NotSignedInContainer(
             label: 'Continue with Facebook',
             icon: 'Facebook',
-            onTap: signin.signInWithFacebook,
+            onTap: () => signin.signInWithFacebook(context),
           ),
           NotSignedInContainer(
             label: 'Continue with Google',
@@ -52,7 +51,7 @@ class NotSignedInRoot extends StatelessWidget {
           NotSignedInContainer(
             label: 'Continue with Email',
             icon: 'Email',
-            onTap: signin.continueWithEmail,
+            onTap: () => signin.continueWithEmail(context),
           ),
           signin.thirdPartyRoute == null ? Common() : Container()
         ],
@@ -75,50 +74,12 @@ class NotSignedInContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool darkMode = Provider.of<DarkThemeProvider>(context).darkTheme;
-    // final profile = Provider.of<ProfileState>(context);
-    return Material(
-      // color: Colors.white,
-      child: InkWell(
-        onTap: () => onTap(context),
-        child: Container(
-          height: 50,
-          padding: EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 80,
-                    child: Image.asset(
-                      'icons/$icon.png',
-                      height: icon == 'Email' ? 13 : 17,
-                      color:
-                          icon == 'Email' && darkMode ? Colors.white54 : null,
-                    ),
-                  ),
-                  Text(
-                    capitalize(label),
-                    style: _containerLabel(),
-                  ),
-                ],
-              ),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 12,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return CommonMenu(
+      label: label,
+      icon: 'icons/$icon.png',
+      ontap: onTap,
     );
   }
-
-  TextStyle _containerLabel() => GoogleFonts.quicksand(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      );
 }
 
 class NotSignedInHeading extends StatelessWidget {
@@ -133,8 +94,8 @@ class NotSignedInHeading extends StatelessWidget {
       padding: EdgeInsets.only(left: 15, right: 15),
       child: Text(
         text,
-        style: GoogleFonts.quicksand(
-            fontSize: fontSize, fontWeight: FontWeight.w800, height: 1.5),
+        style: GoogleFonts.poppins(
+            fontSize: fontSize, fontWeight: FontWeight.w700, height: 1.5),
       ),
     );
   }

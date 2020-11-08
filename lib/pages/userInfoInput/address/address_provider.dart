@@ -3,16 +3,18 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
+import 'package:nepek_buyer/styles/toasts/error_toast.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 import 'input_delivery_address/main.dart';
 
 class AddDeliveryAddressState extends ChangeNotifier {
+  var args;
   Widget body = Container();
-  dynamic deliveryAddressbox = Hive.box('deliveryAddresses');
+  Box deliveryAddressbox = Hive.box('deliveryAddresses');
   bool initInjection = false;
   Map currentState;
   List deliveryStates;
@@ -90,21 +92,47 @@ class AddDeliveryAddressState extends ChangeNotifier {
 
   Future finalizedLocation(BuildContext context) async {
     loadingPopUP(context, 'Adding Address');
-    var response = await http.put(
-      '$peopleApi/customers/shippingaddress?type=add',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
-      },
-      body: jsonEncode(currentArea),
-    );
-    if (response.statusCode == 200) {
-       final newDeliveryAddress = jsonDecode(response.body);
-      Navigator.of(context).pop();
-      final deliveryAddBox = Hive.box('deliveryAddresses');
-      deliveryAddBox.put('userAreas', newDeliveryAddress);
-      sucessToast(context, "Sucessfully updated your address");
-      Navigator.of(context).pop();
+    if (!isDuplicateAddress(context)) {
+      var response = await http.put(
+        '$peopleApi/customers/shippingaddress?type=add',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
+        },
+        body: jsonEncode(currentArea),
+      );
+      if (response.statusCode == 200) {
+        final newDeliveryAddress = jsonDecode(response.body);
+
+        Navigator.of(context).pop();
+        final deliveryAddBox = Hive.box('deliveryAddresses');
+        deliveryAddBox.put('userAreas', newDeliveryAddress['deliveryAreas']);
+        deliveryAddBox.put(
+            'userDefault', newDeliveryAddress['default_delivery_area']);
+
+        if (args != null) {
+          args();
+        }
+        sucessToast(context, "Updated address");
+        Navigator.of(context).pop();
+      }
     }
+  }
+
+  bool isDuplicateAddress(BuildContext context) {
+    final userAreas = deliveryAddressbox.get('userAreas');
+    if (userAreas == null) {
+      return false;
+    } else {
+      for (var area in userAreas) {
+        if (area['_id'] == currentArea['_id']) {
+          Navigator.of(context).pop();
+          showErrorToast(context, 'Same address is already added');
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }

@@ -10,7 +10,7 @@ Future<void> connecting(BuildContext context) async {
       return AlertDialog(
         title: Text(
           'Signing in',
-          style: TextStyle(fontWeight: FontWeight.w800),
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
         content: SingleChildScrollView(
           child: Column(

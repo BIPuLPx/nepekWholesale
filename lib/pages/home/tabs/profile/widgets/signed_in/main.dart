@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/iconsClass/profile_tab_icons_icons.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/main.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/iconsClass/profile_tab_icons_icons.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/common/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 // import 'package:provider/provider.dart';
-// import 'package:skite_buyer/pages/home/tabs/profile/widgets/signed_in/signed_in_provider.dart';
+// import 'package:nepek_buyer/pages/home/tabs/profile/widgets/signed_in/signed_in_provider.dart';
 
 // class SignedIn extends StatelessWidget {
 //   @override
@@ -25,6 +25,7 @@ class SignedIn extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
+      backgroundColor: darkTheme ? Colors.black : Colors.white,
       body: Container(
         // color: Colors.white,
         child: CustomScrollView(
@@ -33,34 +34,46 @@ class SignedIn extends StatelessWidget {
           slivers: [
             SliverAppBar(
               elevation: 10,
+              title: Text(
+                UserPreferences().getDisplayName(),
+                // 'Bipul',
+                style: GoogleFonts.poppins(
+                  // color: AppColors().primaryBlue(),
+                  color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600, // fontStyle: FontStyle.italic
+                  // fontWeight: FontWeight.5old,
+                ),
+              ),
+              centerTitle: true,
               // shape: ContinuousRectangleBorder(
               //   borderRadius: BorderRadius.only(
               //     bottomLeft: Radius.circular(100),
               //     bottomRight: Radius.circular(100),
               //   ),
               // ),
-              expandedHeight: 200,
+              // expandedHeight: 200,
               pinned: true,
               // stretchTriggerOffset: 50,
               floating: true,
               // pinned: true,
               // backgroundColor: Colors.white,
-              toolbarHeight: 60,
-              flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.parallax,
-                // centerTitle: true,
-                title: Text(
-                  UserPreferences().getDisplayName(),
-                  // 'Bipul',
-                  style: GoogleFonts.quicksand(
-                    // color: AppColors().primaryBlue(),
-                    color: darkTheme ? Colors.white : AppColors().primaryBlue(),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800, // fontStyle: FontStyle.italic
-                    // fontWeight: FontWeight.5old,
-                  ),
-                ),
-              ),
+              // toolbarHeight: 60,
+              // flexibleSpace: FlexibleSpaceBar(
+              //   collapseMode: CollapseMode.parallax,
+              //   // centerTitle: true,
+              //   title: Text(
+              //     UserPreferences().getDisplayName(),
+              //     // 'Bipul',
+              //     style: GoogleFonts.poppins(
+              //       // color: AppColors().primaryBlue(),
+              //       color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+              //       fontSize: 20,
+              //       fontWeight: FontWeight.w700, // fontStyle: FontStyle.italic
+              //       // fontWeight: FontWeight.5old,
+              //     ),
+              //   ),
+              // ),
             ),
             SliverList(
               delegate: SliverChildListDelegate(
@@ -72,6 +85,7 @@ class SignedIn extends StatelessWidget {
                   ),
                   RoutesContainer(
                     label: 'questions',
+                    route: 'my_questions',
                   ),
                   RoutesContainer(
                     label: 'orders',

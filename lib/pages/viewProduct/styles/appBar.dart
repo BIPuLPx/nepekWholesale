@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/listeners/cart_no_listener.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/listeners/cart_no_listener.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 viewProductAppBar(viewProductContext) {
   final bool darktheme =

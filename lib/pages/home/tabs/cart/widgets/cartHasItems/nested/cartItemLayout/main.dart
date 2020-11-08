@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/footer.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/header.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/footer.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/header.dart';
 
 class CartItemLayout extends StatelessWidget {
   final String name;

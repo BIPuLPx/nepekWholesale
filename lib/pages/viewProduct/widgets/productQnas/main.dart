@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/no_qnas.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/yes_qnas.dart';
-import 'package:skite_buyer/provider_head.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/toasts/error_toast.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productQnas/nested/no_qnas.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productQnas/nested/yes_qnas.dart';
+import 'package:nepek_buyer/provider_head.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 
 class ProductQnas extends StatelessWidget {
   @override
@@ -50,10 +50,10 @@ class ProductQnas extends StatelessWidget {
                 },
                 child: Text(
                   'Ask a Question',
-                  style: GoogleFonts.quicksand(
+                  style: GoogleFonts.poppins(
                     color: buttonColor,
                     fontSize: 13,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),

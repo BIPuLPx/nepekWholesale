@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 Text heading(String val) => Text(
       val,
-      style: GoogleFonts.quicksand(
-        fontWeight: FontWeight.w800,
+      style: GoogleFonts.poppins(
+        fontWeight: FontWeight.w700,
         fontSize: 17,
       ),
     );

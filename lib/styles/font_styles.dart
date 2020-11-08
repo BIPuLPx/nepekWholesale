@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class AppFontStyle {
   button(Color color) => GoogleFonts.rubik(
@@ -46,8 +46,8 @@ class HomeFonts {
         margin: EdgeInsets.only(bottom: 0, left: 15),
         child: Text(
           text,
-          style: GoogleFonts.quicksand(
-            fontWeight: FontWeight.w800,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
             fontSize: 18,
           ),
         ),

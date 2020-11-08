@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/signupWithEmail/signup_with_email_provider.dart';
-import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/text/textInput.dart';
+import 'package:nepek_buyer/pages/signupWithEmail/signup_with_email_provider.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/text/textInput.dart';
 
 class SignUpWithEmail extends StatelessWidget {
   @override
@@ -34,9 +34,9 @@ class SignUpWithEmailRoot extends StatelessWidget {
               SizedBox(height: 100),
               Text(
                 'Enter your details',
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   fontSize: 23,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(height: 20),
@@ -82,7 +82,7 @@ class SignUpWithEmailRoot extends StatelessWidget {
           },
           child: Text(
             'Sign up',
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 color: darktheme ? Colors.black : Colors.white),
           ),

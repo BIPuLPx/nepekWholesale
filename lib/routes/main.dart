@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/account/main.dart';
-import 'package:skite_buyer/pages/ask_a_question/main.dart';
-import 'package:skite_buyer/pages/carasoulLanding/main.dart';
-import 'package:skite_buyer/pages/checkout/main.dart';
-import 'package:skite_buyer/pages/continueEmail/main.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/main.dart';
-import 'package:skite_buyer/pages/filter/main.dart';
-import 'package:skite_buyer/pages/filter/subPages/brand/main.dart';
-import 'package:skite_buyer/pages/filter/subPages/price/main.dart';
-import 'package:skite_buyer/pages/filter/subPages/specifications/main.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/main.dart';
-import 'package:skite_buyer/pages/qnas/main.dart';
-import 'package:skite_buyer/pages/result/main.dart';
-import 'package:skite_buyer/pages/reviews/main.dart';
-import 'package:skite_buyer/pages/search/main.dart';
-import 'package:skite_buyer/pages/home/main.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
-import 'package:skite_buyer/pages/signupWithEmail/main.dart';
-import 'package:skite_buyer/pages/userInfoInput/address/main.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/main.dart';
-import 'package:skite_buyer/pages/viewProduct/main.dart';
+import 'package:nepek_buyer/pages/account/main.dart';
+import 'package:nepek_buyer/pages/ask_a_question/main.dart';
+import 'package:nepek_buyer/pages/carasoulLanding/main.dart';
+import 'package:nepek_buyer/pages/confirmOrder/main.dart';
+import 'package:nepek_buyer/pages/myquestions/main.dart';
+import 'package:nepek_buyer/pages/payment_methods/main.dart';
+import 'package:nepek_buyer/pages/checkout/main.dart';
+import 'package:nepek_buyer/pages/continueEmail/main.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/main.dart';
+import 'package:nepek_buyer/pages/filter/main.dart';
+import 'package:nepek_buyer/pages/filter/subPages/brand/main.dart';
+import 'package:nepek_buyer/pages/filter/subPages/price/main.dart';
+import 'package:nepek_buyer/pages/filter/subPages/specifications/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/main.dart';
+import 'package:nepek_buyer/pages/qnas/main.dart';
+import 'package:nepek_buyer/pages/result/main.dart';
+import 'package:nepek_buyer/pages/reviews/main.dart';
+import 'package:nepek_buyer/pages/search/main.dart';
+import 'package:nepek_buyer/pages/home/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
+import 'package:nepek_buyer/pages/signupWithEmail/main.dart';
+import 'package:nepek_buyer/pages/userInfoInput/address/main.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/main.dart';
+import 'package:nepek_buyer/pages/viewProduct/main.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -32,6 +35,9 @@ class RouteGenerator {
 
       case 'profile':
         return MaterialPageRoute(builder: (_) => Profile(args: args));
+
+      case 'my_questions':
+        return MaterialPageRoute(builder: (_) => MyQuestions());
 
       case 'continue_with_email':
         return MaterialPageRoute(builder: (_) => ContinueWithEmail(args: args));
@@ -71,7 +77,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => VerifyPhoneNumber(args: args));
 
       case 'input_delivery_address':
-        return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
+        return MaterialPageRoute(
+            builder: (_) => AddDeliveryAddress(args: args));
 
       case 'account':
         return MaterialPageRoute(builder: (_) => AccountPage(args: args));
@@ -95,37 +102,20 @@ class RouteGenerator {
       case 'checkout':
         return MaterialPageRoute(builder: (_) => Checkout(args: args));
 
-      default:
-        // return
-        // MaterialPageRoute(
-        // builder: (_) => UserPreferences().getLoggedIn() == true
-        //     ? HomePage()
-        //     : DoYouHaveAccount());
+      case 'payment_method':
         return MaterialPageRoute(
-            builder: (_) =>
-                //  AddDeliveryAddress()
-                HomePage()
-            // SignedIn(),
-            );
-      // return MaterialPageRoute(
-      //     builder: (_) =>
-      //         ReviewsPage(args: {'id': '5f5f21abaea4a6058cb46fcd'}));
+          settings: RouteSettings(name: "payment_method"),
+          builder: (_) => PaymentMethods(args: args),
+        );
 
-      // return MaterialPageRoute(builder: (_) => AddDeliveryAddress());
-      // return MaterialPageRoute(
-      // builder: (_) => Scaffold(body: SafeArea(child: SignedIn())));
+      case 'order_now':
+        return MaterialPageRoute(builder: (_) => OrderDetails(args: args));
 
-      // return MaterialPageRoute(builder: (_) => VerifyPhoneNumber());
-
-      // return MaterialPageRoute(
-      //     builder: (_) => ViewProductPage(
-      //           args: {
-      //             'product_id': '5f5f21abaea4a6058cb46fcd',
-      //             'product_uid': 'hc38ozkbfipgrwso7t9mec50w'
-      //           },
-      //         ));
-
-      // return MaterialPageRoute(builder: (_) => SliverTest());
+      default:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: "home"),
+          builder: (_) => HomePage(),
+        );
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class TextInput extends StatelessWidget {
   final String labelText;
@@ -28,7 +28,7 @@ class TextInput extends StatelessWidget {
         validator: validator ?? null,
         onChanged: (val) => onChanged(val),
         obscureText: obscureText ?? false,
-        style: GoogleFonts.quicksand(),
+        style: GoogleFonts.poppins(),
         decoration: InputDecoration(
           labelText: labelText,
         ),

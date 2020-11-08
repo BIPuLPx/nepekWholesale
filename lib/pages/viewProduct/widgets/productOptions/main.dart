@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productOptions/nested/select_options.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productOptions/nested/select_options.dart';
 
 class ProductOptions extends StatelessWidget {
   final product;
@@ -41,9 +41,9 @@ class Heading extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 10),
       child: Text(
         'Select your prefered options',
-        style: GoogleFonts.quicksand(
+        style: GoogleFonts.poppins(
           fontSize: 18,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w700,
           // color: AppColors().primaryText(),
         ),
       ),

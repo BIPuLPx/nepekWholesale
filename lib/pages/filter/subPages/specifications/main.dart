@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/filter/styles/appBar.dart';
-import 'package:skite_buyer/pages/filter/styles/apply_spinkit.dart';
-import 'package:skite_buyer/pages/filter/subPages/specifications/specifications_provider.dart';
+import 'package:nepek_buyer/pages/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/filter/styles/apply_spinkit.dart';
+import 'package:nepek_buyer/pages/filter/subPages/specifications/specifications_provider.dart';
 
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class FilterSpecificationsPage extends StatelessWidget {
   final args;
@@ -84,9 +84,9 @@ class FilterSpecificationsRoot extends StatelessWidget {
   }
 
   Row _checkBoxTexts(val, provider) {
-    _labelStyle() => GoogleFonts.quicksand(
+    _labelStyle() => GoogleFonts.poppins(
         fontWeight: provider.currentOptions.contains(val['value'])
-            ? FontWeight.w800
+            ? FontWeight.w700
             : FontWeight.w400,
         fontSize: 14.2);
     return Row(

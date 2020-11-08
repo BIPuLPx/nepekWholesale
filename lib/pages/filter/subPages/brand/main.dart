@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/filter/styles/appBar.dart';
-import 'package:skite_buyer/pages/filter/styles/apply_spinkit.dart';
-import 'package:skite_buyer/pages/filter/subPages/brand/brand_provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/pages/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/filter/styles/apply_spinkit.dart';
+import 'package:nepek_buyer/pages/filter/subPages/brand/brand_provider.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class FilterBrandsPage extends StatelessWidget {
   final args;
@@ -65,7 +65,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
                 ? applySpinKit(buttonTextColor)
                 : Text(
                     'Apply',
-                    style: GoogleFonts.quicksand(
+                    style: GoogleFonts.poppins(
                       color: buttonTextColor,
                       fontWeight: FontWeight.w600,
                     ),
@@ -92,9 +92,9 @@ class FilterBrandsPageRoot extends StatelessWidget {
   }
 
   Row _checkBoxTexts(val, provider) {
-    _labelStyle() => GoogleFonts.quicksand(
+    _labelStyle() => GoogleFonts.poppins(
         fontWeight: provider.currentBrands.contains(val['name'])
-            ? FontWeight.w800
+            ? FontWeight.w700
             : FontWeight.w400,
         fontSize: 14.2);
     return Row(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/reviews/reviews_provider.dart';
+import 'package:nepek_buyer/pages/reviews/reviews_provider.dart';
 // import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ReviewsPage extends StatelessWidget {

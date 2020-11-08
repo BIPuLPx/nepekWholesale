@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/not_sigin_in/dialogs/connecting.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/not_sigin_in/dialogs/connecting.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class NotSignedInState extends ChangeNotifier {
   bool initState = false;
@@ -15,8 +15,6 @@ class NotSignedInState extends ChangeNotifier {
   String thirdPartyRoute;
 
   void continueWithEmail(BuildContext context) {
-    // print(checkLogged);
-    // checkLogged();
     Navigator.pushNamed(
       context,
       "continue_with_email",
@@ -94,7 +92,10 @@ void notThirdPartyRoute(backendData, context) {
   } else {
     UserPreferences().phoneNumber(backendData['data']['phone'].toString());
     deliveryAddBox.put('userAreas', backendData['data']['deliveryAreas']);
-
+    if (backendData['data']['default_delivery_area'] != null) {
+      deliveryAddBox.put(
+          'userDefault', backendData['data']['default_delivery_area']);
+    }
     Navigator.of(context).pop();
   }
 }
@@ -104,14 +105,21 @@ void yesThirdPartyRoute(backendData, context, route) {
   final deliveryAddBox = Hive.box('deliveryAddresses');
   if (backendData['left'] == 'all' || backendData['left'] == 'phone') {
     Navigator.of(context).pop();
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
   } else if (backendData['left'] == 'location') {
     UserPreferences().phoneNumber(backendData['data']['phone'].toString());
     Navigator.of(context).pop();
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
   } else {
     UserPreferences().phoneNumber(backendData['data']['phone'].toString());
     deliveryAddBox.put('userAreas', backendData['data']['deliveryAreas']);
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
+    if (backendData['data']['default_delivery_area'] != null) {
+      deliveryAddBox.put(
+          'userDefault', backendData['data']['default_delivery_area']);
+    }
+// userDefault
   }
+  Navigator.popUntil(context, ModalRoute.withName(route));
 }
+// if (newDeliveryAddress['default_delivery_area'] != null) {
+//
+// }
+// userDefault

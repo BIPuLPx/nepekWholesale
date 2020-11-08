@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/popUps/errorPopUp.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/styles/popUps/loading_popup.dart';
-import 'package:skite_buyer/styles/toasts/sucess_toast.dart';
+import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class ContinueWithEmailProvider with ChangeNotifier {
   String thirdPartyRoute;
@@ -82,7 +82,11 @@ void yesThirdPartyRoute(resData, context, route) {
   } else {
     UserPreferences().phoneNumber(resData['data']['phone'].toString());
     deliveryAddBox.put('userAreas', resData['data']['deliveryAreas']);
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
+    if (resData['data']['default_delivery_area'] != null) {
+      deliveryAddBox.put(
+          'userDefault', resData['data']['default_delivery_area']);
+    }
+    Navigator.popUntil(context, ModalRoute.withName(route));
   }
 }
 
@@ -102,6 +106,10 @@ void notThirdPartyRoute(resData, context) {
   } else {
     UserPreferences().phoneNumber(resData['data']['phone'].toString());
     deliveryAddBox.put('userAreas', resData['data']['deliveryAreas']);
+    if (resData['data']['default_delivery_area'] != null) {
+      deliveryAddBox.put(
+          'userDefault', resData['data']['default_delivery_area']);
+    }
     Navigator.of(context).pop();
   }
 }

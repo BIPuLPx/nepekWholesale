@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/review_date.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/review_stars.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/review_text.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/review_date.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/review_stars.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/review_text.dart';
 
 class ReviewLayout extends StatelessWidget {
   final String review;

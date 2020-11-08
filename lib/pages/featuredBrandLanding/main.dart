@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/appBar.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/widgets/full_image_and_longer.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/widgets/single_image_across.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/widgets/two_images_across.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/appBar.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/widgets/full_image_and_longer.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/widgets/single_image_across.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/widgets/two_images_across.dart';
 
 class FeaturedBrandLanding extends StatelessWidget {
   final args;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/each_subcategory.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/each_subcategory.dart';
 
 class SubCategories extends StatelessWidget {
   final List subCategories;

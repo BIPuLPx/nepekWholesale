@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/address/address_provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/address/input_delivery_address/widgets/delivery_address_selector.dart';
+import 'package:nepek_buyer/pages/userInfoInput/address/address_provider.dart';
+import 'package:nepek_buyer/pages/userInfoInput/address/input_delivery_address/widgets/delivery_address_selector.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 import '../main.dart';
 
@@ -10,8 +11,10 @@ class InputDeliveryAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final address = Provider.of<AddDeliveryAddressState>(context);
+    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     // print(address.deliveryStates);
     return Scaffold(
+      backgroundColor: darkTheme ? Colors.black : Colors.white,
       bottomNavigationBar: BottomAppBar(child: AddAddressBottomAppBar()),
       body: Container(
         margin: EdgeInsets.only(left: 15, right: 15),
@@ -42,8 +45,8 @@ class InputDeliveryAddress extends StatelessWidget {
     );
   }
 
-  TextStyle _addDeliveryAddHeading() => GoogleFonts.quicksand(
+  TextStyle _addDeliveryAddHeading() => GoogleFonts.poppins(
         fontSize: 23,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
       );
 }

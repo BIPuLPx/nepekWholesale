@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 Text applyText(Color color) => Text(
       'Apply',
-      style: GoogleFonts.quicksand(
+      style: GoogleFonts.poppins(
         fontWeight: FontWeight.w600,
         color: color,
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/styles/heading.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_highlights.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_specifications.dart';
+import 'package:nepek_buyer/pages/viewProduct/styles/heading.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_highlights.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/highlightsAndSpecs/nested/product_specifications.dart';
 
 class HighLightsAndSpecs extends StatelessWidget {
   @override

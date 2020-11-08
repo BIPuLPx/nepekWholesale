@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class SignInButton extends StatelessWidget {
   final String label;
@@ -48,7 +48,7 @@ class SignInButton extends StatelessWidget {
               SizedBox(width: 60),
               Text(
                 label,
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   color: labelColor,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

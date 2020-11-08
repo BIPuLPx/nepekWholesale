@@ -27,7 +27,7 @@ class ProductContainer extends StatelessWidget {
           SizedBox(height: 5),
           Text(
             sliceLongName(productName),
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
               fontWeight: FontWeight.w500,
               fontSize: 13
             ),

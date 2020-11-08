@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-// import 'package:skite_buyer/iconsClass/bottom_nav_icons_icons.dart';
-import 'package:skite_buyer/iconsClass/result_page_icons_icons.dart';
-import 'package:skite_buyer/listeners/cart_no_listener.dart';
-import 'package:skite_buyer/pages/result/provider/main.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+// import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
+import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
+import 'package:nepek_buyer/listeners/cart_no_listener.dart';
+import 'package:nepek_buyer/pages/result/provider/main.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ResultAppBar extends StatelessWidget {
   final BuildContext resultContext;
@@ -80,12 +80,12 @@ class ResultAppBar extends StatelessWidget {
           children: [
             Text(
               '$itemLength items found for ',
-              style: GoogleFonts.quicksand(fontWeight: FontWeight.w500),
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
             ),
             Text(
               searchText,
-              style: GoogleFonts.quicksand(
-                fontWeight: FontWeight.w800,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
               ),
             )
           ],
@@ -190,7 +190,7 @@ class FLSortBTn extends StatelessWidget {
               SizedBox(width: 15),
               Text(
                 label,
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
                   color: color,
                 ),

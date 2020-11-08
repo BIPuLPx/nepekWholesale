@@ -8,7 +8,7 @@ class QsnBy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       name,
-      style: GoogleFonts.quicksand(
+      style: GoogleFonts.poppins(
         fontSize: 12,
         fontWeight: FontWeight.w600,
         color: Colors.grey

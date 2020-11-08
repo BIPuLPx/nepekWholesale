@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/reviews/reviewsLayout/widgets/rating/nested/linear_percentage_rating.dart';
-import 'package:skite_buyer/pages/reviews/reviewsLayout/widgets/rating/nested/total_rating.dart';
-import 'package:skite_buyer/pages/reviews/reviews_provider.dart';
+import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/rating/nested/linear_percentage_rating.dart';
+import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/rating/nested/total_rating.dart';
+import 'package:nepek_buyer/pages/reviews/reviews_provider.dart';
 
 class RatingCount extends StatelessWidget {
   @override

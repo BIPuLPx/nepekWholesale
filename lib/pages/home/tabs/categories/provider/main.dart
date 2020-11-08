@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/provider/modules/data_populated.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/provider/modules/data_populated.dart';
 
 import 'modules/dark_light_colors.dart';
 import 'modules/populate_data.dart';

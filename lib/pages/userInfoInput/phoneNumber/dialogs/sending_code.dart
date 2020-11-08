@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 Future<void> sendingCode(BuildContext context) async {
   return showDialog<void>(
@@ -9,7 +9,7 @@ Future<void> sendingCode(BuildContext context) async {
       return AlertDialog(
         title: Text(
           'Validating',
-          style: TextStyle(fontWeight: FontWeight.w800),
+          style: TextStyle(fontWeight: FontWeight.w700),
         ),
         content: SingleChildScrollView(
           child: Column(

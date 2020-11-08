@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class SearchHistoryHeading extends StatelessWidget {
   @override
@@ -13,8 +13,8 @@ class SearchHistoryHeading extends StatelessWidget {
         children: [
           Text(
             'Recents',
-            style: GoogleFonts.quicksand(
-              fontWeight: FontWeight.w800,
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w700,
             ),
           ),
           InkWell(

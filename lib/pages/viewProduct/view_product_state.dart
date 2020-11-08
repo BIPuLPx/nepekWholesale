@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/pages/viewProduct/view_product_layout.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_layout.dart';
 import 'dart:convert';
-import 'package:skite_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
 
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 class ViewProductState with ChangeNotifier {
   final cart = Hive.box('cart');

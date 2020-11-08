@@ -2,12 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/listeners/cart_no_listener.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/main.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/main.dart';
-import 'package:skite_buyer/pages/home/tabs/home/main.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/main.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/listeners/cart_no_listener.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/home/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/main.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import '../../styles/extensions.dart';
 // import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
@@ -49,7 +49,7 @@ class _HomePageRootState extends State<HomePageRoot> {
     return Scaffold(
       body: PageView(
         //  physics: N(),
-        // physics: NeverScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         // physics: ClampingScrollPhysics(),
         controller: _pageController,
         children: tabs,
@@ -71,7 +71,7 @@ class _HomePageRootState extends State<HomePageRoot> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
         showSelectedLabels: false,
-        unselectedLabelStyle: GoogleFonts.quicksand(
+        unselectedLabelStyle: GoogleFonts.poppins(
           height: 1.7,
           fontSize: 12,
           fontWeight: FontWeight.w600,

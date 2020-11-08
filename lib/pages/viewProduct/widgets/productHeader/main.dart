@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productHeader/nested/productName.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productHeader/nested/product_price.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productHeader/nested/rating_inside_color.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productHeader/nested/productName.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productHeader/nested/product_price.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productHeader/nested/rating_inside_color.dart';
 
 class ProductHeader extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class ProductHeader extends StatelessWidget {
             // ),
             Text(
               product.productBrand,
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.poppins(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: Colors.grey[500],

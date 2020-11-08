@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/qa_graphics.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productQnas/nested/qa_graphics.dart';
 
 class QnaText extends StatelessWidget {
   final String insideGraphics;
@@ -17,7 +17,7 @@ class QnaText extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w500,
                 height: 1.3,
               ),

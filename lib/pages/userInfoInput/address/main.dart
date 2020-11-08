@@ -1,32 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/address/address_provider.dart';
-import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/userInfoInput/address/address_provider.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class AddDeliveryAddress extends StatelessWidget {
+  final args;
+  const AddDeliveryAddress({Key key, this.args}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AddDeliveryAddressState>(
       create: ((context) => AddDeliveryAddressState()),
-      child: AddDeliveryAddressRoot(),
+      child: AddDeliveryAddressRoot(args: args),
     );
   }
 }
 
 class AddDeliveryAddressRoot extends StatelessWidget {
+  final args;
+  const AddDeliveryAddressRoot({Key key, this.args}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final deliveryadd = Provider.of<AddDeliveryAddressState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     if (deliveryadd.initInjection == false) {
+      deliveryadd.args = args;
       deliveryadd.makeInitinjection();
     }
 
     return Scaffold(
+      backgroundColor: darkTheme ? Colors.black : Colors.white,
       appBar: defaultAppBar(context, 'Address', darkTheme),
       body: deliveryadd.body,
     );
@@ -50,10 +57,9 @@ class AddAddressBottomAppBar extends StatelessWidget {
           color: darktheme ? Colors.white : AppColors().primaryBlue(),
           child: Text(
             'Done',
-            style: GoogleFonts.quicksand(
-              fontWeight: FontWeight.w600,
-              color: darktheme ? Colors.black : null,
-            ),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                color: darktheme ? Colors.black : Colors.white),
           ),
         ),
       ),

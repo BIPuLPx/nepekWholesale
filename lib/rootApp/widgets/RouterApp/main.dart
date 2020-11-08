@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/routes/main.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_styles.dart';
-import 'package:skite_buyer/styles/remove_glow.dart';
+import 'package:nepek_buyer/routes/main.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_styles.dart';
+import 'package:nepek_buyer/styles/remove_glow.dart';
 
 class RouterApp extends StatelessWidget {
   @override

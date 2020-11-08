@@ -8,6 +8,7 @@ class CheckoutLayoutCalculations extends StatelessWidget {
   Widget build(BuildContext context) {
     final CheckoutProvider provider = Provider.of(context);
     final List products = provider.args['products'];
+    final String items = products.length == 1 ? 'item' : 'items';
     return Column(
       children: [
         _mainHeading("Products", 'Price'),
@@ -24,7 +25,11 @@ class CheckoutLayoutCalculations extends StatelessWidget {
               )
               .toList(),
         ),
-        _mainHeading("Total", 'NPR ${provider.totalPrice.toString()}.00'),
+        _mainHeading("Total (${products.length} $items)",
+            'NPR ${provider.totalPrice.toString()}.00'),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text('( inclusive of VAT )',style: GoogleFonts.poppins(),))
       ],
     );
   }
@@ -56,8 +61,8 @@ class CheckoutLayoutCalculations extends StatelessWidget {
     );
   }
 
-  TextStyle _bill(bool mainHeading) => GoogleFonts.quicksand(
-        fontWeight: mainHeading ? FontWeight.w700 : FontWeight.w600,
+  TextStyle _bill(bool mainHeading) => GoogleFonts.poppins(
+        fontWeight: mainHeading ? FontWeight.w500 : FontWeight.w400,
         fontSize: mainHeading ? 19 : 15,
       );
 

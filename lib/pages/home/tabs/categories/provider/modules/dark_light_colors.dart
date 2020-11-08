@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class LightDarkColors {
 

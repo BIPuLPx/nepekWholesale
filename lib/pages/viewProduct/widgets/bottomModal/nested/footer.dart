@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 Container footer(context) {
   final width = MediaQuery.of(context).size.width;
@@ -25,8 +25,8 @@ Container footer(context) {
             },
             child: Text(
               'Continue Shopping',
-              style: GoogleFonts.quicksand(
-                fontWeight: FontWeight.w800,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
                 fontSize: 11.2,
                 color: buttonColor,
               ),
@@ -44,9 +44,9 @@ Container footer(context) {
             color: buttonColor,
             child: Text(
               'Go to Cart',
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.poppins(
                 color: darkTheme ? Colors.black : Colors.white,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w700,
                 fontSize: 11.2,
               ),
             ),

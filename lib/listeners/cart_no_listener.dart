@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class CartNoListener extends StatelessWidget {
   final Widget icon;
@@ -40,7 +40,7 @@ class CartNoListener extends StatelessWidget {
                       child: Center(
                         child: Text(
                           box.length.toString(),
-                          style: GoogleFonts.quicksand(
+                          style: GoogleFonts.poppins(
                             fontSize: 9,
                             fontWeight: FontWeight.w700,
                             color: labelColor,

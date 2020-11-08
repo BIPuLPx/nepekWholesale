@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/library/product_slider/product_container.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/library/product_slider/product_container.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 class ProductsSlider extends StatefulWidget {
+  final String heading;
+  final List products;
+
+  const ProductsSlider({Key key, this.heading, this.products})
+      : super(key: key);
   @override
   _ProductsSliderState createState() => _ProductsSliderState();
 }
@@ -27,7 +32,8 @@ class _ProductsSliderState extends State<ProductsSlider>
             children: [
               SizedBox(width: 10),
               ProductContainer(
-                productName: "Test for sale and nothing fbhjhbnsdf uisdhf hsdfjhhdfs hsdfhnkdfsjh hdfskuidfis kuhjdfskuhkfds khsfdjudhfs ksdfjuhkhfdks",
+                productName:
+                    "Test for sale and nothing fbhjhbnsdf uisdhf hsdfjhhdfs hsdfhnkdfsjh hdfskuidfis kuhjdfskuhkfds khsfdjudhfs ksdfjuhkhfdks",
               ),
               ProductContainer(
                 productName: "Test for sale and nothing",

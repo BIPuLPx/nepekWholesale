@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
 
 class BackEnd {
   Future filterProductsWithSearch(

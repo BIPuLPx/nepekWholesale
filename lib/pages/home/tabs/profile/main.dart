@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/profile_provider.dart';
-import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/profile_provider.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class Profile extends StatelessWidget {
   final args;

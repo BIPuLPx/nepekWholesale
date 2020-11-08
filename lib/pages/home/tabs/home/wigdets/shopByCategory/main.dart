@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/home/tabs/home/wigdets/shopByCategory/nested/shop_by_category_container.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/pages/home/tabs/home/wigdets/shopByCategory/nested/shop_by_category_container.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 class ShopByCategory extends StatelessWidget {
   @override

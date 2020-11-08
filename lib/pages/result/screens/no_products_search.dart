@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/result/provider/main.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/result/provider/main.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class NoProductsSearch extends StatelessWidget {
   final String query;
@@ -60,7 +60,7 @@ class NoProductsSearch extends StatelessWidget {
                     },
                     child: Text(
                       'Go Back',
-                      style: GoogleFonts.quicksand(
+                      style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w700,
                         color: darktheme ? Colors.black : Colors.white,
                       ),
@@ -75,9 +75,9 @@ class NoProductsSearch extends StatelessWidget {
     );
   }
 
-  _noProductsStyle(bool darkTheme) => GoogleFonts.quicksand(
+  _noProductsStyle(bool darkTheme) => GoogleFonts.poppins(
         fontSize: 18,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
         color: darkTheme ? Colors.white : AppColors().primaryBlue(),
       );
 }

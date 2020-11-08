@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/bottomAppBar/bottomAppbar.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cart_items.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/bottomAppBar/bottomAppbar.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cart_items.dart';
 
 class CartHasItem extends StatelessWidget {
   @override

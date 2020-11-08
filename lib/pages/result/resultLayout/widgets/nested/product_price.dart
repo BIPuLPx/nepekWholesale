@@ -13,14 +13,14 @@ class ProductPrice extends StatelessWidget {
       children: [
         Text(
           'NPR ',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
         ),
         Text(
           price.toString(),
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

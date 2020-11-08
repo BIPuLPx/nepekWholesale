@@ -22,7 +22,7 @@ Container body() {
         ),
         Text(
           'Sucessfully added to cart',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontWeight: FontWeight.w400,
             fontSize: 13,
             // color: AppColors().secondaryText(),

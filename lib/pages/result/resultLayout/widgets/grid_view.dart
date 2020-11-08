@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/result/resultLayout/widgets/nested/image_container.dart';
+import 'package:nepek_buyer/pages/result/resultLayout/widgets/nested/image_container.dart';
 
 import 'nested/product_name.dart';
 import 'nested/product_price.dart';

@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/rootApp/widgets/RouterApp/main.dart';
-import 'package:skite_buyer/rootApp/widgets/loadingScreen/main.dart';
+import 'package:nepek_buyer/rootApp/widgets/RouterApp/main.dart';
+import 'package:nepek_buyer/rootApp/widgets/loadingScreen/main.dart';
 import 'dataFetch/main.dart';
 
 class RootProvider with ChangeNotifier {
@@ -39,6 +39,7 @@ class RootProvider with ChangeNotifier {
     await Hive.openBox('cart');
     await Hive.openBox('classifications');
     await Hive.openBox('deliveryAddresses');
+    await Hive.openBox('home_page_data');
   }
 
   changeScreen() {

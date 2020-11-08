@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/review_layout.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/reviews_heading.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/review_layout.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/reviews_heading.dart';
 
 class YesReviews extends StatelessWidget {
   final List reviews;

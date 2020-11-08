@@ -14,4 +14,4 @@ class AccountContentValue extends StatelessWidget {
   }
 }
 
-TextStyle accContentValStyle() => GoogleFonts.quicksand(height: 1.5);
+TextStyle accContentValStyle() => GoogleFonts.poppins(height: 1.5);

@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 class ShopByCategoryContainer extends StatelessWidget {
   final String link;
@@ -34,7 +34,7 @@ class ShopByCategoryContainer extends StatelessWidget {
             child: Text(
               label,
               style:
-                  GoogleFonts.quicksand(fontSize: 13, fontWeight: FontWeight.w600),
+                  GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600),
             ),
           )
         ],

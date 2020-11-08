@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/filter/provider/filter_provider.dart';
-import 'package:skite_buyer/pages/filter/styles/appBar.dart';
-import 'package:skite_buyer/pages/filter/styles/apply_spinkit.dart';
-import 'package:skite_buyer/pages/filter/styles/filter_entities_container.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/filter/provider/filter_provider.dart';
+import 'package:nepek_buyer/pages/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/filter/styles/apply_spinkit.dart';
+import 'package:nepek_buyer/pages/filter/styles/filter_entities_container.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class FilterPage extends StatelessWidget {
   final args;
@@ -186,7 +186,7 @@ class BottomNav extends StatelessWidget {
 
   Text _buttonText(Color color, String label) => Text(
         label,
-        style: GoogleFonts.quicksand(
+        style: GoogleFonts.poppins(
           color: color,
           fontWeight: FontWeight.w600,
         ),

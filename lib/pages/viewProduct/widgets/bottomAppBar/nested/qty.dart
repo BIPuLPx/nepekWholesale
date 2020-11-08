@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomAppBar/nested/qty_selector.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomAppBar/nested/qty_selector.dart';
 
 class Qty extends StatelessWidget {
   @override
@@ -9,8 +9,8 @@ class Qty extends StatelessWidget {
       children: [
         Text(
           "QTY",
-          style: GoogleFonts.quicksand(
-            fontWeight: FontWeight.w800,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
           ),
         ),
         SizedBox(width: 10),

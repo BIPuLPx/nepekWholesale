@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/nested/body.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/nested/footer.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/nested/header.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/nested/body.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/nested/footer.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/nested/header.dart';
 
 addToCart(context, productName, price) {
   showModalBottomSheet(

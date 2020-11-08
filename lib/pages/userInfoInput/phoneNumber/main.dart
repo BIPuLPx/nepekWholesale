@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/phone_number_provider.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/phone_number_provider.dart';
 
 class VerifyPhoneNumber extends StatelessWidget {
   final args;

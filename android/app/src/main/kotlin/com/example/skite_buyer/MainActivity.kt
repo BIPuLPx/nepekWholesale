@@ -1,4 +1,4 @@
-package com.example.skite_buyer
+package com.nepek.buyer_app
 
 import io.flutter.embedding.android.FlutterActivity
 

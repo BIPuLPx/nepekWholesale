@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class SelectOptions extends StatefulWidget {
   final String title;
@@ -41,9 +41,9 @@ class _SelectOptionsState extends State<SelectOptions> {
         children: [
           Text(
             capitalize(widget.title),
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
               fontSize: 15,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
               color: primaryColor,
             ),
           ),
@@ -81,7 +81,7 @@ class _SelectOptionsState extends State<SelectOptions> {
           style: GoogleFonts.roboto(
             fontSize: 13,
             fontWeight:
-                selectedIndex == index ? FontWeight.w800 : FontWeight.w400,
+                selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
             color: selectedIndex == index ? primaryColor : Colors.grey,
           ),
         ),

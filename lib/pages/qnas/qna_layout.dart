@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/qnas/qnas_provider.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productQnas/nested/qna_layout.dart';
+import 'package:nepek_buyer/pages/qnas/qnas_provider.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productQnas/nested/qna_layout.dart';
 
 class Qnas extends StatelessWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/styles/heading.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/pages/viewProduct/styles/heading.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
 
 class ProductDescription extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class ProductDescription extends StatelessWidget {
             SizedBox(height: 15),
             Text(
               product.productDescription,
-              style: GoogleFonts.quicksand(height: 1.7),
+              style: GoogleFonts.poppins(height: 1.7),
             )
           ],
         ),

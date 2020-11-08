@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/result/styles/end_of_result.dart';
-import 'package:skite_buyer/pages/result/styles/loading_more.dart';
+import 'package:nepek_buyer/pages/result/styles/end_of_result.dart';
+import 'package:nepek_buyer/pages/result/styles/loading_more.dart';
 
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 import 'backend.dart';
 import 'frontend.dart';

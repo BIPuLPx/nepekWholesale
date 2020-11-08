@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomAppBar/nested/add_to_cart.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomAppBar/nested/add_to_cart.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ViewProductBottomAppBar extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/result/provider/main.dart';
+import 'package:nepek_buyer/pages/result/provider/main.dart';
 
 class ResultPage extends StatelessWidget {
   final args;

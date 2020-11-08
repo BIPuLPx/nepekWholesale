@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
 
 class ViewProductPage extends StatelessWidget {
   final args;

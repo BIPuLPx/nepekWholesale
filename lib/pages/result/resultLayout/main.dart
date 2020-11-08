@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/iconsClass/result_page_icons_icons.dart';
-import 'package:skite_buyer/pages/result/resultLayout/appBar.dart';
-import 'package:skite_buyer/pages/result/resultLayout/widgets/grid_view.dart';
-import 'package:skite_buyer/pages/result/resultLayout/widgets/list_view.dart';
-import 'package:skite_buyer/pages/result/provider/main.dart';
+import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
+import 'package:nepek_buyer/pages/result/resultLayout/appBar.dart';
+import 'package:nepek_buyer/pages/result/resultLayout/widgets/grid_view.dart';
+import 'package:nepek_buyer/pages/result/resultLayout/widgets/list_view.dart';
+import 'package:nepek_buyer/pages/result/provider/main.dart';
 
 class ResultLayout extends StatefulWidget {
   @override

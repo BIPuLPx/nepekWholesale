@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub__category_title.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub_category_image.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub__category_title.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub_category_image.dart';
 
 class EachSubCategory extends StatelessWidget {
   final String text;

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/account/content/content_header.dart';
-import 'package:skite_buyer/pages/account/content/content_value.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/account/account_provider.dart';
+import 'package:nepek_buyer/pages/account/content/content_header.dart';
+import 'package:nepek_buyer/pages/account/content/content_value.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class AccountContent extends StatelessWidget {
   final String heading;
@@ -49,23 +50,30 @@ class AccountContent extends StatelessWidget {
 }
 
 Widget addVal(
-        bool darktheme, String routeName, String label, BuildContext context) =>
-    Container(
-      margin: EdgeInsets.only(top: 15),
-      child: SizedBox(
-        width: double.infinity,
-        child: FlatButton(
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, routeName);
-          },
-          color: darktheme ? Colors.white : AppColors().primaryBlue(),
-          child: Text(
-            label,
-            style: GoogleFonts.quicksand(
-              color: darktheme ? Colors.black : Colors.white,
-              fontWeight: FontWeight.w600,
-            ),
+    bool darktheme, String routeName, String label, BuildContext context) {
+  final AccountState provider = Provider.of(context);
+
+  return Container(
+    margin: EdgeInsets.only(top: 15),
+    child: SizedBox(
+      width: double.infinity,
+      child: FlatButton(
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            routeName,
+            arguments: provider.refreshAccount,
+          );
+        },
+        color: darktheme ? Colors.white : AppColors().primaryBlue(),
+        child: Text(
+          label,
+          style: GoogleFonts.poppins(
+            color: darktheme ? Colors.black : Colors.white,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
-    );
+    ),
+  );
+}

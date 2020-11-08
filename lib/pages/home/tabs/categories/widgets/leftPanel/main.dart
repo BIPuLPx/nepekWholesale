@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/provider/main.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/leftPanel/nested/classes_text.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/provider/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/leftPanel/nested/classes_text.dart';
 
 class LeftPanel extends StatefulWidget {
   @override

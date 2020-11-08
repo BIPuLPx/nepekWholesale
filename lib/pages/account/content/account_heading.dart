@@ -17,4 +17,4 @@ class AccountHeading extends StatelessWidget {
 }
 
 TextStyle accountHeadingStyle() =>
-    GoogleFonts.quicksand(fontSize: 22, fontWeight: FontWeight.w700);
+    GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600);

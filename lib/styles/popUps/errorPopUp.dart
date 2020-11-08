@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 Future<void> errorPopup(context, String title) async {
   return showDialog<void>(
@@ -10,14 +10,14 @@ Future<void> errorPopup(context, String title) async {
       return AlertDialog(
           title: Text(
             'Error',
-            style: GoogleFonts.quicksand(fontWeight: FontWeight.w800),
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
           ),
           actions: [
             TextButton(
               child: Text(
                 'Ok',
-                style: GoogleFonts.quicksand(
-                  fontWeight: FontWeight.w800,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
                   color: AppColors().primaryBlue(),
                 ),
               ),

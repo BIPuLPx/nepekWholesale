@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class QtySelector extends StatefulWidget {
   QtySelector({Key key}) : super(key: key);
@@ -40,7 +40,7 @@ class _QtySelectorState extends State<QtySelector> {
           child: DropdownButton<String>(
             isExpanded: true,
             value: dropdownValue,
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
                 color: darkTheme ? Colors.white : Colors.black,
                 fontWeight: FontWeight.w600),
             onChanged: (String newValue) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/main.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productOptions/main.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/main.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productOptions/main.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
-// import 'package:skite_buyer/pages/viewProduct/widgets/productOptions/nested/select_options.dart';
+// import 'package:nepek_buyer/pages/viewProduct/widgets/productOptions/nested/select_options.dart';
 
 // Navigator.of(context).push(new MaterialPageRoute<Null>(
 //       builder: (BuildContext context) {
@@ -56,9 +56,9 @@ selectOptions(context, productName, price, product, darkTheme) {
               },
               child: Text(
                 'Done',
-                style: GoogleFonts.quicksand(
+                style: GoogleFonts.poppins(
                   color: buttonTextColor,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

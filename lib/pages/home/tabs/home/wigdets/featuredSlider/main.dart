@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/home/wigdets/featuredSlider/container.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/pages/home/tabs/home/wigdets/featuredSlider/container.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 class FeaturedSlider extends StatefulWidget {
   @override

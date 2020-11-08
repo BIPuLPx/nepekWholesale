@@ -10,8 +10,8 @@ class ProductName extends StatelessWidget {
     return Container(
       child: Text(
         name,
-        style: GoogleFonts.quicksand(
-          fontWeight: FontWeight.w500,
+        style: GoogleFonts.poppins(
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

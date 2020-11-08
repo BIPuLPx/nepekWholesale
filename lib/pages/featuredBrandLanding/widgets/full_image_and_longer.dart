@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/featuredBrandLanding/widgets/image_container.dart';
+import 'package:nepek_buyer/pages/featuredBrandLanding/widgets/image_container.dart';
 
 class FullWidthAndLonger extends StatelessWidget {
   final String route;

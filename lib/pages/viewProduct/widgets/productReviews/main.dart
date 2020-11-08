@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/viewProduct/view_product_state.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/no_reviews_yet.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/productReviews/nested/yes_reviews.dart';
+import 'package:nepek_buyer/pages/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/no_reviews_yet.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/productReviews/nested/yes_reviews.dart';
 
 class ProductReviews extends StatelessWidget {
   @override

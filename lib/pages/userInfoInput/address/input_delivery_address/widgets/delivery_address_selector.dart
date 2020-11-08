@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../styles/colors.dart';
@@ -66,7 +66,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
                         isExpanded: true,
                         value: widget.current['label'],
 
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: darkTheme ? Colors.white : Colors.black,
                         ),
@@ -114,7 +114,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
   }
 }
 
-TextStyle dropdownHeading() => GoogleFonts.quicksand(
+TextStyle dropdownHeading() => GoogleFonts.poppins(
       // color: AppColors().primaryText(),
       fontSize: 17.5,
       fontWeight: FontWeight.w500,

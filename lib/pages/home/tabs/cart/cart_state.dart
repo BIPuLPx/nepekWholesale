@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/cartHasItems/main.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/emptyCart/empty_cart.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/emptyCart/empty_cart.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 
 class CartState with ChangeNotifier {
   Widget body = spinkit;
@@ -22,15 +23,25 @@ class CartState with ChangeNotifier {
     for (var itm in cartItems) {
       final item = itm['item'];
       final product = {
+        "product_id": item['product_id'],
         "productName": item['name'],
-        "qty": item['name'],
+        "qty": int.parse(item['qty']),
         "seller_id": item['seller_uid'],
         "options": item["options"],
         "price": item['price']
       };
       data['products'].add(product);
     }
-    Navigator.pushNamed(context, 'checkout', arguments: data);
+    if (UserPreferences().getBuyerKey() == null) {
+      showErrorToast(context, 'Please sign in first');
+      Navigator.pushNamed(
+        context,
+        'profile',
+        arguments: {"page": "home"},
+      );
+    } else {
+      Navigator.pushNamed(context, 'order_now', arguments: data);
+    }
   }
 
   void getAllcartItems() {
@@ -47,10 +58,18 @@ class CartState with ChangeNotifier {
     checkCart();
   }
 
+  void addCartItemsPrice() {
+    totalPrice = 0;
+    for (var item in cartItems) {
+      totalPrice += int.parse(item['item']['price']);
+    }
+  }
+
   void deleteItem(int index) {
     cartItems.removeAt(index);
     final cart = Hive.box('cart');
     cart.deleteAt(index);
+    addCartItemsPrice();
     checkCart();
     notifyListeners();
   }

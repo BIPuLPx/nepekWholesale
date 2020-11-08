@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/pages/qnas/qna_layout.dart';
-import 'package:skite_buyer/pages/result/styles/end_of_result.dart';
-import 'package:skite_buyer/pages/result/styles/loading_more.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/pages/qnas/qna_layout.dart';
+import 'package:nepek_buyer/pages/result/styles/end_of_result.dart';
+import 'package:nepek_buyer/pages/result/styles/loading_more.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 class QnasProvider with ChangeNotifier {
   dynamic body = spinkit;

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/savedData/apis.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/popUps/errorPopUp.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:http/http.dart' as http;
-import 'package:skite_buyer/styles/popUps/loading_popup.dart';
-import 'package:skite_buyer/styles/popUps/sucessPopup.dart';
+import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/styles/popUps/sucessPopup.dart';
 
 class AskaQuestionProvider with ChangeNotifier {
   var args;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class Hi extends StatelessWidget {
   final String name;
@@ -19,7 +19,7 @@ class Hi extends StatelessWidget {
   }
 }
 
-TextStyle hiHeading(double size) => GoogleFonts.quicksand(
+TextStyle hiHeading(double size) => GoogleFonts.poppins(
       fontSize: size,
       fontWeight: FontWeight.w600,
       color: Colors.white,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/cart_state.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/cart_state.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class CartBottomNavBar extends StatelessWidget {
   @override
@@ -22,8 +22,8 @@ class CartBottomNavBar extends StatelessWidget {
             provider.populateForCheckout(context);
           },
           label: Text(
-            'Checkout for NPR ${provider.totalPrice.toString()}.00',
-            style: GoogleFonts.quicksand(
+            'Order for NPR ${provider.totalPrice.toString()}.00',
+            style: GoogleFonts.poppins(
               fontWeight: FontWeight.w600,
               color: darkTheme ? Colors.black : Colors.white,
             ),

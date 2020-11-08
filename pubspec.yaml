@@ -1,4 +1,4 @@
-name: skite_buyer
+name: nepek_buyer
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -124,15 +124,15 @@ flutter:
       fonts:
         - asset: fonts/BalsamiqSans.ttf
 
-    # - family: quicksand
+    # - family: poppins
     #   fonts:
-    #     - asset: fonts/quicksand-Regular.ttf
-    #     - asset: fonts/quicksand-Bold.ttf
-    #     - asset: fonts/quicksand-BoldItalic.ttf
-    #     - asset: fonts/quicksand-Italic.ttf
-    #     - asset: fonts/quicksand-Medium.ttf
-    #     - asset: fonts/quicksand-MediumItalic.ttf
-    #     - asset: fonts/quicksand-SemiBold.ttf
+    #     - asset: fonts/poppins-Regular.ttf
+    #     - asset: fonts/poppins-Bold.ttf
+    #     - asset: fonts/poppins-BoldItalic.ttf
+    #     - asset: fonts/poppins-Italic.ttf
+    #     - asset: fonts/poppins-Medium.ttf
+    #     - asset: fonts/poppins-MediumItalic.ttf
+    #     - asset: fonts/poppins-SemiBold.ttf
 
 
 

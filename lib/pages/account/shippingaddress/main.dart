@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/account/account_provider.dart';
-import 'package:skite_buyer/pages/account/content/account_heading.dart';
-import 'package:skite_buyer/pages/account/content/content_value.dart';
-import 'package:skite_buyer/pages/account/content/main.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/account/account_provider.dart';
+import 'package:nepek_buyer/pages/account/content/account_heading.dart';
+import 'package:nepek_buyer/pages/account/content/content_value.dart';
+import 'package:nepek_buyer/pages/account/content/main.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ShippingAddress extends StatelessWidget {
   @override

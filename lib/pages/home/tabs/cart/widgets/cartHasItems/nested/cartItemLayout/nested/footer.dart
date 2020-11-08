@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/cart_state.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/cart_state.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class CartItemFooter extends StatelessWidget {
   final String quantity;
@@ -42,7 +42,7 @@ class _QtySelectorState extends State<QtySelector> {
       children: [
         Text(
           'QTY',
-          style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 10),
         Container(
@@ -65,7 +65,7 @@ class _QtySelectorState extends State<QtySelector> {
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: widget.qty,
-                style: GoogleFonts.quicksand(fontWeight: FontWeight.w600),
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                 onChanged: (String newValue) {
                   cart.changeQty(widget.index, newValue);
                 },
@@ -76,7 +76,7 @@ class _QtySelectorState extends State<QtySelector> {
                     child: Center(
                       child: Text(
                         value,
-                        style: GoogleFonts.quicksand(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
                           color: darktheme ? Colors.white : Colors.black,
                         ),
@@ -113,7 +113,7 @@ class RemoveButton extends StatelessWidget {
           SizedBox(width: 5),
           Text(
             'Remove',
-            style: GoogleFonts.quicksand(
+            style: GoogleFonts.poppins(
                 color: darktheme ? Colors.white54 : Colors.black54
                 // color: AppColors().secondaryText(),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/nested/product_name.dart';
-import 'package:skite_buyer/pages/viewProduct/widgets/bottomModal/nested/product_price.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/nested/product_name.dart';
+import 'package:nepek_buyer/pages/viewProduct/widgets/bottomModal/nested/product_price.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 Row header(String productName, String productPrice) {
   return Row(

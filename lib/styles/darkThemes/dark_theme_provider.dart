@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_prefences.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_prefences.dart';
 
 class DarkThemeProvider with ChangeNotifier {
   DarkThemePreference darkThemePreference = DarkThemePreference();

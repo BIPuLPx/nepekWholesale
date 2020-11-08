@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/text/textInput.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/text/textInput.dart';
 
 class CouponCode extends StatelessWidget {
   @override
@@ -27,7 +27,7 @@ class CouponCode extends StatelessWidget {
             onPressed: () {},
             child: Text(
               'Apply',
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
                   color: darkTheme ? Colors.black : Colors.white),
             ),
@@ -37,7 +37,7 @@ class CouponCode extends StatelessWidget {
     );
   }
 
-  TextStyle _couponCode() => GoogleFonts.quicksand(
+  TextStyle _couponCode() => GoogleFonts.poppins(
         fontWeight: FontWeight.w700,
         fontSize: 19,
       );

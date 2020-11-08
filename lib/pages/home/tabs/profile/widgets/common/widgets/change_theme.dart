@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 changeTheme(BuildContext context, darkTheme, Function isDarkTheme) {
   Widget darkLightSwitcher(String label, bool forDark) => Container(
@@ -17,7 +17,7 @@ changeTheme(BuildContext context, darkTheme, Function isDarkTheme) {
               Navigator.of(context).pop();
             },
             child: Container(
-              height: 50,
+              // height: 50,
               padding: EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +29,7 @@ changeTheme(BuildContext context, darkTheme, Function isDarkTheme) {
                   ),
                   Text(
                     capitalize(label),
-                    style: GoogleFonts.quicksand(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: forDark ? Colors.white : Colors.black,

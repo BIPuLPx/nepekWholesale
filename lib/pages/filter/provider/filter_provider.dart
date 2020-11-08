@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/filter/provider/backend.dart';
-import 'package:skite_buyer/pages/filter/provider/frontend.dart';
+import 'package:nepek_buyer/pages/filter/provider/backend.dart';
+import 'package:nepek_buyer/pages/filter/provider/frontend.dart';
 
 class FilterProvider with ChangeNotifier {
   final _backend = BackEnd();

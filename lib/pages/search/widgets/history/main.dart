@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:skite_buyer/pages/search/widgets/history/widgets/history_heading.dart';
-import 'package:skite_buyer/pages/search/widgets/history/widgets/history_text.dart';
+import 'package:nepek_buyer/pages/search/widgets/history/widgets/history_heading.dart';
+import 'package:nepek_buyer/pages/search/widgets/history/widgets/history_text.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class SearchHistory extends StatelessWidget {

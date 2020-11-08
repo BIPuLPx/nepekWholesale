@@ -29,7 +29,7 @@ showErrorToast(BuildContext context, String message) {
 
         Text(
           message,
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w600,

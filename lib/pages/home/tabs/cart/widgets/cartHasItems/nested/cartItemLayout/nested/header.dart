@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/product_image.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/product_image.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class CartItemHeader extends StatelessWidget {
   final String name;
@@ -37,7 +37,7 @@ class ProductName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       capitalize(name),
-      style: GoogleFonts.quicksand(
+      style: GoogleFonts.poppins(
         fontWeight: FontWeight.w500,
         height: 1.3,
       ),
@@ -55,7 +55,7 @@ class ProductPrice extends StatelessWidget {
       children: [
         Text(
           'NPR ',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 17,
             fontWeight: FontWeight.w700,
             // color: Colors.black54,
@@ -63,7 +63,7 @@ class ProductPrice extends StatelessWidget {
         ),
         Text(
           '$price.00',
-          style: GoogleFonts.quicksand(
+          style: GoogleFonts.poppins(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),

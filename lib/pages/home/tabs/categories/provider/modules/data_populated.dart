@@ -6,8 +6,8 @@
 //
 //
 import 'package:flutter/material.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/leftPanel/main.dart';
-import 'package:skite_buyer/pages/home/tabs/categories/widgets/rightPanel/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/leftPanel/main.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/main.dart';
 
 class DataPopulated extends StatelessWidget {
   @override

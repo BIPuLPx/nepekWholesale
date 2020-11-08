@@ -49,7 +49,7 @@ class Rating extends StatelessWidget {
 
 Text noOfRating(String no) => Text(
       '($no)',
-      style: GoogleFonts.quicksand(
+      style: GoogleFonts.poppins(
         fontWeight: FontWeight.bold,
         fontSize: 12,
       ),

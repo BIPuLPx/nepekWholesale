@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/userInfoInput/appBar.dart';
-import 'package:skite_buyer/pages/userInfoInput/phoneNumber/phone_number_provider.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/font_styles.dart';
+import 'package:nepek_buyer/pages/userInfoInput/appBar.dart';
+import 'package:nepek_buyer/pages/userInfoInput/phoneNumber/phone_number_provider.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/font_styles.dart';
 
 class VerCodeInput extends StatelessWidget {
   @override
@@ -39,9 +39,9 @@ class PhoneNumberHeading extends StatelessWidget {
     return Container(
       child: Text(
         heading,
-        style: GoogleFonts.quicksand(
+        style: GoogleFonts.poppins(
           fontSize: 22,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w700,
           height: 1.5,
         ),
       ),
@@ -192,7 +192,7 @@ TextStyle resendStyle() => GoogleFonts.rubik(
       fontWeight: FontWeight.w500,
     );
 
-TextStyle inputPhoneNumberStyle() => GoogleFonts.quicksand(
+TextStyle inputPhoneNumberStyle() => GoogleFonts.poppins(
       fontWeight: FontWeight.w600,
       fontSize: 18,
     );

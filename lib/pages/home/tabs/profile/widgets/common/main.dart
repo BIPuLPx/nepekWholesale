@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/pages/home/tabs/profile/widgets/common/widgets/common_container.dart';
+import 'package:nepek_buyer/pages/home/tabs/profile/widgets/common/widgets/common_container.dart';
 
 class Common extends StatelessWidget {
   @override
@@ -38,6 +38,6 @@ class Common extends StatelessWidget {
 
   Text _copyright(String val) => Text(
         val,
-        style: GoogleFonts.quicksand(),
+        style: GoogleFonts.poppins(),
       );
 }

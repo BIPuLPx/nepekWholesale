@@ -1,7 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skite_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 
 class EmptyCart extends StatelessWidget {
   @override
@@ -58,10 +58,10 @@ class EmptyCartLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       child,
-      style: GoogleFonts.quicksand(
+      style: GoogleFonts.poppins(
         fontSize: size,
         height: 1.5,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
         color: AppColors().primaryBlue(),
       ),
     );

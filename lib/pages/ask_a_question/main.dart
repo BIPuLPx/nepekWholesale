@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:skite_buyer/pages/ask_a_question/ask_a_qsn_provider.dart';
-import 'package:skite_buyer/savedData/user_data.dart';
-import 'package:skite_buyer/styles/appBars/default_app_bar.dart';
-import 'package:skite_buyer/styles/colors.dart';
-import 'package:skite_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:skite_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/pages/ask_a_question/ask_a_qsn_provider.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 
 class AskaQuestion extends StatelessWidget {
   final args;
@@ -48,7 +48,7 @@ class AskaQuestionRoot extends StatelessWidget {
                 maxLines: 5,
                 onChanged: (val) => provider.questionChanged(val),
                 // obscureText: obscureText ?? false,
-                style: GoogleFonts.quicksand(height: 1.3),
+                style: GoogleFonts.poppins(height: 1.3),
                 decoration: InputDecoration(
                   labelText: "Write a question",
                 ),
@@ -69,8 +69,8 @@ class AskaQuestionRoot extends StatelessWidget {
             children: [
               Text(
                 "Ask",
-                style: GoogleFonts.quicksand(
-                  fontWeight: FontWeight.w800,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
                   color: darktheme ? Colors.black : AppColors().primaryBlue(),
                 ),
               ),
@@ -108,7 +108,7 @@ class AskaQuestionRoot extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(bool gray) => GoogleFonts.quicksand(
+  TextStyle _textStyle(bool gray) => GoogleFonts.poppins(
       fontSize: 18,
       fontWeight: FontWeight.w600,
       color: gray ? Colors.grey : null);
