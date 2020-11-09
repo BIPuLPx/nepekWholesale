@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/pages/products/result/provider/main.dart';
 import 'package:provider/provider.dart';
 // import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
 import 'package:nepek_buyer/listeners/cart_no_listener.dart';
-import 'package:nepek_buyer/pages/result/provider/main.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 

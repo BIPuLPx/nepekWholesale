@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/pages/my/myaccount/changeDefaultAdd/change_default_address.dart';
+import 'package:nepek_buyer/pages/my/myaccount/content/account_heading.dart';
+import 'package:nepek_buyer/pages/my/myaccount/content/content_value.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/account/account_provider.dart';
-import 'package:nepek_buyer/pages/account/changeDefaultAdd/change_default_address.dart';
-import 'package:nepek_buyer/pages/account/content/account_heading.dart';
-import 'package:nepek_buyer/pages/account/content/content_value.dart';
 import 'package:nepek_buyer/styles/colors.dart';
+
+import '../account_provider.dart';
 
 class DefaultDeliveryAddress extends StatelessWidget {
   @override

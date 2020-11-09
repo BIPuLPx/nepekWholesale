@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/reviews/review_container/nested/review_body.dart';
-import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/reviews/review_container/nested/review_date.dart';
-import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/reviews/review_container/nested/review_header.dart';
+
+import 'nested/review_body.dart';
+import 'nested/review_date.dart';
+import 'nested/review_header.dart';
+
 
 class ReviewsContainer extends StatelessWidget {
   final String review;

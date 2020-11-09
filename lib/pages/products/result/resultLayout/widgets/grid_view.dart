@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nepek_buyer/pages/result/resultLayout/widgets/nested/image_container.dart';
 
+import 'nested/image_container.dart';
 import 'nested/product_name.dart';
 import 'nested/product_price.dart';
 import 'nested/star_rating.dart';

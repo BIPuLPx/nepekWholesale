@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/search/search_provider.dart';
+
+import '../../search_provider.dart';
 
 class AutoCompletes extends StatelessWidget {
   @override

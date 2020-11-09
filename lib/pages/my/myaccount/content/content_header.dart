@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/account/account_provider.dart';
-import 'package:nepek_buyer/pages/account/content/account_heading.dart';
 import 'package:nepek_buyer/styles/colors.dart';
+
+import '../account_provider.dart';
+import 'account_heading.dart';
 
 class AccountContentHeader extends StatelessWidget {
   final String changeroute;

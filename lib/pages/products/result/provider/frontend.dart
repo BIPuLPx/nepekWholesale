@@ -1,5 +1,7 @@
-import 'package:nepek_buyer/pages/result/resultLayout/main.dart';
-import 'package:nepek_buyer/pages/result/screens/no_products_search.dart';
+
+
+import 'package:nepek_buyer/pages/products/result/resultLayout/main.dart';
+import 'package:nepek_buyer/pages/products/result/screens/no_products_search.dart';
 
 class FrontEnd {
   Future checkFetchedProducts(int productsLength, String query) async {

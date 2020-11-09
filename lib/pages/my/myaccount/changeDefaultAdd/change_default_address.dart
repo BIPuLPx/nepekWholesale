@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/account/account_provider.dart';
+
+import '../account_provider.dart';
 
 changeDefaultAddress(BuildContext mycontext) {
   final AccountState provider = Provider.of(mycontext, listen: false);

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/pages/products/search/appBar.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/search/search_provider.dart';
-import 'package:nepek_buyer/pages/search/appBar.dart';
-import 'package:nepek_buyer/pages/search/widgets/autoComplete/main.dart';
-import 'package:nepek_buyer/pages/search/widgets/currentSearch/main.dart';
-import 'package:nepek_buyer/pages/search/widgets/history/main.dart';
+
+import 'search_provider.dart';
+import 'widgets/autoComplete/main.dart';
+import 'widgets/currentSearch/main.dart';
+import 'widgets/history/main.dart';
+
 
 class SearchPage extends StatelessWidget {
   @override

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
-import 'package:nepek_buyer/pages/payment_methods/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+
+import 'provider.dart';
 
 class PaymentMethodsRoot extends StatelessWidget {
   final args;

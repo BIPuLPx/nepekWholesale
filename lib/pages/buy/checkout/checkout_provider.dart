@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nepek_buyer/pages/checkout/layout/checkout_layout.dart';
+
+import 'layout/checkout_layout.dart';
 
 class CheckoutProvider with ChangeNotifier {
   var args;

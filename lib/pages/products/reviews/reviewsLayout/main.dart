@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/rating/main.dart';
-import 'package:nepek_buyer/pages/reviews/reviewsLayout/widgets/reviews/main.dart';
-import 'package:nepek_buyer/pages/reviews/reviews_provider.dart';
+
+import '../reviews_provider.dart';
+import 'widgets/rating/main.dart';
+import 'widgets/reviews/main.dart';
+
 
 class ReviewsLayout extends StatefulWidget {
   @override

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/pages/account/account_provider.dart';
-import 'package:nepek_buyer/pages/account/appBar.dart';
-import 'package:nepek_buyer/pages/account/content/main.dart';
-import 'package:nepek_buyer/pages/account/shippingaddress/default.dart';
-import 'package:nepek_buyer/pages/account/shippingaddress/main.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
+
+import 'account_provider.dart';
+import 'appBar.dart';
+import 'content/main.dart';
+import 'shippingaddress/default.dart';
+import 'shippingaddress/main.dart';
 
 class AccountPage extends StatelessWidget {
   final args;

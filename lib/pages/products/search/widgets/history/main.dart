@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:nepek_buyer/pages/search/widgets/history/widgets/history_heading.dart';
-import 'package:nepek_buyer/pages/search/widgets/history/widgets/history_text.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nepek_buyer/pages/products/search/widgets/history/widgets/history_heading.dart';
+import 'widgets/history_text.dart';
 
 class SearchHistory extends StatelessWidget {
   @override

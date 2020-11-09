@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/pages/products/result/provider/main.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
-import 'package:nepek_buyer/pages/result/resultLayout/appBar.dart';
-import 'package:nepek_buyer/pages/result/resultLayout/widgets/grid_view.dart';
-import 'package:nepek_buyer/pages/result/resultLayout/widgets/list_view.dart';
-import 'package:nepek_buyer/pages/result/provider/main.dart';
+
+import 'appBar.dart';
+import 'widgets/grid_view.dart';
+import 'widgets/list_view.dart';
+
 
 class ResultLayout extends StatefulWidget {
   @override
