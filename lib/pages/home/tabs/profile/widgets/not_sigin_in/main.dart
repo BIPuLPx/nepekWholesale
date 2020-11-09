@@ -73,7 +73,6 @@ class NotSignedInContainer extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final bool darkMode = Provider.of<DarkThemeProvider>(context).darkTheme;
     return CommonMenu(
       label: label,
       icon: 'icons/$icon.png',

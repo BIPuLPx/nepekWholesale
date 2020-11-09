@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:nepek_buyer/styles/colors.dart';
 
 Future<void> sucessFulPopup(context, String title) async {
   return showDialog<void>(
@@ -14,7 +14,13 @@ Future<void> sucessFulPopup(context, String title) async {
         ),
         actions: [
           FlatButton(
-            child: Text('Ok'),
+            child: Text(
+              'Ok',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                color: AppColors().primaryBlue(),
+              ),
+            ),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ],
@@ -37,8 +43,7 @@ Future<void> sucessFulPopup(context, String title) async {
             SizedBox(height: 20),
             Text(
               title,
-              style:
-                  GoogleFonts.cabinCondensed(),
+              style: GoogleFonts.poppins(),
             )
           ],
         ),

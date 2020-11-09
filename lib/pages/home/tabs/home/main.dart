@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/library/product_slider/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/home/wigdets/advertisement/main.dart';

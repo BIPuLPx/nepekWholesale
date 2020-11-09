@@ -4,9 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/library/commonContainers/right_arrow_containers.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/widgets/common/widgets/change_theme.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/extensions.dart';
-
-import '../../../profile_provider.dart';
 
 class CommonContainer extends StatelessWidget {
   final String label;

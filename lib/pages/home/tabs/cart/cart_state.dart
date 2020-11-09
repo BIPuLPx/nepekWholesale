@@ -19,6 +19,7 @@ class CartState with ChangeNotifier {
     var data = {
       "buyer_id": UserPreferences().getBuyerKey(),
       "products": [],
+      "refresh": refresh
     };
     for (var itm in cartItems) {
       final item = itm['item'];
@@ -98,6 +99,12 @@ class CartState with ChangeNotifier {
         cart.putAt(index, item['item']);
       }
     }
+    notifyListeners();
+  }
+
+  refresh() {
+    cartItems = [];
+    checkCart();
     notifyListeners();
   }
 }

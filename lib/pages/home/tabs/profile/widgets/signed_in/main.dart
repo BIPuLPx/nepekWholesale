@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/iconsClass/profile_tab_icons_icons.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/widgets/common/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';

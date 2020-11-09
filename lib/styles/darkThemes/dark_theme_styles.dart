@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
