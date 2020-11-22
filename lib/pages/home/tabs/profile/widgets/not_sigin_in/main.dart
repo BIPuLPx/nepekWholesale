@@ -32,7 +32,7 @@ class NotSignedInRoot extends StatelessWidget {
     return Container(
       color: darktheme ? Colors.black : Colors.white,
       child: ListView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: BouncingScrollPhysics(),
         children: [
           SizedBox(height: 100),
           NotSignedInHeading(text: 'You are not Signed In', fontSize: 25),

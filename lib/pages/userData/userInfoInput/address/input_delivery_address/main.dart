@@ -24,7 +24,7 @@ class InputDeliveryAddress extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Your Delivery Address', style: _addDeliveryAddHeading()),
-            SizedBox(height: 50),
+            SizedBox(height: 10),
             DeliveryAddressSelector(
               current: address.currentState,
               dataList: address.deliveryStates,
@@ -34,6 +34,11 @@ class InputDeliveryAddress extends StatelessWidget {
               current: address.currentDistrict,
               dataList: address.deliveryDistricts,
               heading: 'district',
+            ),
+            DeliveryAddressSelector(
+              current: address.currentRegion,
+              dataList: address.deliveryRegions,
+              heading: 'region',
             ),
             DeliveryAddressSelector(
               current: address.currentArea,

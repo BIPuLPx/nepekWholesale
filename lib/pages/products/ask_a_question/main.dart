@@ -29,15 +29,17 @@ class AskaQuestionRoot extends StatelessWidget {
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final AskaQuestionProvider provider = Provider.of(context);
     provider.args = args;
+    final width = MediaQuery.of(context).size.width * 0.5;
     // print(args);
     return Scaffold(
       appBar: defaultAppBar(context, 'Ask Question', darktheme),
       body: Container(
-        margin: EdgeInsets.only(top: 15, left: 15, right: 15),
+        padding: EdgeInsets.only(top: 15, left: 15, right: 15),
         child: ListView(
           children: [
-            _leftRightData("Product", args['productName']),
-            _leftRightData("Question as", UserPreferences().getDisplayName()),
+            _leftRightData("Product", args['productName'], width),
+            _leftRightData(
+                "Question as", UserPreferences().getDisplayName(), width),
             Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.only(top: 15),
@@ -88,7 +90,7 @@ class AskaQuestionRoot extends StatelessWidget {
     );
   }
 
-  Widget _leftRightData(String left, String right) {
+  Widget _leftRightData(String left, String right, double width) {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 5),
       child: Row(
@@ -98,7 +100,8 @@ class AskaQuestionRoot extends StatelessWidget {
             left,
             style: _textStyle(true),
           ),
-          Flexible(
+          SizedBox(
+            width: width,
             child: Text(
               capitalize(right),
               style: _textStyle(false),
@@ -110,7 +113,7 @@ class AskaQuestionRoot extends StatelessWidget {
   }
 
   TextStyle _textStyle(bool gray) => GoogleFonts.poppins(
-      fontSize: 18,
+      // fontSize: 18,
       fontWeight: FontWeight.w600,
       color: gray ? Colors.grey : null);
 }

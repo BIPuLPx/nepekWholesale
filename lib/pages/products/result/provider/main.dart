@@ -9,8 +9,8 @@ import 'frontend.dart';
 
 class ResultState with ChangeNotifier {
   var args;
-  final _backends = BackEnd();
-  final _frontends = FrontEnd();
+  final _backend = BackEnd();
+  final _frontend = FrontEnd();
   bool initialFetch = false;
   dynamic result = spinkit;
   List products;
@@ -19,7 +19,7 @@ class ResultState with ChangeNotifier {
   bool isNextPage;
   int nextPage = 1;
   dynamic loadingMore = loading_more;
-  Map sortBy = {'sort': 'clicks', 'by': 'asc'};
+  Map sortBy = {'sort': 'clicks', 'by': 'desc'};
   Map fetchedFilter;
   bool toFilter;
   Map lastFiltered = {};
@@ -35,20 +35,27 @@ class ResultState with ChangeNotifier {
     "specifications": []
   };
 
+  void setSort(Map sort) {
+    sortBy = sort;
+    result = spinkit;
+    notifyListeners();
+    fetchInitialSearch();
+  }
+
   Future fetchInitialSearch() async {
     print(args);
-    await _backends
+    await _backend
         .searchProducts(args['type'], args['query'], sortBy['sort'],
             sortBy['by'], 1, toFilter, queryFilter)
         .then((res) async {
       products = res['products'];
       productsNo = res['totalProductsNo'];
       fetchedFilter = res['filters'];
-      await _frontends
+      await _frontend
           .checkFetchedProducts(res['products'].length, searchText)
           .then((screen) async {
         result = screen;
-        await _frontends.checkNextPage(res['pages']).then((isNext) async {
+        await _frontend.checkNextPage(res['pages']).then((isNext) async {
           if (isNext) {
             isNextPage = true;
             nextPage = nextPage + 1;
@@ -64,14 +71,14 @@ class ResultState with ChangeNotifier {
   }
 
   Future infiniteScroll(int page) async {
-    _backends
+    _backend
         .searchProducts(args['type'], args['query'], sortBy['sort'],
             sortBy['by'], page, toFilter, queryFilter)
         .then((res) async {
       if (res['products'].length > 0) {
         products.addAll(res['products']);
       }
-      _frontends.checkNextPage(res['pages']).then((isNext) {
+      _frontend.checkNextPage(res['pages']).then((isNext) {
         if (isNext) {
           isNextPage = true;
           nextPage = nextPage + 1;

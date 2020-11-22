@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/library/backend_changes/product_changes.dart';
 
 import 'nested/image_container.dart';
 import 'nested/product_name.dart';
@@ -13,10 +14,16 @@ class ListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, 'view_product', arguments: {
-          'product_id': result.products[index]['_id'].toString(),
-          'product_uid': result.products[index]['uid'].toString()
+        ProductChanges().increaseClick(result.products[index]['_id']).then((value){
+          if(value == 200){
+
+            Navigator.pushNamed(context, 'view_product', arguments: {
+              'product_id': result.products[index]['_id'].toString(),
+              'product_uid': result.products[index]['uid'].toString()
+            });
+          }
         });
+
       },
       child: Card(
         child: GridTile(

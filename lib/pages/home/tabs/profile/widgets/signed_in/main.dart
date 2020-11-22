@@ -29,7 +29,7 @@ class SignedIn extends StatelessWidget {
         // color: Colors.white,
         child: CustomScrollView(
           physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               elevation: 10,
@@ -88,6 +88,7 @@ class SignedIn extends StatelessWidget {
                   ),
                   RoutesContainer(
                     label: 'orders',
+                    route:'my_orders'
                   ),
                   RoutesContainer(
                     label: 'reviews',
@@ -107,7 +108,7 @@ class SignedIn extends StatelessWidget {
 }
 
 //  body: CustomScrollView(
-//         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+//         physics: BouncingScrollPhysics(),
 //         controller: _scrollController,
 //         slivers: <Widget>[
 //           resultAppBar(
@@ -153,7 +154,7 @@ class SignedIn extends StatelessWidget {
 //         color: Colors.white,
 //         child: ListView(
 //           physics:
-//               BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+//               BouncingScrollPhysics(),
 //           children: [
 //             Hi(name: '${UserPreferences().getDisplayName().split(' ')[0]}'),
 //             RoutesContainer(

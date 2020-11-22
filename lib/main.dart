@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/provider_head.dart';
 import 'package:nepek_buyer/rootApp/main.dart';
 import 'package:nepek_buyer/savedData/changed_data.dart';
-import 'package:nepek_buyer/styles/darkThemes/dark_theme_prefences.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_preferences.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:path_provider/path_provider.dart';

@@ -35,7 +35,7 @@ class _ReviewsLayoutState extends State<ReviewsLayout> {
       color: Colors.grey[200],
       child: ListView(
         controller: _scrollController,
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: BouncingScrollPhysics(),
         children: [
           RatingCount(),
           Reviews(),

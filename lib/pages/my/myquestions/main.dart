@@ -43,7 +43,7 @@ class MyQnasLayout extends StatelessWidget {
     final MyQuestionsProvider provider = Provider.of(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return ListView(
-      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: BouncingScrollPhysics(),
       children: <Widget>[
             SizedBox(
               height: 15,

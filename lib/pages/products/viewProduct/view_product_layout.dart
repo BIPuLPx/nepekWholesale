@@ -16,7 +16,7 @@ class ViewProductLayout extends StatelessWidget {
         body: Container(
           child: CustomScrollView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                BouncingScrollPhysics(),
             slivers: [
               viewProductAppBar(context),
               SliverList(

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_layout.dart';
@@ -132,7 +133,19 @@ class ViewProductState with ChangeNotifier {
     qtyToBuy = val;
   }
 
+  bool checkDuplicate() {
+    List cartItems = cart.values.toList(growable: false);
+    for (var item in cartItems) {
+      if (item['name'] == productName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   void addTocart() {
+//find if item exists
+
     // print('Add To cart');
     cart.add({
       'product_uid': productUid,

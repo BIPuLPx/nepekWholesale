@@ -31,7 +31,6 @@ class QnaPageRoot extends StatelessWidget {
     return Scaffold(
       appBar: defaultAppBar(context, "Qna's", darktheme),
       body: Container(
-        padding: EdgeInsets.only(left: 15, right: 15),
         child: provider.body,
       ),
     );

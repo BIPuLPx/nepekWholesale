@@ -21,7 +21,7 @@ class _FeaturedSliderState extends State<FeaturedSlider>
           height: 200,
           child: ListView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: [
               BrandsContainer(text: 'Apple'),

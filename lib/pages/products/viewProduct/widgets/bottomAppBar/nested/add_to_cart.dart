@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/selectOptionsModal/main.dart';
+import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -27,8 +28,12 @@ class AddToCart extends StatelessWidget {
           child: FlatButton(
             color: buttonColor,
             onPressed: () {
-              selectOptions(context, product.productName, product.productPrice,
-                  product, darkTheme);
+              if(product.checkDuplicate()){
+                errorPopup(context, 'This item is already added to cart\nPlease increase quantity in cart or place another order. ');
+              }else{
+                selectOptions(context, product.productName, product.productPrice,
+                    product, darkTheme);
+              }
             },
             child: Text(
               'Add To Cart',

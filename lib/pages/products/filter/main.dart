@@ -55,7 +55,7 @@ class MainFilterPage extends StatelessWidget {
           margin: EdgeInsets.only(left: 10, right: 10),
           child: ListView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                BouncingScrollPhysics(),
             children: [
               // SizedBox(height: 10),
               FilterItemContainer(

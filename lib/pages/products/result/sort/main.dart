@@ -17,7 +17,7 @@ searchResultSort(context, Function setSort) {
               leading: Icon(Icons.control_point_duplicate),
               title: Text('Popularity'),
               onTap: () {
-                setSort({'sort': 'clicks', 'by': 'asc'});
+                setSort({'sort': 'clicks', 'by': 'desc'});
                 Navigator.pop(context);
               },
             ),

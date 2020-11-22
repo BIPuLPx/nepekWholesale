@@ -14,7 +14,7 @@ class RightPanel extends StatelessWidget {
       child: ListView(
           key: ObjectKey(catagoriesAndSubcategories),
           physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              BouncingScrollPhysics(),
           children: catagoriesAndSubcategories
               .map((catAndSubCat) =>
                   CategoryAndSubCategories(catAndSubCat: catAndSubCat))

@@ -20,10 +20,13 @@ class AddDeliveryAddressState extends ChangeNotifier {
   List deliveryStates;
   Map currentDistrict;
   List deliveryDistricts;
+  Map currentRegion;
+  List deliveryRegions;
   Map currentArea;
   List deliveryAreas;
   Map fetchedData;
   List allDistricts;
+  List allRegions;
   List allAreas;
 
   void makeInitinjection() {
@@ -34,9 +37,8 @@ class AddDeliveryAddressState extends ChangeNotifier {
     deliveryStates = deliveryAddressbox.get('states');
     allDistricts = deliveryAddressbox.get('districts');
     allAreas = deliveryAddressbox.get('areas');
-    // print(deliveryStates);
-    // print(allDistricts);
-    // print(allAreas);
+    allRegions = deliveryAddressbox.get('location_group');
+
 
     final String state3 = deliveryStates
         .where((state) => state['label'] == 'State 3')
@@ -46,19 +48,20 @@ class AddDeliveryAddressState extends ChangeNotifier {
     injectState(state3);
     body = InputDeliveryAddress();
     initInjection = true;
-    // notifyListeners();
-// print(deliveryAddressbox.get('location_group'));
   }
 
   void dropDownChanged(String of, Map value) {
-    print(value);
     if (of == 'state') {
       currentState = value;
       injectDistricts(value['_id']);
     } else if (of == 'district') {
       currentDistrict = value;
+      injectRegions(value['_id']);
+    }else if(of == 'region'){
+      currentRegion = value;
       injectAreas(value['_id']);
-    } else if (of == 'area') {
+    }
+    else if (of == 'area') {
       currentArea = value;
     }
     notifyListeners();
@@ -67,6 +70,7 @@ class AddDeliveryAddressState extends ChangeNotifier {
   void injectState(String _id) {
     currentState =
         deliveryStates.where((state) => state['_id'] == _id).toList()[0];
+   // print(_id);
     injectDistricts(_id);
   }
 
@@ -76,14 +80,23 @@ class AddDeliveryAddressState extends ChangeNotifier {
         .toList();
     currentDistrict = getDistricts[0];
     deliveryDistricts = getDistricts;
-    injectAreas(getDistricts[0]['_id']);
+    injectRegions(getDistricts[0]['_id']);
+  }
+
+
+  void injectRegions(String districtID) {
+    final getRegions =
+    allRegions.where((deliveryArea) => deliveryArea['district_id'] == districtID).toList();
+    currentRegion = getRegions[0];
+    deliveryRegions = getRegions;
+    injectAreas(getRegions[0]['_id']);
+
   }
 
   void injectAreas(String districtID) {
-    print(allAreas);
     // print(districtID);
     final getAreas =
-        allAreas.where((area) => area['district_id'] == districtID).toList();
+        allAreas.where((area) => area['location_group_id'] == districtID).toList();
     // print(getAreas);
 
     currentArea = getAreas[0];

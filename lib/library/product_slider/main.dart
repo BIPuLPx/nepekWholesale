@@ -27,7 +27,7 @@ class _ProductsSliderState extends State<ProductsSlider>
           height: height,
           child: ListView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: [
               SizedBox(width: 10),

@@ -3,7 +3,6 @@ import 'package:nepek_buyer/pages/products/qnas/qnas_provider.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/productQnas/nested/qna_layout.dart';
 import 'package:provider/provider.dart';
 
-
 class Qnas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,18 +24,24 @@ class Qnas extends StatelessWidget {
 
     return ListView(
       controller: _scrollController,
-      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      // physics: BouncingScrollPhysics(),
       children: <Widget>[SizedBox(height: 15)] +
           provider.qnas
-              .map<Widget>((qna) => QnaLayout(
-                    question: {
-                      'text': qna['question'],
-                      'date': qna['questionedIn'],
-                      'name': provider.getName(qna['buyer_id'])
-                    },
-                    answer: {'text': qna['answer'], 'date': qna['answeredIn']},
-                    index: provider.qnas.indexOf(qna),
-                    length: provider.qnas.length,
+              .map<Widget>((qna) => Container(
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    child: QnaLayout(
+                      question: {
+                        'text': qna['question'],
+                        'date': qna['questionedIn'],
+                        'name': provider.getName(qna['buyer_id'])
+                      },
+                      answer: {
+                        'text': qna['answer'],
+                        'date': qna['answeredIn']
+                      },
+                      index: provider.qnas.indexOf(qna),
+                      length: provider.qnas.length,
+                    ),
                   ))
               .toList() +
           [

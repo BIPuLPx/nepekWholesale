@@ -47,7 +47,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              BouncingScrollPhysics(),
           children: provider.allBrands
               .map<Widget>(
                 (val) => buildCheckboxListTile(

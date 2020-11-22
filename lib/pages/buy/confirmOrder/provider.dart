@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 
 class OrderDetailsProvider with ChangeNotifier {
   var args;
@@ -10,7 +11,21 @@ class OrderDetailsProvider with ChangeNotifier {
   String phoneNumber;
 
   confirmOrder(BuildContext context) {
-    Navigator.pushNamed(context, 'checkout', arguments: args);
+    if (defaultDeliveryAddress == '' || phoneNumber == '') {
+      showErrorToast(
+        context,
+        defaultDeliveryAddress == ''
+            ? 'Add delivery address before checkout'
+            : 'Add phone Number before checkout',
+      );
+      Navigator.pushNamed(
+        context,
+        'account',
+        arguments: {'checkProfile': () => refresh(), 'logout': true},
+      );
+    } else {
+      Navigator.pushNamed(context, 'checkout', arguments: args);
+    }
     // print(defaultDeliveryAddress);
     // print(phoneNumber);
     // print(args);

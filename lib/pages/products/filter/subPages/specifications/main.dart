@@ -44,7 +44,7 @@ class FilterSpecificationsRoot extends StatelessWidget {
       body: Container(
         child: ListView(
           physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              BouncingScrollPhysics(),
           children: provider.allOptions
               .map<Widget>(
                 (val) => CheckboxListTile(

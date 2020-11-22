@@ -8,6 +8,18 @@ sucessToast(BuildContext context, String message) {
   fToast = FToast();
   fToast.init(context);
 
+  Widget _message = Container(
+    margin: EdgeInsets.only(left: 15),
+    child: Text(
+      message,
+      style: GoogleFonts.poppins(
+        fontSize: 14,
+        color: Colors.white,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
+
   Widget toast = Container(
     margin: EdgeInsets.only(bottom: 15),
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
@@ -17,26 +29,24 @@ sucessToast(BuildContext context, String message) {
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
+      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(
           Icons.check,
           color: Colors.white,
           size: 17,
         ),
-        SizedBox(
-          width: 15.0,
-        ),
         // Expanded(
         //  child:
 
-        Text(
-          message,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        message.length > 25
+            ? Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: _message,
+                ),
+              )
+            : _message,
         // )
       ],
     ),

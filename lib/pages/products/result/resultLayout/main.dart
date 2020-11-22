@@ -70,7 +70,7 @@ class _ResultLayoutState extends State<ResultLayout> {
 
     return Scaffold(
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: BouncingScrollPhysics(),
         controller: _scrollController,
         slivers: <Widget>[
           ResultAppBar(

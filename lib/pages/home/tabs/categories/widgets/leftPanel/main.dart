@@ -22,7 +22,7 @@ class _LeftPanelState extends State<LeftPanel> {
     // print(classes);
     return Container(
       child: ListView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: BouncingScrollPhysics(),
         children: classes
             .map(
               (cls) => ClassesText(

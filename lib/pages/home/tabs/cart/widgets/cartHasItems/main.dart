@@ -9,7 +9,7 @@ class CartHasItem extends StatelessWidget {
       body: Container(
         child: ListView(
           physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              BouncingScrollPhysics(),
           children: [
             CartItems(),
           ],

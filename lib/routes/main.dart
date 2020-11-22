@@ -7,6 +7,8 @@ import 'package:nepek_buyer/pages/featuredBrandLanding/main.dart';
 import 'package:nepek_buyer/pages/home/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
+import 'package:nepek_buyer/pages/my/myOrders/main.dart';
+import 'package:nepek_buyer/pages/my/myOrders/viewOrder/main.dart';
 import 'package:nepek_buyer/pages/my/myaccount/main.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
 import 'package:nepek_buyer/pages/products/ask_a_question/main.dart';
@@ -35,9 +37,6 @@ class RouteGenerator {
 
       case 'profile':
         return MaterialPageRoute(builder: (_) => Profile(args: args));
-
-      case 'my_questions':
-        return MaterialPageRoute(builder: (_) => MyQuestions());
 
       case 'continue_with_email':
         return MaterialPageRoute(builder: (_) => ContinueWithEmail(args: args));
@@ -80,9 +79,20 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => AddDeliveryAddress(args: args));
 
+      //MY
       case 'account':
         return MaterialPageRoute(builder: (_) => AccountPage(args: args));
 
+      case 'my_questions':
+        return MaterialPageRoute(builder: (_) => MyQuestions());
+
+      case 'my_orders':
+        return MaterialPageRoute(builder: (_) => MyOrders());
+
+      case 'view_order':
+        return MaterialPageRoute(builder: (_) => ViewOrder(args: args));
+
+      //Products
       case 'reviews':
         return MaterialPageRoute(builder: (_) => ReviewsPage(args: args));
 

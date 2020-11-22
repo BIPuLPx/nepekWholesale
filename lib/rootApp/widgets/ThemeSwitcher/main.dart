@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nepek_buyer/styles/darkThemes/dark_theme_preferences.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/styles/darkThemes/dark_theme_prefences.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class ThemeSwitcher extends StatefulWidget {

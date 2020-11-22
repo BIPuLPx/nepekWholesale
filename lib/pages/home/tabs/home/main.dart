@@ -28,7 +28,7 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
         body: Container(
           child: ListView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                BouncingScrollPhysics(),
             cacheExtent: 10,
             addAutomaticKeepAlives: true,
             children: [

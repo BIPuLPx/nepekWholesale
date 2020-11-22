@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/result/provider/main.dart';
+import 'package:nepek_buyer/pages/products/result/sort/main.dart';
 import 'package:provider/provider.dart';
+
 // import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
 import 'package:nepek_buyer/listeners/cart_no_listener.dart';
@@ -30,6 +32,7 @@ class ResultAppBar extends StatelessWidget {
         Provider.of<DarkThemeProvider>(resultContext).darkTheme;
 
     final result = Provider.of<ResultState>(context);
+    final setSort = result.setSort;
 
     final filterPageArgs = {
       'resultargs': result.args,
@@ -41,7 +44,7 @@ class ResultAppBar extends StatelessWidget {
       'totalProducts': result.productsNo,
       'lastFiltered': result.lastFiltered
     };
-
+// final setSort = result.sey
     Color itemColor = darktheme ? Colors.white : AppColors().primaryBlue();
 
     return SliverAppBar(
@@ -62,7 +65,7 @@ class ResultAppBar extends StatelessWidget {
                     ? result.args['name']
                     : searchText,
               ),
-              _resultActions(itemColor, filterPageArgs),
+              _resultActions(itemColor, filterPageArgs, setSort),
             ],
           ),
         ),
@@ -92,7 +95,8 @@ class ResultAppBar extends StatelessWidget {
         ),
       );
 
-  Container _resultActions(Color color, Object filterPageArgs) => Container(
+  Container _resultActions(Color color, Object filterPageArgs, setSort) =>
+      Container(
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,7 +119,7 @@ class ResultAppBar extends StatelessWidget {
               label: 'Sort',
               iconSize: 12,
               onClick: () {
-                // searchResultSort(resultContext, setSort);
+                searchResultSort(resultContext, setSort);
               },
             ),
             IconButton(
@@ -168,7 +172,9 @@ class FLSortBTn extends StatelessWidget {
   final Function onClick;
   final double iconSize;
   final Color color;
+
   FLSortBTn({this.icon, this.label, this.onClick, this.iconSize, this.color});
+
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;

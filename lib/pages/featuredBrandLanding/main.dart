@@ -17,7 +17,7 @@ class FeaturedBrandLanding extends StatelessWidget {
           margin: EdgeInsets.only(left: 15, right: 15),
           child: ListView(
             physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()), 
+                BouncingScrollPhysics(), 
             children: [
               SizedBox(height: 10),
               SingleImageAcross(

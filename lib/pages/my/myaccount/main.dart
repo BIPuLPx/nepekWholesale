@@ -40,7 +40,7 @@ class AccountPageRoot extends StatelessWidget {
     return Scaffold(
       backgroundColor: darkTheme ? Colors.black : Colors.white,
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: BouncingScrollPhysics(),
         slivers: [
           profileAppBar(context),
           SliverList(
@@ -53,7 +53,7 @@ class AccountPageRoot extends StatelessWidget {
                   hasValue: account.phoneNumber == null ? false : true,
                   changeRoute: 'input_phone_number',
                 ),
-                DefaultDeliveryAddress(),
+                account.getDefaultAddress()== '' ? Container() :DefaultDeliveryAddress(),
                 ShippingAddress()
               ],
             ),
