@@ -28,7 +28,7 @@ class BrandsContainer extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppColors().primaryBlue(),
+              color: AppColors().officialMatch(),
               letterSpacing: 1.1,
             ),
           ),

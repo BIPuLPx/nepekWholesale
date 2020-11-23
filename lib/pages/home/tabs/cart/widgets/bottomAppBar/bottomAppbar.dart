@@ -17,7 +17,7 @@ class CartBottomNavBar extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(0)),
           ),
-          color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+          color: darkTheme ? Colors.white : AppColors().officialMatch(),
           onPressed: () {
             provider.populateForCheckout(context);
           },

@@ -23,7 +23,7 @@ class CouponCode extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: FlatButton(
-            color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+            color: darkTheme ? Colors.white : AppColors().officialMatch(),
             onPressed: () {},
             child: Text(
               'Apply',

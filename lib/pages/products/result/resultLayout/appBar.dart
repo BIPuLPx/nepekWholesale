@@ -45,7 +45,7 @@ class ResultAppBar extends StatelessWidget {
       'lastFiltered': result.lastFiltered
     };
 // final setSort = result.sey
-    Color itemColor = darktheme ? Colors.white : AppColors().primaryBlue();
+    Color itemColor = darktheme ? Colors.white : AppColors().officialMatch();
 
     return SliverAppBar(
       leading: _leading(itemColor),

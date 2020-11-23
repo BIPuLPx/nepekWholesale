@@ -18,7 +18,7 @@ class ProductPageFonts {
   brand() => GoogleFonts.hammersmithOne(
         fontSize: 13,
         fontWeight: FontWeight.w400,
-        color: AppColors().primaryBlue(),
+        color: AppColors().officialMatch(),
       );
   productName() => GoogleFonts.roboto(
         height: 1.4,

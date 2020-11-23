@@ -32,7 +32,7 @@ class _SelectOptionsState extends State<SelectOptions> {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     final Color primaryColor =
-        darkTheme ? Colors.white : AppColors().primaryBlue();
+        darkTheme ? Colors.white : AppColors().officialMatch();
 
     return Container(
       padding: EdgeInsets.only(top: 10),

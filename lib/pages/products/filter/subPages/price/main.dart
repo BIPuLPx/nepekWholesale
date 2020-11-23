@@ -48,7 +48,7 @@ class _FilterPricePageState extends State<FilterPricePage> {
   Widget build(BuildContext context) {
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final Color buttonColor =
-        darktheme ? Colors.white : AppColors().primaryBlue();
+        darktheme ? Colors.white : AppColors().officialMatch();
     final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
     print(widget.args);
     return Scaffold(
@@ -124,7 +124,7 @@ class InputPrice extends StatelessWidget {
             decoration: InputDecoration(
               // focusedBorder: OutlineInputBorder(
               //   borderSide:
-              //       BorderSide(color: AppColors().primaryBlue(), width: 1.0),
+              //       BorderSide(color: AppColors().officialMatch(), width: 1.0),
               // ),
               // enabledBorder: OutlineInputBorder(
               //   borderSide:

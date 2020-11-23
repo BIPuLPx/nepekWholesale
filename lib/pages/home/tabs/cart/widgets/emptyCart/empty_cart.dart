@@ -62,7 +62,7 @@ class EmptyCartLabel extends StatelessWidget {
         fontSize: size,
         height: 1.5,
         fontWeight: FontWeight.w700,
-        color: AppColors().primaryBlue(),
+        color: AppColors().officialMatch(),
       ),
     );
   }

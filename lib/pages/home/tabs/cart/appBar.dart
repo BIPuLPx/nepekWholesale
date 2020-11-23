@@ -11,14 +11,14 @@ cartAppBar(context) {
       elevation: 1,
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios,
-            color: AppColors().primaryBlue(), size: 17),
+            color: AppColors().officialMatch(), size: 17),
         onPressed: () => Navigator.of(context).pop(),
       ),
       title: Text(
         'Cart',
         style: GoogleFonts.actor(
             fontWeight: FontWeight.w600,
-            color: AppColors().primaryBlue(),
+            color: AppColors().officialMatch(),
             fontSize: 17),
       ),
       centerTitle: true,

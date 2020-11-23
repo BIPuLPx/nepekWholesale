@@ -28,7 +28,7 @@ class SearchHistoryHeading extends StatelessWidget {
                 'Clear',
                 textAlign: TextAlign.right,
                 style: GoogleFonts.rubik(
-                  color: AppColors().primaryBlue(),
+                  color: AppColors().officialMatch(),
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),

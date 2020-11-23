@@ -18,7 +18,7 @@ Future<void> sucessFulPopup(context, String title) async {
               'Ok',
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
-                color: AppColors().primaryBlue(),
+                color: AppColors().officialMatch(),
               ),
             ),
             onPressed: () => Navigator.of(context).pop(),

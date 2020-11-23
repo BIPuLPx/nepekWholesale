@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
 homeAppbar(context, bool darkTheme) {
-  return // here the desired height
+  // final bool darkTheme = Provider.of
+  return
       AppBar(
     elevation: 1,
     title: Center(
       child: Image.asset(
         'icons/Brand.png',
-        height: 19,
-        color: AppColors().primaryBlue(),
+        height: 23,
       ),
     ),
     // backgroundColor: Colors.white,
@@ -32,7 +32,7 @@ homeAppbar(context, bool darkTheme) {
                 : Colors.white,
             boxShadow: [
               BoxShadow(
-                color: AppColors().primaryBlue(),
+                color: AppColors().officialMatch(),
                 spreadRadius: 0.5,
                 blurRadius: 2,
               ),

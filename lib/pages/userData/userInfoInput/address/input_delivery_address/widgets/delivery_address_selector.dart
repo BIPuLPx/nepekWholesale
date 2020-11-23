@@ -45,7 +45,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
               color: darkTheme ? Colors.grey[900] : Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors().primaryBlue(),
+                  color: AppColors().officialMatch(),
                   spreadRadius: 0.2,
                   blurRadius: 2,
                 ),
@@ -86,7 +86,7 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
                                     //       darkTheme ? Colors.grey[900] : Colors.white,
                                     //   boxShadow: [
                                     //     BoxShadow(
-                                    //       color: AppColors().primaryBlue(),
+                                    //       color: AppColors().officialMatch(),
                                     //       spreadRadius: 0.2,
                                     //       blurRadius: 2,
                                     //     ),

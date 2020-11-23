@@ -13,8 +13,8 @@ SliverAppBar profileAppBar(context) {
     title: Text(
       UserPreferences().getDisplayName(),
       style: GoogleFonts.poppins(
-        // color: AppColors().primaryBlue(),
-        color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+        // color: AppColors().officialMatch(),
+        color: darkTheme ? Colors.white : AppColors().officialMatch(),
         fontSize: 20,
         fontWeight: FontWeight.w600,
         // fontStyle: FontStyle.italic
@@ -26,7 +26,7 @@ SliverAppBar profileAppBar(context) {
     leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+          color: darkTheme ? Colors.white : AppColors().officialMatch(),
           size: 18,
         ),
         onPressed: () {
@@ -52,8 +52,8 @@ SliverAppBar profileAppBar(context) {
     //   title: Text(
     //     UserPreferences().getDisplayName(),
     //     style: GoogleFonts.poppins(
-    //       // color: AppColors().primaryBlue(),
-    //       color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+    //       // color: AppColors().officialMatch(),
+    //       color: darkTheme ? Colors.white : AppColors().officialMatch(),
     //       fontSize: 20,
     //       fontWeight: FontWeight.w700,
     //       // fontStyle: FontStyle.italic

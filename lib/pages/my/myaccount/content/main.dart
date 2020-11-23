@@ -66,7 +66,7 @@ Widget addVal(
             arguments: provider.refreshAccount,
           );
         },
-        color: darktheme ? Colors.white : AppColors().primaryBlue(),
+        color: darktheme ? Colors.white : AppColors().officialMatch(),
         child: Text(
           label,
           style: GoogleFonts.poppins(

@@ -37,8 +37,8 @@ class SignedIn extends StatelessWidget {
                 UserPreferences().getDisplayName(),
                 // 'Bipul',
                 style: GoogleFonts.poppins(
-                  // color: AppColors().primaryBlue(),
-                  color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+                  // color: AppColors().officialMatch(),
+                  color: darkTheme ? Colors.white : AppColors().officialMatch(),
                   fontSize: 20,
                   fontWeight: FontWeight.w600, // fontStyle: FontStyle.italic
                   // fontWeight: FontWeight.5old,
@@ -65,8 +65,8 @@ class SignedIn extends StatelessWidget {
               //     UserPreferences().getDisplayName(),
               //     // 'Bipul',
               //     style: GoogleFonts.poppins(
-              //       // color: AppColors().primaryBlue(),
-              //       color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+              //       // color: AppColors().officialMatch(),
+              //       color: darkTheme ? Colors.white : AppColors().officialMatch(),
               //       fontSize: 20,
               //       fontWeight: FontWeight.w700, // fontStyle: FontStyle.italic
               //       // fontWeight: FontWeight.5old,
@@ -171,7 +171,7 @@ class SignedIn extends StatelessWidget {
 //             RoutesContainer(
 //               label: 'Orders',
 //               icon: ProfileTabIcons.orders,
-//               iconColor: AppColors().primaryBlue(),
+//               iconColor: AppColors().officialMatch(),
 //             ),
 //             RoutesContainer(
 //               label: 'Reviews',

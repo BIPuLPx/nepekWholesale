@@ -11,7 +11,7 @@ filterAppBar(context) {
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+          color: darkTheme ? Colors.white : AppColors().officialMatch(),
           size: 17,
         ),
         onPressed: () => Navigator.of(context).pop(),
@@ -20,7 +20,7 @@ filterAppBar(context) {
       title: Image.asset(
         'icons/Brand.png',
         height: 16,
-        color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+        color: darkTheme ? Colors.white : AppColors().officialMatch(),
       ),
 
       // backgroundColor: Colors.white,

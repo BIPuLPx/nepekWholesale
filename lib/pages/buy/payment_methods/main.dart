@@ -65,7 +65,7 @@ class PaymentMethodsRoot extends StatelessWidget {
         ),
         onPressed: () => provider.buyNow(context),
         height: 50,
-        color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+        color: darkTheme ? Colors.white : AppColors().officialMatch(),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         ),

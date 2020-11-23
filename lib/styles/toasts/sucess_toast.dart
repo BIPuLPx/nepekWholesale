@@ -25,7 +25,7 @@ sucessToast(BuildContext context, String message) {
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(25.0),
-      color: AppColors().primaryBlue(),
+      color: AppColors().officialMatch(),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,

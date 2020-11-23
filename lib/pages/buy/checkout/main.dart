@@ -39,7 +39,7 @@ class CheckOutRoot extends StatelessWidget {
             size: 18,
           ),
           height: 50,
-          color: darktheme.darkTheme ? Colors.white : AppColors().primaryBlue(),
+          color: darktheme.darkTheme ? Colors.white : AppColors().officialMatch(),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),
           ),

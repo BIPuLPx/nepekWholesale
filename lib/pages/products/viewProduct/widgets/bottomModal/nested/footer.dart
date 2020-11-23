@@ -7,7 +7,7 @@ import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 Container footer(context) {
   final width = MediaQuery.of(context).size.width;
   final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-  final buttonColor = darkTheme ? Colors.white : AppColors().primaryBlue();
+  final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
   return Container(
     padding: EdgeInsets.only(top: 20),
     child: Row(

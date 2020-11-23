@@ -14,7 +14,7 @@ userInputAppbar(context) {
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: AppColors().primaryBlue(),
+          color: AppColors().officialMatch(),
           size: 17,
         ),
         onPressed: () => Navigator.of(context).pop(),
@@ -25,7 +25,7 @@ userInputAppbar(context) {
       title: Image.asset(
         'icons/Brand.png',
         height: 16,
-        color: AppColors().primaryBlue(),
+        color: AppColors().officialMatch(),
       ),
       // backgroundColor: Colors.white,
       actions: [],

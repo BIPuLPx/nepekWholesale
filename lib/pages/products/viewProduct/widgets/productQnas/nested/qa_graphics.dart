@@ -10,7 +10,7 @@ class QAGraphics extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: text == 'Q' ? AppColors().primaryBlue() : Colors.grey,
+        color: text == 'Q' ? AppColors().officialMatch() : Colors.grey,
       ),
       margin: EdgeInsets.only(right: 10),
       padding: EdgeInsets.only(top: 1, bottom: 2.5, left: 4, right: 4),

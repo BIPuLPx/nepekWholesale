@@ -46,6 +46,6 @@ FlatButton updateBtn(String changeRoute, BuildContext context) {
 }
 
 TextStyle updateBtnText() => GoogleFonts.poppins(
-      color: AppColors().primaryBlue(),
+      color: AppColors().officialMatch(),
       fontWeight: FontWeight.w600,
     );

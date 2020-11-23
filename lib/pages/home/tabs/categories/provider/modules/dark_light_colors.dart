@@ -15,7 +15,7 @@ class LightDarkColors {
   Map darkSelectionColors = {
     "selected": Colors.white,
     "unselected": Colors.black,
-    'selectedText': AppColors().primaryBlue(),
+    'selectedText': AppColors().officialMatch(),
     'unSelectedText': Colors.white
   };
 
@@ -23,7 +23,7 @@ class LightDarkColors {
     "selected": Colors.white,
     "unselected": Colors.grey[200],
     "text": Colors.yellow,
-    'selectedText': AppColors().primaryBlue(),
+    'selectedText': AppColors().officialMatch(),
     'unSelectedText': Colors.black
   };
 }

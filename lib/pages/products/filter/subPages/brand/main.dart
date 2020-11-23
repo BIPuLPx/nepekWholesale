@@ -39,7 +39,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
 
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
 
-    final buttonColor = darkTheme ? Colors.white : AppColors().primaryBlue();
+    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
     final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     // print(widget.args)
     return Scaffold(

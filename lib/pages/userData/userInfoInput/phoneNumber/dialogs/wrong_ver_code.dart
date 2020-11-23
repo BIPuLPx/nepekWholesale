@@ -16,7 +16,7 @@ Future<void> codeExceptions(BuildContext context, String message) async {
           FlatButton(
             child: Text(
               'Okay',
-              style: TextStyle(color: AppColors().primaryBlue()),
+              style: TextStyle(color: AppColors().officialMatch()),
             ),
             onPressed: () {
               Navigator.of(context).pop();

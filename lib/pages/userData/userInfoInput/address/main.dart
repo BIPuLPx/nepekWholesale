@@ -55,7 +55,7 @@ class AddAddressBottomAppBar extends StatelessWidget {
             deliveryadd.finalizedLocation(context);
           },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          color: darktheme ? Colors.white : AppColors().primaryBlue(),
+          color: darktheme ? Colors.white : AppColors().officialMatch(),
           child: Text(
             'Done',
             style: GoogleFonts.poppins(

@@ -32,7 +32,7 @@ class OrderDetailsRoot extends StatelessWidget {
             _topBottomVal("Estimated Delivery Time", '3 - 6 days'),
             SizedBox(height: 10),
             FlatButton(
-              color: darktheme ? Colors.white : AppColors().primaryBlue(),
+              color: darktheme ? Colors.white : AppColors().officialMatch(),
               minWidth: double.infinity,
               onPressed: () {
                 Navigator.pushNamed(
@@ -65,7 +65,7 @@ class OrderDetailsRoot extends StatelessWidget {
       height: 50,
       width: double.infinity,
       child: FlatButton.icon(
-          color: darktheme ? Colors.white : AppColors().primaryBlue(),
+          color: darktheme ? Colors.white : AppColors().officialMatch(),
           onPressed: () => provider.confirmOrder(context),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),

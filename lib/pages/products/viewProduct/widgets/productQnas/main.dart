@@ -17,7 +17,7 @@ class ProductQnas extends StatelessWidget {
     final product = Provider.of<ViewProductState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final providerHead = Provider.of<HeadProvider>(context);
-    final buttonColor = darkTheme ? Colors.white : AppColors().primaryBlue();
+    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
     // print(product.productQnas);
     return Card(
       child: Container(

@@ -53,7 +53,7 @@ class _QtySelectorState extends State<QtySelector> {
             color: darktheme ? Colors.grey[800] : Colors.white,
             boxShadow: [
               BoxShadow(
-                color: AppColors().primaryBlue(),
+                color: AppColors().officialMatch(),
                 spreadRadius: 0.2,
                 blurRadius: 2,
               ),

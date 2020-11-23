@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
 final spinkit = SpinKitDoubleBounce(
-  color: AppColors().primaryBlue(),
+  color: AppColors().officialMatch(),
   size: 40.0,
 );
 

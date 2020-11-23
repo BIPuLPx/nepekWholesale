@@ -77,7 +77,7 @@ class SignUpWithEmailRoot extends StatelessWidget {
       child: SizedBox(
         height: 50,
         child: FlatButton(
-          color: darktheme ? Colors.white : AppColors().primaryBlue(),
+          color: darktheme ? Colors.white : AppColors().officialMatch(),
           onPressed: () {
             provider.signUp(context);
           },

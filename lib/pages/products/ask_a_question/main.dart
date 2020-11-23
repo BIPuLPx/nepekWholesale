@@ -74,14 +74,14 @@ class AskaQuestionRoot extends StatelessWidget {
                 "Ask",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
-                  color: darktheme ? Colors.black : AppColors().primaryBlue(),
+                  color: darktheme ? Colors.black : AppColors().officialMatch(),
                 ),
               ),
               SizedBox(width: 10),
               Icon(
                 Icons.arrow_forward,
                 size: 18,
-                color: darktheme ? Colors.black : AppColors().primaryBlue(),
+                color: darktheme ? Colors.black : AppColors().officialMatch(),
               )
             ],
           ),

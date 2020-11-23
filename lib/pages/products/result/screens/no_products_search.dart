@@ -52,7 +52,7 @@ class NoProductsSearch extends StatelessWidget {
                       borderRadius: BorderRadius.circular(0),
                       // side: BorderSide(color: Colors.red),
                     ),
-                    color: darktheme ? Colors.white : AppColors().primaryBlue(),
+                    color: darktheme ? Colors.white : AppColors().officialMatch(),
                     onPressed: () {
                       provider.args['type'] == 'subcategory'
                           ? Navigator.of(context).pop()
@@ -78,6 +78,6 @@ class NoProductsSearch extends StatelessWidget {
   _noProductsStyle(bool darkTheme) => GoogleFonts.poppins(
         fontSize: 18,
         fontWeight: FontWeight.w700,
-        color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+        color: darkTheme ? Colors.white : AppColors().officialMatch(),
       );
 }

@@ -8,7 +8,7 @@ viewProductAppBar(viewProductContext) {
   final bool darktheme =
       Provider.of<DarkThemeProvider>(viewProductContext).darkTheme;
 
-  Color itemColor = darktheme ? Colors.white : AppColors().primaryBlue();
+  Color itemColor = darktheme ? Colors.white : AppColors().officialMatch();
 
   return SliverAppBar(
     leading: IconButton(
@@ -32,7 +32,7 @@ viewProductAppBar(viewProductContext) {
             color: itemColor,
           ),
           labelColor: Colors.white,
-          // iconColor: AppColors().primaryBlue(),
+          // iconColor: AppColors().officialMatch(),
         ),
         onPressed: () => Navigator.pushNamed(viewProductContext, 'cart'),
       ),

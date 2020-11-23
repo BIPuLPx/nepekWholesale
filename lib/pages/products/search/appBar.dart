@@ -31,7 +31,7 @@ searchAppBar(
                     : Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors().primaryBlue(),
+                    color: AppColors().officialMatch(),
                     spreadRadius: 0.5,
                     blurRadius: 2,
                   ),
@@ -87,7 +87,7 @@ searchAppBar(
                       child: Icon(
                         currentSuffix,
                         size: 18,
-                        color: AppColors().primaryBlue(),
+                        color: AppColors().officialMatch(),
                       ),
                     ),
                     suffixIconConstraints: BoxConstraints(
@@ -107,7 +107,7 @@ searchAppBar(
                     'Cancel',
                     style: GoogleFonts.poppins(
                       color:
-                          darkTheme ? Colors.white : AppColors().primaryBlue(),
+                          darkTheme ? Colors.white : AppColors().officialMatch(),
                       fontWeight: FontWeight.w600,
                     ),
                   ),

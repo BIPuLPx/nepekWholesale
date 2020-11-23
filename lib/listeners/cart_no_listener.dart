@@ -29,12 +29,12 @@ class CartNoListener extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors().primaryBlue(),
+                            color: AppColors().officialMatch(),
                             spreadRadius: 0.025,
                             blurRadius: 0.11,
                           ),
                         ],
-                        color: AppColors().primaryBlue(),
+                        color: AppColors().officialMatch(),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(

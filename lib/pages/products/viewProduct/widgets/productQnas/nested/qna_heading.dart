@@ -11,7 +11,7 @@ class QnaHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    final buttonColor = darkTheme ? Colors.white : AppColors().primaryBlue();
+    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
     final provider = Provider.of<ViewProductState>(context);
     return Container(
       margin: EdgeInsets.only(bottom: 30),

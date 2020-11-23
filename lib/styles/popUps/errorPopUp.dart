@@ -18,7 +18,7 @@ Future<void> errorPopup(context, String title) async {
                 'Ok',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
-                  color: AppColors().primaryBlue(),
+                  color: AppColors().officialMatch(),
                 ),
               ),
               onPressed: () => Navigator.of(context).pop(),

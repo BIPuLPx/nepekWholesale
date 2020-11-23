@@ -25,7 +25,7 @@ selectOptions(context, productName, price, product, darkTheme) {
     ),
     builder: (context) {
       final Color buttonColor =
-          darkTheme ? Colors.white : AppColors().primaryBlue();
+          darkTheme ? Colors.white : AppColors().officialMatch();
       final Color buttonTextColor = darkTheme ? Colors.black : Colors.white;
       return Column(
         mainAxisSize: MainAxisSize.min,

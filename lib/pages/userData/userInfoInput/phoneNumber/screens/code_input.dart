@@ -63,7 +63,7 @@ class InputNumber extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: AppColors().primaryBlue(),
+            color: AppColors().officialMatch(),
             spreadRadius: 0.2,
             blurRadius: 2,
           ),
@@ -102,7 +102,7 @@ class InputNumberForm extends StatelessWidget {
             width: double.infinity,
             height: 50,
             child: FlatButton(
-                color: AppColors().primaryBlue(),
+                color: AppColors().officialMatch(),
                 onPressed: () {
                   phonenumber.verifyCode(context);
                 },
@@ -189,7 +189,7 @@ TextStyle countDownStyle() => GoogleFonts.openSans(
       fontStyle: FontStyle.italic,
     );
 TextStyle resendStyle() => GoogleFonts.rubik(
-      color: AppColors().primaryBlue(),
+      color: AppColors().officialMatch(),
       fontSize: 14.5,
       fontWeight: FontWeight.w500,
     );

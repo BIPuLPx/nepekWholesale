@@ -9,7 +9,7 @@ class Hi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors().primaryBlue(),
+      color: AppColors().officialMatch(),
       padding: EdgeInsets.only(left: 60, right: 30, top: 60, bottom: 60),
       child: Text(
         'Hey $name !',

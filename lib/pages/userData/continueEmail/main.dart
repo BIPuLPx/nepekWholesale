@@ -104,7 +104,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
           'Forgot Password ?',
           style: GoogleFonts.poppins(
             fontSize: 12,
-            color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+            color: darkTheme ? Colors.white : AppColors().officialMatch(),
           ),
         ),
       ),
@@ -119,7 +119,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         ),
-        color: darkTheme ? Colors.white : AppColors().primaryBlue(),
+        color: darkTheme ? Colors.white : AppColors().officialMatch(),
         onPressed: () {
           provider.signIn(context);
         },
@@ -139,7 +139,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         color: isBold
             ? darkTheme
                 ? Colors.white
-                : AppColors().primaryBlue()
+                : AppColors().officialMatch()
             : null,
       );
 }

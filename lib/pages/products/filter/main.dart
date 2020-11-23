@@ -136,7 +136,7 @@ class BottomNav extends StatelessWidget {
     final provider = Provider.of<FilterProvider>(context);
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final Color buttonColor =
-        darktheme ? Colors.white : AppColors().primaryBlue();
+        darktheme ? Colors.white : AppColors().officialMatch();
     final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
     final deviceWidth = MediaQuery.of(context).size.width;
 
