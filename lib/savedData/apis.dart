@@ -1,5 +1,7 @@
 final productApi = localproduct;
 final peopleApi = localPeople;
+final imageCdn = 'https://skiteimages.ams3.digitaloceanspaces.com/productImages';
+
 
 final serverproduct = 'http://128.199.21.180:8000';
 final serverPeople = 'http://128.199.21.180:5000';

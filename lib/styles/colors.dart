@@ -8,7 +8,7 @@ class AppColors {
   primaryBlueShadow() => Color.fromRGBO(37, 104, 255, 0.5);
   officialMatchShadow() => Color.fromRGBO(128, 36, 106, 0.5);
   primaryBlueLight() => Color.fromRGBO(37, 104, 255, 0.1);
-  officialMatchLight() => Color.fromRGBO(128, 36, 106, 0);
+  officialMatchLight() => Color.fromRGBO(128, 36, 106, 0.2);
   primaryGreen() => Color.fromRGBO(11, 180, 32, 1);
   primaryYellow() => Color.fromRGBO(254, 238, 0, 1);
   inkWellSplash() => Color.fromRGBO(37, 110, 255, 0.58);

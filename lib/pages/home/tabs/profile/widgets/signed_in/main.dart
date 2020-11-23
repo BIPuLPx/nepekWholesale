@@ -96,6 +96,10 @@ class SignedIn extends StatelessWidget {
                   RoutesContainer(
                     label: 'returns',
                   ),
+                  RoutesContainer(
+                    label: 'wishlists',
+                    route: 'my_wishlists',
+                  ),
                   Common(),
                 ],
               ),

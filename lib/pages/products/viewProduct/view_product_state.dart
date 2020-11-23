@@ -1,17 +1,21 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-
-// import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_layout.dart';
+import 'package:nepek_buyer/rootApp/dataFetch/syncCutomProducts.dart';
 import 'dart:convert';
 import 'package:nepek_buyer/savedData/apis.dart';
-
+import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/toasts/error_toast.dart';
+import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class ViewProductState with ChangeNotifier {
   final cart = Hive.box('cart');
+  Box _customProductBox = Hive.box('customProducts');
+  SyncCustomProducts _syncPdt = SyncCustomProducts();
 
   String productID;
   bool initialFetch = false;
@@ -36,6 +40,7 @@ class ViewProductState with ChangeNotifier {
   List buyerIds = [];
   String qtyToBuy = '1';
   List<String> totalQty = [];
+  List wishLists = [];
 
   Future fetchProduct() async {
     var response;
@@ -62,6 +67,7 @@ class ViewProductState with ChangeNotifier {
     // productQnas = res['qna'];
     // getQnames(res['qna']);
     populateQty(res['qty']);
+    getWishLists();
     getQnas().then(
       (_) => getQnames().then(
         (_) {
@@ -164,5 +170,39 @@ class ViewProductState with ChangeNotifier {
     result = spinkit;
     notifyListeners();
     fetchProduct();
+  }
+
+  void getWishLists() {
+    wishLists = _customProductBox.get('wishlist') ?? [];
+    print(wishLists);
+  }
+
+  bool isWishListed() {
+    if (wishLists.contains(productID)) {
+      return true;
+    }
+    return false;
+  }
+
+  void toggleFav(BuildContext context) async {
+    if (!UserPreferences().getLoggedIn()) {
+      showErrorToast(context, "Please sign in");
+      Navigator.pushNamed(context, 'profile',
+          arguments: {"page": "view_product"});
+    } else {
+      final String crdl = isWishListed() ? 'pull' : 'add';
+
+      if (isWishListed()) {
+        wishLists.remove(productID);
+      } else {
+        wishLists.add(productID);
+      }
+      notifyListeners();
+
+      final status = await _syncPdt.crdlCustomProducts(productID, crdl);
+      if (status == 200) {
+        sucessToast(context, '${capitalize(crdl)}ed in wishlists');
+      }
+    }
   }
 }

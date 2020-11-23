@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nepek_buyer/rootApp/dataFetch/syncCutomProducts.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
@@ -47,13 +48,13 @@ class ContinueWithEmailProvider with ChangeNotifier {
       );
 
       final resData = jsonDecode(response.body);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         Navigator.of(context).pop();
         UserPreferences().jwtToken(resData['token']);
         UserPreferences().displayName(resData['data']['displayName']);
         UserPreferences().buyerKey(resData['data']['uid']);
         UserPreferences().loggedIn(true);
+        SyncCustomProducts().syncWishListsWithBackend();
         sucessToast(context, 'Signed in');
         refresh();
         if (thirdPartyRoute == null) {

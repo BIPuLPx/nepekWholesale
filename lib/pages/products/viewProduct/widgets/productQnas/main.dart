@@ -36,7 +36,6 @@ class ProductQnas extends StatelessWidget {
                 borderSide: BorderSide(color: buttonColor, width: 1.6),
                 onPressed: () {
                   if (!UserPreferences().getLoggedIn()) {
-                    providerHead.thirdPartyProfileRoute = 'view_product';
                     showErrorToast(context, "Please sign in");
                     Navigator.pushNamed(context, 'profile',
                         arguments: {"page": "view_product"});

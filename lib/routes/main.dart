@@ -9,6 +9,7 @@ import 'package:nepek_buyer/pages/home/tabs/profile/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
 import 'package:nepek_buyer/pages/my/myOrders/main.dart';
 import 'package:nepek_buyer/pages/my/myOrders/viewOrder/main.dart';
+import 'package:nepek_buyer/pages/my/myWishLists/main.dart';
 import 'package:nepek_buyer/pages/my/myaccount/main.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
 import 'package:nepek_buyer/pages/products/ask_a_question/main.dart';
@@ -88,6 +89,9 @@ class RouteGenerator {
 
       case 'my_orders':
         return MaterialPageRoute(builder: (_) => MyOrders());
+
+      case 'my_wishlists':
+        return MaterialPageRoute(builder: (_) => MyWishLists());
 
       case 'view_order':
         return MaterialPageRoute(builder: (_) => ViewOrder(args: args));

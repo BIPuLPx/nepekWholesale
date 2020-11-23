@@ -1,14 +1,37 @@
 import 'dart:convert';
-
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/user_data.dart';
 
 class InjectDatas {
+  Box _customProductBox = Hive.box('customProducts');
+
+  Future<bool> testCustomProducts(String name) async {
+    final key = _customProductBox.get('${name}key');
+    if (key == null) {
+      return false;
+    } else {
+      // print('here');
+      final response = await http.get(
+          '$productApi/custom_products/check_changed?type=$name',
+          headers: {
+            'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
+          });
+      final Map backendData = jsonDecode(response.body);
+      // print(backendData);
+      final backEndkey = backendData['change_id'];
+      if (key == backEndkey) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   Future testDeliveryAddress() async {
     final deliveryAddBox = Hive.box('deliveryAddresses');
     final key = deliveryAddBox.get('delivery_change');
-
     if (key == null) {
       return false;
     } else {
@@ -54,11 +77,11 @@ class InjectDatas {
   }
 
   var fetchedData;
+
   Future fetchDeliveryAddress() async {
     var response;
     response = await http.get('$peopleApi/delivery_address/get_all');
     fetchedData = jsonDecode(response.body);
-    // deliveryAddressbox.put('changed', null);
     _putFetchedDatainBox('changed');
     _putFetchedDatainBox('states');
     _putFetchedDatainBox('districts');
@@ -69,5 +92,18 @@ class InjectDatas {
   void _putFetchedDatainBox(String key) {
     final deliveryAddBox = Hive.box('deliveryAddresses');
     deliveryAddBox.put(key, fetchedData[key]);
+  }
+
+  Future getCustomProducts(String name) async {
+    final response = await http
+        .get('$productApi/custom_products/get_raw?type=$name', headers: {
+      'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
+    });
+    if (response.statusCode == 200) {
+      final fetchedData = jsonDecode(response.body);
+      _customProductBox.put(name, fetchedData['products']);
+      _customProductBox.put('${name}key', fetchedData['products']);
+    }
+    return response.statusCode;
   }
 }
