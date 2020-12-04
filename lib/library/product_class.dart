@@ -16,5 +16,5 @@ class Product {
   String get miniThumb => product['miniThumb'];
 
   String get off =>
-      '${(((product['oldPrice'] - product['price']) * 100) / product['oldPrice']).toStringAsFixed(2)} % OFF';
+      '${(((product['oldPrice'] - product['price']) * 100) / product['oldPrice']).toStringAsFixed(1)} % OFF';
 }

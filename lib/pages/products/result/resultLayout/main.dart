@@ -7,7 +7,6 @@ import 'appBar.dart';
 import 'widgets/grid_view.dart';
 import 'widgets/list_view.dart';
 
-
 class ResultLayout extends StatefulWidget {
   @override
   _ResultLayoutState createState() => _ResultLayoutState();
@@ -67,7 +66,6 @@ class _ResultLayoutState extends State<ResultLayout> {
 
     _scrollController.addListener(_onScroll);
 
-
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -83,7 +81,7 @@ class _ResultLayoutState extends State<ResultLayout> {
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: listType == 'grid' ? 2 : 1,
-              childAspectRatio: (itemWidth / height),
+              childAspectRatio: (itemWidth / height * 1.01),
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

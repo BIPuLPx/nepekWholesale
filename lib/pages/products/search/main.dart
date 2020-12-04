@@ -7,7 +7,6 @@ import 'widgets/autoComplete/main.dart';
 import 'widgets/currentSearch/main.dart';
 import 'widgets/history/main.dart';
 
-
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class _SearchPageRootState extends State<SearchPageRoot> {
   Widget build(BuildContext context) {
     final provider = Provider.of<SearchState>(context);
     final autocompletes = provider.autoCompletes;
-
+    // print(autocompletes);
     return Scaffold(
       appBar: searchAppBar(
           context, currentSuffix, searchTerm, setSearchTerm, _searchHolder),
@@ -53,5 +52,4 @@ class _SearchPageRootState extends State<SearchPageRoot> {
       ),
     );
   }
-
 }

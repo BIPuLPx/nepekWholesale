@@ -4,16 +4,18 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'search_provider.dart';
 
 searchAppBar(
     context, currentSuffix, searchTerm, Function setSearchTerm, searchHolder) {
   final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
   final deviceWidth = MediaQuery.of(context).size.width;
+  final SearchState search = Provider.of(context);
   return AppBar(
     leading: Container(),
     flexibleSpace: Center(
       child: Container(
-        margin: EdgeInsets.only(top: 22),
+        margin: EdgeInsets.only(top: 52),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +45,7 @@ searchAppBar(
                   autocorrect: false,
                   onChanged: (val) {
                     setSearchTerm(val);
-                    // search.autoComplete(val);
+                    search.autoComplete(val);
                   },
                   textInputAction: TextInputAction.search,
                   onSubmitted: (val) {
@@ -106,8 +108,9 @@ searchAppBar(
                   child: Text(
                     'Cancel',
                     style: GoogleFonts.poppins(
-                      color:
-                          darkTheme ? Colors.white : AppColors().officialMatch(),
+                      color: darkTheme
+                          ? Colors.white
+                          : AppColors().officialMatch(),
                       fontWeight: FontWeight.w600,
                     ),
                   ),

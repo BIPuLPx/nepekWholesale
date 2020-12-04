@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
 
@@ -11,9 +9,10 @@ class SearchState extends ChangeNotifier {
   List autoCompletes = [];
 
   Future autoComplete(term) async {
+    // autoCompletes = [];
+    // print(autoCompletes);
     var response;
-    response =
-        await http.get('$productApi/products/fetch/autocomplete?term=$term');
+    response = await http.get('$productApi/products/autocomplete?term=$term');
     final res = jsonDecode(response.body);
     autoCompletes = res;
     // print(res);

@@ -35,7 +35,7 @@ class ProductQnas extends StatelessWidget {
                 highlightedBorderColor: buttonColor,
                 borderSide: BorderSide(color: buttonColor, width: 1.6),
                 onPressed: () {
-                  if (!UserPreferences().getLoggedIn()) {
+                  if (UserPreferences().getLoggedIn() != true) {
                     showErrorToast(context, "Please sign in");
                     Navigator.pushNamed(context, 'profile',
                         arguments: {"page": "view_product"});

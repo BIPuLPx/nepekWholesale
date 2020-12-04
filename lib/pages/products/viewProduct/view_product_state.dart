@@ -185,7 +185,7 @@ class ViewProductState with ChangeNotifier {
   }
 
   void toggleFav(BuildContext context) async {
-    if (!UserPreferences().getLoggedIn()) {
+    if (UserPreferences().getLoggedIn() != true) {
       showErrorToast(context, "Please sign in");
       Navigator.pushNamed(context, 'profile',
           arguments: {"page": "view_product"});

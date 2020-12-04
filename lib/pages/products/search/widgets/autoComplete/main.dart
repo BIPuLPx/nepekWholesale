@@ -9,12 +9,13 @@ class AutoCompletes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final autocompletes = Provider.of<SearchState>(context).autoCompletes;
+    // print(autocompletes);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: autocompletes
           .map(
             (autocomplete) => AutocompleteText(
-              text: autocomplete['text'],
+              text: autocomplete,
             ),
           )
           .toList(),

@@ -43,7 +43,6 @@ class ResultState with ChangeNotifier {
   }
 
   Future fetchInitialSearch() async {
-    print(args);
     await _backend
         .searchProducts(args['type'], args['query'], sortBy['sort'],
             sortBy['by'], 1, toFilter, queryFilter)

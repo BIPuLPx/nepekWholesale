@@ -3,14 +3,15 @@ import 'package:provider/provider.dart';
 
 import 'provider/main.dart';
 
-
 class ResultPage extends StatelessWidget {
   final args;
   ResultPage({this.args});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ResultState>(
-        create: (context) => ResultState(), child: ResultRoot(args: args));
+      create: (context) => ResultState(),
+      child: ResultRoot(args: args),
+    );
   }
 }
 
