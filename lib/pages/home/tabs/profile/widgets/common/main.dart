@@ -14,14 +14,13 @@ class Common extends StatelessWidget {
           label: 'About us',
           icon: 'aboutUs',
         ),
-        CommonContainer(
-          label: 'Theme',
-          icon: 'theme',
-        ),
+        // CommonContainer(
+        //   label: 'Theme',
+        //   icon: 'theme',
+        // ),
         SizedBox(height: 100),
         // _reserved()
       ],
     );
   }
-
 }

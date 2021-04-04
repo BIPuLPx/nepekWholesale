@@ -22,6 +22,7 @@ import 'package:nepek_buyer/pages/products/result/main.dart';
 import 'package:nepek_buyer/pages/products/reviews/main.dart';
 import 'package:nepek_buyer/pages/products/search/main.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/main.dart';
+import 'package:nepek_buyer/pages/seller_store/main.dart';
 import 'package:nepek_buyer/pages/userData/continueEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/signupWithEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/userInfoInput/address/main.dart';
@@ -126,6 +127,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OrderDetails(args: args));
 
       default:
+        // return MaterialPageRoute(builder: (_) => SellerStore());
+
         return MaterialPageRoute(
           settings: RouteSettings(name: "home"),
           builder: (_) => HomePage(),

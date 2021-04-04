@@ -1,5 +1,5 @@
-final productApi = domainProducts;
-final peopleApi = domainPeople;
+final productApi = localproduct;
+final peopleApi = localPeople;
 
 final imageCdn =
     'https://skiteimages.ams3.digitaloceanspaces.com/productImages';

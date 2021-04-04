@@ -7,7 +7,7 @@ import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:provider/provider.dart';
 
 class ViewOrderProvider extends ChangeNotifier {

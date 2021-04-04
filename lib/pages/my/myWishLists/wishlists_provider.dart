@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
-import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 import 'layout.dart';
 import 'no_wishlists.dart';
 
@@ -27,5 +27,3 @@ class WishListsProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-
-

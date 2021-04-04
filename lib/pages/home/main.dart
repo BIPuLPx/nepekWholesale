@@ -31,6 +31,7 @@ class _HomePageRootState extends State<HomePageRoot> {
 
   final tabs = [
     HomeTab(),
+    // Text('hi'),
     Categories(),
     Profile(),
     CartTab(outside: false),

@@ -3,31 +3,30 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
 defaultAppBar(context, String title, bool darktheme) {
-  return 
-    // preferredSize: Size.fromHeight(50.0), // here the desired height
-     AppBar(
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: darktheme ? Colors.white : AppColors().officialMatch(),
-          size: 17,
-        ),
-        onPressed: () => Navigator.of(context).pop(),
+  return
+      // preferredSize: Size.fromHeight(50.0), // here the desired height
+      AppBar(
+    leading: IconButton(
+      icon: Icon(
+        Icons.arrow_back_ios,
+        color: darktheme ? Colors.white : AppColors().officialMatch(),
+        size: 17,
       ),
-      // centerTitle: true,
-      // backgroundColor: AppColors().transparentAppbar(),
-      elevation: 1,
-      title: Text(
-        title,
-        style: GoogleFonts.poppins(
+      onPressed: () => Navigator.of(context).pop(),
+    ),
+    // centerTitle: true,
+    // backgroundColor: AppColors().transparentAppbar(),
+    elevation: 0.5,
+    title: Text(
+      title,
+      style: GoogleFonts.poppins(
           fontSize: 18,
           color: darktheme ? Colors.white : AppColors().officialMatch(),
-          fontWeight: FontWeight.w600
-        ),
-      ),
-      // brightness: Brightness.light,
+          fontWeight: FontWeight.w600),
+    ),
+    // brightness: Brightness.light,
 
-      // backgroundColor: Colors.white,
-      actions: [],
+    // backgroundColor: Colors.white,
+    actions: [],
   );
 }

@@ -6,7 +6,7 @@ class HomeAd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.only(bottom: 15),
       child: ClipRRect(
         // borderRadius: BorderRadius.circular(10.0),
         child: CachedNetworkImage(

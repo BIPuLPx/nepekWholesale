@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
-final spinkit = SpinKitDoubleBounce(
-  color: AppColors().officialMatch(),
-  size: 40.0,
-);
+import '../spinkit.dart';
 
 Future<void> loadingPopUP(context, String title) async {
   return showDialog<void>(

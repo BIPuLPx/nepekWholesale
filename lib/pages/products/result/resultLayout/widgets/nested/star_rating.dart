@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class Rating extends StatelessWidget {
   final double rating;
@@ -15,6 +14,7 @@ class Rating extends StatelessWidget {
       child: Row(
         children: [
           RatingBar(
+            // ratingWidget: ,
             unratedColor: Colors.grey[350],
             ignoreGestures: true,
             initialRating: rating == 0 ? 5 : rating,

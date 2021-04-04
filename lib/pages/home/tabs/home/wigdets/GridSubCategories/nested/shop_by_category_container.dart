@@ -4,23 +4,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 
-class ShopByCategoryContainer extends StatelessWidget {
+class CategoryCollectionsContainer extends StatelessWidget {
   final String link;
   final String label;
-  const ShopByCategoryContainer({Key key, this.link, this.label})
+  final Color borderColor;
+  const CategoryCollectionsContainer(
+      {Key key, this.link, this.label, this.borderColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width * 0.3;
     return Container(
-      color: HomeColors().primaryBlueShade(),
+      padding: EdgeInsets.all(5),
       // height: 200,
       width: width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 2,
+          color: borderColor,
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.all(5),
             child: CachedNetworkImage(
               imageUrl:
                   'https://images-na.ssl-images-amazon.com/images/I/61yqCiJhxtL._SY450_.jpg',
@@ -29,14 +37,14 @@ class ShopByCategoryContainer extends StatelessWidget {
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(5),
-            child: Text(
-              label,
-              style:
-                  GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600),
+          Text(
+            label,
+            style: GoogleFonts.poppins(
+              color: Colors.black,
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
             ),
-          )
+          ),
         ],
       ),
     );

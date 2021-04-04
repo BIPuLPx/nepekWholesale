@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   primaryBlue() => Color(0xff256eff);
-  officialMatch() => Color.fromRGBO(128, 36, 106, 1);
+  officialMatch() => Color.fromRGBO(97, 56, 229, 1);
   // officialBackground()=>Color.fromRGBO(28, 14, 42, 1);
   officialBackground() => Color.fromRGBO(16, 18, 22, 1);
   primaryBlueShadow() => Color.fromRGBO(37, 104, 255, 0.5);

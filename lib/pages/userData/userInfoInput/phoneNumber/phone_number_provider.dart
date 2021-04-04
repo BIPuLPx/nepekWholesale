@@ -38,9 +38,9 @@ class PhoneInputState extends ChangeNotifier {
     if (args == null) {
       isNextScreenAddress = false;
     } else {
-      if (args['pg'] == null) {
-        isNextScreenAddress = args['deliveryAdd'];
-      }
+      // if (args['pg'] == null) {
+      //   isNextScreenAddress = args['deliveryAdd'];
+      // }
     }
     initInject = false;
   }

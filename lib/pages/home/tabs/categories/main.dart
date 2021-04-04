@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/pages/home/tabs/categories/appBar.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/pages/home/tabs/categories/provider/main.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -29,8 +30,10 @@ class _CategoriesRootState extends State<CategoriesRoot>
     }
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
-        backgroundColor: darkTheme ? Colors.black : Colors.white,
-        body: classify.body);
+      appBar: categoryAppBar(context, darkTheme),
+      backgroundColor: darkTheme ? Colors.black : Colors.white,
+      body: classify.body,
+    );
   }
 
   @override

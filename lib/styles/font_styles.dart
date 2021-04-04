@@ -43,12 +43,12 @@ class ProductPageFonts {
 
 class HomeFonts {
   Container heading(String text) => Container(
-        margin: EdgeInsets.only(bottom: 0, left: 15),
+        margin: EdgeInsets.only(bottom: 10, left: 10, top: 10),
         child: Text(
           text,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w700,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
       );

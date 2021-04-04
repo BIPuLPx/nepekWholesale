@@ -12,18 +12,19 @@ class RootProvider with ChangeNotifier {
   Widget body = LoadingScreen();
 
   Future initChecks() async {
-    openDBS().then(
-      (_) => InjectDatas().testClassification().then(
-        (value) {
-          if (!value) {
-            InjectDatas().fetchClassification().then(
-                (_) => checkDeliveryAddresses().then((_) => changeScreen()));
-          } else {
-            checkDeliveryAddresses().then((_) => changeScreen());
-          }
-        },
-      ),
-    );
+    openDBS().then((_) => changeScreen());
+    // openDBS().then(
+    //   (_) => InjectDatas().testClassification().then(
+    //     (value) {
+    //       if (!value) {
+    //         InjectDatas().fetchClassification().then(
+    //             (_) => checkDeliveryAddresses().then((_) => changeScreen()));
+    //       } else {
+    //         checkDeliveryAddresses().then((_) => changeScreen());
+    //       }
+    //     },
+    //   ),
+    // );
   }
 
   Future checkDeliveryAddresses() async {

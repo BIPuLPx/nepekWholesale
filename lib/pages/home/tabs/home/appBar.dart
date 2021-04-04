@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
 homeAppbar(context, bool darkTheme) {
+  final deviceWidth = MediaQuery.of(context).size.width;
   // final bool darkTheme = Provider.of
-  return
-      AppBar(
-    elevation: 1,
+  return AppBar(
+    elevation: 0.5,
     title: Center(
       child: Image.asset(
         'icons/Brand.png',
@@ -23,8 +23,9 @@ homeAppbar(context, bool darkTheme) {
           Navigator.pushNamed(context, 'search');
         },
         child: Container(
+          width: deviceWidth * 0.7,
           margin: EdgeInsets.only(top: 12, bottom: 12, right: 20),
-          padding: EdgeInsets.only(left: 5, right: 5),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             // borderRadius: BorderRadius.circular(5),
             color: darkTheme
@@ -53,7 +54,6 @@ homeAppbar(context, bool darkTheme) {
               Icon(Icons.search, color: AppColors().searchBarItems(), size: 18)
             ],
           ),
-          width: 220,
         ),
       )
     ],
