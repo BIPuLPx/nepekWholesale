@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
@@ -8,13 +7,10 @@ import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
-import 'dialogs/sending_code.dart';
-import 'dialogs/wrong_ver_code.dart';
 import 'screens/code_input.dart';
 import 'screens/phone_number_input.dart';
 
 class PhoneInputState extends ChangeNotifier {
-  FirebaseAuth _auth = FirebaseAuth.instance;
 //
   bool initInject = false;
   bool isNextScreenAddress;
@@ -100,75 +96,6 @@ class PhoneInputState extends ChangeNotifier {
       autoValidate = true;
       notifyListeners();
     }
-  }
-
-  Future verifyCode(BuildContext context) async {
-    sendingCode(context);
-    AuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verCodeid, smsCode: verificationCode);
-    try {
-      final result = await _auth.signInWithCredential(credential);
-      final user = result.user;
-      print(user);
-      // print('verified');
-      if (user.phoneNumber == '+977$phoneNumber') {
-        // print('verified');
-        addToBackend(context);
-      }
-    } catch (e) {
-      print(e.code);
-      if (e.code == 'invalid-verification-code') {
-        Navigator.of(context).pop();
-        codeExceptions(
-            context, "The verification code is invalid, please try again ");
-      }
-
-      // PlatformException(code: '');
-      // Navigator.of(context).pop();
-      // wrongCode(context);
-      // print(e);
-    }
-  }
-
-  Future verifyNumber(BuildContext context) async {
-    print('here');
-    print(phoneNumber);
-    sendingCode(context);
-
-    await _auth.verifyPhoneNumber(
-        phoneNumber: '+977$phoneNumber',
-        verificationCompleted: (AuthCredential credential) async {
-          // Navigator.of(context).pop();
-          sendingCode(context);
-          final result = await _auth.signInWithCredential(credential);
-          final user = result.user;
-          // print(user);
-          if (user.phoneNumber == '+977$phoneNumber') {
-            // print('verified');
-            addToBackend(context);
-          }
-          //This callback would gets called when verification is done auto maticlly
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          print(e);
-          print(e.toString());
-          print('failed');
-          // print(e.code);
-          // if(e.code ==
-          if (e.code == 'invalid-verification-code') {
-            print('The provided phone number is not valid.');
-          }
-        },
-        codeSent: (String verificationId, int resendToken) {
-          verCodeid = verificationId;
-          Navigator.of(context).pop();
-          currentScreen = 1;
-          notifyListeners();
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          print('timeOut');
-        },
-        timeout: Duration(seconds: 0));
   }
 }
 
