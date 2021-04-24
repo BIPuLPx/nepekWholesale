@@ -12,7 +12,10 @@ import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
+import 'logic/options_and_variants.dart';
+
 class ViewProductState with ChangeNotifier {
+  OptionsAndVariants _optionsAndVariants = OptionsAndVariants();
   final cart = Hive.box('cart');
   Box _customProductBox = Hive.box('customProducts');
   SyncCustomProducts _syncPdt = SyncCustomProducts();
@@ -22,12 +25,13 @@ class ViewProductState with ChangeNotifier {
   dynamic result = spinkit;
   List productImgs;
   String miniThumb;
-  String productUid;
+  String imgDir;
   String sellerUid;
   String productBrand;
   String productName;
   double productRating;
   int noOfReviews;
+  String imgUrl;
   String productPrice;
   List productOptions;
   List buyOptions = [];
@@ -35,21 +39,28 @@ class ViewProductState with ChangeNotifier {
   List productHighlights;
   List productSpecifications;
   List productReviews;
-  List productQnas;
+  List productQnas = [];
   List buyerNames = [];
+  List productVariants = [];
   List buyerIds = [];
   String qtyToBuy = '1';
   List<String> totalQty = [];
   List wishLists = [];
+  List activeOptions;
+  List avVariants;
+  List indexedVariants;
+  List availableOpt;
+  List selectedOption;
+  Map currentPriceAndQty = {"qty": 0, 'price': 0};
+  int screen = 1;
+  String optImg;
 
   Future fetchProduct() async {
     var response;
     response = await http.get('$productApi/products/fetch/single/$productID');
-
     final res = jsonDecode(response.body);
-    // print(res);
     productID = res['_id'];
-    productUid = res['uid'];
+    imgDir = res['imgDir'];
     sellerUid = res['seller_id'];
     productBrand = res['brand'];
     productName = res['productName'];
@@ -57,132 +68,102 @@ class ViewProductState with ChangeNotifier {
     noOfReviews = res['ratingNo'];
     productPrice = res['price'].toString();
     productOptions = res['options'];
-    populateBuyOptions(res['options']);
-    productDescription = res['description'];
     productHighlights = res['highlights'];
     productSpecifications = res['specifications'];
     productReviews = res['reviews'];
+    imgUrl = res['imgUrl'];
     productImgs = res['imgs'];
     miniThumb = res['miniThumb'];
+    productVariants = res['variants'];
     // productQnas = res['qna'];
     // getQnames(res['qna']);
+    initialFetch = true;
+    //
     populateQty(res['qty']);
-    getWishLists();
-    getQnas().then(
-      (_) => getQnames().then(
-        (_) {
-          initialFetch = true;
-          result = ViewProductLayout();
-          notifyListeners();
-        },
-      ),
-    );
-  }
-
-  Future getQnas() async {
-    final response =
-        await http.get('$productApi/qna/buyer/only_four?key=$productID');
-    productQnas = jsonDecode(response.body);
-    if (productQnas.length > 0) {
-      for (var qna in productQnas) {
-        if (!buyerIds.contains(qna['buyer_id'])) {
-          buyerIds.add(qna['buyer_id']);
-        }
-      }
+    // getWishLists();
+    result = ViewProductLayout();
+    if (productOptions.length > 0 && productVariants.length > 0) {
+      var initVariants =
+          _optionsAndVariants.init(productOptions, productVariants);
+      avVariants = initVariants['avVariants'];
+      availableOpt = initVariants['availableOpt'];
+      selectedOption = initVariants['selectedOption'];
+      indexedVariants = initVariants['indexedVariants'];
+      useEffect();
     }
   }
 
-  Future getQnames() async {
-    final response = await http.post(
-      '$peopleApi/customers/get_name',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode({'uids': buyerIds}),
-    );
-    buyerNames = jsonDecode(response.body);
+  useEffect() {
+    activeOptions = _optionsAndVariants.getActiveOptions(
+        avVariants, selectedOption, indexedVariants);
+    if (selectedOption.length == activeOptions.length)
+      currentPriceAndQty = _optionsAndVariants.getCurrentPriceAndQuantity(
+        avVariants,
+        selectedOption,
+      );
+    optImg = _optionsAndVariants.getOptImage(availableOpt, selectedOption);
+    notifyListeners();
   }
 
-  String getBuyerName(uid) {
-    for (var names in buyerNames) {
-      if (names['uid'] == uid) {
-        return names['displayName'];
-      }
-    }
-    return "No name";
+  changeOption(String value, bool keep) {
+    if (keep) {
+      final selectedOptionIndexes = _optionsAndVariants.getIndexofVals(
+          selectedOption, indexedVariants, false);
+      final valueIndex =
+          _optionsAndVariants.getIndexofVals([value], indexedVariants, true);
+      final trimFromSelectedOption = selectedOptionIndexes[valueIndex[value]];
+      if (trimFromSelectedOption != null) {
+        var newSelectedOption = selectedOption
+            .where((opt) => opt != trimFromSelectedOption)
+            .toList();
+        selectedOption = [...newSelectedOption, value];
+      } else
+        selectedOption = [...selectedOption, value];
+    } else
+      selectedOption = selectedOption.where((opt) => opt != value).toList();
+    useEffect();
   }
 
   void populateQty(int qty) {
     totalQty = [];
-    for (var i = 1; i <= qty; i++) {
-      totalQty.add(i.toString());
-    }
+    for (var i = 1; i <= qty; i++) totalQty.add(i.toString());
   }
 
-  void populateBuyOptions(List options) {
-    for (var option in options) {
-      final newOtpn = {'name': option['name'], 'value': option['default']};
-      buyOptions.add(newOtpn);
-    }
-  }
-
-  void changeOption(String name, String value) {
-    for (var option in buyOptions) {
-      if (option['name'] == name) {
-        option['value'] = value;
-      }
-    }
-    print(buyOptions);
-  }
-
-  void changeQty(String val) {
-    qtyToBuy = val;
-  }
+  void changeQty(String val) => qtyToBuy = val;
 
   bool checkDuplicate() {
     List cartItems = cart.values.toList(growable: false);
-    for (var item in cartItems) {
-      if (item['name'] == productName) {
-        return true;
-      }
-    }
+    for (var item in cartItems) if (item['name'] == productName) return true;
     return false;
   }
 
-  void addTocart() {
-//find if item exists
-
-    // print('Add To cart');
-    cart.add({
-      'product_uid': productUid,
-      'product_id': productID,
-      'name': productName,
-      'qty': qtyToBuy,
-      'totalQty': totalQty,
-      'miniThumb': miniThumb,
-      'seller_uid': sellerUid,
-      'options': buyOptions,
-      'price': productPrice
-    });
-  }
+  void addTocart() => cart.add({
+        'product_uid': imgDir,
+        'product_id': productID,
+        'name': productName,
+        'qty': qtyToBuy,
+        'totalQty': totalQty,
+        'miniThumb': miniThumb,
+        'seller_uid': sellerUid,
+        'options': buyOptions,
+        'price': productPrice
+      });
 
   void refresh() {
+    screen = 1;
     result = spinkit;
     notifyListeners();
     fetchProduct();
   }
 
-  void getWishLists() {
-    wishLists = _customProductBox.get('wishlist') ?? [];
-    print(wishLists);
+  void changeScreen(int to) {
+    screen = to;
+    notifyListeners();
   }
 
-  bool isWishListed() {
-    if (wishLists.contains(productID)) {
-      return true;
-    }
-    return false;
-  }
+  void getWishLists() => wishLists = _customProductBox.get('wishlist') ?? [];
+
+  bool isWishListed() => wishLists.contains(productID);
 
   void toggleFav(BuildContext context) async {
     if (UserPreferences().getLoggedIn() != true) {
@@ -191,18 +172,15 @@ class ViewProductState with ChangeNotifier {
           arguments: {"page": "view_product"});
     } else {
       final String crdl = isWishListed() ? 'pull' : 'add';
-
-      if (isWishListed()) {
+      if (isWishListed())
         wishLists.remove(productID);
-      } else {
+      else
         wishLists.add(productID);
-      }
       notifyListeners();
 
       final status = await _syncPdt.crdlCustomProducts(productID, crdl);
-      if (status == 200) {
+      if (status == 200)
         sucessToast(context, '${capitalize(crdl)}ed in wishlists');
-      }
     }
   }
 }

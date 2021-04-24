@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/text/nepek_text_input.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
@@ -33,37 +36,64 @@ class ContinueWithEmailRoot extends StatelessWidget {
       provider.thirdPartyRoute = args['thirdPartyRoute'];
       provider.initState = true;
     }
+    print(args);
     return Scaffold(
-      appBar: defaultAppBar(context, 'Continue with email', darkTheme),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.only(left: 15, right: 15),
-          child: ListView(
-            physics:
-                BouncingScrollPhysics(),
+          // padding: EdgeInsets.only(left: 20, right: 20),
+          child: Stack(
+            clipBehavior: Clip.none,
             children: [
-              SizedBox(height: 100),
-              Text(
-                'Enter your credentials',
-                style: GoogleFonts.poppins(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w700,
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  children: [
+                    SizedBox(height: 100),
+                    NepekText(
+                      value: 'Welcome back!',
+                      color: AppColors().officialMatch(),
+                      fontSize: 23,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    NepekText(
+                        value: 'Enter your credentials',
+                        fontWeight: FontWeight.w500
+                        // color: AppColors().officialMatch(),
+                        ),
+                  ],
                 ),
               ),
-              SizedBox(height: 20),
-              TextInput(
-                labelText: "Email",
-                onChanged: (val) => provider.inputChanged('email', val),
+              Positioned(
+                width: MediaQuery.of(context).size.width,
+                bottom: 60,
+                child: Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      NepekTextInput(
+                        labelText: "Email",
+                        onChanged: (val) => provider.inputChanged('email', val),
+                        background: true,
+                      ),
+                      SizedBox(height: 20),
+                      NepekTextInput(
+                        labelText: "Password",
+                        obscureText: true,
+                        onChanged: (val) =>
+                            provider.inputChanged('password', val),
+                        background: true,
+                      ),
+                      SizedBox(height: 50),
+                      _signinBtn(darkTheme, provider, context),
+                      // SizedBox(height: 5),
+                      _forgotPwd(darkTheme),
+                      _signUp(darkTheme, context)
+                    ],
+                  ),
+                ),
               ),
-              TextInput(
-                labelText: "Password",
-                obscureText: true,
-                onChanged: (val) => provider.inputChanged('password', val),
-              ),
-              SizedBox(height: 15),
-              _signinBtn(darkTheme, provider, context),
-              _forgotPwd(darkTheme),
-              _signUp(darkTheme, context)
             ],
           ),
         ),
@@ -75,20 +105,20 @@ class ContinueWithEmailRoot extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "Don't have an account?",
-            style: _textStyle(false, darkTheme),
+          NepekText(
+            value: "Don't have an account?",
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('sign_up_with_email');
-            },
-            child: Text(
-              'Sign up',
-              style: _textStyle(true, darkTheme),
-            ),
+          SizedBox(height: 8),
+          NepekButton(
+            onClick: () =>
+                Navigator.of(context).pushNamed('sign_up_with_email'),
+            label: 'Create Account',
+            reverse: true,
           ),
         ],
       ),
@@ -99,39 +129,47 @@ class ContinueWithEmailRoot extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomRight,
       child: TextButton(
+        style: TextButton.styleFrom(
+          primary: AppColors().officialMatchShadow(),
+        ),
         onPressed: () {},
-        child: Text(
-          'Forgot Password ?',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            color: darkTheme ? Colors.white : AppColors().officialMatch(),
-          ),
+        child: NepekText(
+          value: 'Forgot Password ?',
+          color: AppColors().officialMatch(),
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
   }
 
-  Container _signinBtn(bool darkTheme, provider, context) {
-    return Container(
-      height: 50,
-      width: double.infinity,
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
-        ),
-        color: darkTheme ? Colors.white : AppColors().officialMatch(),
-        onPressed: () {
-          provider.signIn(context);
-        },
-        child: Text(
-          'Sign in',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w600,
-            color: darkTheme ? Colors.black : Colors.white,
-          ),
-        ),
-      ),
+  Widget _signinBtn(bool darkTheme, provider, context) {
+    return NepekButton(
+      label: "Sign In",
+      onClick: () => provider.signIn(context),
+      // reverse: true,
     );
+
+    // return Container(
+    //   height: 50,
+    //   width: double.infinity,
+    //   child: FlatButton(
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(0),
+    //     ),
+    //     color: darkTheme ? Colors.white : AppColors().officialMatch(),
+    //     onPressed: () {
+    //       provider.signIn(context);
+    //     },
+    //     child: Text(
+    //       'Sign in',
+    //       style: GoogleFonts.poppins(
+    //         fontWeight: FontWeight.w600,
+    //         color: darkTheme ? Colors.black : Colors.white,
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   TextStyle _textStyle(bool isBold, bool darkTheme) => GoogleFonts.poppins(

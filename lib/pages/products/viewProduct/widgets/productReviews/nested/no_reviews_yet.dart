@@ -5,6 +5,7 @@ class NoReviewsYet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.only(bottom: 5),
       child: Text(
         'There are no reviews yet',

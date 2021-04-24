@@ -10,13 +10,13 @@ defaultAppBar(context, String title, bool darktheme) {
       icon: Icon(
         Icons.arrow_back_ios,
         color: darktheme ? Colors.white : AppColors().officialMatch(),
-        size: 17,
+        size: 21,
       ),
       onPressed: () => Navigator.of(context).pop(),
     ),
-    // centerTitle: true,
+    centerTitle: true,
     // backgroundColor: AppColors().transparentAppbar(),
-    elevation: 0.5,
+    elevation: 0,
     title: Text(
       title,
       style: GoogleFonts.poppins(

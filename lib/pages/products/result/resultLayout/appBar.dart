@@ -139,7 +139,7 @@ class ResultAppBar extends StatelessWidget {
         icon: Icon(
           Icons.arrow_back_ios,
           color: color,
-          size: 17,
+          size: 21,
         ),
       );
 

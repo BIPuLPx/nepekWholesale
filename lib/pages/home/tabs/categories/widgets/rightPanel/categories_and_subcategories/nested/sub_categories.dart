@@ -10,6 +10,8 @@ class SubCategories extends StatelessWidget {
       children: subCategories
           .map(
             (subCategory) => EachSubCategory(
+              imgName: subCategory['imageName'],
+              imgdir: subCategory['imgDir'],
               text: subCategory['label'],
               id: subCategory['_id'],
             ),

@@ -18,6 +18,7 @@ class ListLayout extends StatelessWidget {
         _product.oldPrice != null && _product.oldPrice > _product.price;
 
     return Material(
+      color: Colors.white,
       child: InkWell(
         onTap: () {
           ProductChanges()
@@ -31,63 +32,60 @@ class ListLayout extends StatelessWidget {
             }
           });
         },
-        child: Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: GridTile(
-            child: Container(
-              padding: EdgeInsets.all(5),
-              child: Stack(
-                overflow: Overflow.visible,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ResultProductImage(
-                        dir: result.products[index]['uid'],
-                        imgName: result.products[index]['thumbnail'],
+        child: GridTile(
+          child: Container(
+            padding: EdgeInsets.all(5),
+            child: Stack(
+              overflow: Overflow.visible,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ResultProductImage(
+                      url: result.products[index]['imgUrl'],
+                      dir: result.products[index]['imgDir'],
+                      imgName: result.products[index]['miniThumb'],
+                    ),
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: Stack(
+                        overflow: Overflow.visible,
+                        children: [
+                          ProductName(
+                              name: result.products[index]['productName']),
+                          Positioned(
+                              top: 90,
+                              child: Column(
+                                children: [
+                                  ProductPrice(price: _product.price),
+                                  isOff
+                                      ? OldPrice(price: _product.oldPrice)
+                                      : Container()
+                                ],
+                              ))
+                        ],
                       ),
-                      SizedBox(width: 15),
-                      Expanded(
-                        child: Stack(
-                          overflow: Overflow.visible,
-                          children: [
-                            ProductName(
-                                name: result.products[index]['productName']),
-                            Positioned(
-                                top: 90,
-                                child: Column(
-                                  children: [
-                                    ProductPrice(price: _product.price),
-                                    isOff
-                                        ? OldPrice(price: _product.oldPrice)
-                                        : Container()
-                                  ],
-                                ))
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    left: -5,
-                    top: -5,
-                    child: isOff ? PerOff(off: _product.off) : Container(),
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                Positioned(
+                  left: -5,
+                  top: -5,
+                  child: isOff ? PerOff(off: _product.off) : Container(),
+                ),
+              ],
             ),
-            footer: Container(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Rating(
-                    rating: result.products[index]['rating'].toDouble(),
-                    no: result.products[index]['ratingNo'],
-                  ),
-                ],
-              ),
+          ),
+          footer: Container(
+            padding: EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Rating(
+                  rating: result.products[index]['rating'].toDouble(),
+                  no: result.products[index]['ratingNo'],
+                ),
+              ],
             ),
           ),
         ),

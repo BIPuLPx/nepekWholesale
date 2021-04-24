@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub__category_title.dart';
 import 'package:nepek_buyer/pages/home/tabs/categories/widgets/rightPanel/categories_and_subcategories/nested/sub_category_image.dart';
+import 'package:nepek_buyer/savedData/apis.dart';
 
 class EachSubCategory extends StatelessWidget {
+  final String imgdir;
+  final String imgName;
   final String text;
   final String id;
-  EachSubCategory({this.text, this.id});
+  EachSubCategory({this.text, this.id, this.imgdir, this.imgName});
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
@@ -23,8 +26,7 @@ class EachSubCategory extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SubCategoryImage(
-                url:
-                    'https://love4bags.co.uk/wp-content/uploads/2018/11/testss.jpg',
+                url: '$imgUrl/subCategoriesImages/$imgdir/$imgName',
               ),
               SubCategoryTitle(title: text),
             ],

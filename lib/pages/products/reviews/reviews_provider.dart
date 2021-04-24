@@ -11,7 +11,7 @@ import 'package:nepek_buyer/styles/spinkit.dart';
 class ReviewsState extends ChangeNotifier {
   dynamic body = spinkit;
   bool initialFetch = false;
-  dynamic loadingMore = loading_more;
+  dynamic loadingMore = LoadingMore(value: 'Getting More Products');
   String productId;
   Map reviewData;
   double rating;

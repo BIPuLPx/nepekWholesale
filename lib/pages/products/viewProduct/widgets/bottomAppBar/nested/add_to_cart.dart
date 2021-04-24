@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/selectOptionsModal/main.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-
 import '../../../view_product_state.dart';
-import 'qty.dart';
 
 class AddToCart extends StatelessWidget {
   @override
@@ -18,29 +17,29 @@ class AddToCart extends StatelessWidget {
     final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
     final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Qty(),
         SizedBox(
-          width: width * 0.55,
+          width: width * 0.88,
           height: 50,
-          child: FlatButton(
-            color: buttonColor,
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.black,
+              backgroundColor: buttonColor,
+            ),
             onPressed: () {
-              if(product.checkDuplicate()){
-                errorPopup(context, 'This item is already added to cart\nPlease increase quantity in cart or place another order. ');
-              }else{
-                selectOptions(context, product.productName, product.productPrice,
-                    product, darkTheme);
+              if (product.checkDuplicate()) {
+                errorPopup(context,
+                    'This item is already added to cart\nPlease increase quantity in cart or place another order. ');
+              } else {
+                product.changeScreen(2);
               }
             },
-            child: Text(
-              'Add To Cart',
-              style: GoogleFonts.poppins(
-                color: buttonTextColor,
-                fontWeight: FontWeight.w700,
-              ),
+            child: NepekText(
+              value: product.screen == 1 ? 'Add To Cart' : 'Done',
+              color: buttonTextColor,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ),

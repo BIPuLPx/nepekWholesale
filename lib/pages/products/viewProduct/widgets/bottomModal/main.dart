@@ -4,7 +4,6 @@ import 'nested/body.dart';
 import 'nested/footer.dart';
 import 'nested/header.dart';
 
-
 addToCart(context, productName, price) {
   showModalBottomSheet(
       context: context,

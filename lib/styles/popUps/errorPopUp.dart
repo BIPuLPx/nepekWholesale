@@ -10,14 +10,14 @@ Future<void> errorPopup(context, String title) async {
       return AlertDialog(
           title: Text(
             'Error',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
           ),
           actions: [
             TextButton(
               child: Text(
-                'Ok',
+                'Okay',
                 style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: AppColors().officialMatch(),
                 ),
               ),
@@ -26,7 +26,7 @@ Future<void> errorPopup(context, String title) async {
           ],
           content: Text(
             title,
-            style: GoogleFonts.cabinCondensed(),
+            style: GoogleFonts.poppins(),
           ));
     },
   );

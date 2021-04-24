@@ -66,6 +66,7 @@ Text _name(name) {
 Widget _price(price) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.baseline,
+    textBaseline: TextBaseline.alphabetic,
     children: [
       Text(
         'NPR  ',

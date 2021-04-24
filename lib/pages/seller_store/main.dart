@@ -162,6 +162,7 @@ Positioned _price(price, oldPrice) {
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
           children: [
             Text(
               'NPR  ',

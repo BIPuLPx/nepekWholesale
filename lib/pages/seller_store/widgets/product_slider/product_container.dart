@@ -91,6 +91,7 @@ Positioned _price(price) {
     left: 0,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
       children: [
         Text(
           'NPR  ',

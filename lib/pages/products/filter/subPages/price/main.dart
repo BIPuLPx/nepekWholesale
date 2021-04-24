@@ -2,47 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/products/filter/subPages/price/price_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
-class FilterPricePage extends StatefulWidget {
+class FilterPricePage extends StatelessWidget {
   final args;
-  FilterPricePage({this.args});
+
+  const FilterPricePage({Key key, this.args}) : super(key: key);
 
   @override
-  _FilterPricePageState createState() => _FilterPricePageState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => PriceProvider(),
+      child: FilterPricePageRoot(args: args),
+    );
+  }
 }
 
-class _FilterPricePageState extends State<FilterPricePage> {
-  Map price = {
-    'min': '',
-    'max': '',
-  };
-
-  void priceChanged(type, val) {
-    setState(() {
-      if (type == 'Min') {
-        price['min'] = val;
-      } else {
-        price['max'] = val;
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    // final args = widget.args;
-    // if (args['queryFilter'] == null) {
-    _fromfetchedFilter();
-    // }
-    super.initState();
-  }
-
-  void _fromfetchedFilter() {
-    price['min'] = widget.args['fetchedFilter']['min'].toString();
-    price['max'] = widget.args['fetchedFilter']['max'].toString();
-  }
+class FilterPricePageRoot extends StatelessWidget {
+  final args;
+  FilterPricePageRoot({this.args});
 
   @override
   Widget build(BuildContext context) {
@@ -50,26 +31,35 @@ class _FilterPricePageState extends State<FilterPricePage> {
     final Color buttonColor =
         darktheme ? Colors.white : AppColors().officialMatch();
     final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
-    print(widget.args);
+
+    final PriceProvider provider = Provider.of(context);
+
+    provider.init(args);
+
     return Scaffold(
       appBar: filterAppBar(context),
       body: Center(
         child: Container(
           margin: EdgeInsets.only(left: 10, right: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InputPrice(
-                label: 'Min',
-                autofocus: true,
-                changeFn: priceChanged,
-                initialValue: price['min'],
-              ),
-              InputPrice(
-                label: 'Max',
-                autofocus: false,
-                changeFn: priceChanged,
-                initialValue: price['max'],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InputPrice(
+                    label: 'Min',
+                    autofocus: true,
+                    changeFn: provider.priceChangedLocal,
+                    initialValue: provider.price['min'],
+                  ),
+                  InputPrice(
+                    label: 'Max',
+                    autofocus: false,
+                    changeFn: provider.priceChangedLocal,
+                    initialValue: provider.price['max'],
+                  ),
+                ],
               ),
             ],
           ),
@@ -82,14 +72,13 @@ class _FilterPricePageState extends State<FilterPricePage> {
           child: FlatButton(
             color: buttonColor,
             onPressed: () {
-              widget.args['changeFn'](price);
-              Navigator.pop(context);
+              provider.changed(context);
             },
-            child: Text(
-              'Apply',
-              style:GoogleFonts.poppins(color:buttonTextColor,fontWeight: FontWeight.w600,
-              )
-            ),
+            child: Text('Apply',
+                style: GoogleFonts.poppins(
+                  color: buttonTextColor,
+                  fontWeight: FontWeight.w600,
+                )),
           ),
         ),
       ),
@@ -122,14 +111,6 @@ class InputPrice extends StatelessWidget {
               changeFn(label, value);
             },
             decoration: InputDecoration(
-              // focusedBorder: OutlineInputBorder(
-              //   borderSide:
-              //       BorderSide(color: AppColors().officialMatch(), width: 1.0),
-              // ),
-              // enabledBorder: OutlineInputBorder(
-              //   borderSide:
-              //       BorderSide(color: AppColors().primaryGray(), width: 1.0),
-              // ),
               hintText: 'NPR',
               isDense: true,
               contentPadding: EdgeInsets.all(10),
@@ -138,7 +119,7 @@ class InputPrice extends StatelessWidget {
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
             ],
-            // autofocus: autofocus,
+            autofocus: autofocus,
           ),
         ),
       ],

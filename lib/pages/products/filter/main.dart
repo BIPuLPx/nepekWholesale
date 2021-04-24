@@ -54,8 +54,7 @@ class MainFilterPage extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.only(left: 10, right: 10),
           child: ListView(
-            physics:
-                BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             children: [
               // SizedBox(height: 10),
               FilterItemContainer(
@@ -142,7 +141,7 @@ class BottomNav extends StatelessWidget {
 
     return BottomAppBar(
       child: Container(
-        color: buttonTextColor,
+        // color: ,
         height: 60,
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Row(

@@ -23,16 +23,16 @@ class EmptyCart extends StatelessWidget {
             size: 20,
           ),
           // SizedBox(height: 50),
-          SizedBox(
-            height: 420,
-            width: 420,
-            child: FlareActor(
-              "animations/emptycart.flr",
-              // alignment: Alignment.topLeft,
-              fit: BoxFit.contain,
-              animation: "Untitled",
-            ),
-          )
+          // SizedBox(
+          //   height: 420,
+          //   width: 420,
+          //   child: FlareActor(
+          //     "animations/emptycart.flr",
+          //     // alignment: Alignment.topLeft,
+          //     fit: BoxFit.contain,
+          //     animation: "Untitled",
+          //   ),
+          // )
 
           // Row(
           //   mainAxisAlignment: MainAxisAlignment.center,

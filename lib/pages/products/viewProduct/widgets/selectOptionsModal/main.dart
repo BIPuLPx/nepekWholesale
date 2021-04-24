@@ -39,7 +39,7 @@ selectOptions(context, productName, price, product, darkTheme) {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          ProductOptions(product: product),
+          ProductOptions(),
           SizedBox(height: 35),
           SizedBox(
             width: double.infinity,

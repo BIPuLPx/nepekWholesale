@@ -10,6 +10,7 @@ import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class ContinueWithEmailProvider with ChangeNotifier {
+  final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
   String thirdPartyRoute;
   bool initState = false;
   Function refresh;
@@ -37,7 +38,7 @@ class ContinueWithEmailProvider with ChangeNotifier {
     if (email == null || password == null) {
       errorPopup(context, "Fill both email and password");
     } else {
-      loadingPopUP(context, "Signing in");
+      loadingPopUP(context, "Signing In");
       final data = {"email": email, "password": password};
       final response = await http.post(
         '$peopleApi/customers/signin',
@@ -49,68 +50,26 @@ class ContinueWithEmailProvider with ChangeNotifier {
 
       final resData = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        Navigator.of(context).pop();
         UserPreferences().jwtToken(resData['token']);
         UserPreferences().displayName(resData['data']['displayName']);
-        UserPreferences().buyerKey(resData['data']['uid']);
+        UserPreferences().buyerKey(resData['data']['_id']);
+        UserPreferences().email(resData['data']['email']);
+
+        userDeliveryAreas.put(
+            'deliveryAreas', resData['data']['deliveryAreas']);
+        if (resData['data']['deliveryAreas'].length > 0)
+          userDeliveryAreas.put('default_delivery_area',
+              resData['data']['default_delivery_area']);
+
         UserPreferences().loggedIn(true);
         SyncCustomProducts().syncWishListsWithBackend();
-        sucessToast(context, 'Signed in');
+        sucessToast(context, 'Signed In');
+        Navigator.of(context).pop();
         refresh();
-        if (thirdPartyRoute == null) {
-          notThirdPartyRoute(resData, context);
-        } else {
-          yesThirdPartyRoute(resData, context, thirdPartyRoute);
-        }
       } else if (response.statusCode == 405) {
         Navigator.of(context).pop();
         errorPopup(context, 'Username or password is incorrect');
       }
     }
-  }
-}
-
-void yesThirdPartyRoute(resData, context, route) {
-  // print(route);
-  final deliveryAddBox = Hive.box('deliveryAddresses');
-  if (resData['left'] == 'all' || resData['left'] == 'phone') {
-    Navigator.of(context).pop();
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
-  } else if (resData['left'] == 'location') {
-    UserPreferences().phoneNumber(resData['data']['phone'].toString());
-    Navigator.of(context).pop();
-    Navigator.popUntil(context, ModalRoute.withName("view_product"));
-  } else {
-    UserPreferences().phoneNumber(resData['data']['phone'].toString());
-    deliveryAddBox.put('userAreas', resData['data']['deliveryAreas']);
-    if (resData['data']['default_delivery_area'] != null) {
-      deliveryAddBox.put(
-          'userDefault', resData['data']['default_delivery_area']);
-    }
-    Navigator.popUntil(context, ModalRoute.withName(route));
-  }
-}
-
-void notThirdPartyRoute(resData, context) {
-  final deliveryAddBox = Hive.box('deliveryAddresses');
-  if (resData['left'] == 'all' || resData['left'] == 'phone') {
-    Navigator.of(context).pop();
-    Navigator.pushNamed(
-      context,
-      'input_phone_number',
-      arguments: {'deliveryAdd': true},
-    );
-  } else if (resData['left'] == 'location') {
-    UserPreferences().phoneNumber(resData['data']['phone'].toString());
-    Navigator.of(context).pop();
-    Navigator.pushNamed(context, 'input_delivery_address');
-  } else {
-    UserPreferences().phoneNumber(resData['data']['phone'].toString());
-    deliveryAddBox.put('userAreas', resData['data']['deliveryAreas']);
-    if (resData['data']['default_delivery_area'] != null) {
-      deliveryAddBox.put(
-          'userDefault', resData['data']['default_delivery_area']);
-    }
-    Navigator.of(context).pop();
   }
 }

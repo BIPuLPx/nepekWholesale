@@ -22,6 +22,14 @@ class NotSignedInState extends ChangeNotifier {
     );
   }
 
+  continueWithEmailArgs() {
+    return {
+      "refresh": checkLogged,
+      "thirdPartyRoute": thirdPartyRoute,
+      "hideAppBar": true
+    };
+  }
+
   Future signInWithFacebook(BuildContext context) async {
     // final LoginResult result = await FacebookAuth.instance.login();
     // final FacebookAuthCredential facebookAuthCredential =

@@ -16,20 +16,20 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  FirebaseApp defaultApp = await Firebase.initializeApp();
-  print('Firebase initialized default $defaultApp');
+  // FirebaseApp defaultApp = await Firebase.initializeApp();
+  // print('Firebase initialized default $defaultApp');
 
-  if (Firebase.apps.length != 2) {
-    await Firebase.initializeApp(
-      name: 'Skite',
-      options: const FirebaseOptions(
-          appId: '1:413884093288:android:8b218ab7c4ff8c44dc3cdd',
-          apiKey: 'AIzaSyAJa5T2y-k1x2da1HiUZ7MfEPP7oKde2Fw',
-          messagingSenderId: '413884093288',
-          projectId: 'neptune-a3815'),
-    );
-  }
-  print(Firebase.apps);
+  // if (Firebase.apps.length != 2) {
+  //   await Firebase.initializeApp(
+  //     name: 'Skite',
+  //     options: const FirebaseOptions(
+  //         appId: '1:413884093288:android:8b218ab7c4ff8c44dc3cdd',
+  //         apiKey: 'AIzaSyAJa5T2y-k1x2da1HiUZ7MfEPP7oKde2Fw',
+  //         messagingSenderId: '413884093288',
+  //         projectId: 'neptune-a3815'),
+  //   );
+  // }
+  // print(Firebase.apps);
   //Styles
 
   Directory appDocDir = await getApplicationDocumentsDirectory();

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/text/nepek_text_input.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/text/textInput.dart';
-
 import 'signup_with_email_provider.dart';
 
 class SignUpWithEmail extends StatelessWidget {
@@ -24,7 +24,8 @@ class SignUpWithEmailRoot extends StatelessWidget {
     final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final provider = Provider.of<SignUpWithEmailProvider>(context);
     return Scaffold(
-      appBar: defaultAppBar(context, 'Sign up', darktheme),
+      appBar: defaultAppBar(context, 'Create Account', darktheme),
+      backgroundColor: Colors.white,
       body: Form(
         key: provider.formKey,
         autovalidate: provider.autovalidate,
@@ -32,36 +33,46 @@ class SignUpWithEmailRoot extends StatelessWidget {
           padding: EdgeInsets.only(left: 15, right: 15),
           child: ListView(
             children: [
-              SizedBox(height: 100),
-              Text(
-                'Enter your details',
-                style: GoogleFonts.poppins(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w700,
-                ),
+              SizedBox(height: 50),
+              NepekText(
+                value: 'Enter your details',
+                fontSize: 23,
+                fontWeight: FontWeight.w600,
+                color: AppColors().officialMatch(),
               ),
               SizedBox(height: 20),
-              TextInput(
+              NepekTextInput(
                 labelText: 'Full Name',
                 validator: provider.validateName,
                 onChanged: (val) => provider.valChanged('name', val),
+                background: true,
+                initialValue: provider.name,
               ),
-              TextInput(
+              SizedBox(height: 20),
+              NepekTextInput(
                 labelText: 'Email',
                 validator: provider.validateEmail,
                 onChanged: (val) => provider.valChanged('email', val),
+                background: true,
+                initialValue: provider.email,
               ),
-              TextInput(
+              SizedBox(height: 20),
+              NepekTextInput(
                 labelText: 'Password',
                 obscureText: true,
                 validator: provider.validatePassword,
                 onChanged: (val) => provider.valChanged('password1', val),
+                background: true,
+                initialValue: provider.password,
               ),
-              TextInput(
+              SizedBox(height: 20),
+              NepekTextInput(
                 labelText: 'Retype password',
                 obscureText: true,
                 validator: provider.validatePassword,
                 onChanged: (val) => provider.valChanged('password2', val),
+                background: true,
+                initialValue: provider.rePassword,
               ),
             ],
           ),
@@ -71,24 +82,12 @@ class SignUpWithEmailRoot extends StatelessWidget {
     );
   }
 
-  BottomAppBar _signUP(
+  Widget _signUP(
       bool darktheme, SignUpWithEmailProvider provider, BuildContext context) {
-    return BottomAppBar(
-      child: SizedBox(
-        height: 50,
-        child: FlatButton(
-          color: darktheme ? Colors.white : AppColors().officialMatch(),
-          onPressed: () {
-            provider.signUp(context);
-          },
-          child: Text(
-            'Sign up',
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                color: darktheme ? Colors.black : Colors.white),
-          ),
-        ),
-      ),
+    return NepekButton(
+      width: 150,
+      onClick: () => provider.signUp(context),
+      label: 'Sign up',
     );
   }
 }

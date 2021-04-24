@@ -5,7 +5,6 @@ import 'package:nepek_buyer/pages/products/filter/styles/apply_spinkit.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/specifications/specifications_provider.dart';
 import 'package:provider/provider.dart';
 
-
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
@@ -43,8 +42,7 @@ class FilterSpecificationsRoot extends StatelessWidget {
       appBar: filterAppBar(context),
       body: Container(
         child: ListView(
-          physics:
-              BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           children: provider.allOptions
               .map<Widget>(
                 (val) => CheckboxListTile(
@@ -71,9 +69,10 @@ class FilterSpecificationsRoot extends StatelessWidget {
           child: FlatButton(
             color: buttonColor,
             onPressed: () {
-              provider.apply(context);
-              // widget.args['args']['setOptions'](optionName, currentOptions);
-              // Navigator.pop(context);
+              if (provider.currentOptions.length > 0)
+                provider.apply(context);
+              else
+                Navigator.of(context).pop();
             },
             child: provider.isSending
                 ? applySpinKit(buttonTextColor)

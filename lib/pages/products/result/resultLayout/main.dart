@@ -42,7 +42,7 @@ class _ResultLayoutState extends State<ResultLayout> {
     final result = Provider.of<ResultState>(context);
     var size = MediaQuery.of(context).size;
     final double itemHeightList = (size.height - kToolbarHeight - 24) / 7;
-    final double itemHeightGrid = (size.height - kToolbarHeight - 24) / 1.76;
+    final double itemHeightGrid = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
     setState(() {
       if (listType == 'list') {
@@ -67,6 +67,7 @@ class _ResultLayoutState extends State<ResultLayout> {
     _scrollController.addListener(_onScroll);
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: CustomScrollView(
         // physics: BouncingScrollPhysics(),
         controller: _scrollController,

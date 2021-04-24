@@ -12,7 +12,7 @@ import 'package:nepek_buyer/styles/spinkit.dart';
 class QnasProvider with ChangeNotifier {
   dynamic body = spinkit;
   bool initialFetch = false;
-  dynamic loadingMore = loading_more;
+  dynamic loadingMore = LoadingMore(value: 'Getting More Qnas');
   String productId;
 
   List qnas;

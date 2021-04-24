@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/font_styles.dart';
-import 'package:random_color/random_color.dart';
 
 import 'product_container.dart';
 

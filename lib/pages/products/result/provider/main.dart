@@ -18,7 +18,7 @@ class ResultState with ChangeNotifier {
   String searchText;
   bool isNextPage;
   int nextPage = 1;
-  dynamic loadingMore = loading_more;
+  Widget loadingMore = LoadingMore(value: 'Getting More Products');
   Map sortBy = {'sort': 'clicks', 'by': 'desc'};
   Map fetchedFilter;
   bool toFilter;
@@ -60,7 +60,10 @@ class ResultState with ChangeNotifier {
             nextPage = nextPage + 1;
           } else {
             isNextPage = false;
-            loadingMore = EndOfResult();
+            if (nextPage > 1)
+              loadingMore = EndOfResult();
+            else
+              loadingMore = SizedBox();
           }
           initialFetch = true;
           notifyListeners();
@@ -96,7 +99,7 @@ class ResultState with ChangeNotifier {
     lastFiltered = lastFiltered1;
     // bool isNextPage = true;
     nextPage = 1;
-    loadingMore = loading_more;
+    loadingMore = LoadingMore(value: 'Getting More Products');
     sortBy = {'sort': 'clicks', 'by': 'asc'};
     await fetchInitialSearch();
   }
@@ -104,7 +107,7 @@ class ResultState with ChangeNotifier {
   Future resetPage() async {
     queryFilter = defaultQueryFilter;
     nextPage = 1;
-    loadingMore = loading_more;
+    loadingMore = LoadingMore(value: 'Getting More Products');
     sortBy = {'sort': 'clicks', 'by': 'asc'};
     await fetchInitialSearch();
   }

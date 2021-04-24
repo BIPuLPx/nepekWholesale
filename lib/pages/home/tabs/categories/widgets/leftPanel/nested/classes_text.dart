@@ -52,7 +52,7 @@ class ClassesText extends StatelessWidget {
           child: Center(
             child: Text(
               cls['label'],
-              style: GoogleFonts.cabinCondensed(
+              style: GoogleFonts.poppins(
                 fontSize: 11,
                 color: currentID == index
                     ? getColors(darkMode)['selectedText']

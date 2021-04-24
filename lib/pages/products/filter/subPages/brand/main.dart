@@ -46,8 +46,7 @@ class FilterBrandsPageRoot extends StatelessWidget {
       appBar: filterAppBar(context),
       body: SafeArea(
         child: ListView(
-          physics:
-              BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           children: provider.allBrands
               .map<Widget>(
                 (val) => buildCheckboxListTile(
@@ -62,7 +61,12 @@ class FilterBrandsPageRoot extends StatelessWidget {
           width: double.infinity,
           child: FlatButton(
             color: buttonColor,
-            onPressed: () => provider.apply(context),
+            onPressed: () {
+              if (provider.currentBrands.length > 0)
+                provider.apply(context);
+              else
+                Navigator.pop(context);
+            },
             child: provider.isApplying
                 ? applySpinKit(buttonTextColor)
                 : Text(

@@ -10,40 +10,42 @@ class Rating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          RatingBar(
-            // ratingWidget: ,
-            unratedColor: Colors.grey[350],
-            ignoreGestures: true,
-            initialRating: rating == 0 ? 5 : rating,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemSize: 15,
-            itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-            itemBuilder: (context, _) => Icon(
-              Icons.star,
-              color: Colors.amber,
+    return no > 0
+        ? Container(
+            child: Row(
+              children: [
+                RatingBar(
+                  // ratingWidget: ,
+                  unratedColor: Colors.grey[350],
+                  ignoreGestures: true,
+                  initialRating: rating == 0 ? 5 : rating,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 15,
+                  itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    print(rating);
+                  },
+                ),
+                // SmoothStarRating(
+                //   rating: rating == 0 ? 5 : rating,
+                //   starCount: 5,
+                //   size: 18,
+                //   isReadOnly: true,
+                //   color: Colors.yellow[800],
+                // ),
+                SizedBox(width: 10),
+                noOfRating(no.toString()),
+              ],
             ),
-            onRatingUpdate: (rating) {
-              print(rating);
-            },
-          ),
-          // SmoothStarRating(
-          //   rating: rating == 0 ? 5 : rating,
-          //   starCount: 5,
-          //   size: 18,
-          //   isReadOnly: true,
-          //   color: Colors.yellow[800],
-          // ),
-          SizedBox(width: 10),
-          noOfRating(no.toString()),
-        ],
-      ),
-    );
+          )
+        : SizedBox();
   }
 }
 

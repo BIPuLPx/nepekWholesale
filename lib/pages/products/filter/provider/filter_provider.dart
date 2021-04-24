@@ -16,8 +16,10 @@ class FilterProvider with ChangeNotifier {
   bool setResetApply = false;
 
   Future priceChanged(Map price) async {
-    print(price);
-// queryFilter["price"]["\$gte"]= price["min"]
+    queryFilter["price"]["\$gte"] = price["min"];
+    queryFilter["price"]["\$lt"] = price["max"];
+    lastFiltered = {'name': 'brand', 'value': price};
+    syncFilter();
 
 // queryFilter
   }
@@ -25,18 +27,10 @@ class FilterProvider with ChangeNotifier {
   Future brandChanged(List brands, List lastValues) async {
     queryFilter['brand'] = brands;
     lastFiltered = {'name': 'brand', 'value': lastValues};
-    await _backend
-        .filterProductsWithSearch(args['type'], queryFilter, args['searchText'])
-        .then((value) {
-      fetchedFilter = value['filtersOptions'];
-      totalProducts = value['totalProductsNo'];
-
-      notifyListeners();
-    });
+    syncFilter();
   }
 
-  Future specsChanged(
-      List specifications, List lastValues, String specName) async {
+  specsChanged(List specifications, List lastValues, String specName) async {
     // print(lastValues);
     queryFilter['specifications'] = specifications;
     lastFiltered = {
@@ -44,14 +38,7 @@ class FilterProvider with ChangeNotifier {
       'specName': specName,
       'value': lastValues
     };
-    await _backend
-        .filterProductsWithSearch(args['type'], queryFilter, args['searchText'])
-        .then((value) {
-      fetchedFilter = value['filtersOptions'];
-      totalProducts = value['totalProductsNo'];
-
-      notifyListeners();
-    });
+    syncFilter();
   }
 
   bool checkLastSpecs(String specName) {
@@ -73,5 +60,17 @@ class FilterProvider with ChangeNotifier {
     setResetApply = true;
     notifyListeners();
     args['resetFilter']().then((_) => Navigator.of(context).pop());
+  }
+
+  void syncFilter() async {
+    await _backend
+        .filterProductsWithSearch(
+            args['resultargs']['type'], queryFilter, args['searchText'])
+        .then((value) {
+      fetchedFilter = value['filtersOptions'];
+      totalProducts = value['totalProductsNo'];
+
+      notifyListeners();
+    });
   }
 }

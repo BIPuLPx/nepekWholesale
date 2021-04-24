@@ -32,6 +32,12 @@ class UserPreferences {
 
   getBuyerKey() => _prefs.getString('buyerKey');
 
+  email(String value) {
+    _prefs.setString('email', value);
+  }
+
+  getEmail() => _prefs.getString('email');
+
   phoneNumber(String value) {
     _prefs.setString('phoneNumber', value);
   }

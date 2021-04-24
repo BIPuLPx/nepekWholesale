@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
+import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/popUps/sucessPopup.dart';
 
 import 'validators.dart';
@@ -26,6 +27,7 @@ class SignUpWithEmailProvider with ChangeNotifier {
   }
 
   Future signUpBackend(BuildContext context) async {
+    loadingPopUP(context, 'Creating Account');
     final data = {"displayName": name, "email": email, "password": password};
 
     final response = await http.post(
@@ -37,8 +39,9 @@ class SignUpWithEmailProvider with ChangeNotifier {
     );
     if (response.statusCode == 200) {
       Navigator.of(context).pop();
-      sucessFulPopup(context, "Account added sucessfully,\nNow log in");
-    } else if (response.statusCode == 405) {
+      Navigator.of(context).pop();
+      sucessFulPopup(context, "Account created sucessfully");
+    } else if (response.statusCode == 203) {
       errorPopup(context, "Email already exists,\nEnter a new one");
     }
   }

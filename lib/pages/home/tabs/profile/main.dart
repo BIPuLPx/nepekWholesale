@@ -36,7 +36,7 @@ class ProfileRoot extends StatelessWidget {
     // print(args);
     return Scaffold(
       appBar:
-          args == null ? null : defaultAppBar(context, 'Profile', darktheme),
+          args == null ? null : defaultAppBar(context, 'Sign in', darktheme),
       body: SafeArea(
         child: Container(
           child: profile.currentScreen,

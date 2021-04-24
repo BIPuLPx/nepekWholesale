@@ -10,10 +10,11 @@ class ViewProductBottomAppBar extends StatelessWidget {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final appBarColor = darkTheme ? Colors.black : Colors.white;
     return BottomAppBar(
+        elevation: 2,
         child: Container(
-      color: appBarColor,
-      padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-      child: AddToCart(),
-    ));
+          // color: appBarColor,
+          padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 5),
+          child: AddToCart(),
+        ));
   }
 }

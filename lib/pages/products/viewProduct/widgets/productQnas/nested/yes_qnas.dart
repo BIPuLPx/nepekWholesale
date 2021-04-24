@@ -18,7 +18,7 @@ class YesQnAs extends StatelessWidget {
                     question: {
                       'text': qna['question'],
                       'date': qna['questionedIn'],
-                      'name': product.getBuyerName(qna['buyer_id'])
+                      'name': '',
                     },
                     answer: {'text': qna['answer'], 'date': qna['answeredIn']},
                     index: product.productQnas.indexOf(qna),

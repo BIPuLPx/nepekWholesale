@@ -17,23 +17,22 @@ class GridLayout extends StatelessWidget {
     final bool isOff =
         _product.oldPrice != null && _product.oldPrice > _product.price;
 
-    return Material(
-      child: InkWell(
-        onTap: () {
-          ProductChanges()
-              .increaseClick(result.products[index]['_id'])
-              .then((value) {
-            if (value == 200) {
-              Navigator.pushNamed(context, 'view_product', arguments: {
-                'product_id': result.products[index]['_id'].toString(),
-                'product_uid': result.products[index]['uid'].toString()
-              });
-            }
-          });
-        },
-        child: Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
+    return Container(
+      child: Material(
+        color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            ProductChanges()
+                .increaseClick(result.products[index]['_id'])
+                .then((value) {
+              if (value == 200) {
+                Navigator.pushNamed(context, 'view_product', arguments: {
+                  'product_id': result.products[index]['_id'].toString(),
+                  'product_uid': result.products[index]['uid'].toString()
+                });
+              }
+            });
+          },
           child: GridTile(
             child: Container(
               padding: EdgeInsets.all(8),
@@ -44,8 +43,9 @@ class GridLayout extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ResultProductImage(
-                        dir: result.products[index]['uid'],
-                        imgName: result.products[index]['thumbnail'],
+                        url: result.products[index]['imgUrl'],
+                        dir: result.products[index]['imgDir'],
+                        imgName: result.products[index]['miniThumb'],
                       ),
                       SizedBox(height: 10),
                       Expanded(

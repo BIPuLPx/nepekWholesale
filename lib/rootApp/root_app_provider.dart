@@ -12,7 +12,7 @@ class RootProvider with ChangeNotifier {
   Widget body = LoadingScreen();
 
   Future initChecks() async {
-    openDBS().then((_) => changeScreen());
+    // openDBS().then((_) => changeScreen());
     openDBS().then(
       (_) => InjectDatas().testClassification().then(
         (value) {
@@ -42,6 +42,7 @@ class RootProvider with ChangeNotifier {
     await Hive.openBox('deliveryAddresses');
     await Hive.openBox('home_page_data');
     await Hive.openBox('customProducts');
+    await Hive.openBox('userDeliveryAreas');
   }
 
   changeScreen() {

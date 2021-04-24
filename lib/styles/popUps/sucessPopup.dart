@@ -15,7 +15,7 @@ Future<void> sucessFulPopup(context, String title) async {
         actions: [
           FlatButton(
             child: Text(
-              'Ok',
+              'Okay',
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 color: AppColors().officialMatch(),

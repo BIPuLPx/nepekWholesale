@@ -116,6 +116,7 @@ class WishListsLayout extends StatelessWidget {
   Row _price(String of, Product _product) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
       children: [
         Text(
           'NPR  ',

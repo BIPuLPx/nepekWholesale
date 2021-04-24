@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:nepek_buyer/library/commonContainers/right_arrow_containers.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/profile_provider.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
+import 'package:provider/provider.dart';
 
 class RoutesContainer extends StatelessWidget {
   final String label;
   final String route;
-  final IconData icon;
+  final String icon;
   final Color iconColor;
 
   const RoutesContainer(
@@ -15,75 +16,62 @@ class RoutesContainer extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<ProfileState>(context);
-    return CommonMenu(
-      label: label,
-      icon: 'assets/profileTab/$label.png',
-      ontap: () {
-        Navigator.pushNamed(
-          context,
-          route,
-          arguments:
-              route == 'account' ? {'checkProfile': profile.checkLogged} : null,
-        );
-      },
+    final double width = MediaQuery.of(context).size.width;
+    final ProfileState profile = Provider.of(context);
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          // border: Border.all(
+          //   color: AppColors().officialMatchFourth(),
+          //   width: 1.5,
+          // ),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors().officialMatchFourth(),
+              blurRadius: 8,
+              // spreadRadius: 1,
+            )
+          ]),
+      width: width * 0.35,
+      height: width * 0.35,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          onTap: () => Navigator.pushNamed(
+            context,
+            route,
+            arguments: route == 'account'
+                ? {'checkProfile': profile.checkLogged}
+                : null,
+          ),
+          child: Container(
+            padding: EdgeInsets.all(25),
+            child: Stack(
+              children: [
+                Image.asset(
+                  icon == null
+                      ? 'assets/profileTab/$label.png'
+                      : 'assets/profileTab/$icon.png',
+                  height: 22,
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: NepekText(
+                    value: capitalize(label),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: AppColors().officialMatch(),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
-    // return Material(
-    //   // color: Colors.white,
-    //   child: InkWell(
-    //     onTap: () {
-    //       // print(route);
-    //       Navigator.pushNamed(context, route, arguments: route == 'account'
-    //           ? {'checkProfile': profile.checkLogged}
-    //           : null,
-    //           );
-    //     },
-    //     child: Container(
-    //       height: 50,
-    //       padding: EdgeInsets.all(15),
-    //       // decoration: BoxDecoration(
-    //       //   borderRadius: BorderRadius.circular(1),
-    //       //   color: Colors.white,
-    //       //   boxShadow: [
-    //       //     BoxShadow(
-    //       //       color: AppColors().officialMatch(),
-    //       //       spreadRadius: 0.2,
-    //       //       blurRadius: 2,
-    //       //     ),
-    //       //   ],
-    //       // ),
-    //       child: Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //         crossAxisAlignment: CrossAxisAlignment.center,
-    //         children: [
-    //           Row(
-    //             children: [
-    //               SizedBox(
-    //                 width: 80,
-    //                 child: Image.asset(
-    //                   'assets/profileTab/$label.png',
-    //                   height: 17,
-    //                 ),
-    //               ),
-    //               Text(
-    //                 capitalize(label),
-    //                 style: routesContainerLabel(),
-    //               ),
-    //             ],
-    //           ),
-    //           Icon(
-    //             Icons.arrow_forward_ios,
-    //             size: 12,
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }
-
-TextStyle routesContainerLabel() => GoogleFonts.poppins(
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-    );

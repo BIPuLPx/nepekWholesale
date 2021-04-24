@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/view_product_state.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
 
-class SelectOptions extends StatefulWidget {
+class SelectOptions extends StatelessWidget {
   final String title;
   final List options;
-  final String defaultOption;
-  final Function changeOption;
-  SelectOptions(
-      {this.title, this.options, this.defaultOption, this.changeOption});
-  @override
-  _SelectOptionsState createState() => _SelectOptionsState();
-}
 
-class _SelectOptionsState extends State<SelectOptions> {
-  int selectedIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      selectedIndex = widget.options.indexOf(widget.defaultOption);
-    });
-  }
+  SelectOptions({
+    this.title,
+    this.options,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final ViewProductState provider = Provider.of(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-
     final Color primaryColor =
         darkTheme ? Colors.white : AppColors().officialMatch();
 
@@ -40,50 +29,66 @@ class _SelectOptionsState extends State<SelectOptions> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            capitalize(widget.title),
+            capitalize(title),
             style: GoogleFonts.poppins(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              color: primaryColor,
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey,
             ),
           ),
           SizedBox(height: 5),
           Wrap(
-            children: widget.options
-                .map((e) =>
-                    customRadio(e, widget.options.indexOf(e), primaryColor))
+            children: options
+                .map(
+                  (e) => CustomRadio(
+                    txt: e['label'],
+                    primaryColor: primaryColor,
+                    enabled: provider.activeOptions.contains(e['label']),
+                  ),
+                )
                 .toList(),
           ),
         ],
       ),
     );
   }
+}
 
-  void changeIndex(int index, String text) {
-    setState(() {
-      selectedIndex = index;
-    });
-    widget.changeOption(widget.title, text);
-  }
+class CustomRadio extends StatelessWidget {
+  const CustomRadio({
+    Key key,
+    @required this.txt,
+    @required this.primaryColor,
+    @required this.enabled,
+  }) : super(key: key);
 
-  Widget customRadio(String txt, int index, Color primaryColor) {
+  final String txt;
+  final Color primaryColor;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    final ViewProductState provider = Provider.of(context);
+    bool selected = provider.selectedOption.contains(txt);
+    final Color buttonColor = selected ? primaryColor : Colors.grey;
+    optChanged(String txt, bool keep) => provider.changeOption(txt, !keep);
+
     return Container(
       margin: EdgeInsets.only(left: 2, right: 2),
-      child: OutlineButton(
-        onPressed: () => changeIndex(index, txt),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
-        borderSide: BorderSide(
-          color: selectedIndex == index ? primaryColor : Colors.grey,
-          width: 1.5,
-        ),
-        child: Text(
-          capitalize(txt),
-          style: GoogleFonts.roboto(
-            fontSize: 13,
-            fontWeight:
-                selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
-            color: selectedIndex == index ? primaryColor : Colors.grey,
+      child: OutlinedButton(
+        onPressed: enabled ? () => optChanged(txt, selected) : null,
+        style: TextButton.styleFrom(
+          primary: AppColors().officialMatchShadow(),
+          side: BorderSide(width: 1.2, color: buttonColor),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(2.0),
           ),
+          shadowColor: Colors.grey,
+        ),
+        child: NepekText(
+          value: capitalize(txt),
+          fontSize: 13,
+          color: buttonColor,
         ),
       ),
     );

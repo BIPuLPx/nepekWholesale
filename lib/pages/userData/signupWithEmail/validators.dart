@@ -1,8 +1,7 @@
-
 class Validators {
   String validateName(String val) {
     if (val.isEmpty) {
-      return "Name shouldnot be empty";
+      return "Name cannot be empty";
     }
     return null;
   }
@@ -21,8 +20,10 @@ class Validators {
 
   String validatePassword(String val, String password1, String password2) {
     if (val.isEmpty) {
-      return "Password Cannot Be empty";
-    } else if (password1 != password2) {
+      return "Password cannot be empty";
+    } else if (val.length < 8)
+      return "Password be atleast 8 characters long";
+    else if (password1 != password2) {
       return "Passwords should be equal";
     }
     return null;
