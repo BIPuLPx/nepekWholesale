@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/result/provider/main.dart';
 import 'package:nepek_buyer/pages/products/result/sort/main.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
 import 'package:provider/provider.dart';
 
 // import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
@@ -147,9 +149,9 @@ class ResultAppBar extends StatelessWidget {
         IconButton(
           icon: CartNoListener(
             icon: Image.asset(
-              'assets/bottomNavBar/cartUnselected.png',
+              'assets/bottomNavBar/cart.png',
               height: 18,
-              color: color,
+              // color: color,
             ),
             labelColor: Colors.white,
           ),
@@ -178,32 +180,18 @@ class FLSortBTn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    return SizedBox(
+    return NepekButton(
       width: deviceWidth * 0.33,
-      height: 35,
-      child: OutlineButton(
-          highlightedBorderColor: color,
-          borderSide: BorderSide(color: color, width: 1.6),
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(0),
-          ),
-          onPressed: () => onClick(),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(width: 1),
-              Icon(icon, size: iconSize, color: color),
-              SizedBox(width: 15),
-              Text(
-                label,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w700,
-                  color: color,
-                ),
-              ),
-              SizedBox(width: 15),
-            ],
-          )),
+      height: 43,
+      fontSize: 14,
+      onClick: onClick,
+      label: label,
+      reverse: true,
+      icon: NepekButtonIcon(
+        icon,
+        reversed: true,
+        size: 13,
+      ),
     );
   }
 }

@@ -1,41 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/productQnas/nested/qna_layout.dart';
-import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/savedData/apis.dart';
-import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:http/http.dart' as http;
-
-class MyQuestionsProvider with ChangeNotifier {
-  bool initFetch = false;
-  Widget body = spinkit;
-  List myQnas;
-
-  Future fetchQna() async {
-    // print('here');
-    final response = await http.get(
-      '$productApi/qna/buyer/own_qnas?type=normal',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
-      },
-    );
-    final data = jsonDecode(response.body);
-    if (data.length > 0) {
-      myQnas = data;
-      body = MyQnasLayout();
-    } else {
-      body = Text('NO QNAs');
-    }
-    initFetch = true;
-    notifyListeners();
-  }
-}
+import 'provider.dart';
 
 class MyQnasLayout extends StatelessWidget {
   @override
@@ -117,6 +86,7 @@ class MyQuestionsRoot extends StatelessWidget {
       provider.fetchQna();
     }
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: defaultAppBar(context, "My Questions", darktheme),
       body: provider.body,
     );

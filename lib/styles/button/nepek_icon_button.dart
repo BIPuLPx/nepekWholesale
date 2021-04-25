@@ -22,9 +22,7 @@ class NepekIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: reversed == true
-            ? AppColors().officialMatchLight()
-            : AppColors().officialMatch(),
+        color: reversed == true ? Colors.white : AppColors().officialMatch(),
         borderRadius: BorderRadius.circular(100),
         boxShadow: reversed == true
             ? [

@@ -25,11 +25,13 @@ class QnaPageRoot extends StatelessWidget {
     final provider = Provider.of<QnasProvider>(context);
     if (provider.initialFetch == false) {
       provider.productId = args['id'];
-      provider.fetchInitialReviews();
+      provider.productName = args['product'];
+      provider.fetchQnas();
     }
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
-      appBar: defaultAppBar(context, "Qna's", darktheme),
+      backgroundColor: Colors.white,
+      appBar: defaultAppBar(context, "Qnas", darktheme),
       body: Container(
         child: provider.body,
       ),

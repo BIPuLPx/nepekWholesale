@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 Container body() {
   return Container(
-    padding: EdgeInsets.only(top: 20),
+    padding: EdgeInsets.only(top: 30),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

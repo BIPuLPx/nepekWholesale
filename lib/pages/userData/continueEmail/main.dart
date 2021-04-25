@@ -38,19 +38,20 @@ class ContinueWithEmailRoot extends StatelessWidget {
     }
     print(args);
     return Scaffold(
+      // appBar:  args['hide'],
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           // padding: EdgeInsets.only(left: 20, right: 20),
-          child: Stack(
-            clipBehavior: Clip.none,
+          child: ListView(
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 100),
+                    SizedBox(height: 50),
                     NepekText(
                       value: 'Welcome back!',
                       color: AppColors().officialMatch(),
@@ -62,36 +63,26 @@ class ContinueWithEmailRoot extends StatelessWidget {
                         fontWeight: FontWeight.w500
                         // color: AppColors().officialMatch(),
                         ),
+                    SizedBox(height: 30),
+                    NepekTextInput(
+                      labelText: "Email",
+                      onChanged: (val) => provider.inputChanged('email', val),
+                      background: true,
+                    ),
+                    SizedBox(height: 20),
+                    NepekTextInput(
+                      labelText: "Password",
+                      obscureText: true,
+                      onChanged: (val) =>
+                          provider.inputChanged('password', val),
+                      background: true,
+                    ),
+                    SizedBox(height: 50),
+                    _signinBtn(darkTheme, provider, context),
+                    // SizedBox(height: 5),
+                    _forgotPwd(darkTheme),
+                    _signUp(darkTheme, context)
                   ],
-                ),
-              ),
-              Positioned(
-                width: MediaQuery.of(context).size.width,
-                bottom: 60,
-                child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      NepekTextInput(
-                        labelText: "Email",
-                        onChanged: (val) => provider.inputChanged('email', val),
-                        background: true,
-                      ),
-                      SizedBox(height: 20),
-                      NepekTextInput(
-                        labelText: "Password",
-                        obscureText: true,
-                        onChanged: (val) =>
-                            provider.inputChanged('password', val),
-                        background: true,
-                      ),
-                      SizedBox(height: 50),
-                      _signinBtn(darkTheme, provider, context),
-                      // SizedBox(height: 5),
-                      _forgotPwd(darkTheme),
-                      _signUp(darkTheme, context)
-                    ],
-                  ),
                 ),
               ),
             ],

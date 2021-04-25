@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
@@ -20,22 +21,16 @@ class AskaQuestionProvider with ChangeNotifier {
     final data = {
       "productID": args['productID'],
       "question": question,
-      "buyer_id": UserPreferences().getBuyerKey(),
       "seller_id": args['sellerID'],
-      "productName": args['productName'],
-      "qsnBy": UserPreferences().getDisplayName()
     };
 
     if (question.isEmpty) {
       errorPopup(context, "Question cannot be empty");
     } else {
       loadingPopUP(context, "Asking Question");
-      print(data);
       final response = await http.post(
         '$productApi/qna/buyer/ask_question',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
+        headers: tokenHeaderContentType(),
         body: jsonEncode(data),
       );
       if (response.statusCode == 200) {

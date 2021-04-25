@@ -81,7 +81,7 @@ class CustomRadio extends StatelessWidget {
           primary: AppColors().officialMatchShadow(),
           side: BorderSide(width: 1.2, color: buttonColor),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(2.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           shadowColor: Colors.grey,
         ),

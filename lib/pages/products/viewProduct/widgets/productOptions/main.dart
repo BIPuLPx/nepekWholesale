@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_state.dart';
-import 'package:nepek_buyer/pages/products/viewProduct/widgets/bottomAppBar/nested/qty.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/widgets/productOptions/qty.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +9,6 @@ import 'nested/select_options.dart';
 class ProductOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     final ViewProductState provider = Provider.of(context);
-    print(provider.optImg);
     return Container(
       color: Colors.white,
       width: double.infinity,
@@ -19,11 +17,14 @@ class ProductOptions extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NepekImageNetwork(
-            height: 150,
-            width: 150,
-            url:
-                '${provider.imgUrl}/productImages/${provider.imgDir}/options/${provider.optImg}',
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: NepekImageNetwork(
+              height: 150,
+              width: 150,
+              url:
+                  '${provider.imgUrl}/productImages/${provider.imgDir}/options/${provider.optImg}',
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

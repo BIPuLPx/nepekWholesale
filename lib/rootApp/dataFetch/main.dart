@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 
 class InjectDatas {
   Box _customProductBox = Hive.box('customProducts');
+  final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
 
   Future<bool> testCustomProducts(String name) async {
     final key = _customProductBox.get('${name}key');
@@ -85,7 +87,7 @@ class InjectDatas {
     _putFetchedDatainBox('changed');
     _putFetchedDatainBox('states');
     _putFetchedDatainBox('districts');
-    _putFetchedDatainBox('location_group');
+    _putFetchedDatainBox('cities');
     _putFetchedDatainBox('areas');
   }
 
@@ -105,5 +107,21 @@ class InjectDatas {
       _customProductBox.put('${name}key', fetchedData['products']);
     }
     return response.statusCode;
+  }
+
+  Future<void> getMyDeliveryAddresses() async {
+    if (UserPreferences().getLoggedIn() != null &&
+        UserPreferences().getLoggedIn() != false) {
+      final response = await http.get(
+        '$peopleApi/customers/my_delivery_addresses',
+        headers: tokenHeader(),
+      );
+      final resData = jsonDecode(response.body);
+
+      userDeliveryAreas.put('deliveryAreas', resData['deliveryAreas']);
+      if (resData['deliveryAreas'].length > 0)
+        userDeliveryAreas.put(
+            'default_delivery_area', resData['default_delivery_area']);
+    }
   }
 }

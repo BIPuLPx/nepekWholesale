@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 class NoAnswer extends StatelessWidget {
   @override
@@ -8,11 +9,12 @@ class NoAnswer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
-          child: Text(
-            'Not Answered',
-            style: GoogleFonts.poppins(
-              color: Colors.grey,
-              // color: AppColors().secondaryText(),
+          child: Container(
+            child: NepekText(
+              value: 'Not Answered',
+              fontSize: 14,
+              color: Colors.grey[400],
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

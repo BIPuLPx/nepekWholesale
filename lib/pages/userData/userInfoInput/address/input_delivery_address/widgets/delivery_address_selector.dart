@@ -14,7 +14,6 @@ class DeliveryAddressSelector extends StatefulWidget {
   const DeliveryAddressSelector(
       {Key key, this.current, this.dataList, this.heading})
       : super(key: key);
-  // final int index;
 
   @override
   _DeliveryAddressSelectorState createState() =>
@@ -24,11 +23,10 @@ class DeliveryAddressSelector extends StatefulWidget {
 class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
   @override
   Widget build(BuildContext context) {
-    // final width = MediaQuery.of(context).size.width;
     final address = Provider.of<AddDeliveryAddressState>(context);
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
-      margin: EdgeInsets.only(top: 15),
+      margin: EdgeInsets.only(top: 15, left: 20, right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -38,20 +36,21 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
           ),
           SizedBox(height: 10),
           Container(
-            height: 50,
-            // width: width * 0.2,
+            // height: 5,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(10),
               color: darkTheme ? Colors.grey[900] : Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors().officialMatch(),
-                  spreadRadius: 0.2,
-                  blurRadius: 2,
+                  color: AppColors().officialMatchFourth(),
+                  blurRadius: 8,
                 ),
               ],
+              border: Border.all(
+                color: AppColors().officialMatchFourth(),
+                width: 2,
+              ),
             ),
-
             child: new Theme(
               data: Theme.of(context).copyWith(
                 canvasColor: darkTheme ? Colors.grey[900] : Colors.white,
@@ -64,35 +63,17 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
                       DropdownButton<String>(
                         isExpanded: true,
                         value: widget.current['label'],
-
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: darkTheme ? Colors.white : Colors.black,
                         ),
-                        // style: AppFontStyle().button(AppColors().primaryText()),
-                        onChanged: (String newValue) {
-                          // cart.changeQty(widget.index, newValue);
-                        },
+                        onChanged: (String newValue) {},
                         items: widget.dataList
                             .map<DropdownMenuItem<String>>(
                               (value) => new DropdownMenuItem<String>(
                                 value: value['label'],
-                                child: Container(
-                                    // height: 50,
-                                    // width: double.infinity,
-                                    // decoration: BoxDecoration(
-                                    //   borderRadius: BorderRadius.circular(2),
-                                    //   color:
-                                    //       darkTheme ? Colors.grey[900] : Colors.white,
-                                    //   boxShadow: [
-                                    //     BoxShadow(
-                                    //       color: AppColors().officialMatch(),
-                                    //       spreadRadius: 0.2,
-                                    //       blurRadius: 2,
-                                    //     ),
-                                    //   ],
-                                    // ),
-                                    child: new Text(value['label'])),
+                                child:
+                                    Container(child: new Text(value['label'])),
                                 onTap: () {
                                   address.dropDownChanged(
                                       widget.heading, value);
@@ -114,7 +95,6 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
 }
 
 TextStyle dropdownHeading() => GoogleFonts.poppins(
-      // color: AppColors().primaryText(),
       fontSize: 17.5,
       fontWeight: FontWeight.w500,
     );

@@ -12,7 +12,7 @@ class ProductPrice extends StatelessWidget {
           'NPR ',
           style: GoogleFonts.poppins(
             fontSize: 15,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             // color: Colors.black54,
           ),
         ),
@@ -20,7 +20,7 @@ class ProductPrice extends StatelessWidget {
           '$price.00',
           style: GoogleFonts.poppins(
             fontSize: 15,
-            fontWeight: FontWeight.w600,
+            // fontWeight: FontWeight.w600,
           ),
         ),
       ],

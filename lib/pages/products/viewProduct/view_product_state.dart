@@ -8,11 +8,13 @@ import 'dart:convert';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
+import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 import 'logic/options_and_variants.dart';
+import 'widgets/addedToCart/main.dart';
 
 class ViewProductState with ChangeNotifier {
   OptionsAndVariants _optionsAndVariants = OptionsAndVariants();
@@ -34,7 +36,6 @@ class ViewProductState with ChangeNotifier {
   String imgUrl;
   String productPrice;
   List productOptions;
-  List buyOptions = [];
   String productDescription;
   List productHighlights;
   List productSpecifications;
@@ -75,12 +76,12 @@ class ViewProductState with ChangeNotifier {
     productImgs = res['imgs'];
     miniThumb = res['miniThumb'];
     productVariants = res['variants'];
-    // productQnas = res['qna'];
+    productQnas = res['qnas'];
     // getQnames(res['qna']);
     initialFetch = true;
     //
     populateQty(res['qty']);
-    // getWishLists();
+    getWishLists();
     result = ViewProductLayout();
     if (productOptions.length > 0 && productVariants.length > 0) {
       var initVariants =
@@ -122,6 +123,8 @@ class ViewProductState with ChangeNotifier {
     } else
       selectedOption = selectedOption.where((opt) => opt != value).toList();
     useEffect();
+
+    print(selectedOption);
   }
 
   void populateQty(int qty) {
@@ -137,23 +140,53 @@ class ViewProductState with ChangeNotifier {
     return false;
   }
 
-  void addTocart() => cart.add({
-        'product_uid': imgDir,
-        'product_id': productID,
-        'name': productName,
-        'qty': qtyToBuy,
-        'totalQty': totalQty,
-        'miniThumb': miniThumb,
-        'seller_uid': sellerUid,
-        'options': buyOptions,
-        'price': productPrice
-      });
+  void addTocart(Map data, BuildContext context) {
+    cart.add(data);
+    changeScreen(1);
+    addedToCart(context, productName, productPrice);
+  }
 
   void refresh() {
     screen = 1;
     result = spinkit;
     notifyListeners();
     fetchProduct();
+  }
+
+  void done(BuildContext context) {
+    if (availableOpt.length != selectedOption.length) {
+      errorPopup(context, 'Please select the variant first');
+    } else if (checkDuplicate() == true) {
+      errorPopup(context, 'This product is already in your cart');
+    } else {
+      final Map data = getCartData();
+      addTocart(data, context);
+    }
+  }
+
+  getCartData() {
+    Map cartData = {
+      'imgDir': imgDir,
+      'productID': productID,
+      'name': productName,
+      'qty': qtyToBuy,
+      'totalQty': totalQty,
+      'miniThumb': miniThumb,
+      'seller_uid': sellerUid,
+      'price': productPrice
+    };
+    Map variant = {};
+
+    for (var opt in selectedOption)
+      for (var avOpt in availableOpt)
+        for (var value in avOpt['value'])
+          if (value['label'] == opt)
+            variant[avOpt['name']] = opt;
+          else
+            continue;
+
+    cartData['variant'] = variant;
+    return cartData;
   }
 
   void changeScreen(int to) {
@@ -180,7 +213,11 @@ class ViewProductState with ChangeNotifier {
 
       final status = await _syncPdt.crdlCustomProducts(productID, crdl);
       if (status == 200)
-        sucessToast(context, '${capitalize(crdl)}ed in wishlists');
+        sucessToast(
+          context,
+          '${crdl == 'pull' ? 'Pulled from' : 'Added in'} wishlists',
+          marginBottom: 50,
+        );
     }
   }
 }

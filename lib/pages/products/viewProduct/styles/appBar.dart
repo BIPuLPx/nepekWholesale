@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/listeners/cart_no_listener.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'package:share/share.dart';
 
 viewProductAppBar(viewProductContext) {
   final bool darktheme =
@@ -38,26 +39,34 @@ viewProductAppBar(viewProductContext) {
       ),
     ),
     floating: true,
-    elevation: 5,
-    // brightness: Brightness.light,
+    elevation: 1,
     actions: [
       IconButton(
-          icon: Icon(
-            Icons.favorite,
-            color: provider.isWishListed() ? Colors.red : Colors.grey,
-          ),
-          onPressed: () {
-            provider.toggleFav(viewProductContext);
-          }),
+        icon: Icon(
+            provider.isWishListed()
+                ? Icons.favorite_rounded
+                : Icons.favorite_border_rounded,
+            color: AppColors().officialMatch()),
+        onPressed: () => provider.toggleFav(viewProductContext),
+      ),
+      IconButton(
+        icon: Icon(
+          Icons.share_outlined,
+          color: AppColors().officialMatch(),
+        ),
+        onPressed: () => Share.share(
+          'https://www.nepek.com/product?id=${provider.productID}',
+          subject: trimName(provider.productName, 20),
+        ),
+      ),
       IconButton(
         icon: CartNoListener(
           icon: Image.asset(
-            'assets/bottomNavBar/cartUnselected.png',
+            'assets/bottomNavBar/cart.png',
             height: 18,
-            color: itemColor,
+            // color: itemColor,
           ),
           labelColor: Colors.white,
-          // iconColor: AppColors().officialMatch(),
         ),
         onPressed: () => Navigator.pushNamed(viewProductContext, 'cart'),
       ),

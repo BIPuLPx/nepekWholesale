@@ -64,7 +64,11 @@ class ContinueWithEmailProvider with ChangeNotifier {
         UserPreferences().loggedIn(true);
         SyncCustomProducts().syncWishListsWithBackend();
         sucessToast(context, 'Signed In');
-        Navigator.of(context).pop();
+
+        if (thirdPartyRoute == null)
+          Navigator.of(context).pop();
+        else
+          Navigator.popUntil(context, ModalRoute.withName(thirdPartyRoute));
         refresh();
       } else if (response.statusCode == 405) {
         Navigator.of(context).pop();

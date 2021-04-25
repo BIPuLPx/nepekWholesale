@@ -16,23 +16,24 @@ class RootProvider with ChangeNotifier {
     openDBS().then(
       (_) => InjectDatas().testClassification().then(
         (value) {
-          if (!value) {
+          if (!value)
             InjectDatas().fetchClassification().then(
                 (_) => checkDeliveryAddresses().then((_) => changeScreen()));
-          } else {
+          else
             checkDeliveryAddresses().then((_) => changeScreen());
-          }
         },
       ),
     );
   }
 
   Future checkDeliveryAddresses() async {
-    await InjectDatas().testDeliveryAddress().then((value) {
-      if (!value) {
-        InjectDatas().fetchDeliveryAddress();
-      }
-    });
+    await InjectDatas().getMyDeliveryAddresses().then(
+          (_) => InjectDatas().testDeliveryAddress().then(
+            (value) {
+              if (!value) InjectDatas().fetchDeliveryAddress();
+            },
+          ),
+        );
   }
 
   Future openDBS() async {

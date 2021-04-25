@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/text/trimName.dart';
 
 class ProductName extends StatelessWidget {
   final String name;
@@ -10,7 +11,7 @@ class ProductName extends StatelessWidget {
     return Container(
       width: width,
       child: Text(
-        name,
+        trimName(name, 20),
         style: GoogleFonts.poppins(
           height: 1.3,
           fontSize: 15,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
@@ -40,8 +41,8 @@ class SpecificationsLayout extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SpecificationText(text: left),
-          SpecificationText(text: right),
+          SpecificationText(true, text: left),
+          SpecificationText(false, text: right),
         ],
       ),
     );
@@ -50,9 +51,15 @@ class SpecificationsLayout extends StatelessWidget {
 
 class SpecificationText extends StatelessWidget {
   final String text;
-  SpecificationText({this.text});
+  final bool gray;
+  SpecificationText(this.gray, {this.text});
   @override
   Widget build(BuildContext context) {
-    return Text(capitalize(text));
+    return NepekText(
+      value: capitalize(text),
+      fontSize: 14,
+      color: gray ? Colors.grey[700] : null,
+      fontWeight: !gray ? FontWeight.w500 : null,
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:nepek_buyer/pages/products/result/styles/end_of_result.dart';
+import 'package:nepek_buyer/styles/text/end_of_result.dart';
 import 'package:nepek_buyer/pages/products/result/styles/loading_more.dart';
 import 'package:nepek_buyer/pages/products/reviews/reviewsLayout/main.dart';
 
@@ -37,7 +37,7 @@ class ReviewsState extends ChangeNotifier {
 
     if (data['next'] == null) {
       isNextPage = false;
-      loadingMore = EndOfResult();
+      loadingMore = EndOfResult(label: 'All reviews loaded');
     } else {
       isNextPage = true;
       nextPage = nextPage + 1;
@@ -90,16 +90,7 @@ class ReviewsState extends ChangeNotifier {
     );
     final data = jsonDecode(response.body);
 
-    // for (var name in data) {
-    //   if (!customersNames.contains(name)) {
-    //     customersNames.add(name);
-    //   }
-    // }
-
     customersNames.addAll(data);
-    // return customersNames;
-
-    // print(jsonDecode(response.body));
   }
 
   String getName(String uid) {

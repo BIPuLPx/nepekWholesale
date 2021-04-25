@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hive/hive.dart';
+import 'package:nepek_buyer/pages/my/myaccount/widgets/default_delivery_area.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
+import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -29,59 +29,145 @@ class AccountPageRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     final account = Provider.of<AccountState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    if (account.initState == false) {
-      account.args = args;
-      account.getUserData();
-    }
-    // print(args);
-    // print(account.phoneNumber);
+
+    account.args = args;
+    account.getUserData();
+
     return Scaffold(
       backgroundColor: darkTheme ? Colors.black : Colors.white,
       appBar: defaultAppBar(
         context,
-        UserPreferences().getDisplayName(),
+        'Account',
         darkTheme,
       ),
       body: ListView(
         children: [
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                NepekText(
-                  value: "Default Delivery Area",
-                  fontSize: 18,
-                )
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 20, right: 150),
-            child: NepekButton(
-              label: 'Address Book',
-              onClick: () => Navigator.of(context).pushNamed('address_book'),
-              icon: NepekButtonIcon(
-                Icons.location_city_outlined,
+          Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Header(),
+                    SizedBox(height: 10),
+                    DeliveryAddressDefault(add: account.defaultDeliveryAddress),
+                    ManageAddresses(account: account)
+                  ],
+                ),
               ),
-            ),
-          )
+            ],
+          ),
         ],
       ),
       floatingActionButton: args['logout'] == true
           ? Container(height: 0, width: 0)
-          : ProfileBottomNav(
-              checkProfile: args['checkProfile'],
+          : ProfileBottomNav(),
+    );
+  }
+}
+
+class ManageAddresses extends StatelessWidget {
+  const ManageAddresses({
+    Key key,
+    @required this.account,
+  }) : super(key: key);
+
+  final AccountState account;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(left: 20),
+          margin: EdgeInsets.only(top: 60, bottom: 20),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: AppColors().officialMatch(),
+                width: 2,
+              ),
             ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              NepekText(
+                value: "Manage your addresses",
+                fontWeight: FontWeight.w600,
+                fontSize: 22,
+              ),
+              NepekText(
+                value: "on Address Book",
+                fontSize: 20,
+                // fontWeight: FontWeight.w600,
+                color: Colors.black54,
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // padding: EdgeInsets.only(right: 150, top: 10),
+          child: NepekButton(
+            label: 'Address Book',
+            onClick: () => Navigator.of(context).pushNamed(
+              'address_book',
+              arguments: account.refreshAccount,
+            ),
+            icon: NepekButtonIcon(
+              Icons.location_city_outlined,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  const Header({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.only(left: 20),
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(
+            color: AppColors().officialMatch(),
+            width: 2,
+          ),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          NepekText(
+            value: UserPreferences().getDisplayName().split(' ')[0],
+            fontWeight: FontWeight.w600,
+            fontSize: 22,
+          ),
+          NepekText(
+            value: "Packages will be delivered to",
+            fontSize: 20,
+            // fontWeight: FontWeight.w600,
+            color: Colors.black54,
+          ),
+        ],
+      ),
     );
   }
 }
 
 class ProfileBottomNav extends StatelessWidget {
-  final Function checkProfile;
-  const ProfileBottomNav({Key key, this.checkProfile}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final AccountState provider = Provider.of(context);
     return NepekButton(
       width: 150,
       reverse: true,
@@ -90,7 +176,7 @@ class ProfileBottomNav extends StatelessWidget {
         Icons.login_rounded,
         reversed: true,
       ),
-      onClick: () {},
+      onClick: () => provider.signOut(context),
       label: 'Sign Out',
     );
   }

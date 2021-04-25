@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/provider_head.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -28,36 +30,32 @@ class ProductQnas extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             product.productQnas.length > 0 ? YesQnAs() : NoQnAsYet(),
-            SizedBox(
-              width: double.infinity,
+            SizedBox(height: 20),
+            NepekButton(
               height: 40,
-              child: OutlineButton(
-                highlightedBorderColor: buttonColor,
-                borderSide: BorderSide(color: buttonColor, width: 1.6),
-                onPressed: () {
-                  if (UserPreferences().getLoggedIn() != true) {
-                    showErrorToast(context, "Please sign in");
-                    Navigator.pushNamed(context, 'profile',
-                        arguments: {"page": "view_product"});
-                  } else {
-                    Navigator.pushNamed(context, 'ask_a_qsn', arguments: {
-                      'productName': product.productName,
-                      'productID': product.productID,
-                      'sellerID': product.sellerUid,
-                      'refresh': product.refresh
-                    });
-                  }
-                },
-                child: Text(
-                  'Ask a Question',
-                  style: GoogleFonts.poppins(
-                    color: buttonColor,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+              fontSize: 13,
+              reverse: true,
+              onClick: () {
+                if (UserPreferences().getLoggedIn() != true) {
+                  showErrorToast(context, "Please sign in");
+                  Navigator.pushNamed(context, 'profile',
+                      arguments: {"page": "view_product"});
+                } else {
+                  Navigator.pushNamed(context, 'ask_a_qsn', arguments: {
+                    'productName': product.productName,
+                    'productID': product.productID,
+                    'sellerID': product.sellerUid,
+                    'refresh': product.refresh
+                  });
+                }
+              },
+              label: 'Ask a question',
+              icon: NepekButtonIcon(
+                Icons.question_answer_outlined,
+                reversed: true,
+                size: 19,
               ),
-            )
+            ),
           ],
         ),
       ),

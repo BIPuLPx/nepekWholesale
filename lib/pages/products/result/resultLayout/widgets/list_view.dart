@@ -17,75 +17,78 @@ class ListLayout extends StatelessWidget {
     final bool isOff =
         _product.oldPrice != null && _product.oldPrice > _product.price;
 
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {
-          ProductChanges()
-              .increaseClick(result.products[index]['_id'])
-              .then((value) {
-            if (value == 200) {
-              Navigator.pushNamed(context, 'view_product', arguments: {
-                'product_id': result.products[index]['_id'].toString(),
-                'product_uid': result.products[index]['uid'].toString()
-              });
-            }
-          });
-        },
-        child: GridTile(
-          child: Container(
-            padding: EdgeInsets.all(5),
-            child: Stack(
-              overflow: Overflow.visible,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ResultProductImage(
-                      url: result.products[index]['imgUrl'],
-                      dir: result.products[index]['imgDir'],
-                      imgName: result.products[index]['miniThumb'],
-                    ),
-                    SizedBox(width: 15),
-                    Expanded(
-                      child: Stack(
-                        overflow: Overflow.visible,
-                        children: [
-                          ProductName(
-                              name: result.products[index]['productName']),
-                          Positioned(
-                              top: 90,
-                              child: Column(
-                                children: [
-                                  ProductPrice(price: _product.price),
-                                  isOff
-                                      ? OldPrice(price: _product.oldPrice)
-                                      : Container()
-                                ],
-                              ))
-                        ],
+    return Container(
+      // margin: EdgeInsets.only(top: 10),
+      child: Material(
+        color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            ProductChanges()
+                .increaseClick(result.products[index]['_id'])
+                .then((value) {
+              if (value == 200) {
+                Navigator.pushNamed(context, 'view_product', arguments: {
+                  'product_id': result.products[index]['_id'].toString(),
+                  'product_uid': result.products[index]['uid'].toString()
+                });
+              }
+            });
+          },
+          child: GridTile(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Stack(
+                overflow: Overflow.visible,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ResultProductImage(
+                        url: result.products[index]['imgUrl'],
+                        dir: result.products[index]['imgDir'],
+                        imgName: result.products[index]['miniThumb'],
                       ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  left: -5,
-                  top: -5,
-                  child: isOff ? PerOff(off: _product.off) : Container(),
-                ),
-              ],
+                      SizedBox(width: 15),
+                      Expanded(
+                        child: Stack(
+                          overflow: Overflow.visible,
+                          children: [
+                            ProductName(
+                                name: result.products[index]['productName']),
+                            Positioned(
+                                top: 90,
+                                child: Column(
+                                  children: [
+                                    ProductPrice(price: _product.price),
+                                    isOff
+                                        ? OldPrice(price: _product.oldPrice)
+                                        : Container()
+                                  ],
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    left: -5,
+                    top: -5,
+                    child: isOff ? PerOff(off: _product.off) : Container(),
+                  ),
+                ],
+              ),
             ),
-          ),
-          footer: Container(
-            padding: EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Rating(
-                  rating: result.products[index]['rating'].toDouble(),
-                  no: result.products[index]['ratingNo'],
-                ),
-              ],
+            footer: Container(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Rating(
+                    rating: result.products[index]['rating'].toDouble(),
+                    no: result.products[index]['ratingNo'],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

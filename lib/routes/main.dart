@@ -23,6 +23,7 @@ import 'package:nepek_buyer/pages/products/result/main.dart';
 import 'package:nepek_buyer/pages/products/reviews/main.dart';
 import 'package:nepek_buyer/pages/products/search/main.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/main.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/widgets/view_image/main.dart';
 import 'package:nepek_buyer/pages/seller_store/main.dart';
 import 'package:nepek_buyer/pages/userData/continueEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/signupWithEmail/main.dart';
@@ -72,6 +73,9 @@ class RouteGenerator {
           builder: (_) => ViewProductPage(args: args),
         );
 
+      case 'view_image':
+        return MaterialPageRoute(builder: (_) => ViewImageFull(args: args));
+
       case 'cart':
         return MaterialPageRoute(builder: (_) => CartTab(outside: true));
 
@@ -87,7 +91,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => AccountPage(args: args));
 
       case 'address_book':
-        return MaterialPageRoute(builder: (_) => AddressBook());
+        return MaterialPageRoute(builder: (_) => AddressBook(refresh: args));
 
       case 'my_questions':
         return MaterialPageRoute(builder: (_) => MyQuestions());

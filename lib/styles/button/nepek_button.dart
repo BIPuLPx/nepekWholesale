@@ -13,6 +13,8 @@ class NepekButton extends StatelessWidget {
   final double width;
   final Widget icon;
   final bool iconReverse;
+  final double fontSize;
+  final double height;
   const NepekButton({
     Key key,
     this.label,
@@ -24,17 +26,18 @@ class NepekButton extends StatelessWidget {
     this.width,
     this.icon,
     this.iconReverse,
+    this.fontSize,
+    this.height,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width ?? width,
-      margin: EdgeInsets.symmetric(horizontal: padding == null ? 0 : padding),
-      height: 50,
+      height: height == null ? 50 : height,
       decoration: backgroundColor == null
           ? reverse == true
               ? BoxDecoration(
-                  color: AppColors().officialMatchLight(),
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: AppColors().officialMatchFourth(),
@@ -82,7 +85,7 @@ class NepekButton extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.purple.withOpacity(0.2),
           child: Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(padding == null ? 10 : padding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -94,18 +97,18 @@ class NepekButton extends StatelessWidget {
                           children: [
                             icon,
                             SizedBox(width: 10),
-                            buttonLabel(),
+                            buttonLabel(fontSize),
                           ],
                         )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            buttonLabel(),
+                            buttonLabel(fontSize),
                             SizedBox(width: 10),
                             icon,
                           ],
                         )
-                  : buttonLabel(),
+                  : buttonLabel(fontSize),
             ),
           ),
         ),
@@ -113,10 +116,10 @@ class NepekButton extends StatelessWidget {
     );
   }
 
-  NepekText buttonLabel() {
+  NepekText buttonLabel(double fontSize) {
     return NepekText(
       value: label,
-      fontSize: 15,
+      fontSize: fontSize == null ? 15 : fontSize,
       color: textColor == null
           ? reverse == true
               ? AppColors().officialMatch()

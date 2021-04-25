@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/pages/products/viewProduct/widgets/selectOptionsModal/main.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
-import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/styles/colors.dart';
-import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+// import 'package:nepek_buyer/styles/colors.dart';
+// import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import '../../../view_product_state.dart';
 
 class AddToCart extends StatelessWidget {
@@ -13,35 +11,27 @@ class AddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final product = Provider.of<ViewProductState>(context);
-    final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
-    final buttonTextColor = darkTheme ? Colors.black : Colors.white;
+    // final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+    // final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
+    // final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          width: width * 0.88,
-          height: 50,
-          child: TextButton(
-            style: TextButton.styleFrom(
-              primary: Colors.black,
-              backgroundColor: buttonColor,
-            ),
-            onPressed: () {
-              if (product.checkDuplicate()) {
-                errorPopup(context,
-                    'This item is already added to cart\nPlease increase quantity in cart or place another order. ');
-              } else {
-                product.changeScreen(2);
-              }
-            },
-            child: NepekText(
-              value: product.screen == 1 ? 'Add To Cart' : 'Done',
-              color: buttonTextColor,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+        NepekButton(
+          width: width * 0.9,
+          onClick: () {
+            if (product.screen == 1) {
+              product.changeScreen(2);
+            } else {
+              product.done(context);
+              // if (product.checkDuplicate()) {
+              //   errorPopup(context,
+              //       'This item is already added to cart\nPlease increase quantity in cart or place another order. ');
+              // }
+            }
+          },
+          label: product.screen == 1 ? 'Add To Cart' : 'Done',
         ),
       ],
     );

@@ -10,6 +10,9 @@ Future<void> loadingPopUP(context, String title) async {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         title: Text(
           'Loading',
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),

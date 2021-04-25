@@ -79,8 +79,16 @@ class _ResultLayoutState extends State<ResultLayout> {
             searchText: result.searchText,
             itemLength: result.productsNo,
           ),
+          // SizedBox(height: 10),
+          //
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Container(height: 10),
+          ])),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
               crossAxisCount: listType == 'grid' ? 2 : 1,
               childAspectRatio: (itemWidth / height * 1.01),
             ),

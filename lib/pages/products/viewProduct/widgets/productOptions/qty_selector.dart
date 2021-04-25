@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
-import '../../../view_product_state.dart';
+import '../../view_product_state.dart';
 
 class QtySelector extends StatefulWidget {
   QtySelector({Key key}) : super(key: key);
@@ -23,18 +23,15 @@ class _QtySelectorState extends State<QtySelector> {
     final product = Provider.of<ViewProductState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
-      height: 46,
+      height: 35,
       width: width * 0.2,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2),
+        borderRadius: BorderRadius.circular(10),
         color: darkTheme ? Colors.grey[800] : Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors().officialMatch(),
-            spreadRadius: 0.2,
-            blurRadius: 2,
-          ),
-        ],
+        border: Border.all(
+          width: 1,
+          color: AppColors().officialMatch(),
+        ),
       ),
       child: DropdownButtonHideUnderline(
         child: ButtonTheme(
@@ -43,8 +40,9 @@ class _QtySelectorState extends State<QtySelector> {
             isExpanded: true,
             value: dropdownValue,
             style: GoogleFonts.poppins(
-                color: darkTheme ? Colors.white : Colors.black,
-                fontWeight: FontWeight.w600),
+              color: darkTheme ? Colors.white : Colors.black,
+              fontSize: 14,
+            ),
             onChanged: (String newValue) {
               setState(() {
                 dropdownValue = newValue;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/styles/heading.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -19,26 +20,18 @@ class QnaHeading extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           heading('Questions And Answers'),
-          SizedBox(
-            height: 25,
-            width: 100,
-            child: OutlineButton(
-              highlightedBorderColor: buttonColor,
-              borderSide: BorderSide(color: buttonColor, width: 1.6),
-              onPressed: () {
-                Navigator.pushNamed(context, 'qnas',
-                    arguments: {'id': provider.productID});
-              },
-              child: Text(
-                'VIEW ALL',
-                style: GoogleFonts.poppins(
-                  color: buttonColor,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          )
+          NepekButton(
+            height: 35,
+            fontSize: 11,
+            padding: 8,
+            onClick: () {
+              Navigator.pushNamed(context, 'qnas', arguments: {
+                'id': provider.productID,
+                'product': provider.productName
+              });
+            },
+            label: 'View all',
+          ),
         ],
       ),
     );

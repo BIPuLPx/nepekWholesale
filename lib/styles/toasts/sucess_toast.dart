@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
-sucessToast(BuildContext context, String message) {
+sucessToast(BuildContext context, String message, {double marginBottom}) {
   FToast fToast;
   fToast = FToast();
   fToast.init(context);
@@ -21,7 +21,7 @@ sucessToast(BuildContext context, String message) {
   );
 
   Widget toast = Container(
-    margin: EdgeInsets.only(bottom: 15),
+    margin: EdgeInsets.only(bottom: marginBottom == null ? 15 : marginBottom),
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(25.0),

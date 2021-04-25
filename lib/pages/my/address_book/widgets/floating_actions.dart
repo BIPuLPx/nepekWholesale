@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/pages/my/address_book/provider.dart';
 import 'package:nepek_buyer/pages/my/address_book/widgets/changeDefault.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
+import 'package:provider/provider.dart';
 
 class FloatingActions extends StatelessWidget {
   const FloatingActions({
@@ -10,21 +12,28 @@ class FloatingActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AddressBookProvider provider = Provider.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        NepekButton(
-          onClick: () => Navigator.pushNamed(context, 'input_delivery_address'),
-          icon: NepekButtonIcon(Icons.add),
-          label: 'Add New',
-        ),
+        provider.deliveryAddresses.length < 3
+            ? NepekButton(
+                onClick: () => Navigator.pushNamed(
+                    context, 'input_delivery_address',
+                    arguments: {'type': 'new', 'refresh': provider.refresh}),
+                icon: NepekButtonIcon(Icons.add),
+                label: 'Add New',
+              )
+            : SizedBox(),
         SizedBox(width: 15),
-        NepekButton(
-          onClick: () => changeDefault(context),
-          icon: NepekButtonIcon(Icons.edit, reversed: true),
-          label: 'Change Default',
-          reverse: true,
-        )
+        provider.deliveryAddresses.length > 1
+            ? NepekButton(
+                onClick: () => changeDefault(context, provider),
+                icon: NepekButtonIcon(Icons.edit, reversed: true),
+                label: 'Change Default',
+                reverse: true,
+              )
+            : SizedBox()
       ],
     );
   }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
+import 'package:nepek_buyer/styles/text/left_right_data.dart';
+import 'package:nepek_buyer/styles/text/nepek_text_input.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/extensions.dart';
-
 import 'ask_a_qsn_provider.dart';
 
 class AskaQuestion extends StatelessWidget {
@@ -33,87 +33,44 @@ class AskaQuestionRoot extends StatelessWidget {
     // print(args);
     return Scaffold(
       appBar: defaultAppBar(context, 'Ask Question', darktheme),
+      backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.only(top: 15, left: 15, right: 15),
         child: ListView(
           children: [
-            _leftRightData("Product", args['productName'], width),
-            _leftRightData(
-                "Question as", UserPreferences().getDisplayName(), width),
-            Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.only(top: 15),
-              color: darktheme ? Colors.grey[800] : Colors.grey[200],
-              child: TextFormField(
-                autocorrect: false,
-                autofocus: true,
-                minLines: 2,
-                maxLines: 5,
-                onChanged: (val) => provider.questionChanged(val),
-                // obscureText: obscureText ?? false,
-                style: GoogleFonts.poppins(height: 1.3),
-                decoration: InputDecoration(
-                  labelText: "Write a question",
-                ),
-              ),
+            leftRightData(
+              "Product",
+              args['productName'],
+              fontWeight: FontWeight.w500,
             ),
+            leftRightData(
+              "Question as",
+              UserPreferences().getDisplayName(),
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(height: 40),
+            NepekTextInput(
+              background: true,
+              onChanged: (val) => provider.questionChanged(val),
+              minlines: 3,
+              maxlines: 5,
+              labelText: "Write a question",
+              autofocus: true,
+            )
+
+            // onChanged: (val) => provider.questionChanged(val),
           ],
         ),
       ),
-      floatingActionButton: BottomAppBar(
-        child: FlatButton(
-          height: 50,
-          color: Colors.white,
-          onPressed: () {
-            provider.askQuestion(context);
-          },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Ask",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w700,
-                  color: darktheme ? Colors.black : AppColors().officialMatch(),
-                ),
-              ),
-              SizedBox(width: 10),
-              Icon(
-                Icons.arrow_forward,
-                size: 18,
-                color: darktheme ? Colors.black : AppColors().officialMatch(),
-              )
-            ],
-          ),
+      floatingActionButton: NepekButton(
+        width: 150,
+        icon: NepekButtonIcon(
+          Icons.question_answer_outlined,
         ),
+        iconReverse: true,
+        onClick: () => provider.askQuestion(context),
+        label: "Ask",
       ),
     );
   }
-
-  Widget _leftRightData(String left, String right, double width) {
-    return Container(
-      padding: EdgeInsets.only(top: 5, bottom: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            left,
-            style: _textStyle(true),
-          ),
-          SizedBox(
-            width: width,
-            child: Text(
-              capitalize(right),
-              style: _textStyle(false),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  TextStyle _textStyle(bool gray) => GoogleFonts.poppins(
-      // fontSize: 18,
-      fontWeight: FontWeight.w600,
-      color: gray ? Colors.grey : null);
 }

@@ -16,11 +16,11 @@ defaultAppBar(context, String title, bool darktheme) {
     ),
     centerTitle: true,
     // backgroundColor: AppColors().transparentAppbar(),
-    elevation: 0,
+    elevation: 0.5,
     title: Text(
       title,
       style: GoogleFonts.poppins(
-          fontSize: 18,
+          fontSize: 19,
           color: darktheme ? Colors.white : AppColors().officialMatch(),
           fontWeight: FontWeight.w600),
     ),
