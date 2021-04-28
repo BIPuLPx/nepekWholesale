@@ -14,18 +14,18 @@ userInputAppbar(context) {
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: AppColors().officialMatch(),
+          color: AppColors.officialMatch,
           size: 17,
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
       brightness: Brightness.light,
-      backgroundColor: AppColors().transparentAppbar(),
+      backgroundColor: AppColors.transparentAppbar,
       elevation: 1,
       title: Image.asset(
         'icons/Brand.png',
         height: 16,
-        color: AppColors().officialMatch(),
+        color: AppColors.officialMatch,
       ),
       // backgroundColor: Colors.white,
       actions: [],

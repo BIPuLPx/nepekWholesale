@@ -18,27 +18,28 @@ class LoadingScreen extends StatelessWidget {
         home: Scaffold(
           backgroundColor: darkTheme ? Colors.black : Colors.white,
           body: Center(
-              // child: FlareCacheBuilder(
-              //   [
-              //     AssetFlare(
-              //         bundle: rootBundle, name: 'animations/loadingScreen.flr')
-              //   ],
-              //   builder: (BuildContext context, bool isWarm) {
-              //     return !isWarm
-              //         ? Container(child: spinkit)
-              //         : SizedBox(
-              //             height: 350,
-              //             // width: 400,
-              //             // child: FlareActor(
-              //             //   "animations/loadingScreen.flr",
-              //             //   // alignment: Alignment.topLeft,
-              //             //   fit: BoxFit.fitHeight,
-              //             //   animation: "Untitled",
-              //             // ),
-              //           );
-              //   },
-              // ),
-              ),
+            child: spinkit,
+            // child: FlareCacheBuilder(
+            //   [
+            //     AssetFlare(
+            //         bundle: rootBundle, name: 'animations/loadingScreen.flr')
+            //   ],
+            //   builder: (BuildContext context, bool isWarm) {
+            //     return !isWarm
+            //         ? Container(child: spinkit)
+            //         : SizedBox(
+            //             height: 350,
+            //             // width: 400,
+            //             // child: FlareActor(
+            //             //   "animations/loadingScreen.flr",
+            //             //   // alignment: Alignment.topLeft,
+            //             //   fit: BoxFit.fitHeight,
+            //             //   animation: "Untitled",
+            //             // ),
+            //           );
+            //   },
+            // ),
+          ),
 
           //  SizedBox(
           //   height: 420,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
-Future<void> errorPopup(context, String title) async {
+Future<void> errorPopup(context, String title, {Function okFn}) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -21,10 +21,11 @@ Future<void> errorPopup(context, String title) async {
                 'Okay',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
-                  color: AppColors().officialMatch(),
+                  color: AppColors.officialMatch,
                 ),
               ),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () =>
+                  okFn == null ? Navigator.of(context).pop() : okFn,
             ),
           ],
           content: Text(

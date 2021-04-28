@@ -24,21 +24,35 @@ class SignUpWithEmailRoot extends StatelessWidget {
     final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final provider = Provider.of<SignUpWithEmailProvider>(context);
     return Scaffold(
-      appBar: defaultAppBar(context, 'Create Account', darktheme),
+      appBar: AppBar(
+        elevation: 0,
+        leading: Container(),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.close_rounded,
+              color: AppColors.officialMatch,
+            ),
+            onPressed: () => Navigator.pop(context),
+          )
+        ],
+      ),
       backgroundColor: Colors.white,
       body: Form(
         key: provider.formKey,
         autovalidate: provider.autovalidate,
         child: Container(
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: EdgeInsets.only(left: 25, right: 25),
           child: ListView(
             children: [
-              SizedBox(height: 50),
-              NepekText(
-                value: 'Enter your details',
-                fontSize: 23,
-                fontWeight: FontWeight.w600,
-                color: AppColors().officialMatch(),
+              SizedBox(height: 20),
+              Center(
+                child: NepekText(
+                  'Create a nepek account',
+                  fontSize: 23,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.officialMatch,
+                ),
               ),
               SizedBox(height: 20),
               NepekTextInput(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 
 import '../../view_product_state.dart';
@@ -34,8 +36,44 @@ class ProductHeader extends StatelessWidget {
           RatingNo(
               rating: product.productRating, noOfReviews: product.noOfReviews),
           ProductPrice(price: product.productPrice),
+          SizedBox(height: 15),
+          SoldBy(product: product)
         ],
       ),
+    );
+  }
+}
+
+class SoldBy extends StatelessWidget {
+  const SoldBy({
+    Key key,
+    @required this.product,
+  }) : super(key: key);
+
+  final ViewProductState product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          Icons.storefront_rounded,
+          size: 19,
+          color: AppColors.primaryBlue,
+        ),
+        SizedBox(width: 5),
+        NepekText(
+          "Sold by:",
+          fontSize: 13,
+          color: AppColors.primaryBlue,
+          fontWeight: FontWeight.w500,
+        ),
+        SizedBox(width: 10),
+        NepekText(
+          product.storeName,
+          fontSize: 13,
+        )
+      ],
     );
   }
 }

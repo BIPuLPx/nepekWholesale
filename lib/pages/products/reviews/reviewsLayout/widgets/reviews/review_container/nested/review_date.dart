@@ -13,7 +13,7 @@ class ReviewDate extends StatelessWidget {
       child: Text(
         DateFormat.yMMMd('en_US').format(DateTime.parse(date)),
         style: GoogleFonts.roboto(
-          color: AppColors().secondaryText(),
+          color: AppColors.secondaryText,
           fontSize: 12,
         ),
       ),

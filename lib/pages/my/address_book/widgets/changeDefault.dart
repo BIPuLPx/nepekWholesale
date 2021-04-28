@@ -13,10 +13,10 @@ Future<void> changeDefault(
     builder: (BuildContext context) {
       return AlertDialog(
           title: NepekText(
-            value: 'Select Default Address',
+            'Select Default Address',
             fontWeight: FontWeight.w500,
             fontSize: 18,
-            color: AppColors().officialMatch(),
+            color: AppColors.officialMatch,
           ),
           actions: [],
           content: Column(
@@ -51,11 +51,11 @@ class ChangeDefaultTile extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColors().officialMatchFourth(),
+          color: AppColors.officialMatchFourth,
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors().officialMatchFourth(),
+            color: AppColors.officialMatchFourth,
             // spreadRadius: 0.5,
             blurRadius: 4,
             // offset: Offset(0, 2),
@@ -74,8 +74,8 @@ class ChangeDefaultTile extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(10),
             child: NepekText(
-              value: add['area'],
-              // color: AppColors().officialMatch(),
+              add['area'],
+              // color: AppColors.officialMatch,
               fontWeight: FontWeight.w500,
             ),
           ),

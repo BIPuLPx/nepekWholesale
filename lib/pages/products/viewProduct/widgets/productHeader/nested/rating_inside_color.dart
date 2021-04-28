@@ -20,7 +20,7 @@ class RatingNo extends StatelessWidget {
             padding: EdgeInsets.only(left: 5, right: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: AppColors().ratingColor(),
+              color: AppColors.ratingColor,
             ),
             child: Text(
               '$rating',

@@ -49,7 +49,7 @@ class _SwipeImagesState extends State<SwipeImages>
                 margin: EdgeInsets.only(top: 40),
                 builder: DotSwiperPaginationBuilder(
                   color: Colors.grey[350],
-                  activeColor: AppColors().officialMatch(),
+                  activeColor: AppColors.officialMatch,
                   space: 10,
                   size: 5,
                   activeSize: 8,

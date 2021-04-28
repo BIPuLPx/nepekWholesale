@@ -11,15 +11,7 @@ class CartItems extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: cart.cartItems
           .map(
-            (item) => CartItemLayout(
-              name: item['item']['name'],
-              price: item['item']['price'],
-              index: item['index'],
-              quantity: item['item']['qty'],
-              totalQty: item['item']['totalQty'],
-              imgName: item['item']['miniThumb'],
-              uid:item['item']['product_uid']
-            ),
+            (item) => CartItemLayout(item: item),
           )
           .toList(),
     );

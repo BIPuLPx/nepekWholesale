@@ -16,12 +16,12 @@ class LoadingMore extends StatelessWidget {
     return Column(
       children: [
         SpinKitRipple(
-          color: AppColors().officialMatch(),
+          color: AppColors.officialMatch,
           size: 50.0,
         ),
         NepekText(
-          value: value,
-          color: AppColors().officialMatch(),
+          value,
+          color: AppColors.officialMatch,
           fontWeight: FontWeight.w500,
         )
       ],

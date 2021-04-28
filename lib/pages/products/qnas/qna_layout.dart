@@ -36,10 +36,9 @@ class Qnas extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
-                              color: AppColors().officialMatch(), width: 2))),
+                              color: AppColors.officialMatch, width: 2))),
                   child: NepekText(
-                    value:
-                        'Questions and Answers for \n${trimName(provider.productName, 40)}',
+                    'Questions and Answers for \n${trimName(provider.productName, 40)}',
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   )),

@@ -23,12 +23,12 @@ class RoutesContainer extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           // border: Border.all(
-          //   color: AppColors().officialMatchFourth(),
+          //   color: AppColors.officialMatchFourth,
           //   width: 1.5,
           // ),
           boxShadow: [
             BoxShadow(
-              color: AppColors().officialMatchFourth(),
+              color: AppColors.officialMatchFourth,
               blurRadius: 8,
               // spreadRadius: 1,
             )
@@ -61,10 +61,10 @@ class RoutesContainer extends StatelessWidget {
                 Positioned(
                   bottom: 0,
                   child: NepekText(
-                    value: capitalize(label),
+                    capitalize(label),
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
-                    color: AppColors().officialMatch(),
+                    color: AppColors.officialMatch,
                   ),
                 )
               ],

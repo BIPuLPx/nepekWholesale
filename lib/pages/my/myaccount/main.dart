@@ -60,7 +60,7 @@ class AccountPageRoot extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: args['logout'] == true
+      floatingActionButton: args['hideLogout'] == true
           ? Container(height: 0, width: 0)
           : ProfileBottomNav(),
     );
@@ -86,7 +86,7 @@ class ManageAddresses extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               left: BorderSide(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 width: 2,
               ),
             ),
@@ -95,12 +95,12 @@ class ManageAddresses extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NepekText(
-                value: "Manage your addresses",
+                "Manage your addresses",
                 fontWeight: FontWeight.w600,
                 fontSize: 22,
               ),
               NepekText(
-                value: "on Address Book",
+                "on Address Book",
                 fontSize: 20,
                 // fontWeight: FontWeight.w600,
                 color: Colors.black54,
@@ -139,7 +139,7 @@ class Header extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           left: BorderSide(
-            color: AppColors().officialMatch(),
+            color: AppColors.officialMatch,
             width: 2,
           ),
         ),
@@ -148,12 +148,12 @@ class Header extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NepekText(
-            value: UserPreferences().getDisplayName().split(' ')[0],
+            UserPreferences().getDisplayName().split(' ')[0],
             fontWeight: FontWeight.w600,
             fontSize: 22,
           ),
           NepekText(
-            value: "Packages will be delivered to",
+            "Packages will be delivered to",
             fontSize: 20,
             // fontWeight: FontWeight.w600,
             color: Colors.black54,

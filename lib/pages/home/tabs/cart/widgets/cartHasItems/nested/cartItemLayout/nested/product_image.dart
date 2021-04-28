@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/styles/network_image.dart';
 
 class ProductImage extends StatelessWidget {
   final String url;
@@ -6,10 +7,10 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
-      width: 70,
-      child: Image.network(
-        url,
+      height: 100,
+      width: 100,
+      child: NepekImageNetwork(
+        url: url,
         // placeholder: (context, url) => Center(
         //   child: Container(
         //     height: 17,

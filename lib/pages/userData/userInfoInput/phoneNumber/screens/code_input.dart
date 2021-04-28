@@ -63,7 +63,7 @@ class InputNumber extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: AppColors().officialMatch(),
+            color: AppColors.officialMatch,
             spreadRadius: 0.2,
             blurRadius: 2,
           ),
@@ -102,7 +102,7 @@ class InputNumberForm extends StatelessWidget {
             width: double.infinity,
             height: 50,
             child: FlatButton(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 onPressed: () {
                   // phonenumber.verifyCode(context);
                 },
@@ -185,11 +185,11 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
 TextStyle countDownStyle() => GoogleFonts.openSans(
       fontWeight: FontWeight.w600,
-      color: AppColors().secondaryText(),
+      color: AppColors.secondaryText,
       fontStyle: FontStyle.italic,
     );
 TextStyle resendStyle() => GoogleFonts.rubik(
-      color: AppColors().officialMatch(),
+      color: AppColors.officialMatch,
       fontSize: 14.5,
       fontWeight: FontWeight.w500,
     );

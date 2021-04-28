@@ -36,7 +36,7 @@ class WishListsLayout extends StatelessWidget {
           if (value == 200) {
             Navigator.pushNamed(context, 'view_product', arguments: {
               'product_id': _product.id.toString(),
-              'product_uid': _product.uid.toString()
+              'product_uid': _product.imgDir.toString()
             });
           }
         });
@@ -51,7 +51,7 @@ class WishListsLayout extends StatelessWidget {
                 // mainAxisAlignment: MainAx,
                 children: [
                   Image.network(
-                    '$imageCdn/${_product.uid}/miniThumb/${_product.miniThumb}',
+                    '$imageCdn/${_product.imgDir}/miniThumb/${_product.miniThumb}',
                     height: 100,
                     width: 100,
                   ),
@@ -100,11 +100,11 @@ class WishListsLayout extends StatelessWidget {
         // offset: Offset(1, 2),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 5),
-          color: AppColors().officialMatchLight(),
+          color: AppColors.officialMatchLight,
           child: Text(
             of,
             style: GoogleFonts.poppins(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 fontSize: 11,
                 fontWeight: FontWeight.w600),
           ),

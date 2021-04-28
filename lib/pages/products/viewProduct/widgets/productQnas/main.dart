@@ -19,45 +19,43 @@ class ProductQnas extends StatelessWidget {
     final product = Provider.of<ViewProductState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final providerHead = Provider.of<HeadProvider>(context);
-    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
+    final buttonColor = darkTheme ? Colors.white : AppColors.officialMatch;
     // print(product.productQnas);
-    return Card(
-      child: Container(
-        padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 25),
-        // margin: EdgeInsets.only(bottom: 50),
-        // color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            product.productQnas.length > 0 ? YesQnAs() : NoQnAsYet(),
-            SizedBox(height: 20),
-            NepekButton(
-              height: 40,
-              fontSize: 13,
-              reverse: true,
-              onClick: () {
-                if (UserPreferences().getLoggedIn() != true) {
-                  showErrorToast(context, "Please sign in");
-                  Navigator.pushNamed(context, 'profile',
-                      arguments: {"page": "view_product"});
-                } else {
-                  Navigator.pushNamed(context, 'ask_a_qsn', arguments: {
-                    'productName': product.productName,
-                    'productID': product.productID,
-                    'sellerID': product.sellerUid,
-                    'refresh': product.refresh
-                  });
-                }
-              },
-              label: 'Ask a question',
-              icon: NepekButtonIcon(
-                Icons.question_answer_outlined,
-                reversed: true,
-                size: 19,
-              ),
+    return Container(
+      padding: EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 25),
+      // margin: EdgeInsets.only(bottom: 50),
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          product.productQnas.length > 0 ? YesQnAs() : NoQnAsYet(),
+          SizedBox(height: 20),
+          NepekButton(
+            height: 40,
+            fontSize: 13,
+            reverse: true,
+            onClick: () {
+              if (UserPreferences().getLoggedIn() != true) {
+                showErrorToast(context, "Please sign in");
+                Navigator.pushNamed(context, 'profile',
+                    arguments: {"page": "view_product"});
+              } else {
+                Navigator.pushNamed(context, 'ask_a_qsn', arguments: {
+                  'productName': product.productName,
+                  'productID': product.productID,
+                  'sellerID': product.sellerID,
+                  'refresh': product.refresh
+                });
+              }
+            },
+            label: 'Ask a question',
+            icon: NepekButtonIcon(
+              Icons.question_answer_outlined,
+              reversed: true,
+              size: 19,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

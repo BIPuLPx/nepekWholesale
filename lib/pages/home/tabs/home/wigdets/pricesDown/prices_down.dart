@@ -10,7 +10,7 @@ class PricesDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 15),
-      color: AppColors().officialMatch(),
+      color: AppColors.officialMatch,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

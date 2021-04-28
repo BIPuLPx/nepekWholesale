@@ -12,7 +12,7 @@ class ReviewText extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.roboto(height: 1.4
-            // color: AppColors().secondaryText(),
+            // color: AppColors.secondaryText,
             ),
       ),
     );

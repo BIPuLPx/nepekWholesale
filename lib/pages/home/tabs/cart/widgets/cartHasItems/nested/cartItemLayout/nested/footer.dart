@@ -12,12 +12,14 @@ class CartItemFooter extends StatelessWidget {
   CartItemFooter({this.quantity, this.totalQty, this.index});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        QtySelector(qty: quantity, totalQty: totalQty, index: index),
-        RemoveButton(index: index),
-      ],
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          QtySelector(qty: quantity, totalQty: totalQty, index: index),
+          RemoveButton(index: index),
+        ],
+      ),
     );
   }
 }
@@ -41,23 +43,17 @@ class _QtySelectorState extends State<QtySelector> {
     return Row(
       children: [
         Text(
-          'QTY',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          'Qty',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
         ),
         SizedBox(width: 10),
         Container(
           height: 30,
           width: width * 0.2,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(10),
             color: darktheme ? Colors.grey[800] : Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors().officialMatch(),
-                spreadRadius: 0.2,
-                blurRadius: 2,
-              ),
-            ],
+            border: Border.all(color: Colors.grey[300], width: 1.5),
           ),
           child: DropdownButtonHideUnderline(
             child: ButtonTheme(
@@ -65,7 +61,9 @@ class _QtySelectorState extends State<QtySelector> {
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: widget.qty,
-                style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                style: GoogleFonts.poppins(
+                    // fontWeight: FontWeight.w600
+                    ),
                 onChanged: (String newValue) {
                   cart.changeQty(widget.index, newValue);
                 },
@@ -77,7 +75,7 @@ class _QtySelectorState extends State<QtySelector> {
                       child: Text(
                         value,
                         style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w600,
+                          // fontWeight: FontWeight.w600,
                           color: darktheme ? Colors.white : Colors.black,
                         ),
                       ),
@@ -99,24 +97,28 @@ class RemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartState>(context);
-    final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    return FlatButton(
+    // final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: AppColors.officialMatchFourth,
+      ),
       onPressed: () {
         cart.deleteItem(index);
       },
       child: Row(
         children: [
-          Icon(Icons.delete,
-              size: 17, color: darktheme ? Colors.white54 : Colors.black54
-              // color: AppColors().secondaryText(),
-              ),
+          Icon(
+            Icons.delete_outline,
+            size: 17,
+            color: Colors.pink.shade200,
+          ),
           SizedBox(width: 5),
           Text(
             'Remove',
             style: GoogleFonts.poppins(
-                color: darktheme ? Colors.white54 : Colors.black54
-                // color: AppColors().secondaryText(),
-                ),
+              color: Colors.pink.shade200, fontSize: 12,
+              // color: AppColors.secondaryText,
+            ),
           ),
         ],
       ),

@@ -18,7 +18,7 @@ class ProductPageFonts {
   brand() => GoogleFonts.hammersmithOne(
         fontSize: 13,
         fontWeight: FontWeight.w400,
-        color: AppColors().officialMatch(),
+        color: AppColors.officialMatch,
       );
   productName() => GoogleFonts.roboto(
         height: 1.4,
@@ -31,12 +31,12 @@ class ProductPageFonts {
   ratingNumberSideReviews() => GoogleFonts.robotoCondensed(
         fontSize: 14,
         fontWeight: FontWeight.w600,
-        color: AppColors().secondaryText(),
+        color: AppColors.secondaryText,
         decoration: TextDecoration.underline,
       );
   productPrice(FontWeight fontWeight) => GoogleFonts.openSans(
         fontWeight: fontWeight,
-        color: AppColors().primaryText(),
+        color: AppColors.primaryText,
         fontSize: 18,
       );
 }

@@ -9,19 +9,19 @@ defaultAppBar(context, String title, bool darktheme) {
     leading: IconButton(
       icon: Icon(
         Icons.arrow_back_ios,
-        color: darktheme ? Colors.white : AppColors().officialMatch(),
+        color: darktheme ? Colors.white : AppColors.officialMatch,
         size: 21,
       ),
       onPressed: () => Navigator.of(context).pop(),
     ),
     centerTitle: true,
-    // backgroundColor: AppColors().transparentAppbar(),
+    // backgroundColor: AppColors.transparentAppbar,
     elevation: 0.5,
     title: Text(
       title,
       style: GoogleFonts.poppins(
           fontSize: 19,
-          color: darktheme ? Colors.white : AppColors().officialMatch(),
+          color: darktheme ? Colors.white : AppColors.officialMatch,
           fontWeight: FontWeight.w600),
     ),
     // brightness: Brightness.light,

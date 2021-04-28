@@ -17,7 +17,7 @@ class ReviewHeader extends StatelessWidget {
             name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors().secondaryText(),
+              color: AppColors.secondaryText,
               fontSize: 12.5,
             ),
           ),

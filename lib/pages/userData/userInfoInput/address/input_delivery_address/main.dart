@@ -114,7 +114,7 @@ class HomeOffice extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NepekText(
-            value: 'Home or Office',
+            'Home or Office',
             fontWeight: FontWeight.w500,
             fontSize: 17,
           ),
@@ -156,11 +156,11 @@ class HomeOfficeSelector extends StatelessWidget {
         width: 100,
         height: 40,
         decoration: BoxDecoration(
-            color: selected ? AppColors().officialMatch() : Colors.white,
+            color: selected ? AppColors.officialMatch : Colors.white,
             borderRadius: BorderRadius.circular(10),
             border: !selected
                 ? Border.all(
-                    color: AppColors().officialMatch(),
+                    color: AppColors.officialMatch,
                     width: 1.8,
                   )
                 : Border()),
@@ -173,8 +173,8 @@ class HomeOfficeSelector extends StatelessWidget {
             ),
             SizedBox(width: 4),
             NepekText(
-              value: capitalize(label),
-              color: !selected ? AppColors().officialMatch() : Colors.white,
+              capitalize(label),
+              color: !selected ? AppColors.officialMatch : Colors.white,
               fontWeight: FontWeight.w600,
             )
           ],

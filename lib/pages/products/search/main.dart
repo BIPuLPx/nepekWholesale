@@ -122,7 +122,7 @@ class SearchBox extends StatelessWidget {
                 : Colors.white,
             boxShadow: [
               BoxShadow(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 spreadRadius: 0.5,
                 blurRadius: 2,
               ),
@@ -173,7 +173,7 @@ class SearchBox extends StatelessWidget {
                 child: Icon(
                   currentSuffix,
                   size: 18,
-                  color: AppColors().officialMatch(),
+                  color: AppColors.officialMatch,
                 ),
               ),
               suffixIconConstraints: BoxConstraints(
@@ -191,7 +191,7 @@ class SearchBox extends StatelessWidget {
               child: Text(
                 'Cancel',
                 style: GoogleFonts.poppins(
-                  color: darkTheme ? Colors.white : AppColors().officialMatch(),
+                  color: darkTheme ? Colors.white : AppColors.officialMatch,
                   fontWeight: FontWeight.w600,
                 ),
               ),

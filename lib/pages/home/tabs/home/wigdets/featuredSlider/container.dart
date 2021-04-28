@@ -16,7 +16,7 @@ class BrandsContainer extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: AppColors().primaryYellow(),
+          color: AppColors.primaryYellow,
           borderRadius: BorderRadius.circular(10),
         ),
         margin: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
@@ -28,7 +28,7 @@ class BrandsContainer extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppColors().officialMatch(),
+              color: AppColors.officialMatch,
               letterSpacing: 1.1,
             ),
           ),

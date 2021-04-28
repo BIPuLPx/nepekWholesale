@@ -12,7 +12,7 @@ class NepekButtonIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       icon,
-      color: reversed == true ? AppColors().officialMatch() : Colors.white,
+      color: reversed == true ? AppColors.officialMatch : Colors.white,
       size: size == null ? 23 : size,
     );
   }

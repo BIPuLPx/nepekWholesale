@@ -11,7 +11,7 @@ class NoAnswer extends StatelessWidget {
         Flexible(
           child: Container(
             child: NepekText(
-              value: 'Not Answered',
+              'Not Answered',
               fontSize: 14,
               color: Colors.grey[400],
               fontWeight: FontWeight.w500,

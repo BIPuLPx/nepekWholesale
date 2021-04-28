@@ -8,3 +8,5 @@ tokenHeaderContentType() => {
       "Content-Type": "application/json",
       "Authorization": 'Bearer ${UserPreferences().getJwtToken()}',
     };
+
+contentTypeHeader() => {"Content-Type": "application/json"};

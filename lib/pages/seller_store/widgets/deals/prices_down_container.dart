@@ -17,7 +17,7 @@ class DealsProduct extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
-          color: AppColors().officialMatchShadow(),
+          color: AppColors.officialMatchShadow,
         ),
       ),
       child: Column(

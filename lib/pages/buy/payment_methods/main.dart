@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/functions/duplicate.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
@@ -15,14 +18,15 @@ class PaymentMethodsRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PaymentMethodProvider provider = Provider.of(context);
-    provider.args = args;
+    provider.products = duplicate(args['args']['products']);
+    provider.refreshCart = args['args']['refreshCart'];
     // print(args);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Scaffold(
       backgroundColor: darkTheme ? Colors.black : Colors.white,
       appBar: defaultAppBar(context, 'Payment Methods', darkTheme),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         child: ListView(
           children: [
             _onlyCod(),
@@ -36,10 +40,21 @@ class PaymentMethodsRoot extends StatelessWidget {
                   'Method',
                   style: _leftRightStyles(),
                 ),
-                SizedBox(height: 15),
-                Text(
-                  'Cash on delivery',
-                  style: _paymentMethodStyles(),
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.payments_outlined,
+                      color: AppColors.primaryBlue,
+                    ),
+                    SizedBox(width: 10),
+                    NepekText(
+                      'Cash on delivery',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryBlue,
+                    ),
+                  ],
                 )
               ],
             )
@@ -57,24 +72,16 @@ class PaymentMethodsRoot extends StatelessWidget {
   BottomAppBar _buyNow(
       PaymentMethodProvider provider, BuildContext context, bool darkTheme) {
     return BottomAppBar(
-      child: FlatButton.icon(
-        icon: Icon(
-          BottomNavIcons.cart,
-          color: darkTheme ? Colors.black : Colors.white,
-          size: 17,
-        ),
-        onPressed: () => provider.buyNow(context),
-        height: 50,
-        color: darkTheme ? Colors.white : AppColors().officialMatch(),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
-        ),
-        label: Text(
-          'Order Now',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w600,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: NepekButton(
+          icon: Icon(
+            BottomNavIcons.cart,
             color: darkTheme ? Colors.black : Colors.white,
+            size: 17,
           ),
+          onClick: () => provider.buyNow(context),
+          label: 'Order Now',
         ),
       ),
     );
@@ -100,10 +107,6 @@ class PaymentMethodsRoot extends StatelessWidget {
         fontSize: 17,
         fontWeight: FontWeight.w600,
       );
-  TextStyle _paymentMethodStyles() => GoogleFonts.poppins(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-      );
 
   Widget _onlyCod() {
     return Column(
@@ -112,7 +115,7 @@ class PaymentMethodsRoot extends StatelessWidget {
         Text(
           'Sorry,',
           style: GoogleFonts.poppins(
-            fontSize: 19,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -121,7 +124,7 @@ class PaymentMethodsRoot extends StatelessWidget {
           'We have only cash on delivery method available at the moment , \nPlease have patience while we add other payment features soon',
           style: GoogleFonts.poppins(
             height: 1.5,
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w400,
           ),
         ),

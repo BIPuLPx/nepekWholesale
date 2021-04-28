@@ -21,7 +21,7 @@ class SelectOptions extends StatelessWidget {
     final ViewProductState provider = Provider.of(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final Color primaryColor =
-        darkTheme ? Colors.white : AppColors().officialMatch();
+        darkTheme ? Colors.white : AppColors.officialMatch;
 
     return Container(
       padding: EdgeInsets.only(top: 10),
@@ -70,7 +70,11 @@ class CustomRadio extends StatelessWidget {
   Widget build(BuildContext context) {
     final ViewProductState provider = Provider.of(context);
     bool selected = provider.selectedOption.contains(txt);
-    final Color buttonColor = selected ? primaryColor : Colors.grey;
+    final Color buttonColor = enabled
+        ? selected
+            ? primaryColor
+            : Colors.grey
+        : Colors.grey.withOpacity(0.4);
     optChanged(String txt, bool keep) => provider.changeOption(txt, !keep);
 
     return Container(
@@ -78,7 +82,7 @@ class CustomRadio extends StatelessWidget {
       child: OutlinedButton(
         onPressed: enabled ? () => optChanged(txt, selected) : null,
         style: TextButton.styleFrom(
-          primary: AppColors().officialMatchShadow(),
+          primary: AppColors.officialMatchShadow,
           side: BorderSide(width: 1.2, color: buttonColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -86,7 +90,7 @@ class CustomRadio extends StatelessWidget {
           shadowColor: Colors.grey,
         ),
         child: NepekText(
-          value: capitalize(txt),
+          capitalize(txt),
           fontSize: 13,
           color: buttonColor,
         ),

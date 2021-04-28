@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nepek_buyer/functions/check_cart_products.dart';
 import 'package:nepek_buyer/rootApp/widgets/RouterApp/main.dart';
 import 'package:nepek_buyer/rootApp/widgets/loadingScreen/main.dart';
 import 'dataFetch/main.dart';
@@ -12,16 +13,13 @@ class RootProvider with ChangeNotifier {
   Widget body = LoadingScreen();
 
   Future initChecks() async {
-    // openDBS().then((_) => changeScreen());
     openDBS().then(
-      (_) => InjectDatas().testClassification().then(
-        (value) {
-          if (!value)
-            InjectDatas().fetchClassification().then(
-                (_) => checkDeliveryAddresses().then((_) => changeScreen()));
-          else
-            checkDeliveryAddresses().then((_) => changeScreen());
-        },
+      (_) => checkClassification().then(
+        (_) => checkDeliveryAddresses().then(
+          (_) => isCartItemsAvailable().then(
+            (_) => changeScreen(),
+          ),
+        ),
       ),
     );
   }
@@ -34,6 +32,14 @@ class RootProvider with ChangeNotifier {
             },
           ),
         );
+  }
+
+  Future checkClassification() async {
+    await InjectDatas().testClassification().then(
+      (value) {
+        if (!value) InjectDatas().fetchClassification();
+      },
+    );
   }
 
   Future openDBS() async {

@@ -7,7 +7,9 @@ class Product {
 
   String get id => product["_id"];
 
-  String get uid => product['uid'];
+  String get imgDir => product['imgDir'];
+
+  String get imgUrl => product['imgUrl'];
 
   int get price => product['price'];
 
@@ -15,6 +17,7 @@ class Product {
 
   String get miniThumb => product['miniThumb'];
 
-  String get off =>
-      '${(((product['oldPrice'] - product['price']) * 100) / product['oldPrice']).toStringAsFixed(1)} % OFF';
+  String get off => product['oldPrice'] == null
+      ? null
+      : '${(((product['oldPrice'] - product['price']) * 100) / product['oldPrice']).toStringAsFixed(1)} % OFF';
 }

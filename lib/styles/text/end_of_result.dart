@@ -15,11 +15,11 @@ class EndOfResult extends StatelessWidget {
       padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
       child: Center(
         child: NepekText(
-          value: label,
+          label,
           // style: GoogleFonts.poppins(
           fontSize: 15,
           fontWeight: FontWeight.w600,
-          color: AppColors().officialMatch(),
+          color: AppColors.officialMatch,
           // ),
         ),
       ),

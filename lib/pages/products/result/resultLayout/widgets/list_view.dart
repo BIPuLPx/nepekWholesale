@@ -29,7 +29,6 @@ class ListLayout extends StatelessWidget {
               if (value == 200) {
                 Navigator.pushNamed(context, 'view_product', arguments: {
                   'product_id': result.products[index]['_id'].toString(),
-                  'product_uid': result.products[index]['uid'].toString()
                 });
               }
             });

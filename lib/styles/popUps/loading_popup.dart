@@ -24,7 +24,7 @@ Future<void> loadingPopUP(context, String title) async {
               SizedBox(height: 20),
               Text(
                 title,
-                style: GoogleFonts.poppins(color: appColors['secondaryText']),
+                style: GoogleFonts.poppins(),
               )
             ],
           ),

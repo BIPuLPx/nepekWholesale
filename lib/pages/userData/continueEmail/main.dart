@@ -42,7 +42,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          // padding: EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(left: 5, right: 5),
           child: ListView(
             children: [
               Container(
@@ -53,16 +53,17 @@ class ContinueWithEmailRoot extends StatelessWidget {
                   children: [
                     SizedBox(height: 50),
                     NepekText(
-                      value: 'Welcome back!',
-                      color: AppColors().officialMatch(),
+                      'Welcome back!',
+                      color: AppColors.officialMatch,
                       fontSize: 23,
                       fontWeight: FontWeight.w700,
                     ),
                     NepekText(
-                        value: 'Enter your credentials',
-                        fontWeight: FontWeight.w500
-                        // color: AppColors().officialMatch(),
-                        ),
+                      'Enter your credentials',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 17,
+                      // color: AppColors.officialMatch,
+                    ),
                     SizedBox(height: 30),
                     NepekTextInput(
                       labelText: "Email",
@@ -100,7 +101,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NepekText(
-            value: "Don't have an account?",
+            "Don't have an account?",
             fontWeight: FontWeight.w500,
             fontSize: 14,
           ),
@@ -121,12 +122,12 @@ class ContinueWithEmailRoot extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: AppColors().officialMatchShadow(),
+          primary: AppColors.officialMatchShadow,
         ),
         onPressed: () {},
         child: NepekText(
-          value: 'Forgot Password ?',
-          color: AppColors().officialMatch(),
+          'Forgot Password ?',
+          color: AppColors.officialMatch,
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
@@ -148,7 +149,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
     //     shape: RoundedRectangleBorder(
     //       borderRadius: BorderRadius.circular(0),
     //     ),
-    //     color: darkTheme ? Colors.white : AppColors().officialMatch(),
+    //     color: darkTheme ? Colors.white : AppColors.officialMatch,
     //     onPressed: () {
     //       provider.signIn(context);
     //     },
@@ -168,7 +169,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
         color: isBold
             ? darkTheme
                 ? Colors.white
-                : AppColors().officialMatch()
+                : AppColors.officialMatch
             : null,
       );
 }

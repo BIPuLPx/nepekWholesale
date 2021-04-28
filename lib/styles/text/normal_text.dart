@@ -6,14 +6,15 @@ class NepekText extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final Color color;
+  final TextDecoration decoration;
 
-  const NepekText({
-    Key key,
-    this.value,
+  const NepekText(
+    this.value, {
     this.fontSize,
     this.fontWeight,
     this.color,
-  }) : super(key: key);
+    this.decoration,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,11 @@ class NepekText extends StatelessWidget {
       child: Text(
         value,
         style: GoogleFonts.poppins(
-            color: color == null ? Colors.black : color,
-            fontSize: fontSize == null ? 15 : fontSize,
-            fontWeight: fontWeight == null ? FontWeight.normal : fontWeight),
+          color: color == null ? Colors.black : color,
+          fontSize: fontSize == null ? 15 : fontSize,
+          fontWeight: fontWeight == null ? FontWeight.normal : fontWeight,
+          decoration: decoration != null ? decoration : TextDecoration.none,
+        ),
       ),
     );
   }

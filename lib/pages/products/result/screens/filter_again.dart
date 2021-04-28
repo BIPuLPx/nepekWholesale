@@ -22,7 +22,7 @@ class FilterAgain extends StatelessWidget {
             SizedBox(
               height: 50,
               child: FlatButton(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 onPressed: () {
                   Navigator.pushNamed(context, 'filter_search_result',
                       arguments: args);

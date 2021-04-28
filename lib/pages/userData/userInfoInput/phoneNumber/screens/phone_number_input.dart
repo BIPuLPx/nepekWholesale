@@ -89,7 +89,7 @@ class InputNumberForm extends StatelessWidget {
             width: double.infinity,
             height: 50,
             child: FlatButton(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 onPressed: () {
                   phonenumber.sendPhoneNumber(context);
                 },

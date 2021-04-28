@@ -51,7 +51,7 @@ class AddressBookRoot extends StatelessWidget {
             )
           : Container(
               child: NepekText(
-                value: 'No Delivery Addresses',
+                'No Delivery Addresses',
               ),
             ),
       floatingActionButton: FloatingActions(),

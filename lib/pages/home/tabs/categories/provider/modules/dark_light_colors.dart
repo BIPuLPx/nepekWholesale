@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 
 class LightDarkColors {
-
   Map leftPanelColors(bool darktheme) {
     if (darktheme) {
       return LightDarkColors().darkSelectionColors;
@@ -10,12 +9,10 @@ class LightDarkColors {
     return LightDarkColors().lightSelectionColors;
   }
 
-
-
   Map darkSelectionColors = {
     "selected": Colors.white,
     "unselected": Colors.black,
-    'selectedText': AppColors().officialMatch(),
+    'selectedText': AppColors.officialMatch,
     'unSelectedText': Colors.white
   };
 
@@ -23,7 +20,7 @@ class LightDarkColors {
     "selected": Colors.white,
     "unselected": Colors.grey[200],
     "text": Colors.yellow,
-    'selectedText': AppColors().officialMatch(),
+    'selectedText': AppColors.officialMatch,
     'unSelectedText': Colors.black
   };
 }

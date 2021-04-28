@@ -25,7 +25,7 @@ class SignedIn extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border(
                       left: BorderSide(
-                        color: AppColors().officialMatch(),
+                        color: AppColors.officialMatch,
                         width: 2,
                       ),
                     ),
@@ -34,19 +34,18 @@ class SignedIn extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       NepekText(
-                        value: 'Hello',
+                        'Hello',
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
-                        color: AppColors().officialMatch(),
+                        color: AppColors.officialMatch,
                       ),
                       NepekText(
-                        value: UserPreferences().getDisplayName().split(' ')[0],
+                        UserPreferences().getDisplayName().split(' ')[0],
                         fontWeight: FontWeight.w600,
                         fontSize: 22,
                       ),
                       NepekText(
-                        value:
-                            UserPreferences().getDisplayName().split(' ').last,
+                        UserPreferences().getDisplayName().split(' ').last,
                         fontSize: 20,
                         color: Colors.grey,
                       ),

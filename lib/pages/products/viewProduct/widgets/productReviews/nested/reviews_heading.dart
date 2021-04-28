@@ -14,7 +14,7 @@ class Heading extends StatelessWidget {
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final product = Provider.of<ViewProductState>(context);
 
-    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
+    final buttonColor = darkTheme ? Colors.white : AppColors.officialMatch;
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: Row(

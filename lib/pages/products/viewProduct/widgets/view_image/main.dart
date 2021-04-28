@@ -57,7 +57,7 @@ class ViewImageFullRoot extends StatelessWidget {
                   // NepekImageNetwork('images/image_placeholder-min.png')
                   CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  AppColors().officialMatch(),
+                  AppColors.officialMatch,
                 ),
                 value: event == null
                     ? 0

@@ -54,7 +54,5 @@ class TotalRating extends StatelessWidget {
 TextStyle totalRatingText(String type) => GoogleFonts.poppins(
       fontWeight: type == 'rating' ? FontWeight.w700 : FontWeight.w400,
       fontSize: type == 'rating' ? 25 : 12,
-      color: type == 'rating'
-          ? AppColors().primaryText()
-          : AppColors().secondaryText(),
+      color: type == 'rating' ? AppColors.primaryText : AppColors.secondaryText,
     );

@@ -12,16 +12,16 @@ viewProductAppBar(viewProductContext) {
   final bool darktheme =
       Provider.of<DarkThemeProvider>(viewProductContext).darkTheme;
 
-  Color itemColor = darktheme ? Colors.white : AppColors().officialMatch();
+  Color itemColor = darktheme ? Colors.white : AppColors.officialMatch;
   final provider = Provider.of<ViewProductState>(viewProductContext);
 
   return SliverAppBar(
     title: NepekText(
-      value: provider.screen == 1
+      provider.screen == 1
           ? trimName(provider.productName, 10)
           : 'Select your variant',
       fontWeight: FontWeight.w500,
-      color: AppColors().officialMatch(),
+      color: AppColors.officialMatch,
       fontSize: 18,
     ),
     centerTitle: false,
@@ -41,24 +41,28 @@ viewProductAppBar(viewProductContext) {
     floating: true,
     elevation: 1,
     actions: [
-      IconButton(
-        icon: Icon(
-            provider.isWishListed()
-                ? Icons.favorite_rounded
-                : Icons.favorite_border_rounded,
-            color: AppColors().officialMatch()),
-        onPressed: () => provider.toggleFav(viewProductContext),
-      ),
-      IconButton(
-        icon: Icon(
-          Icons.share_outlined,
-          color: AppColors().officialMatch(),
-        ),
-        onPressed: () => Share.share(
-          'https://www.nepek.com/product?id=${provider.productID}',
-          subject: trimName(provider.productName, 20),
-        ),
-      ),
+      provider.screen == 1
+          ? IconButton(
+              icon: Icon(
+                  provider.isWishListed()
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded,
+                  color: AppColors.officialMatch),
+              onPressed: () => provider.toggleFav(viewProductContext),
+            )
+          : Container(),
+      provider.screen == 1
+          ? IconButton(
+              icon: Icon(
+                Icons.share_outlined,
+                color: AppColors.officialMatch,
+              ),
+              onPressed: () => Share.share(
+                'https://www.nepek.com/product?id=${provider.productID}',
+                subject: trimName(provider.productName, 20),
+              ),
+            )
+          : Container(),
       IconButton(
         icon: CartNoListener(
           icon: Image.asset(

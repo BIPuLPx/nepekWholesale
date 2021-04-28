@@ -15,7 +15,7 @@ class ProductPrice extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              // color: AppColors().primaryText(),
+              // color: AppColors.primaryText,
             ),
           ),
           Text(

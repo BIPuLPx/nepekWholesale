@@ -7,7 +7,6 @@ import 'package:nepek_buyer/rootApp/dataFetch/syncCutomProducts.dart';
 import 'dart:convert';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
-import 'package:nepek_buyer/styles/extensions.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/styles/toasts/error_toast.dart';
@@ -28,7 +27,7 @@ class ViewProductState with ChangeNotifier {
   List productImgs;
   String miniThumb;
   String imgDir;
-  String sellerUid;
+  String sellerID;
   String productBrand;
   String productName;
   double productRating;
@@ -41,18 +40,20 @@ class ViewProductState with ChangeNotifier {
   List productSpecifications;
   List productReviews;
   List productQnas = [];
-  List buyerNames = [];
   List productVariants = [];
   List buyerIds = [];
   String qtyToBuy = '1';
   List<String> totalQty = [];
   List wishLists = [];
-  List activeOptions;
-  List avVariants;
-  List indexedVariants;
-  List availableOpt;
-  List selectedOption;
+  List activeOptions = [];
+  List avVariants = [];
+  List indexedVariants = [];
+  List availableOpt = [];
+  List selectedOption = [];
   Map currentPriceAndQty = {"qty": 0, 'price': 0};
+  String storeName;
+  List storeProducts;
+  List similarProducts;
   int screen = 1;
   String optImg;
 
@@ -60,9 +61,10 @@ class ViewProductState with ChangeNotifier {
     var response;
     response = await http.get('$productApi/products/fetch/single/$productID');
     final res = jsonDecode(response.body);
+    // print(res);
     productID = res['_id'];
     imgDir = res['imgDir'];
-    sellerUid = res['seller_id'];
+    sellerID = res['seller_id'];
     productBrand = res['brand'];
     productName = res['productName'];
     productRating = double.parse(res['rating'].toString());
@@ -77,7 +79,10 @@ class ViewProductState with ChangeNotifier {
     miniThumb = res['miniThumb'];
     productVariants = res['variants'];
     productQnas = res['qnas'];
+    storeName = res['storeName'];
     // getQnames(res['qna']);
+    storeProducts = res['store_products'];
+    similarProducts = res['similar_products'];
     initialFetch = true;
     //
     populateQty(res['qty']);
@@ -91,6 +96,8 @@ class ViewProductState with ChangeNotifier {
       selectedOption = initVariants['selectedOption'];
       indexedVariants = initVariants['indexedVariants'];
       useEffect();
+    } else {
+      notifyListeners();
     }
   }
 
@@ -103,6 +110,9 @@ class ViewProductState with ChangeNotifier {
         selectedOption,
       );
     optImg = _optionsAndVariants.getOptImage(availableOpt, selectedOption);
+    productPrice = currentPriceAndQty['price'].toString();
+    qtyToBuy = '1';
+    populateQty(currentPriceAndQty['qty']);
     notifyListeners();
   }
 
@@ -123,13 +133,11 @@ class ViewProductState with ChangeNotifier {
     } else
       selectedOption = selectedOption.where((opt) => opt != value).toList();
     useEffect();
-
-    print(selectedOption);
   }
 
   void populateQty(int qty) {
     totalQty = [];
-    for (var i = 1; i <= qty; i++) totalQty.add(i.toString());
+    for (var i = 1; i <= qty; i++) if (i <= 5) totalQty.add(i.toString());
   }
 
   void changeQty(String val) => qtyToBuy = val;
@@ -167,23 +175,26 @@ class ViewProductState with ChangeNotifier {
   getCartData() {
     Map cartData = {
       'imgDir': imgDir,
+      'imgUrl': imgUrl,
       'productID': productID,
       'name': productName,
       'qty': qtyToBuy,
       'totalQty': totalQty,
       'miniThumb': miniThumb,
-      'seller_uid': sellerUid,
-      'price': productPrice
+      'sellerID': sellerID,
+      'price': int.parse(productPrice),
+      'date': DateTime.now().toLocal().toString()
     };
     Map variant = {};
 
-    for (var opt in selectedOption)
-      for (var avOpt in availableOpt)
-        for (var value in avOpt['value'])
-          if (value['label'] == opt)
-            variant[avOpt['name']] = opt;
-          else
-            continue;
+    if (avVariants.length > 0)
+      for (var opt in selectedOption)
+        for (var avOpt in availableOpt)
+          for (var value in avOpt['value'])
+            if (value['label'] == opt)
+              variant[avOpt['name']] = opt;
+            else
+              continue;
 
     cartData['variant'] = variant;
     return cartData;

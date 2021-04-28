@@ -25,7 +25,7 @@ Container body() {
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w400,
             fontSize: 13,
-            // color: AppColors().secondaryText(),
+            // color: AppColors.secondaryText,
           ),
         )
       ],

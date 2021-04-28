@@ -23,17 +23,29 @@ class ViewProductRoot extends StatelessWidget {
       product.productID = args['product_id'];
       product.fetchProduct();
     }
-    return WillPopScope(
-      onWillPop: () {
-        if (product.screen == 1)
-          Navigator.of(context).pop();
-        else
-          product.changeScreen(1);
-        return null;
-      },
-      child: Scaffold(
-        body: product.result,
-      ),
+
+    // onWillPop: () {
+    //   print('dggd');
+    // },
+    // onWillPop: () async {
+    //   // if (Navigator.of(context).userGestureInProgress)
+    //   // return false;
+    //   // else
+    //   return true;
+    // },
+    // onWillPop: () async {
+    //   return false;
+    // },
+    // onWillPop: () async {
+    //   print('here');
+    //   if (product.screen == 1)
+    //     Navigator.of(context).pop();
+    //   else
+    //     product.changeScreen(1);
+    //   return null;
+    // },
+    return Scaffold(
+      body: product.result,
     );
   }
 }

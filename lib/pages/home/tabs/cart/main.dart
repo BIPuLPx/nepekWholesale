@@ -37,7 +37,7 @@ class _CartRootState extends State<CartRoot> {
       appBar: widget.outside == true
           ? defaultAppBar(context, 'Cart', darktheme)
           : null,
-      body: SafeArea(child: cart.body),
+      body: cart.body,
     );
   }
 }

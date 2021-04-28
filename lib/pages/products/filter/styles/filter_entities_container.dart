@@ -28,7 +28,7 @@ class FilterItemContainer extends StatelessWidget {
       //   color: Colors.white,
       //   boxShadow: [
       //     BoxShadow(
-      //       color: AppColors().officialMatch(),
+      //       color: AppColors.officialMatch,
       //       spreadRadius: 0.02,
       //       blurRadius: 0.5,
       //     ),
@@ -44,7 +44,7 @@ class FilterItemContainer extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, route, arguments: args);
           },
-          splashColor: AppColors().inkWellSplash(),
+          splashColor: AppColors.inkWellSplash,
           highlightColor: Colors.white10,
           // splashFactory: InkSplash.splashFactory,
           child: Container(

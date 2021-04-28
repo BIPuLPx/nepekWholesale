@@ -126,13 +126,13 @@ Positioned _perOff(String of) {
     right: -5,
     top: -5,
     child: ShadowContainer(
-      shadowColor: AppColors().officialMatch(),
+      shadowColor: AppColors.officialMatch,
       blurRadius: 0.5,
       spreadRadius: 0.05,
       offset: Offset(-1, 1),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 5),
-        color: AppColors().officialMatch(),
+        color: AppColors.officialMatch,
         child: Text(
           of,
           style: GoogleFonts.poppins(

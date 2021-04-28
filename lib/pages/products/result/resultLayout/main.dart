@@ -105,7 +105,7 @@ class _ResultLayoutState extends State<ResultLayout> {
           ),
           SliverList(
             delegate: SliverChildListDelegate(
-              [result.loadingMore],
+              [result.loadingMore, SizedBox(height: 100)],
             ),
           )
         ],

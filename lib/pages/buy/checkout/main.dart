@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
@@ -21,38 +22,25 @@ class CheckOutRoot extends StatelessWidget {
       provider.initState();
     }
     return Scaffold(
-      appBar: defaultAppBar(context, 'Checkout', darktheme.darkTheme),
-      body: Container(
-        margin: EdgeInsets.only(left: 15, right: 15),
-        child: provider.body,
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: FlatButton.icon(
-          onPressed: () =>
-              Navigator.pushNamed(context, 'payment_method', arguments: {
-            'total': provider.totalPrice,
-            'args': args,
-          }),
-          icon: Icon(
-            Icons.arrow_forward_ios,
-            color: darktheme.darkTheme ? Colors.black : Colors.white,
-            size: 18,
-          ),
-          height: 50,
-          color: darktheme.darkTheme ? Colors.white : AppColors().officialMatch(),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
-          ),
-          label: Text(
-            'Payment Methods',
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w600,
-              color: darktheme.darkTheme ? Colors.black : Colors.white,
+        backgroundColor: Colors.white,
+        appBar: defaultAppBar(context, 'Checkout', darktheme.darkTheme),
+        body: Container(
+          margin: EdgeInsets.only(left: 15, right: 15),
+          child: provider.body,
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: NepekButton(
+              label: "Payment Methods",
+              onClick: () =>
+                  Navigator.pushNamed(context, 'payment_method', arguments: {
+                'total': provider.totalPrice,
+                'args': args,
+              }),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 

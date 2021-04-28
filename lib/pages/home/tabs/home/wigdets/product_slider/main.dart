@@ -41,7 +41,7 @@ class _ProductsSliderState extends State<ProductsSlider>
             // color: Colors.red,
             height: height,
             child: ListView(
-              // physics: BouncingScrollPhysics(),
+              physics: ClampingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               children: [
                 SizedBox(width: 5),

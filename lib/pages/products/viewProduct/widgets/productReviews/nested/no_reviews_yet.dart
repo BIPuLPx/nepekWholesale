@@ -12,7 +12,7 @@ class NoReviewsYet extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontWeight: FontWeight.w600,
           fontSize: 17,
-          // color: AppColors().secondaryText(),
+          // color: AppColors.secondaryText,
         ),
       ),
     );

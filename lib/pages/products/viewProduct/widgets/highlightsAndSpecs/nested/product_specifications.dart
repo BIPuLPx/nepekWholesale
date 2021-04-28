@@ -56,7 +56,7 @@ class SpecificationText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NepekText(
-      value: capitalize(text),
+      capitalize(text),
       fontSize: 14,
       color: gray ? Colors.grey[700] : null,
       fontWeight: !gray ? FontWeight.w500 : null,

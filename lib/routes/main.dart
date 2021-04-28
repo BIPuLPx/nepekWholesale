@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/buy/checkout/main.dart';
-import 'package:nepek_buyer/pages/buy/confirmOrder/main.dart';
+import 'package:nepek_buyer/pages/buy/order_details/main.dart';
 import 'package:nepek_buyer/pages/buy/payment_methods/main.dart';
 import 'package:nepek_buyer/pages/carasoulLanding/main.dart';
 import 'package:nepek_buyer/pages/featuredBrandLanding/main.dart';
@@ -37,7 +37,10 @@ class RouteGenerator {
 
     switch (settings.name) {
       case 'home':
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(
+          settings: RouteSettings(name: "home"),
+          builder: (_) => HomePage(),
+        );
 
       case 'profile':
         return MaterialPageRoute(builder: (_) => Profile(args: args));
@@ -131,7 +134,7 @@ class RouteGenerator {
           builder: (_) => PaymentMethods(args: args),
         );
 
-      case 'order_now':
+      case 'order_details':
         return MaterialPageRoute(builder: (_) => OrderDetails(args: args));
 
       default:

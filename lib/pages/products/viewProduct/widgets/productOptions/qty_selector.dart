@@ -8,7 +8,8 @@ import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import '../../view_product_state.dart';
 
 class QtySelector extends StatefulWidget {
-  QtySelector({Key key}) : super(key: key);
+  final ViewProductState provider;
+  QtySelector(this.provider);
 
   @override
   _QtySelectorState createState() => _QtySelectorState();
@@ -20,7 +21,6 @@ class _QtySelectorState extends State<QtySelector> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final product = Provider.of<ViewProductState>(context);
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
       height: 35,
@@ -30,7 +30,7 @@ class _QtySelectorState extends State<QtySelector> {
         color: darkTheme ? Colors.grey[800] : Colors.white,
         border: Border.all(
           width: 1,
-          color: AppColors().officialMatch(),
+          color: AppColors.officialMatch,
         ),
       ),
       child: DropdownButtonHideUnderline(
@@ -48,11 +48,11 @@ class _QtySelectorState extends State<QtySelector> {
                 dropdownValue = newValue;
               });
             },
-            items:
-                product.totalQty.map<DropdownMenuItem<String>>((String value) {
+            items: widget.provider.totalQty
+                .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                onTap: () => product.changeQty(value),
+                onTap: () => widget.provider.changeQty(value),
                 child: Center(child: Text(value)),
               );
             }).toList(),

@@ -29,7 +29,7 @@ class FilterPricePageRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final Color buttonColor =
-        darktheme ? Colors.white : AppColors().officialMatch();
+        darktheme ? Colors.white : AppColors.officialMatch;
     final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
 
     final PriceProvider provider = Provider.of(context);

@@ -173,7 +173,7 @@ Widget _perOff(String of) {
     offset: Offset(-1, 1),
     child: Container(
       padding: EdgeInsets.symmetric(horizontal: 5),
-      color: AppColors().officialMatch(),
+      color: AppColors.officialMatch,
       child: Text(
         of,
         style: GoogleFonts.poppins(

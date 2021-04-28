@@ -35,7 +35,7 @@ class FilterSpecificationsRoot extends StatelessWidget {
       provider.initInject = true;
     }
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    final buttonColor = darkTheme ? Colors.white : AppColors().officialMatch();
+    final buttonColor = darkTheme ? Colors.white : AppColors.officialMatch;
     final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     // print(args);
     return Scaffold(

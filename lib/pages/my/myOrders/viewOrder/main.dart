@@ -1,34 +1,16 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:intl/intl.dart';
-import 'package:nepek_buyer/savedData/apis.dart';
-import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/spinkit.dart';
+import 'package:nepek_buyer/styles/network_image.dart';
+import 'package:nepek_buyer/styles/text/format_date.dart';
+import 'package:nepek_buyer/styles/text/left_right_data.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
+import 'package:nepek_buyer/styles/text/trimName.dart';
 import 'package:provider/provider.dart';
 
-class ViewOrderProvider extends ChangeNotifier {
-  String id;
-  bool initFetch = false;
-  Widget body = spinkit;
-  Map orderData;
-
-  Future getOrderData() async {
-    final response = await get(
-      '$peopleApi/buy_system/buyer/single_order?key=$id',
-      headers: {"Authorization": 'Bearer ${UserPreferences().getJwtToken()}'},
-    );
-    orderData = jsonDecode(response.body);
-    if (orderData != null) {
-      body = ViewOrderLayout();
-      initFetch = true;
-      notifyListeners();
-    }
-  }
-}
+import 'provider.dart';
 
 class ViewOrder extends StatelessWidget {
   final args;
@@ -67,6 +49,12 @@ class ViewOrderLayout extends StatelessWidget {
     final ViewOrderProvider provider = Provider.of(context);
     final order = provider.orderData;
     final bool darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
+
+    var totalPrice = order['price'] * order['qty'];
+
+    if (order['delivery_charge'] != null)
+      totalPrice += order['delivery_charge'];
+
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
@@ -74,13 +62,88 @@ class ViewOrderLayout extends StatelessWidget {
           color: darkTheme ? Colors.black : Colors.white,
           padding: EdgeInsets.all(15),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _leftRightData('Package No', order['package_No']),
-              _leftRightData('Bought in', date(order['bought_date'])),
-              _products(order),
-              _leftRightData('Delivery Charge',
-                  'NPR  ${order['delivery_charge'].toString()}.00'),
-              _leftRightData('Total', 'NPR  ${order['total'].toString()}.00')
+              OrderImage(order: order),
+              SizedBox(height: 20),
+              leftRightData(
+                'PackageNo',
+                order['packageNO'],
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
+              SizedBox(height: 5),
+              leftRightData(
+                'Ordered in',
+                formatDate(order['bought_date']),
+                fontSize: 16,
+              ),
+              SizedBox(height: 5),
+              leftRightData(
+                'Product',
+                trimName(order['productName'], 15),
+                fontSize: 16,
+              ),
+              SizedBox(height: 20),
+              NepekText(
+                'Package Cost',
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+              SizedBox(height: 5),
+              leftRightData(
+                "Price",
+                'NPR ${order['price']}.00',
+                fontSize: 16,
+              ),
+              SizedBox(height: 5),
+              leftRightData(
+                "Qty",
+                '${order['qty']} Nos.',
+                fontSize: 16,
+              ),
+              SizedBox(height: 5),
+              order['delivery_charge'] != null
+                  ? leftRightData(
+                      "Delivery Charge",
+                      'NPR ${order['delivery_charge']}.00',
+                      fontSize: 16,
+                    )
+                  : SizedBox(),
+              SizedBox(height: 5),
+              leftRightData(
+                "Total",
+                'NPR $totalPrice.00',
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: NepekText(
+                  'inclusive of VAT',
+                  color: Colors.grey,
+                ),
+              ),
+              SizedBox(height: 20),
+              NepekText(
+                'Deliver To',
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+              NepekText(
+                order['deliveryName'],
+                fontSize: 16,
+              ),
+              NepekText(
+                order['deliveryAddress'],
+                fontSize: 16,
+              ),
+              NepekText(
+                order['deliveryPhone'].toString(),
+                fontSize: 16,
+              ),
+              SizedBox(height: 20),
+              _status(order),
             ],
           ),
         )
@@ -88,35 +151,9 @@ class ViewOrderLayout extends StatelessWidget {
     );
   }
 
-  Column _products(order) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-            SizedBox(height: 10),
-            Text('Products', style: _heading())
-          ] +
-          order['products']
-              .map<Widget>((product) => Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    child: Column(
-                      children: [
-                        _leftRightData('Name', product['productName']),
-                        _status(product),
-                        _leftRightData('Price', 'NPR  ${product['price']}.00'),
-                        _leftRightData(
-                            'Quantity', '${product['qty'].toString()} Nos.'),
-                        _statusDates(
-                            'Placed Order in', product['placed_order_date'])
-                        // Date(product['placed_order_date'])
-                      ],
-                    ),
-                  ))
-              .toList(),
-    );
-  }
-
   Widget _status(product) {
     Map status;
+
     if (product['placed_order_date'] == null) {
       status = {'status': 'Pending by Seller', 'type': 0};
     } else if (product['pick_order_date'] == null) {
@@ -131,7 +168,7 @@ class ViewOrderLayout extends StatelessWidget {
 
     Color _statusColor(int type) {
       if (type == 0)
-        return Colors.yellow;
+        return Colors.yellow.shade900;
       else if (type == 1)
         return Colors.teal;
       else if (type == 2)
@@ -143,37 +180,42 @@ class ViewOrderLayout extends StatelessWidget {
     }
 
     return Container(
-        padding: EdgeInsets.only(left: 5),
-        decoration: BoxDecoration(
-          border: Border(
-            left: BorderSide(color: _statusColor(status['type']), width: 3),
-          ),
+      margin: EdgeInsets.only(top: 10),
+      height: 30,
+      padding: EdgeInsets.only(left: 5),
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(color: _statusColor(status['type']), width: 3),
         ),
-        child: _leftRightData('Status', status['status']));
-  }
-
-  _statusDates(String type, String ddate) {
-    return ddate == null ? Container() : _leftRightData(type, date(ddate));
-  }
-
-  Widget _leftRightData(String left, String right) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(left, style: _leftRightStyle(true)),
-          Text(right, style: _leftRightStyle(false)),
-        ],
+      ),
+      child: leftRightData(
+        'Status',
+        status['status'],
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
       ),
     );
   }
-
-  TextStyle _leftRightStyle(bool gray) => GoogleFonts.poppins(
-      color: gray ? Colors.grey : null, fontWeight: FontWeight.w500);
-  TextStyle _heading() => GoogleFonts.poppins(
-      // fontSize: 18,
-      fontWeight: FontWeight.w700);
 }
 
-String date(date) => DateFormat.yMMMd('en_US').format(DateTime.parse(date));
+class OrderImage extends StatelessWidget {
+  const OrderImage({
+    Key key,
+    @required this.order,
+  }) : super(key: key);
+
+  final Map order;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: NepekImageNetwork(
+        url:
+            '${order['imgUrl']}/productImages/${order['imgDir']}/miniThumbnail/${order['miniThumb']}',
+        height: 150,
+        width: 150,
+      ),
+    );
+  }
+}

@@ -5,7 +5,8 @@ import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 
-import 'my_orders_layout.dart';
+import 'widgets/noOrders/no_orders.dart';
+import 'widgets/yesOrders/main.dart';
 
 class MyOrdersProvider with ChangeNotifier {
   bool initFetch = false;
@@ -18,10 +19,12 @@ class MyOrdersProvider with ChangeNotifier {
       headers: {"Authorization": "Bearer ${UserPreferences().getJwtToken()}"},
     );
     allOrders = jsonDecode(response.body);
-    if (allOrders.length > 0) {
+    if (allOrders.length > 0)
       body = MyOrdersLayout();
-      initFetch = true;
-    }
+    else
+      body = NoOrders();
+    initFetch = true;
+
     notifyListeners();
   }
 }

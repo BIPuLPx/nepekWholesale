@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/styles/appBar.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_state.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/productOptions/main.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/widgets/recommended/main.dart';
 import 'package:provider/provider.dart';
 import 'widgets/bottomAppBar/main.dart';
+import 'widgets/from_same_store/main.dart';
 import 'widgets/highlightsAndSpecs/main.dart';
 import 'widgets/productHeader/main.dart';
 import 'widgets/productImages/swipe_images.dart';
@@ -31,7 +33,9 @@ class ViewProductLayout extends StatelessWidget {
                             ProductHeader(),
                             HighLightsAndSpecs(),
                             ProductReviews(),
-                            ProductQnas()
+                            ProductQnas(),
+                            FromSameStore(),
+                            RecommendedProducts()
                           ],
                         )
                 ],

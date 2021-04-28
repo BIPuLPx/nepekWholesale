@@ -33,7 +33,7 @@ categoryAppBar(context, bool darkTheme) {
                 : Colors.white,
             boxShadow: [
               BoxShadow(
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
                 spreadRadius: 0.5,
                 blurRadius: 2,
               ),
@@ -51,7 +51,7 @@ categoryAppBar(context, bool darkTheme) {
                   fontSize: 12,
                 ),
               ),
-              Icon(Icons.search, color: AppColors().searchBarItems(), size: 18)
+              Icon(Icons.search, color: AppColors.searchBarItems, size: 18)
             ],
           ),
         ),

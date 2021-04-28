@@ -10,6 +10,8 @@ class NepekImageNetwork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInImage.assetNetwork(
+      fadeInDuration: Duration(milliseconds: 1),
+      fadeInCurve: Curves.linear,
       height: height,
       width: width,
       // fadeOutCurve: Curves.easeOut,

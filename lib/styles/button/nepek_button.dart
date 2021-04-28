@@ -40,23 +40,23 @@ class NepekButton extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors().officialMatchFourth(),
+                      color: AppColors.officialMatchFourth,
                       spreadRadius: 1,
                       blurRadius: 8,
                       // offset: Offset(0, 2),
                     ),
                   ],
                   border: Border.all(
-                    color: AppColors().officialMatchThird(),
+                    color: AppColors.officialMatchThird,
                     width: 1.5,
                   ),
                   borderRadius: BorderRadius.circular(10),
                 )
               : BoxDecoration(
-                  color: AppColors().officialMatch(),
+                  color: AppColors.officialMatch,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors().officialMatchShadow(),
+                      color: AppColors.officialMatchShadow,
                       spreadRadius: 1,
                       blurRadius: 8,
                       offset: Offset(0, 2),
@@ -118,11 +118,11 @@ class NepekButton extends StatelessWidget {
 
   NepekText buttonLabel(double fontSize) {
     return NepekText(
-      value: label,
+      label,
       fontSize: fontSize == null ? 15 : fontSize,
       color: textColor == null
           ? reverse == true
-              ? AppColors().officialMatch()
+              ? AppColors.officialMatch
               : Colors.white
           : textColor,
       fontWeight: FontWeight.w600,

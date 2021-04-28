@@ -22,6 +22,7 @@ class AccountState extends ChangeNotifier {
 
   refreshAccount() {
     getUserData();
+    args['checkProfile']();
     notifyListeners();
   }
 

@@ -19,13 +19,13 @@ class DeliveryAddressDefault extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: AppColors().officialMatchFourth(),
+          color: AppColors.officialMatchFourth,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: AppColors().officialMatchFourth(),
+            color: AppColors.officialMatchFourth,
             spreadRadius: 1,
             blurRadius: 8,
           ),
@@ -38,14 +38,14 @@ class DeliveryAddressDefault extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: AppColors().officialMatch(),
+                color: AppColors.officialMatch,
               ),
               padding: EdgeInsets.symmetric(horizontal: 5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   NepekText(
-                    value: capitalize(add['home_office']),
+                    capitalize(add['home_office']),
                     fontWeight: FontWeight.w600,
                     fontSize: 13,
                     color: Colors.white,
@@ -66,19 +66,19 @@ class DeliveryAddressDefault extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NepekText(
-                value: add['state'],
+                add['state'],
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
               ),
               SizedBox(height: 5),
-              NepekText(value: add['district']),
-              NepekText(value: add['city']),
-              NepekText(value: add['area']),
+              NepekText(add['district']),
+              NepekText(add['city']),
+              NepekText(add['area']),
               SizedBox(height: 10),
-              NepekText(value: add['address']),
+              NepekText(add['address']),
               SizedBox(height: 10),
-              NepekText(value: add['name']),
-              NepekText(value: add['phone'].toString()),
+              NepekText(add['name']),
+              NepekText(add['phone'].toString()),
             ],
           ),
         ],

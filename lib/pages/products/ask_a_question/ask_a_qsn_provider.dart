@@ -11,7 +11,7 @@ import 'package:nepek_buyer/styles/popUps/sucessPopup.dart';
 
 class AskaQuestionProvider with ChangeNotifier {
   var args;
-  String question;
+  String question = '';
 
   void questionChanged(String val) {
     question = val;
@@ -24,7 +24,7 @@ class AskaQuestionProvider with ChangeNotifier {
       "seller_id": args['sellerID'],
     };
 
-    if (question.isEmpty) {
+    if (question.length == 0) {
       errorPopup(context, "Question cannot be empty");
     } else {
       loadingPopUP(context, "Asking Question");

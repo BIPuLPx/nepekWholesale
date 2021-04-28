@@ -19,7 +19,7 @@ Future<void> connecting(BuildContext context) async {
               SizedBox(height: 20),
               Text(
                 'Connecting',
-                // style: TextStyle(color: appColors['secondaryText']),
+                // style: TextStyle(color: AppColors()['secondaryText']),
               )
             ],
           ),

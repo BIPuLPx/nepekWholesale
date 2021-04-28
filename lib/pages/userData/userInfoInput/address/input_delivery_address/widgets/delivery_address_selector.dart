@@ -34,20 +34,20 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
             capitalize(widget.heading),
             style: dropdownHeading(),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 8),
           Container(
             // height: 5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: darkTheme ? Colors.grey[900] : Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors().officialMatchFourth(),
-                  blurRadius: 8,
-                ),
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: AppColors.officialMatchFourth,
+              //     blurRadius: 8,
+              //   ),
+              // ],
               border: Border.all(
-                color: AppColors().officialMatchFourth(),
+                color: AppColors.officialMatchFourth,
                 width: 2,
               ),
             ),
