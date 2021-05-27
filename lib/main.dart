@@ -6,7 +6,6 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/provider_head.dart';
 import 'package:nepek_buyer/rootApp/main.dart';
-import 'package:nepek_buyer/savedData/changed_data.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_preferences.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -36,7 +35,6 @@ void main() async {
   String appDocPath = appDocDir.path;
   Hive.init(appDocPath);
   UserPreferences().init();
-  ChangedData().init();
   DarkThemePreference().init();
 
   SystemChrome.setPreferredOrientations(

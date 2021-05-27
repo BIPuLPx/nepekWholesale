@@ -15,7 +15,7 @@ Future<void> connecting(BuildContext context) async {
         content: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              spinkit,
+              logoLoader(),
               SizedBox(height: 20),
               Text(
                 'Connecting',

@@ -4,40 +4,23 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:nepek_buyer/functions/check_cart_products.dart';
+import 'package:nepek_buyer/library/sync/account.dart';
+import 'package:nepek_buyer/library/sync/delivery_addresses.dart';
 import 'package:nepek_buyer/rootApp/widgets/RouterApp/main.dart';
 import 'package:nepek_buyer/rootApp/widgets/loadingScreen/main.dart';
-import 'dataFetch/main.dart';
 
 class RootProvider with ChangeNotifier {
   bool initCheck = false;
   Widget body = LoadingScreen();
+  final SyncAccount _account = SyncAccount();
 
   Future initChecks() async {
-    openDBS().then(
-      (_) => checkClassification().then(
-        (_) => checkDeliveryAddresses().then(
-          (_) => isCartItemsAvailable().then(
-            (_) => changeScreen(),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future checkDeliveryAddresses() async {
-    await InjectDatas().getMyDeliveryAddresses().then(
-          (_) => InjectDatas().testDeliveryAddress().then(
-            (value) {
-              if (!value) InjectDatas().fetchDeliveryAddress();
-            },
-          ),
-        );
-  }
-
-  Future checkClassification() async {
-    await InjectDatas().testClassification().then(
-      (value) {
-        if (!value) InjectDatas().fetchClassification();
+    await openDBS().then(
+      (_) async {
+        await _account.start();
+        await SyncDeliveryAddresses().getMyDeliveryAddresses();
+        await isCartItemsAvailable();
+        changeScreen();
       },
     );
   }
@@ -47,7 +30,7 @@ class RootProvider with ChangeNotifier {
     await Hive.openBox('cart');
     await Hive.openBox('classifications');
     await Hive.openBox('deliveryAddresses');
-    await Hive.openBox('home_page_data');
+    await Hive.openBox('homeScreen');
     await Hive.openBox('customProducts');
     await Hive.openBox('userDeliveryAreas');
   }

@@ -1,26 +1,33 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nepek_buyer/library/sync/product_classification.dart';
 import 'package:nepek_buyer/pages/home/tabs/categories/provider/modules/data_populated.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 
 import 'modules/dark_light_colors.dart';
 import 'modules/populate_data.dart';
 
 class CategoriesState extends ChangeNotifier {
-  Widget body = Container();
+  final SyncClassification _classifySync = SyncClassification();
+
+  Widget body = logoLoader();
   Box classifications = Hive.box('classifications');
   List allClasses;
   bool initState = false;
   List selectedCategories = [];
 
   void doInitState() {
-    allClasses = classifications.get('classes');
-
-    PopulateDatas().populateCategories(allClasses[0]['_id']).then((categories) {
-      selectedCategories = categories;
-      initState = true;
-      body = DataPopulated();
-      notifyListeners();
+    _classifySync.sync().then((_) {
+      allClasses = classifications.get('classes');
+      PopulateDatas()
+          .populateCategories(allClasses[0]['_id'])
+          .then((categories) {
+        selectedCategories = categories;
+        initState = true;
+        body = DataPopulated();
+        notifyListeners();
+      });
     });
   }
 

@@ -5,13 +5,11 @@ import '../../../reviews_provider.dart';
 import 'nested/linear_percentage_rating.dart';
 import 'nested/total_rating.dart';
 
-
 class RatingCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
-      margin: EdgeInsets.only(top: 15),
       color: Colors.white,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,8 +26,9 @@ class RatingBarCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final reviews = Provider.of<ReviewsState>(context);
-    final reviewData = reviews.reviewData;
-    final totalRating = reviews.totalRating;
+    final reviewData = reviews.reviewsMetaData;
+    final totalRating = reviews.ratingMetaData['ratingNo'];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

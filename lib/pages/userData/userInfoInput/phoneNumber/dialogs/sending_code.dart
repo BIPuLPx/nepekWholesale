@@ -14,7 +14,7 @@ Future<void> sendingCode(BuildContext context) async {
         content: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              spinkit,
+              logoLoader(),
               SizedBox(height: 20),
             ],
           ),

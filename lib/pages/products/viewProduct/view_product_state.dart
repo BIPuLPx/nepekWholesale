@@ -2,10 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:nepek_buyer/functions/duplicate.dart';
+import 'package:nepek_buyer/library/sync/custom_products.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_layout.dart';
-import 'package:nepek_buyer/rootApp/dataFetch/syncCutomProducts.dart';
 import 'dart:convert';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
@@ -23,7 +25,7 @@ class ViewProductState with ChangeNotifier {
 
   String productID;
   bool initialFetch = false;
-  dynamic result = spinkit;
+  dynamic result = LoaderWithAppBar();
   List productImgs;
   String miniThumb;
   String imgDir;
@@ -38,6 +40,7 @@ class ViewProductState with ChangeNotifier {
   String productDescription;
   List productHighlights;
   List productSpecifications;
+  String subCategory;
   List productReviews;
   List productQnas = [];
   List productVariants = [];
@@ -59,7 +62,8 @@ class ViewProductState with ChangeNotifier {
 
   Future fetchProduct() async {
     var response;
-    response = await http.get('$productApi/products/fetch/single/$productID');
+    response =
+        await http.get(httpUri(productApi, 'products/fetch/single/$productID'));
     final res = jsonDecode(response.body);
     // print(res);
     productID = res['_id'];
@@ -80,6 +84,7 @@ class ViewProductState with ChangeNotifier {
     productVariants = res['variants'];
     productQnas = res['qnas'];
     storeName = res['storeName'];
+    subCategory = res['subcategory'];
     // getQnames(res['qna']);
     storeProducts = res['store_products'];
     similarProducts = res['similar_products'];
@@ -156,7 +161,7 @@ class ViewProductState with ChangeNotifier {
 
   void refresh() {
     screen = 1;
-    result = spinkit;
+    result = logoLoader();
     notifyListeners();
     fetchProduct();
   }
@@ -181,6 +186,7 @@ class ViewProductState with ChangeNotifier {
       'qty': qtyToBuy,
       'totalQty': totalQty,
       'miniThumb': miniThumb,
+      'subCategoryID': subCategory,
       'sellerID': sellerID,
       'price': int.parse(productPrice),
       'date': DateTime.now().toLocal().toString()
@@ -205,11 +211,13 @@ class ViewProductState with ChangeNotifier {
     notifyListeners();
   }
 
-  void getWishLists() => wishLists = _customProductBox.get('wishlist') ?? [];
+  void getWishLists() =>
+      wishLists = duplicate(_customProductBox.get('wishlist') ?? []);
 
   bool isWishListed() => wishLists.contains(productID);
 
   void toggleFav(BuildContext context) async {
+    print(wishLists);
     if (UserPreferences().getLoggedIn() != true) {
       showErrorToast(context, "Please sign in");
       Navigator.pushNamed(context, 'profile',

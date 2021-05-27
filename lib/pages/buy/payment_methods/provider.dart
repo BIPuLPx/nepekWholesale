@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
@@ -25,7 +26,7 @@ class PaymentMethodProvider with ChangeNotifier {
       if (product['variant'] == null || product['variant'].length == 0)
         product.remove('variant');
     }
-
+    // print(products);
 //  cityID, deliveryName, deliveryAddress, deliveryPhone, home_office, payment_method
 
     Map data = {
@@ -44,7 +45,7 @@ class PaymentMethodProvider with ChangeNotifier {
     loadingPopUP(context, 'Ordering');
 
     final response = await http.post(
-      '$peopleApi/buy_system/buyer/buy',
+      httpUri(peopleApi, 'buy_system/buyer/buy'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(buySysData),
     );

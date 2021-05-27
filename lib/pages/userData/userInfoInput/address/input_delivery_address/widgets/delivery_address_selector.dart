@@ -95,6 +95,6 @@ class _DeliveryAddressSelectorState extends State<DeliveryAddressSelector> {
 }
 
 TextStyle dropdownHeading() => GoogleFonts.poppins(
-      fontSize: 17.5,
+      fontSize: 15,
       fontWeight: FontWeight.w500,
     );

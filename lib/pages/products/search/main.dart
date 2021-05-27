@@ -44,6 +44,7 @@ class _SearchPageRootState extends State<SearchPageRoot> {
     final double searchbarHeight = 60;
     // print(autocompletes);
     return Scaffold(
+      backgroundColor: Colors.white,
       // appBar: searchAppBar(
       //     context, currentSuffix, searchTerm, setSearchTerm, _searchHolder),
       body: SafeArea(
@@ -53,11 +54,11 @@ class _SearchPageRootState extends State<SearchPageRoot> {
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade300,
-                  spreadRadius: 0.005,
-                  blurRadius: 2,
-                ),
+                // BoxShadow(
+                //   color: Colors.grey,
+                //   spreadRadius: 0,
+                //   blurRadius: 2,
+                // ),
               ],
             ),
             child: SearchBox(
@@ -116,14 +117,18 @@ class SearchBox extends StatelessWidget {
           margin: EdgeInsets.only(left: 20),
           // padding: EdgeInsets.only(bottom: 2),
           decoration: BoxDecoration(
-            // borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(8),
             color: darkTheme
                 ? TextInputColors().darkThemeBackground()
                 : Colors.white,
+            border: Border.all(
+              color: Colors.grey.shade300,
+              width: 1.5,
+            ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.officialMatch,
-                spreadRadius: 0.5,
+                color: Colors.grey,
+                spreadRadius: 0,
                 blurRadius: 2,
               ),
             ],
@@ -156,6 +161,7 @@ class SearchBox extends StatelessWidget {
               disabledBorder: InputBorder.none,
               hintText: 'What are you looking for ?',
               hintStyle: GoogleFonts.poppins(
+                fontSize: 14,
                 color: darkTheme
                     ? TextInputColors().darkThemeHintText()
                     : TextInputColors().lightThemeHintText(),

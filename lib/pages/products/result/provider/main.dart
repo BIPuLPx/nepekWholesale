@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/text/end_of_result.dart';
 import 'package:nepek_buyer/pages/products/result/styles/loading_more.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
@@ -12,13 +13,14 @@ class ResultState with ChangeNotifier {
   final _backend = BackEnd();
   final _frontend = FrontEnd();
   bool initialFetch = false;
-  dynamic result = spinkit;
+  dynamic result = LoaderWithAppBar();
   List products;
   int productsNo;
   String searchText;
   bool isNextPage;
   int nextPage = 1;
   Widget loadingMore = LoadingMore(value: 'Getting More Products');
+  Widget loaded = EndOfResult(label: "All products loaded");
   Map sortBy = {'sort': 'clicks', 'by': 'desc'};
   Map fetchedFilter;
   bool toFilter;
@@ -60,10 +62,6 @@ class ResultState with ChangeNotifier {
             nextPage = nextPage + 1;
           } else {
             isNextPage = false;
-            if (nextPage > 1)
-              loadingMore = EndOfResult(label: "All products loaded");
-            else
-              loadingMore = SizedBox();
           }
           initialFetch = true;
           notifyListeners();
@@ -86,7 +84,7 @@ class ResultState with ChangeNotifier {
           nextPage = nextPage + 1;
         } else {
           isNextPage = false;
-          loadingMore = EndOfResult();
+          loadingMore = loaded;
         }
         notifyListeners();
       });

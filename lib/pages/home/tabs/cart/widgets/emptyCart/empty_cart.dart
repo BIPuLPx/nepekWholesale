@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
@@ -7,8 +6,8 @@ class EmptyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.white,
-      padding: EdgeInsets.only(left: 15, right: 15),
+      color: Colors.white,
+      padding: EdgeInsets.only(left: 40, right: 40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +21,13 @@ class EmptyCart extends StatelessWidget {
             child: 'Start shopping and come back ! ',
             size: 20,
           ),
-          // SizedBox(height: 50),
+          SizedBox(height: 50),
+          Center(
+            child: Image.asset(
+              'assets/others/cart.png',
+              height: 200,
+            ),
+          )
           // SizedBox(
           //   height: 420,
           //   width: 420,

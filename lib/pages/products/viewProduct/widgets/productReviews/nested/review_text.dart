@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 class ReviewText extends StatelessWidget {
   final String text;
@@ -8,12 +8,10 @@ class ReviewText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10, bottom: 10),
-      child: Text(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      child: NepekText(
         text,
-        style: GoogleFonts.roboto(height: 1.4
-            // color: AppColors.secondaryText,
-            ),
+        fontSize: 14,
       ),
     );
   }

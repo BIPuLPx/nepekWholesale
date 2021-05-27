@@ -20,24 +20,23 @@ class ListLayout extends StatelessWidget {
     return Container(
       // margin: EdgeInsets.only(top: 10),
       child: Material(
+        borderRadius: BorderRadius.circular(10),
         color: Colors.white,
         child: InkWell(
-          onTap: () {
-            ProductChanges()
-                .increaseClick(result.products[index]['_id'])
-                .then((value) {
-              if (value == 200) {
-                Navigator.pushNamed(context, 'view_product', arguments: {
-                  'product_id': result.products[index]['_id'].toString(),
-                });
-              }
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          onTap: () async {
+            await ProductChanges().increaseClick(result.products[index]['_id']);
+            Navigator.pushNamed(context, 'view_product', arguments: {
+              'product_id': result.products[index]['_id'].toString()
             });
           },
           child: GridTile(
             child: Container(
               padding: EdgeInsets.all(10),
               child: Stack(
-                overflow: Overflow.visible,
+                clipBehavior: Clip.none,
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,13 +49,14 @@ class ListLayout extends StatelessWidget {
                       SizedBox(width: 15),
                       Expanded(
                         child: Stack(
-                          overflow: Overflow.visible,
+                          clipBehavior: Clip.none,
                           children: [
                             ProductName(
                                 name: result.products[index]['productName']),
                             Positioned(
                                 top: 90,
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     ProductPrice(price: _product.price),
                                     isOff
@@ -70,8 +70,8 @@ class ListLayout extends StatelessWidget {
                     ],
                   ),
                   Positioned(
-                    left: -5,
-                    top: -5,
+                    left: -10,
+                    top: -10,
                     child: isOff ? PerOff(off: _product.off) : Container(),
                   ),
                 ],

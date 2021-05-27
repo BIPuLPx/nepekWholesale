@@ -4,21 +4,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
+import 'package:nepek_buyer/library/sync/delivery_addresses.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
-import 'package:nepek_buyer/savedData/user_data.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:http/http.dart' as http;
-import 'package:nepek_buyer/styles/toasts/error_toast.dart';
+import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 import 'input_delivery_address/main.dart';
 
 class AddDeliveryAddressState extends ChangeNotifier {
   final Validator _validator = Validator();
   final SendData _send = SendData();
+  final SyncDeliveryAddresses _syncAddresses = SyncDeliveryAddresses();
   var args;
-  Widget body = Container();
-  Box deliveryAddressbox = Hive.box('deliveryAddresses');
+  Widget body = logoLoader();
+  Box deliveryAddressbox;
   bool initInjection = false;
   List deliveryStates;
   List deliveryDistricts;
@@ -39,8 +41,11 @@ class AddDeliveryAddressState extends ChangeNotifier {
     "home_office": "home",
   };
 
-  void makeInitinjection() {
-    _bringLocationsOnState();
+  void makeInitinjection() async {
+    await _syncAddresses.start().then((_) {
+      deliveryAddressbox = Hive.box('deliveryAddresses');
+      _bringLocationsOnState();
+    });
   }
 
   void _bringLocationsOnState() {
@@ -49,17 +54,22 @@ class AddDeliveryAddressState extends ChangeNotifier {
     allAreas = deliveryAddressbox.get('areas');
     allCities = deliveryAddressbox.get('cities');
 
+    print(deliveryStates);
+    print(allDistricts);
+    print(allAreas);
+    print(allCities);
+
     if (args['type'] == 'edit') {
       initEdit(args['value']);
     } else {
       final String state3 = deliveryStates
           .where((state) => state['label'] == 'State 3')
           .toList()[0]['_id'];
-
       injectState(state3);
     }
     body = InputDeliveryAddress();
     initInjection = true;
+    notifyListeners();
   }
 
   void dropDownChanged(String of, Map value) {
@@ -248,7 +258,7 @@ class SendData {
 
   Future<int> addDeliveryAddress(Map data) async {
     final res = await http.put(
-      '$peopleApi/customers/shippingaddress?type=add',
+      httpUri(peopleApi, 'customers/shippingaddress?type=add'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(data),
     );
@@ -264,7 +274,7 @@ class SendData {
 
   Future<int> editDeliveryAddress(Map data) async {
     final res = await http.put(
-      '$peopleApi/customers/edit_shipping_address',
+      httpUri(peopleApi, 'customers/edit_shipping_address'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(data),
     );

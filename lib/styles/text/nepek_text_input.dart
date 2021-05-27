@@ -16,6 +16,7 @@ class NepekTextInput extends StatefulWidget {
   final String initialValue;
   final bool autofocus;
   final bool background;
+  final String hint;
 
   const NepekTextInput({
     Key key,
@@ -30,6 +31,7 @@ class NepekTextInput extends StatefulWidget {
     this.initialValue,
     this.autofocus,
     this.background,
+    this.hint,
   }) : super(key: key);
 
   @override
@@ -91,10 +93,15 @@ class _NepekTextInputState extends State<NepekTextInput> {
             obscureText: _obscure,
             style: GoogleFonts.poppins(height: 1.3),
             cursorColor: AppColors.officialMatch,
-            // cursorHeight: 17,
+
             minLines: widget.minlines == null ? 1 : widget.minlines,
             maxLines: widget.maxlines == null ? 1 : widget.maxlines,
             decoration: InputDecoration(
+              hintText: widget.hint,
+              hintStyle: GoogleFonts.poppins(
+                height: 1.3,
+                color: Colors.grey,
+              ),
               suffixIcon: widget.obscureText == null
                   ? null
                   : val != ''
@@ -134,6 +141,13 @@ class _NepekTextInputState extends State<NepekTextInput> {
                 borderRadius: BorderRadius.circular(10),
               ),
               errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red.shade400,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.red,
                   width: 2,

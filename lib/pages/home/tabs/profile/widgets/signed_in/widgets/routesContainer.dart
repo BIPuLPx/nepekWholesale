@@ -49,14 +49,14 @@ class RoutesContainer extends StatelessWidget {
                 : null,
           ),
           child: Container(
-            padding: EdgeInsets.all(25),
+            padding: EdgeInsets.all(16),
             child: Stack(
               children: [
                 Image.asset(
                   icon == null
                       ? 'assets/profileTab/$label.png'
                       : 'assets/profileTab/$icon.png',
-                  height: 22,
+                  height: 30,
                 ),
                 Positioned(
                   bottom: 0,

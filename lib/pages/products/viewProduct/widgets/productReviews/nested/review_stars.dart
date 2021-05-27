@@ -18,9 +18,19 @@ class ReviewStars extends StatelessWidget {
         itemCount: 5,
         itemSize: 15,
         itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-        itemBuilder: (context, _) => Icon(
-          Icons.star,
-          color: Colors.amber,
+        ratingWidget: RatingWidget(
+          full: Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+          empty: Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+          half: Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
         ),
         onRatingUpdate: (rating) {
           print(rating);

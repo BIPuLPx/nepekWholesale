@@ -18,25 +18,29 @@ class GridLayout extends StatelessWidget {
         _product.oldPrice != null && _product.oldPrice > _product.price;
 
     return Container(
-      child: Material(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        // color: Colors.red,
         color: Colors.white,
+      ),
+      child: Material(
+        color: Colors.transparent,
         child: InkWell(
-          onTap: () {
-            ProductChanges()
-                .increaseClick(result.products[index]['_id'])
-                .then((value) {
-              if (value == 200) {
-                Navigator.pushNamed(context, 'view_product', arguments: {
-                  'product_id': result.products[index]['_id'].toString()
-                });
-              }
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          onTap: () async {
+            await ProductChanges().increaseClick(result.products[index]['_id']);
+            Navigator.pushNamed(context, 'view_product', arguments: {
+              'product_id': result.products[index]['_id'].toString()
             });
           },
           child: GridTile(
             child: Container(
               padding: EdgeInsets.all(8),
               child: Stack(
-                overflow: Overflow.visible,
+                clipBehavior: Clip.none,
+                // overflow: Overflow.visible,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

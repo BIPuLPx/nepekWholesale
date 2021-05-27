@@ -5,7 +5,6 @@ import '../reviews_provider.dart';
 import 'widgets/rating/main.dart';
 import 'widgets/reviews/main.dart';
 
-
 class ReviewsLayout extends StatefulWidget {
   @override
   _ReviewsLayoutState createState() => _ReviewsLayoutState();
@@ -24,14 +23,14 @@ class _ReviewsLayoutState extends State<ReviewsLayout> {
       final currentScroll = _scrollController.position.pixels;
       if (maxScroll - currentScroll <= _scrollThreshold) {
         _scrollController.removeListener(_onScroll);
-        review.fetchReviews(review.nextPage);
+        review.fetchReviews();
       }
     }
 
     _scrollController.addListener(_onScroll);
 
     return Container(
-      padding: EdgeInsets.only(left: 15, right: 15),
+      // padding: EdgeInsets.only(left: 15, right: 15),
       color: Colors.grey[200],
       child: ListView(
         controller: _scrollController,

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 
 class SearchState extends ChangeNotifier {
   bool initState = false;
@@ -12,7 +13,8 @@ class SearchState extends ChangeNotifier {
     // autoCompletes = [];
     // print(autoCompletes);
     var response;
-    response = await http.get('$productApi/products/autocomplete?term=$term');
+    response =
+        await http.get(httpUri(productApi, 'products/autocomplete?term=$term'));
     final res = jsonDecode(response.body);
     autoCompletes = res;
     // print(res);

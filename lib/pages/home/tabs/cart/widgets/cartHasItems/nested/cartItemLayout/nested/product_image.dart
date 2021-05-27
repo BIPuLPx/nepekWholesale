@@ -14,7 +14,7 @@ class ProductImage extends StatelessWidget {
         // placeholder: (context, url) => Center(
         //   child: Container(
         //     height: 17,
-        //     child: spinkit,
+        //     child: logoLoader(),
         //   ),
         // ),
         // errorWidget: (context, url, error) => Icon(Icons.error),

@@ -7,63 +7,44 @@ RandomColor _randomColor = RandomColor();
 
 class GridSubCategories extends StatelessWidget {
   final String heading;
-  final Color backgroundColor;
   final ColorHue textColor;
+  final List data;
 
-  const GridSubCategories(
-      {Key key, this.heading, this.backgroundColor, this.textColor})
-      : super(key: key);
+  const GridSubCategories({
+    Key key,
+    this.heading,
+    this.textColor,
+    this.data,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = _randomColor.randomColor(
+      colorSaturation: ColorSaturation.lowSaturation,
+      colorBrightness: ColorBrightness.veryLight,
+    );
+
     Color color = _randomColor.randomColor(
-      colorHue: textColor,
+      // colorHue: ColorHue.blue,
       colorBrightness: ColorBrightness.dark,
+      colorSaturation: ColorSaturation.lowSaturation,
     );
     return Container(
-      padding: EdgeInsets.only(bottom: 15),
-      color: backgroundColor,
-      // decoration: new BoxDecoration(
-      //   image: DecorationImage(
-      //     image: NetworkImage(backGroundImage),
-      //     fit: BoxFit.fill,
-      //   ),
-      // ),
-      // margin: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: 15, top: 5),
+      margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+      decoration: BoxDecoration(
+          color: backgroundColor, borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _heading(heading, textColor, color),
           Center(
             child: Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-                CategoryCollectionsContainer(
-                  label: 'Face Masks',
-                  borderColor: color,
-                ),
-              ],
+              spacing: 15,
+              runSpacing: 15,
+              children: data
+                  .map((e) => CategoryCollectionsContainer(data: e))
+                  .toList(),
             ),
           ),
         ],
@@ -72,28 +53,26 @@ class GridSubCategories extends StatelessWidget {
   }
 
   Widget _heading(String text, ColorHue textColor, Color color) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.only(bottom: 15, left: 10, top: 10),
-        padding: EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: color,
-              spreadRadius: 1,
-              offset: Offset(4, 4),
-            ),
-          ],
-          // borderRadius: BorderRadius.circular(5),
-        ),
-        child: Text(
-          text,
-          style: GoogleFonts.poppins(
+    return Container(
+      margin: EdgeInsets.only(bottom: 15, left: 15, top: 10),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
             color: color,
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
+            spreadRadius: 1,
+            offset: Offset(3, 3),
           ),
+        ],
+      ),
+      child: Text(
+        text,
+        style: GoogleFonts.poppins(
+          color: color,
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
         ),
       ),
     );

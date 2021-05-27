@@ -55,42 +55,50 @@ class SignedIn extends StatelessWidget {
               ),
               LeftRightTile(
                 tile1: RoutesContainer(
-                  label: 'account',
+                  label: 'my account',
                   route: 'account',
+                  icon: 'account',
                 ),
                 tile2: RoutesContainer(
-                  label: 'questions',
+                  label: 'my Questions',
+                  icon: 'questions',
                   route: 'my_questions',
                 ),
               ),
               LeftRightTile(
                 tile1: RoutesContainer(
-                  label: 'orders',
+                  label: 'My orders',
+                  icon: 'orders',
                   route: 'my_orders',
                 ),
                 tile2: RoutesContainer(
-                  label: 'reviews',
+                  label: 'to review',
+                  icon: 'reviews',
+                  route: 'to_review',
                 ),
               ),
               LeftRightTile(
                 tile1: RoutesContainer(
-                  label: 'returns',
+                  label: 'My returns',
+                  icon: 'returns',
+                  route: 'my_returns',
                 ),
                 tile2: RoutesContainer(
                   route: 'my_wishlists',
-                  label: 'wishlists',
+                  label: 'my wishlists',
+                  icon: 'wishlists',
                 ),
               ),
-              LeftRightTile(
-                tile1: RoutesContainer(
-                  icon: 'contactUs',
-                  label: 'Contact Us',
-                ),
-                tile2: RoutesContainer(
-                  icon: 'aboutUs',
-                  label: 'About Us',
-                ),
-              ),
+              // LeftRightTile(
+              //   tile1: RoutesContainer(
+              //     icon: 'contactUs',
+              //     label: 'Contact Us',
+              //   ),
+              //   tile2: RoutesContainer(
+              //     icon: 'aboutUs',
+              //     label: 'About Us',
+              //   ),
+              // ),
             ],
           ),
         ),

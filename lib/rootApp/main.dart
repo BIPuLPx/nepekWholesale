@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/rootApp/root_app_provider.dart';
 import 'package:nepek_buyer/rootApp/widgets/ThemeSwitcher/main.dart';
 
+import 'widgets/loadingScreen/main.dart';
+
 class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class RootAppWithProvider extends StatelessWidget {
     }
     return ThemeSwitcher(
       child: rootProvider.body,
-      // child:  LoadingScreen(),
+      // child: LoadingScreen(),
     );
   }
 }

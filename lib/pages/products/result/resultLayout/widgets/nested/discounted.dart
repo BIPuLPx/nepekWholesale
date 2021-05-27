@@ -9,21 +9,20 @@ class PerOff extends StatelessWidget {
   const PerOff({Key key, this.off}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ShadowContainer(
-      shadowColor: Colors.redAccent,
-      blurRadius: 3,
-      spreadRadius: 0.02,
-      offset: Offset(1, 1),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
         color: Colors.redAccent,
-        child: Text(
-          off,
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500,
-            fontSize: 12,
-            color: Colors.white,
-          ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+        ),
+      ),
+      child: Text(
+        off,
+        style: GoogleFonts.poppins(
+          fontWeight: FontWeight.w500,
+          fontSize: 12,
+          color: Colors.white,
         ),
       ),
     );

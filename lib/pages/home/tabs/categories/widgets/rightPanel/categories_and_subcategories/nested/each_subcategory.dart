@@ -14,9 +14,10 @@ class EachSubCategory extends StatelessWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.all(6),
-      // color: Colors.grey,
       width: deviceWidth * 0.16,
       child: Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
         child: InkWell(
           onTap: () {
             Navigator.pushNamed(context, 'result',

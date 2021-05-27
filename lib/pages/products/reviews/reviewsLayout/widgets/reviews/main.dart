@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/widgets/productReviews/nested/review_layout.dart';
 import 'package:provider/provider.dart';
 
 import '../../../reviews_provider.dart';
-import 'review_container/main.dart';
-
 
 class Reviews extends StatelessWidget {
   @override
@@ -11,12 +10,14 @@ class Reviews extends StatelessWidget {
     final reviews = Provider.of<ReviewsState>(context);
     return Column(
       children: reviews.reviews
-          .map((review) => ReviewsContainer(
-                name: reviews.getName(review['customer_uid']),
-                rating: review['rating'].toDouble(),
-                review: review['review'],
-                date: review['date'],
-              ))
+          .map(
+            (review) => Container(
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.all(10),
+              color: Colors.white,
+              child: ReviewLayout(review: review),
+            ),
+          )
           .toList(),
     );
   }

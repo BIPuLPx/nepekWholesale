@@ -4,7 +4,6 @@ import 'package:nepek_buyer/functions/duplicate.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -75,10 +74,10 @@ class PaymentMethodsRoot extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: NepekButton(
-          icon: Icon(
-            BottomNavIcons.cart,
+          icon: Image.asset(
+            'assets/bottomNavBar/cart.png',
             color: darkTheme ? Colors.black : Colors.white,
-            size: 17,
+            height: 17,
           ),
           onClick: () => provider.buyNow(context),
           label: 'Order Now',

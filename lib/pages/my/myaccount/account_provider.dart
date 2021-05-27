@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nepek_buyer/library/account/signOut.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
@@ -27,13 +28,7 @@ class AccountState extends ChangeNotifier {
   }
 
   signOut(BuildContext context) {
-    userDeliveryAreas.put('deliveryAreas', null);
-    userDeliveryAreas.put('default_delivery_area', null);
-    UserPreferences().displayName(null);
-    UserPreferences().buyerKey(null);
-    UserPreferences().jwtToken(null);
-    UserPreferences().phoneNumber(null);
-    UserPreferences().loggedIn(false);
+    signOutUser();
     args['checkProfile']();
     sucessToast(context, 'Signed Out');
     Navigator.of(context).pop();

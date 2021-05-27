@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/font_styles.dart';
-
 import 'product_container.dart';
 
 class ProductsSlider extends StatefulWidget {
   final String heading;
-  final List products;
+  final List data;
   final Color backGroundColor;
   final Color headingColor;
   const ProductsSlider(
       {Key key,
       this.heading,
-      this.products,
       this.backGroundColor,
-      this.headingColor})
+      this.headingColor,
+      this.data})
       : super(key: key);
   @override
   _ProductsSliderState createState() => _ProductsSliderState();
@@ -27,7 +25,7 @@ class _ProductsSliderState extends State<ProductsSlider>
     final height = MediaQuery.of(context).size.height * 0.35;
     super.build(context);
     return Container(
-      // padding: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: 15),
       // margin: EdgeInsets.only(bottom: 15),
       color: widget.backGroundColor == null
           ? Colors.transparent
@@ -42,19 +40,8 @@ class _ProductsSliderState extends State<ProductsSlider>
             child: ListView(
               // physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              children: [
-                SizedBox(width: 5),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-                ProductContainer(product: testProduct),
-              ],
+              children: <Widget>[SizedBox(width: 5)] +
+                  widget.data.map((e) => ProductContainer(product: e)).toList(),
             ),
           ),
         ],
@@ -70,17 +57,10 @@ class _ProductsSliderState extends State<ProductsSlider>
         child: Text(
           text,
           style: GoogleFonts.poppins(
-            color: textColor,
+            color: textColor == null ? Colors.black : textColor,
             fontWeight: FontWeight.w700,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
       );
 }
-
-final testProduct = {
-  'productName':
-      "Test for sale and nothing fbhjhbnsdf uisdhf hsdfjhhdfs hsdfhnkdfsjh hdfskuidfis kuhjdfskuhkfds khsfdjudhfs ksdfjuhkhfdks",
-  'price': 1000,
-  'oldPrice': 1500
-};

@@ -77,18 +77,19 @@ class OrderProduct extends StatelessWidget {
   }
 
   Widget _status(product) {
+    // print(product);
     Map status;
 
     if (product['placed_order_date'] == null) {
       status = {'status': 'Pending by Seller', 'type': 0};
-    } else if (product['pick_order_date'] == null) {
+    } else if (product['picked_date'] == null) {
       status = {'status': 'Placed by Seller', 'type': 1};
     } else if (product['delivered_date'] == null) {
       status = {'status': 'Arriving', 'type': 2};
     } else if (product['cancelled_date'] == null) {
       status = {'status': 'Delivered', 'type': 3};
     } else {
-      status = {'status': 'Cancelled', 'type': 4};
+      status = {'status': 'Sorry it was Cancelled', 'type': 4};
     }
 
     Color _statusColor(int type) {
@@ -99,7 +100,7 @@ class OrderProduct extends StatelessWidget {
       else if (type == 2)
         return Colors.greenAccent;
       else if (type == 3)
-        return Colors.green;
+        return Colors.greenAccent.shade400;
       else
         return Colors.red;
     }

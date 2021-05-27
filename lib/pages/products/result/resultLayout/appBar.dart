@@ -7,7 +7,6 @@ import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
 import 'package:provider/provider.dart';
 
 // import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';
-import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
 import 'package:nepek_buyer/listeners/cart_no_listener.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -15,7 +14,7 @@ import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 class ResultAppBar extends StatelessWidget {
   final BuildContext resultContext;
   final Function changeLayout;
-  final IconData currentIcon;
+  final String currentIcon;
   final String searchText;
   final int itemLength;
 
@@ -106,7 +105,7 @@ class ResultAppBar extends StatelessWidget {
           children: [
             FLSortBTn(
               color: color,
-              icon: ResultPageIcons.filter,
+              icon: 'filter',
               label: 'Filter',
               iconSize: 15,
               onClick: () => Navigator.pushNamed(
@@ -117,7 +116,7 @@ class ResultAppBar extends StatelessWidget {
             ),
             FLSortBTn(
               color: color,
-              icon: ResultPageIcons.sort,
+              icon: 'sort',
               label: 'Sort',
               iconSize: 12,
               onClick: () {
@@ -125,10 +124,11 @@ class ResultAppBar extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Icon(
+              icon: Image.asset(
                 currentIcon,
-                size: 15,
-                color: color,
+                height: 20,
+                // size: 15,
+                // color: color,
               ),
               onPressed: () => changeLayout(),
             )
@@ -150,10 +150,9 @@ class ResultAppBar extends StatelessWidget {
           icon: CartNoListener(
             icon: Image.asset(
               'assets/bottomNavBar/cart.png',
-              height: 18,
-              // color: color,
+              height: 20,
+              color: color,
             ),
-            labelColor: Colors.white,
           ),
           onPressed: () => Navigator.pushNamed(resultContext, 'cart'),
         ),
@@ -161,7 +160,7 @@ class ResultAppBar extends StatelessWidget {
           icon: Icon(
             Icons.search,
             color: color,
-            size: 23,
+            size: 25,
           ),
           onPressed: () => Navigator.pushNamed(resultContext, 'search'),
         ),
@@ -169,7 +168,7 @@ class ResultAppBar extends StatelessWidget {
 }
 
 class FLSortBTn extends StatelessWidget {
-  final IconData icon;
+  final String icon;
   final String label;
   final Function onClick;
   final double iconSize;
@@ -187,10 +186,9 @@ class FLSortBTn extends StatelessWidget {
       onClick: onClick,
       label: label,
       reverse: true,
-      icon: NepekButtonIcon(
-        icon,
-        reversed: true,
-        size: 13,
+      icon: Image.asset(
+        'assets/product/$icon.png',
+        height: 15,
       ),
     );
   }

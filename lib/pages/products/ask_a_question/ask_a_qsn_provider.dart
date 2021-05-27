@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:http/http.dart' as http;
@@ -29,7 +30,7 @@ class AskaQuestionProvider with ChangeNotifier {
     } else {
       loadingPopUP(context, "Asking Question");
       final response = await http.post(
-        '$productApi/qna/buyer/ask_question',
+        httpUri(productApi, 'qna/buyer/ask_question'),
         headers: tokenHeaderContentType(),
         body: jsonEncode(data),
       );

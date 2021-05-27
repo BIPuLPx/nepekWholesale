@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
@@ -30,7 +31,7 @@ class AddressBookProvider with ChangeNotifier {
   Future changeDefault(BuildContext context, Map body) async {
     loadingPopUP(context, 'Changing Default Address');
     final res = await put(
-      '$peopleApi/customers/default_shipping_address',
+      httpUri(peopleApi, 'customers/default_shipping_address'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(body),
     );

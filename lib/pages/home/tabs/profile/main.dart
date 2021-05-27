@@ -34,14 +34,6 @@ class ProfileRoot extends StatelessWidget {
 
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     // print(args);
-    return Scaffold(
-      appBar:
-          args == null ? null : defaultAppBar(context, 'Sign in', darktheme),
-      body: SafeArea(
-        child: Container(
-          child: profile.currentScreen,
-        ),
-      ),
-    );
+    return Container(child: profile.currentScreen);
   }
 }

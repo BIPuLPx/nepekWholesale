@@ -21,6 +21,7 @@ class ResultRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final result = Provider.of<ResultState>(context);
+    print(args);
     if (result.initialFetch == false) {
       result.args = args;
       // result.queryFilter = {...args['queryFilter']};

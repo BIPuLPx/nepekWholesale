@@ -29,9 +29,10 @@ class ProductContainer extends StatelessWidget {
             width: 2,
             color: Colors.grey.shade200,
           ),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

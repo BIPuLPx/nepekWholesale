@@ -4,10 +4,8 @@ import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/text/nepek_text_input.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/text/textInput.dart';
 
 import 'continue_email_provider.dart';
 
@@ -42,49 +40,79 @@ class ContinueWithEmailRoot extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.only(left: 5, right: 5),
-          child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: Stack(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
+                padding: EdgeInsets.only(top: 10, bottom: 10),
+                color: Colors.white,
+                height: 70,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(height: 50),
-                    NepekText(
-                      'Welcome back!',
-                      color: AppColors.officialMatch,
-                      fontSize: 23,
-                      fontWeight: FontWeight.w700,
+                    Container(
+                      child: Image.asset(
+                        'assets/others/nepek.png',
+                        height: 30,
+                      ),
                     ),
-                    NepekText(
-                      'Enter your credentials',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 17,
-                      // color: AppColors.officialMatch,
-                    ),
-                    SizedBox(height: 30),
-                    NepekTextInput(
-                      labelText: "Email",
-                      onChanged: (val) => provider.inputChanged('email', val),
-                      background: true,
-                    ),
-                    SizedBox(height: 20),
-                    NepekTextInput(
-                      labelText: "Password",
-                      obscureText: true,
-                      onChanged: (val) =>
-                          provider.inputChanged('password', val),
-                      background: true,
-                    ),
-                    SizedBox(height: 50),
-                    _signinBtn(darkTheme, provider, context),
-                    // SizedBox(height: 5),
-                    _forgotPwd(darkTheme),
-                    _signUp(darkTheme, context)
+                    (args['thirdPartyRoute'] != null)
+                        ? IconButton(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            color: Colors.white,
+                            icon: Icon(
+                              Icons.close_rounded,
+                              size: 30,
+                              color: AppColors.officialMatch,
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                          )
+                        : Container()
                   ],
                 ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 30),
+                  NepekText(
+                    'Welcome back!',
+                    // color: AppColors.officialMatch,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  NepekText(
+                    'Enter your credentials',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17,
+                    // color: AppColors.officialMatch,
+                  ),
+                  SizedBox(height: 30),
+                  NepekTextInput(
+                    labelText: "Email",
+                    onChanged: (val) => provider.inputChanged('email', val),
+                    background: true,
+                    hint: "Please enter your email",
+                  ),
+                  SizedBox(height: 20),
+                  NepekTextInput(
+                    labelText: "Password",
+                    obscureText: true,
+                    onChanged: (val) => provider.inputChanged('password', val),
+                    background: true,
+                    hint: "Please enter your password",
+                  ),
+                  SizedBox(height: 30),
+                  _signinBtn(darkTheme, provider, context),
+                  // SizedBox(height: 5),
+                  _forgotPwd(darkTheme, provider),
+                  _signUp(darkTheme, context)
+                ],
               ),
             ],
           ),
@@ -95,7 +123,7 @@ class ContinueWithEmailRoot extends StatelessWidget {
 
   Container _signUp(bool darkTheme, BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      // margin: EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,14 +145,14 @@ class ContinueWithEmailRoot extends StatelessWidget {
     );
   }
 
-  Align _forgotPwd(bool darkTheme) {
+  Align _forgotPwd(bool darkTheme, ContinueWithEmailProvider provider) {
     return Align(
       alignment: Alignment.bottomRight,
       child: TextButton(
         style: TextButton.styleFrom(
           primary: AppColors.officialMatchShadow,
         ),
-        onPressed: () {},
+        onPressed: provider.forgotPassword,
         child: NepekText(
           'Forgot Password ?',
           color: AppColors.officialMatch,

@@ -3,7 +3,6 @@ import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/text/nepek_text_input.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'signup_with_email_provider.dart';
@@ -24,71 +23,91 @@ class SignUpWithEmailRoot extends StatelessWidget {
     final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final provider = Provider.of<SignUpWithEmailProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: Container(),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.close_rounded,
-              color: AppColors.officialMatch,
-            ),
-            onPressed: () => Navigator.pop(context),
-          )
-        ],
-      ),
       backgroundColor: Colors.white,
-      body: Form(
-        key: provider.formKey,
-        autovalidate: provider.autovalidate,
-        child: Container(
-          padding: EdgeInsets.only(left: 25, right: 25),
-          child: ListView(
-            children: [
-              SizedBox(height: 20),
-              Center(
-                child: NepekText(
-                  'Create a nepek account',
-                  fontSize: 23,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.officialMatch,
+      body: SafeArea(
+        child: Form(
+          key: provider.formKey,
+          autovalidate: provider.autovalidate,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Stack(
+              children: [
+                ListView(
+                  children: [
+                    SizedBox(height: 120),
+                    NepekText(
+                      'Create a nepek account',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      // color: AppColors.officialMatch,
+                    ),
+                    SizedBox(height: 20),
+                    NepekTextInput(
+                      labelText: 'Full Name',
+                      validator: provider.validateName,
+                      onChanged: (val) => provider.valChanged('name', val),
+                      background: true,
+                      initialValue: provider.name,
+                    ),
+                    SizedBox(height: 20),
+                    NepekTextInput(
+                      labelText: 'Email',
+                      validator: provider.validateEmail,
+                      onChanged: (val) => provider.valChanged('email', val),
+                      background: true,
+                      initialValue: provider.email,
+                    ),
+                    SizedBox(height: 20),
+                    NepekTextInput(
+                      labelText: 'Password',
+                      obscureText: true,
+                      validator: provider.validatePassword,
+                      onChanged: (val) => provider.valChanged('password1', val),
+                      background: true,
+                      initialValue: provider.password,
+                    ),
+                    SizedBox(height: 20),
+                    NepekTextInput(
+                      labelText: 'Retype password',
+                      obscureText: true,
+                      validator: provider.validatePassword,
+                      onChanged: (val) => provider.valChanged('password2', val),
+                      background: true,
+                      initialValue: provider.rePassword,
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(height: 20),
-              NepekTextInput(
-                labelText: 'Full Name',
-                validator: provider.validateName,
-                onChanged: (val) => provider.valChanged('name', val),
-                background: true,
-                initialValue: provider.name,
-              ),
-              SizedBox(height: 20),
-              NepekTextInput(
-                labelText: 'Email',
-                validator: provider.validateEmail,
-                onChanged: (val) => provider.valChanged('email', val),
-                background: true,
-                initialValue: provider.email,
-              ),
-              SizedBox(height: 20),
-              NepekTextInput(
-                labelText: 'Password',
-                obscureText: true,
-                validator: provider.validatePassword,
-                onChanged: (val) => provider.valChanged('password1', val),
-                background: true,
-                initialValue: provider.password,
-              ),
-              SizedBox(height: 20),
-              NepekTextInput(
-                labelText: 'Retype password',
-                obscureText: true,
-                validator: provider.validatePassword,
-                onChanged: (val) => provider.valChanged('password2', val),
-                background: true,
-                initialValue: provider.rePassword,
-              ),
-            ],
+                Container(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  color: Colors.white,
+                  height: 70,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Image.asset(
+                          'assets/others/nepek.png',
+                          height: 30,
+                        ),
+                      ),
+                      IconButton(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        color: Colors.white,
+                        icon: Icon(
+                          Icons.close_rounded,
+                          size: 30,
+                          color: AppColors.officialMatch,
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

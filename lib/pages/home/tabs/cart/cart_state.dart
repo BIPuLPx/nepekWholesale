@@ -13,7 +13,7 @@ import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/styles/toasts/error_toast.dart';
 
 class CartState with ChangeNotifier {
-  Widget body = spinkit;
+  Widget body = logoLoader();
   Widget yesProducts = CartHasItem();
   Widget noProducts = EmptyCart();
   bool initialgetCart = false;
@@ -71,6 +71,7 @@ class CartState with ChangeNotifier {
         final product = {
           "productID": item['productID'],
           "sellerID": item['sellerID'],
+          "subCategoryID": item['subCategoryID'],
           "price": item['price'],
           "qty": int.parse(item['qty']),
           "variant": item['variant'],

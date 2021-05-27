@@ -5,13 +5,14 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:nepek_buyer/pages/buy/checkout/layout/checkout_layout.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 
 class CheckoutProvider with ChangeNotifier {
   final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
 
   var args;
-  Widget body = spinkit;
+  Widget body = logoLoader();
   bool initFetcch = false;
   int totalPrice = 0;
   int deliveryCharge;
@@ -35,7 +36,7 @@ class CheckoutProvider with ChangeNotifier {
 
   Future getDeliveryCharge(String city) async {
     final res = await get(
-      '$peopleApi/delivery_address/delivery_charge?id=$city',
+      httpUri(peopleApi, 'delivery_address/delivery_charge?id=$city'),
     );
     deliveryCharge = jsonDecode(res.body)['delivery_charge'];
   }

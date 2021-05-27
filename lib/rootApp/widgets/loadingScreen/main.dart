@@ -1,11 +1,10 @@
-import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_cache_builder.dart';
-import 'package:flare_flutter/provider/asset_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nepek_buyer/styles/loaders/nepek_logo_loader.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
+import 'package:rive/rive.dart';
 
 class LoadingScreen extends StatelessWidget {
   @override
@@ -18,7 +17,10 @@ class LoadingScreen extends StatelessWidget {
         home: Scaffold(
           backgroundColor: darkTheme ? Colors.black : Colors.white,
           body: Center(
-            child: spinkit,
+            child: NepekLogoLoader(
+              size: 200,
+            ),
+            // child: logoLoader(),
             // child: FlareCacheBuilder(
             //   [
             //     AssetFlare(
@@ -26,7 +28,7 @@ class LoadingScreen extends StatelessWidget {
             //   ],
             //   builder: (BuildContext context, bool isWarm) {
             //     return !isWarm
-            //         ? Container(child: spinkit)
+            //         ? Container(child: logoLoader())
             //         : SizedBox(
             //             height: 350,
             //             // width: 400,

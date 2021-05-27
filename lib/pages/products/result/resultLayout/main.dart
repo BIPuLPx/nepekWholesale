@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/products/result/provider/main.dart';
+import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/iconsClass/result_page_icons_icons.dart';
 
 import 'appBar.dart';
 import 'widgets/grid_view.dart';
@@ -14,21 +15,38 @@ class ResultLayout extends StatefulWidget {
 
 class _ResultLayoutState extends State<ResultLayout> {
   Widget body;
-  double height;
-  IconData current = ResultPageIcons.listview;
+  String current = 'assets/product/listview.png';
   String listType = 'grid';
+  bool showTop = false;
 
   ScrollController _scrollController = new ScrollController();
   void changeListType() {
     setState(() {
       if (listType == 'list') {
         listType = 'grid';
-        current = ResultPageIcons.listview;
+        current = 'assets/product/listview.png';
       } else {
         listType = 'list';
-        current = ResultPageIcons.gridview;
+        current = 'assets/product/gridview.png';
       }
     });
+  }
+
+  void _slideToTop() {
+    final currentScroll = _scrollController.position.pixels;
+
+    setState(() {
+      if (currentScroll > 1000)
+        showTop = true;
+      else
+        showTop = false;
+    });
+  }
+
+  @override
+  void initState() {
+    _scrollController.addListener(_slideToTop);
+    super.initState();
   }
 
   @override
@@ -41,21 +59,16 @@ class _ResultLayoutState extends State<ResultLayout> {
   Widget build(BuildContext context) {
     final result = Provider.of<ResultState>(context);
     var size = MediaQuery.of(context).size;
-    final double itemHeightList = (size.height - kToolbarHeight - 24) / 7;
-    final double itemHeightGrid = (size.height - kToolbarHeight - 24) / 2;
+    final double itemHeightList = (size.height) / 9;
+    final double itemHeightGrid = (size.height) / 2;
     final double itemWidth = size.width / 2;
-    setState(() {
-      if (listType == 'list') {
-        height = itemHeightList;
-      } else {
-        height = itemHeightGrid;
-      }
-    });
+    // final currentScroll = _scrollController.position.pixels;
 
     void _onScroll() {
       final _scrollThreshold = 500;
       final maxScroll = _scrollController.position.maxScrollExtent;
       final currentScroll = _scrollController.position.pixels;
+
       if (maxScroll - currentScroll <= _scrollThreshold) {
         _scrollController.removeListener(_onScroll);
         if (result.isNextPage == true) {
@@ -69,6 +82,7 @@ class _ResultLayoutState extends State<ResultLayout> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: CustomScrollView(
+        physics: ClampingScrollPhysics(),
         // physics: BouncingScrollPhysics(),
         controller: _scrollController,
         slivers: <Widget>[
@@ -85,30 +99,100 @@ class _ResultLayoutState extends State<ResultLayout> {
               delegate: SliverChildListDelegate([
             Container(height: 10),
           ])),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              crossAxisCount: listType == 'grid' ? 2 : 1,
-              childAspectRatio: (itemWidth / height * 1.01),
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                if (listType == 'grid') {
-                  return GridLayout(index: index, result: result);
-                } else {
-                  return ListLayout(index: index, result: result);
-                }
-              },
-              childCount: result.products.length,
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            sliver: SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                crossAxisCount: listType == 'grid' ? 2 : 1,
+                childAspectRatio: (itemWidth /
+                    (listType == 'grid' ? itemHeightGrid : itemHeightList) *
+                    1.01),
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  if (listType == 'grid') {
+                    return GridLayout(index: index, result: result);
+                  } else {
+                    return ListLayout(index: index, result: result);
+                  }
+                },
+                childCount: result.products.length,
+              ),
             ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(
-              [result.loadingMore, SizedBox(height: 100)],
+              [
+                result.isNextPage ? result.loadingMore : SizedBox(),
+                SizedBox(height: 100),
+              ],
             ),
           )
         ],
+      ),
+      floatingActionButton: !showTop
+          ? Container()
+          : SlideToTop(
+              onTap: () => _scrollController.animateTo(
+                0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+              ),
+            ),
+    );
+  }
+}
+
+class SlideToTop extends StatelessWidget {
+  final Function onTap;
+  const SlideToTop({
+    Key key,
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.3,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.officialMatchShadow,
+            spreadRadius: 1,
+            blurRadius: 10,
+          )
+        ],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.arrow_upward_rounded,
+                  color: AppColors.officialMatch,
+                ),
+                NepekText(
+                  'Top',
+                  color: AppColors.officialMatch,
+                  fontWeight: FontWeight.w500,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

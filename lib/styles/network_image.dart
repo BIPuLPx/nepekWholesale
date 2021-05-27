@@ -4,7 +4,9 @@ class NepekImageNetwork extends StatelessWidget {
   final double height;
   final double width;
   final String url;
-  const NepekImageNetwork({Key key, this.height, this.width, this.url})
+  final bool wide;
+  const NepekImageNetwork(
+      {Key key, this.height, this.width, this.url, this.wide})
       : super(key: key);
 
   @override
@@ -15,9 +17,12 @@ class NepekImageNetwork extends StatelessWidget {
       height: height,
       width: width,
       // fadeOutCurve: Curves.easeOut,
-      placeholder: 'images/image_placeholder-min.png',
+      placeholder: wide == true
+          ? 'assets/others/image_placeholder-min-wide.png'
+          : 'assets/others/image_placeholder-min.png',
       image: url,
       imageScale: 1.2,
+      fit: BoxFit.cover,
     );
   }
 }

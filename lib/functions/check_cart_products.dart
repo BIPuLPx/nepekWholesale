@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 
 Future isCartItemsAvailable() async {
   Box cartBox = Hive.box('cart');
@@ -31,7 +32,7 @@ Future isCartItemsAvailable() async {
         isAv = false;
     }
 
-    final res = await post('$productApi/cart_products/check',
+    final res = await post(httpUri(productApi, 'cart_products/check'),
         headers: contentTypeHeader(), body: jsonEncode(toSend));
 
     bool changedPrice = false;

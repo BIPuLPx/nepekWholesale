@@ -1,6 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/functions/check_cart_products.dart';
+import 'package:nepek_buyer/library/sync/account.dart';
+import 'package:nepek_buyer/library/sync/delivery_addresses.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/listeners/cart_no_listener.dart';
 import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
@@ -20,29 +23,44 @@ class HomePage extends StatelessWidget {
 
 //HomePageRoot
 class HomePageRoot extends StatefulWidget {
-  // final int index;
-  // HomePageRoot({this.index});
   @override
   _HomePageRootState createState() => _HomePageRootState();
 }
 
-class _HomePageRootState extends State<HomePageRoot> {
+class _HomePageRootState extends State<HomePageRoot>
+    with WidgetsBindingObserver {
+  final SyncAccount _account = SyncAccount();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed) {
+      await _account.start();
+      await SyncDeliveryAddresses().getMyDeliveryAddresses();
+      await isCartItemsAvailable();
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
   int _currentIndex = 0;
 
   final tabs = [
     HomeTab(),
-    // Text('hi'),
     Categories(),
     Profile(),
     CartTab(outside: false),
-    // AddDeliveryAddress()
   ];
   final PageController _pageController = PageController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +86,7 @@ class _HomePageRootState extends State<HomePageRoot> {
       // ),
 
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         backgroundColor: isDark ? Colors.black : Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 12,
@@ -97,9 +116,19 @@ class _HomePageRootState extends State<HomePageRoot> {
   }
 
   BottomNavigationBarItem _navItem(String label, bool isDark) {
-    Image _selected(String label) => Image.asset(
-          'assets/bottomNavBar/$label.png',
-          height: 22,
+    _selected(String label) => Container(
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(20),
+          //   border: Border.all(
+          //     color: AppColors.officialMatchThird,
+          //     width: 2,
+          //   ),
+          // ),
+          // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+          child: Image.asset(
+            'assets/bottomNavBar/$label.png',
+            height: 22,
+          ),
         );
 
     Image _unselected(String label) => Image.asset(

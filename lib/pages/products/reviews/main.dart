@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'reviews_provider.dart';
@@ -25,9 +26,10 @@ class ReviewsRoot extends StatelessWidget {
 
     if (reviews.initialFetch == false) {
       reviews.productId = args['id'];
-      reviews.fetchInitialReviews();
+      reviews.fetchReviews();
     }
     return Scaffold(
+      appBar: defaultAppBar(context, 'Reviews', false),
       body: SafeArea(child: reviews.body),
     );
   }

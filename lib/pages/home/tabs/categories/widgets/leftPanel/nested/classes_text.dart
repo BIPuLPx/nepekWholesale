@@ -16,35 +16,33 @@ class ClassesText extends StatelessWidget {
     final getColors = Provider.of<CategoriesState>(context).leftPanelColors;
     final darkMode = Provider.of<DarkThemeProvider>(context).darkTheme;
 
-
     return Container(
       height: 50,
       decoration: BoxDecoration(
-          border: Border(
-        top: BorderSide(
-          color: darkMode ? Colors.grey : Colors.white,
-          width: index == 0 ? 1.0 : 0,
+        border: Border(
+          left: BorderSide(
+            color: currentID == index
+                ? getColors(darkMode)['selectedText']
+                : getColors(darkMode)['unselected'],
+            width: 4.0,
+          ),
         ),
-        left: BorderSide(
-          color: currentID == index
-              ? getColors(darkMode)['selectedText']
-              : getColors(darkMode)['unselected'],
-          width: 4.0,
-        ),
-        right: BorderSide(
-          color: darkMode ? Colors.grey : Colors.white,
-          width: 1.0,
-        ),
-        bottom: BorderSide(
-          color: darkMode ? Colors.grey : Colors.white,
-          width: 1.0,
-        ),
-      )),
+      ),
       child: Material(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
         color: currentID == index
             ? getColors(darkMode)['selected']
             : getColors(darkMode)['unselected'],
         child: InkWell(
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
           onTap: () {
             changeID(index);
             classClicked(cls);
@@ -58,6 +56,7 @@ class ClassesText extends StatelessWidget {
                     ? getColors(darkMode)['selectedText']
                     : getColors(darkMode)['unSelectedText'],
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),

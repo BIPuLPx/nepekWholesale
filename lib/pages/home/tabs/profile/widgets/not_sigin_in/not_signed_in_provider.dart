@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/pages/home/tabs/profile/widgets/not_sigin_in/dialogs/connecting.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
@@ -26,7 +27,7 @@ class NotSignedInState extends ChangeNotifier {
     return {
       "refresh": checkLogged,
       "thirdPartyRoute": thirdPartyRoute,
-      "hideAppBar": true
+      // "hideAppBar": true
     };
   }
 
@@ -56,7 +57,7 @@ class NotSignedInState extends ChangeNotifier {
 /////////////
   Future backendVerify(BuildContext context, Map authData) async {
     final response = await http.post(
-      '$peopleApi/customers/oauth',
+      httpUri(peopleApi, '/customers/oauth'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

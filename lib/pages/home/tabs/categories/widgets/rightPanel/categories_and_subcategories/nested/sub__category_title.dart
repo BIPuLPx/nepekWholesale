@@ -11,6 +11,7 @@ class SubCategoryTitle extends StatelessWidget {
       child: Text(
         title,
         style: GoogleFonts.poppins(fontSize: 11),
+        textAlign: TextAlign.center,
       ),
     );
   }

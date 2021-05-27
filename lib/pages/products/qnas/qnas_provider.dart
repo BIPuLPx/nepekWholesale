@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/pages/products/qnas/qna_layout.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/text/end_of_result.dart';
 import 'package:nepek_buyer/pages/products/result/styles/loading_more.dart';
 
@@ -10,7 +11,7 @@ import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 
 class QnasProvider with ChangeNotifier {
-  dynamic body = spinkit;
+  dynamic body = logoLoader();
   bool initialFetch = false;
   dynamic loadingMore = LoadingMore(value: 'Getting More Qnas');
   String productId;
@@ -25,8 +26,8 @@ class QnasProvider with ChangeNotifier {
 
   Future fetchQnas() async {
     var response;
-    response = await http
-        .get('$productApi/qna/buyer/qnas?key=$productId&limit=8&page=1');
+    response = await http.get(
+        httpUri(productApi, 'qna/buyer/qnas?key=$productId&limit=8&page=1'));
     var data = jsonDecode(response.body);
 
     qnas.addAll(data['qnas']);

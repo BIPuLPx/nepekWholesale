@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/popUps/sucessPopup.dart';
@@ -31,7 +32,7 @@ class SignUpWithEmailProvider with ChangeNotifier {
     final data = {"displayName": name, "email": email, "password": password};
 
     final response = await http.post(
-      '$peopleApi/customers/signup',
+      httpUri(peopleApi, 'customers/signup'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

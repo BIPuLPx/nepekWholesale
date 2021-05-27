@@ -12,7 +12,7 @@ Future<void> errorPopup(context, String title, {Function okFn}) async {
             borderRadius: BorderRadius.circular(20),
           ),
           title: Text(
-            'Error',
+            'Error',   
             style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
           ),
           actions: [

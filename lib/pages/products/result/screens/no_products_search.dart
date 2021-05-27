@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/result/provider/main.dart';
+import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -20,11 +21,12 @@ class NoProductsSearch extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  darktheme
-                      ? 'assets/noProductsFound/darkMode.png'
-                      : 'assets/noProductsFound/lightMode.png',
-                  height: 100,
+                Container(
+                  margin: EdgeInsets.only(right: 30),
+                  child: Image.asset(
+                    'assets/noProductsFound/no_products.png',
+                    height: 100,
+                  ),
                 ),
                 SizedBox(height: 20),
                 Column(
@@ -47,24 +49,13 @@ class NoProductsSearch extends StatelessWidget {
                 SizedBox(
                   height: 50,
                   width: double.infinity,
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0),
-                      // side: BorderSide(color: Colors.red),
-                    ),
-                    color: darktheme ? Colors.white : AppColors.officialMatch,
-                    onPressed: () {
+                  child: NepekButton(
+                    onClick: () {
                       provider.args['type'] == 'subcategory'
                           ? Navigator.of(context).pop()
                           : Navigator.pushReplacementNamed(context, 'search');
                     },
-                    child: Text(
-                      'Go Back',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w700,
-                        color: darktheme ? Colors.black : Colors.white,
-                      ),
-                    ),
+                    label: 'Go Back',
                   ),
                 )
               ],

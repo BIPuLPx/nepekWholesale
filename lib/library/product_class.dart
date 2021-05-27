@@ -3,9 +3,16 @@ class Product {
 
   Product(this.product);
 
+  int get storeType => product['storeType'];
+
   String get productName => product['productName'];
 
+  double get rating => product['rating'].toDouble();
+
   String get id => product["_id"];
+
+  String get minithumbImg =>
+      '${product['imgUrl']}/productImages/${product['imgDir']}/miniThumbnail/${product['miniThumb']}';
 
   String get imgDir => product['imgDir'];
 

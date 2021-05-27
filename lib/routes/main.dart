@@ -13,11 +13,15 @@ import 'package:nepek_buyer/pages/my/myOrders/viewOrder/main.dart';
 import 'package:nepek_buyer/pages/my/myWishLists/main.dart';
 import 'package:nepek_buyer/pages/my/myaccount/main.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
+import 'package:nepek_buyer/pages/my/returns/main.dart';
+import 'package:nepek_buyer/pages/my/returns/subpages/eliglible_returns/main.dart';
+import 'package:nepek_buyer/pages/my/to_review/main.dart';
 import 'package:nepek_buyer/pages/products/ask_a_question/main.dart';
 import 'package:nepek_buyer/pages/products/filter/main.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/brand/main.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/price/main.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/specifications/main.dart';
+import 'package:nepek_buyer/pages/products/give_review/main.dart';
 import 'package:nepek_buyer/pages/products/qnas/main.dart';
 import 'package:nepek_buyer/pages/products/result/main.dart';
 import 'package:nepek_buyer/pages/products/reviews/main.dart';
@@ -29,6 +33,7 @@ import 'package:nepek_buyer/pages/userData/continueEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/signupWithEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/userInfoInput/address/main.dart';
 import 'package:nepek_buyer/pages/userData/userInfoInput/phoneNumber/main.dart';
+import 'package:nepek_buyer/styles/webview/main.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -102,11 +107,23 @@ class RouteGenerator {
       case 'my_orders':
         return MaterialPageRoute(builder: (_) => MyOrders());
 
+      case 'to_review':
+        return MaterialPageRoute(builder: (_) => ToReview());
+
+      case 'give_review':
+        return MaterialPageRoute(builder: (_) => GiveReview(args: args));
+
       case 'my_wishlists':
         return MaterialPageRoute(builder: (_) => MyWishLists());
 
       case 'view_order':
         return MaterialPageRoute(builder: (_) => ViewOrder(args: args));
+
+      case 'my_returns':
+        return MaterialPageRoute(builder: (_) => Returns());
+
+      case 'eligible_returns':
+        return MaterialPageRoute(builder: (_) => EligibleReturns(args: args));
 
       //Products
       case 'reviews':
@@ -136,6 +153,9 @@ class RouteGenerator {
 
       case 'order_details':
         return MaterialPageRoute(builder: (_) => OrderDetails(args: args));
+
+      case 'webview':
+        return MaterialPageRoute(builder: (_) => NepekWebView(args: args));
 
       default:
         // return MaterialPageRoute(builder: (_) => SellerStore());

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/library/product_class.dart';
-import 'package:nepek_buyer/pages/products/viewProduct/view_product_state.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/container_with_shadow.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
-import 'package:provider/provider.dart';
 
 class RecommendedProductContainer extends StatelessWidget {
   final product;
@@ -22,7 +20,6 @@ class RecommendedProductContainer extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, 'view_product',
           arguments: {'product_id': _product.id}),
       child: Container(
-        // color: Colors.white,
         padding: EdgeInsets.all(5),
         width: width,
         height: height,
@@ -32,9 +29,10 @@ class RecommendedProductContainer extends StatelessWidget {
             width: 2,
             color: Colors.grey.shade200,
           ),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

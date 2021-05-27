@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/library/product_class.dart';
-import 'package:nepek_buyer/pages/home/tabs/home/wigdets/product_slider/product_image.dart';
 import 'package:nepek_buyer/styles/colors.dart';
-import 'package:nepek_buyer/styles/container_with_shadow.dart';
+import 'package:nepek_buyer/styles/network_image.dart';
+import 'package:nepek_buyer/styles/rating.dart';
+import 'package:nepek_buyer/styles/seller_type.dart';
+import 'package:nepek_buyer/styles/text/trimName.dart';
 
 class ProductContainer extends StatelessWidget {
   final product;
@@ -21,33 +23,58 @@ class ProductContainer extends StatelessWidget {
       }
     }
 
-    return Container(
-      // color: Colors.white,
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      padding: EdgeInsets.all(5),
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          width: 2,
-          color: Colors.grey.shade200,
-        ),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(
+        context,
+        'view_product',
+        arguments: {'product_id': _product.id},
       ),
-      child: Stack(
-        overflow: Overflow.visible,
-        children: [
-          Column(
-            children: [
-              ProductImage(),
-              SizedBox(height: 5),
-              _name(_product.productName),
-              SizedBox(height: 10),
-              // )
-            ],
+      child: Container(
+        // color: Colors.white,
+        margin: EdgeInsets.symmetric(horizontal: 5),
+        padding: EdgeInsets.all(5),
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          border: Border.all(
+            width: 2,
+            color: Colors.grey.shade200,
           ),
-          _price(_product.price),
-          of == null ? Container() : _perOff(_product.off),
-        ],
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          // overflow: Overflow.visible,
+          children: [
+            Column(
+              children: [
+                Container(
+                  child: Stack(
+                    children: [
+                      NepekImageNetwork(
+                        url: _product.minithumbImg,
+                        height: 150,
+                        // url: '${}',
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: SellerType(type: _product.storeType),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5),
+                _name(_product.productName),
+
+                // SizedBox(height: 10),
+                // )
+              ],
+            ),
+            _price(_product.rating, _product.price, _product.oldPrice),
+            of == null ? Container() : _perOff(_product.off),
+          ],
+        ),
       ),
     );
   }
@@ -57,19 +84,18 @@ Positioned _perOff(String of) {
   return Positioned(
     right: -5,
     top: -5,
-    child: ShadowContainer(
-      shadowColor: AppColors.officialMatch,
-      blurRadius: 0.5,
-      spreadRadius: 0.05,
-      offset: Offset(-1, 1),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        color: AppColors.officialMatch,
-        child: Text(
-          of,
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(10),
         ),
+        color: AppColors.officialMatch,
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      child: Text(
+        of,
+        style: GoogleFonts.poppins(
+            color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
       ),
     ),
   );
@@ -77,43 +103,60 @@ Positioned _perOff(String of) {
 
 Text _name(name) {
   return Text(
-    sliceLongName(name),
+    trimName(name, 25),
     style: GoogleFonts.poppins(
       // fontWeight: FontWeight.w400,
-      fontSize: 13,
+      fontSize: 14.5,
     ),
   );
 }
 
-Positioned _price(price) {
+Positioned _price(rating, price, oldPrice) {
   return Positioned(
     bottom: 0,
     left: 0,
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.alphabetic,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'NPR  ',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            // fontWeight: FontWeight.w600,
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              'NPR  ',
+              style: GoogleFonts.poppins(
+                  // fontWeight: FontWeight.w600,
+                  ),
+            ),
+            Text(
+              '${price.toString()}.00',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                fontSize: 17,
+              ),
+            ),
+          ],
         ),
-        Text(
-          '${price.toString()}.00',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        oldPrice != null
+            ? Text(
+                'NPR $oldPrice.00',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                  decoration: TextDecoration.lineThrough,
+                ),
+              )
+            : SizedBox(),
+        rating == 0
+            ? SizedBox()
+            : Container(
+                margin: EdgeInsets.only(top: 5),
+                child: Rating(
+                  rating: rating,
+                  size: 12,
+                ),
+              ),
       ],
     ),
   );
-}
-
-String sliceLongName(String name) {
-  if (name.length > 35) {
-    return name.substring(0, 32) + '.....';
-  }
-  return name;
 }

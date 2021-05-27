@@ -14,22 +14,25 @@ class PercentageRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    return Container(
-      margin: EdgeInsets.only(top: 2),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          LinearPercentIndicator(
-            width: deviceWidth * 0.45,
-            lineHeight: 12.0,
-            percent: percent,
-            backgroundColor: Colors.grey[300],
-            progressColor: progressColor,
-          ),
-          Text(label, style: linearPer(false))
-        ],
-      ),
-    );
+
+    return percent == 0.0
+        ? SizedBox()
+        : Container(
+            margin: EdgeInsets.only(top: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                LinearPercentIndicator(
+                  width: deviceWidth * 0.45,
+                  lineHeight: 12.0,
+                  percent: percent,
+                  backgroundColor: Colors.grey[300],
+                  progressColor: progressColor,
+                ),
+                Text(label, style: linearPer(false))
+              ],
+            ),
+          );
   }
 }
 

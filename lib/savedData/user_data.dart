@@ -10,6 +10,10 @@ class UserPreferences {
 
   SharedPreferences _prefs;
 
+  clear() {
+    _prefs.clear();
+  }
+
   init() async {
     _prefs = await SharedPreferences.getInstance();
   }
@@ -73,4 +77,15 @@ class UserPreferences {
   }
 
   getLoggedIn() => _prefs.getBool('loggedIn');
+
+  deviceToken(bool val) {
+    _prefs.setBool('deviceToken', val);
+  }
+
+  getDeviceToken() => _prefs.getBool('deviceToken');
+  pKey(String type) {
+    _prefs.setString('pKey', type);
+  }
+
+  getPkey() => _prefs.getString('pKey');
 }

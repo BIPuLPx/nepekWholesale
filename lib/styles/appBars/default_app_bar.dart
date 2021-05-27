@@ -16,7 +16,7 @@ defaultAppBar(context, String title, bool darktheme) {
     ),
     centerTitle: true,
     // backgroundColor: AppColors.transparentAppbar,
-    elevation: 0.5,
+    elevation: 0,
     title: Text(
       title,
       style: GoogleFonts.poppins(

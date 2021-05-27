@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
@@ -53,7 +54,7 @@ class PhoneInputState extends ChangeNotifier {
     // print(UserPreferences().getJwtToken());
     loadingPopUP(context, "Adding phone number");
     var response = await http.put(
-      '$peopleApi/customers/addPhone',
+      httpUri(peopleApi, 'customers/addPhone'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'

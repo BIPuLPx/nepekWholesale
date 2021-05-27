@@ -81,7 +81,7 @@ class ViewOrderLayout extends StatelessWidget {
               SizedBox(height: 5),
               leftRightData(
                 'Product',
-                trimName(order['productName'], 15),
+                trimName(order['productName'], 25),
                 fontSize: 16,
               ),
               SizedBox(height: 20),
@@ -156,7 +156,7 @@ class ViewOrderLayout extends StatelessWidget {
 
     if (product['placed_order_date'] == null) {
       status = {'status': 'Pending by Seller', 'type': 0};
-    } else if (product['pick_order_date'] == null) {
+    } else if (product['picked_date'] == null) {
       status = {'status': 'Placed by Seller', 'type': 1};
     } else if (product['delivered_date'] == null) {
       status = {'status': 'Arriving', 'type': 2};
@@ -174,7 +174,7 @@ class ViewOrderLayout extends StatelessWidget {
       else if (type == 2)
         return Colors.greenAccent;
       else if (type == 3)
-        return Colors.green;
+        return Colors.greenAccent.shade400;
       else
         return Colors.red;
     }

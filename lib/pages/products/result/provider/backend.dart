@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
+import 'package:nepek_buyer/savedData/httpUri.dart';
 
 class BackEnd {
   Future searchProducts(String searchBy, String searchText, String sortfor,
@@ -9,14 +10,14 @@ class BackEnd {
     print(searchBy);
     if (searchBy == 'search') {
       searchURL =
-          '$productApi/products/fetch/get?type=search&searchTerm=$searchText&page=${page.toString()}&limit=8&sort=$sortfor&by=${sortBy.toString()}';
+          'products/fetch/get?type=search&searchTerm=$searchText&page=${page.toString()}&limit=8&sort=$sortfor&by=${sortBy.toString()}';
     } else {
       searchURL =
-          '$productApi/products/fetch/get?type=subcategory&subcategory=$searchText&page=${page.toString()}&limit=8&sort=$sortfor&by=${sortBy.toString()}';
+          'products/fetch/get?type=subcategory&subcategory=$searchText&page=${page.toString()}&limit=8&sort=$sortfor&by=${sortBy.toString()}';
     }
 
     final response = await http.post(
-      searchURL,
+      httpUri(productApi, searchURL),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

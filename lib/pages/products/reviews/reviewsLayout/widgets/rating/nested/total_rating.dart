@@ -10,18 +10,18 @@ class TotalRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final review = Provider.of<ReviewsState>(context);
+    print(review.ratingMetaData);
     return Container(
       margin: EdgeInsets.only(bottom: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RatingBar(
-            unratedColor: Colors.grey[350],
-            ignoreGestures: true,
-            initialRating: review.rating,
+          RatingBar.builder(
+            initialRating: review.ratingMetaData['rating'],
             minRating: 1,
             direction: Axis.horizontal,
             allowHalfRating: true,
+            ignoreGestures: true,
             itemCount: 5,
             itemSize: 30,
             itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
@@ -36,11 +36,11 @@ class TotalRating extends StatelessWidget {
           Column(
             children: [
               Text(
-                review.rating.toString(),
+                review.ratingMetaData['rating'].toStringAsFixed(2),
                 style: totalRatingText('rating'),
               ),
               Text(
-                'based on ${review.totalRating.toString()} reviews',
+                'based on ${review.ratingMetaData['ratingNo'].toString()} reviews',
                 style: totalRatingText('footer'),
               ),
             ],

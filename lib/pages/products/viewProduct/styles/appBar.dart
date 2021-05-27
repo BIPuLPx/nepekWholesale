@@ -67,7 +67,7 @@ viewProductAppBar(viewProductContext) {
         icon: CartNoListener(
           icon: Image.asset(
             'assets/bottomNavBar/cart.png',
-            height: 18,
+            height: 20,
             // color: itemColor,
           ),
           labelColor: Colors.white,

@@ -23,7 +23,7 @@ class RatingNo extends StatelessWidget {
               color: AppColors.ratingColor,
             ),
             child: Text(
-              '$rating',
+              rating.toStringAsFixed(2),
               style: ProductPageFonts().ratingNumberinsideColor(),
             ),
           ),

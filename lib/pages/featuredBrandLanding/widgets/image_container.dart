@@ -16,7 +16,7 @@ class ImageContainer extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imgUrl,
         placeholder: (context, url) =>
-            Container(height: 150, child: Center(child: spinkit)),
+            Container(height: 150, child: Center(child: logoLoader())),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
