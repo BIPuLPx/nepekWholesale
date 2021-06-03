@@ -66,6 +66,8 @@ class ViewOrderLayout extends StatelessWidget {
             children: [
               OrderImage(order: order),
               SizedBox(height: 20),
+              _status(order),
+              SizedBox(height: 20),
               leftRightData(
                 'PackageNo',
                 order['packageNO'],
@@ -143,7 +145,6 @@ class ViewOrderLayout extends StatelessWidget {
                 fontSize: 16,
               ),
               SizedBox(height: 20),
-              _status(order),
             ],
           ),
         )

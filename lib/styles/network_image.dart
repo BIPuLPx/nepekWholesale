@@ -22,7 +22,7 @@ class NepekImageNetwork extends StatelessWidget {
           : 'assets/others/image_placeholder-min.png',
       image: url,
       imageScale: 1.2,
-      fit: BoxFit.cover,
+      fit: wide == true ? BoxFit.cover : BoxFit.contain,
     );
   }
 }

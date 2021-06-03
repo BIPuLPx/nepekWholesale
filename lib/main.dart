@@ -1,5 +1,8 @@
 // import 'dart:io';
 import 'dart:io';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
@@ -9,39 +12,43 @@ import 'package:nepek_buyer/rootApp/main.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_preferences.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:firebase_core/firebase_core.dart';
+
+FirebaseAnalytics analytics;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // FirebaseApp defaultApp = await Firebase.initializeApp();
-  // print('Firebase initialized default $defaultApp');
+  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
 
-  // if (Firebase.apps.length != 2) {
-  //   await Firebase.initializeApp(
-  //     name: 'Skite',
-  //     options: const FirebaseOptions(
-  //         appId: '1:413884093288:android:8b218ab7c4ff8c44dc3cdd',
-  //         apiKey: 'AIzaSyAJa5T2y-k1x2da1HiUZ7MfEPP7oKde2Fw',
-  //         messagingSenderId: '413884093288',
-  //         projectId: 'neptune-a3815'),
-  //   );
-  // }
-  // print(Firebase.apps);
-  //Styles
+  UserPreferences().init().then(
+        (_) => Firebase.initializeApp().then(
+          (_) {
+            analytics = FirebaseAnalytics();
 
-  Directory appDocDir = await getApplicationDocumentsDirectory();
-  String appDocPath = appDocDir.path;
-  Hive.init(appDocPath);
-  UserPreferences().init();
-  DarkThemePreference().init();
+            // Pass all uncaught errors to Crashlytics.
+            FlutterError.onError =
+                FirebaseCrashlytics.instance.recordFlutterError;
 
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(
-    (_) => runApp(MainApp()),
-  );
-  //HiveDB
+            Hive.init(appDocumentDir.path);
+            DarkThemePreference().init();
+
+            FirebaseMessaging.onBackgroundMessage(
+                _firebaseMessagingBackgroundHandler);
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown
+            ]).then(
+              (_) => runApp(MainApp()),
+            );
+          },
+        ),
+      );
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("Handling a background message: ${message.messageId}");
 }
 
 class MainApp extends StatelessWidget {

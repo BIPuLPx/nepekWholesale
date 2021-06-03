@@ -13,6 +13,7 @@ import 'package:nepek_buyer/pages/my/myOrders/viewOrder/main.dart';
 import 'package:nepek_buyer/pages/my/myWishLists/main.dart';
 import 'package:nepek_buyer/pages/my/myaccount/main.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
+import 'package:nepek_buyer/pages/my/myquestions/subpages/viewQna/main.dart';
 import 'package:nepek_buyer/pages/my/returns/main.dart';
 import 'package:nepek_buyer/pages/my/returns/subpages/eliglible_returns/main.dart';
 import 'package:nepek_buyer/pages/my/to_review/main.dart';
@@ -28,7 +29,6 @@ import 'package:nepek_buyer/pages/products/reviews/main.dart';
 import 'package:nepek_buyer/pages/products/search/main.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/main.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/widgets/view_image/main.dart';
-import 'package:nepek_buyer/pages/seller_store/main.dart';
 import 'package:nepek_buyer/pages/userData/continueEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/signupWithEmail/main.dart';
 import 'package:nepek_buyer/pages/userData/userInfoInput/address/main.dart';
@@ -103,6 +103,9 @@ class RouteGenerator {
 
       case 'my_questions':
         return MaterialPageRoute(builder: (_) => MyQuestions());
+
+      case 'view_qna':
+        return MaterialPageRoute(builder: (_) => ViewQna(id: args));
 
       case 'my_orders':
         return MaterialPageRoute(builder: (_) => MyOrders());

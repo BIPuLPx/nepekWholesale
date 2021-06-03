@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nepek_buyer/library/account/notification_token.dart';
 import 'package:nepek_buyer/library/sync/custom_products.dart';
+import 'package:nepek_buyer/notifications/main.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -46,6 +48,7 @@ class ContinueWithEmailProvider with ChangeNotifier {
 
       final resData = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        checkNotifyTokenAdded();
         UserPreferences().jwtToken(resData['token']);
         UserPreferences().displayName(resData['data']['displayName']);
         UserPreferences().buyerKey(resData['data']['_id']);

@@ -1,35 +1,41 @@
 {
   "project_info": {
-    "project_number": "413884093288",
-    "firebase_url": "https://neptune-a3815.firebaseio.com",
-    "project_id": "neptune-a3815",
-    "storage_bucket": "neptune-a3815.appspot.com"
+    "project_number": "1098308842318",
+    "project_id": "nepek-np",
+    "storage_bucket": "nepek-np.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:413884093288:android:111dcaf74158db49dc3cdd",
+        "mobilesdk_app_id": "1:1098308842318:android:cbd5bb58eb578fb5b6e41f",
         "android_client_info": {
-          "package_name": "com.example.seller_zone"
+          "package_name": "com.nepek.nepek"
         }
       },
       "oauth_client": [
         {
-          "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+          "client_id": "1098308842318-4lgichln46lr6td72jvtpcumgj9aagvc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIznVOBVJFFzA9mT_LGko8SNULhPEGj3k"
+          "current_key": "AIzaSyCeAC3KrdU3VNda0xGoCn2Ue5zfFwxadFw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+              "client_id": "1098308842318-4lgichln46lr6td72jvtpcumgj9aagvc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1098308842318-frno859q4cgnn3oksadkh5lumac8rhgi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nepek.www"
+              }
             }
           ]
         }
@@ -37,28 +43,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:413884093288:android:8b218ab7c4ff8c44dc3cdd",
+        "mobilesdk_app_id": "1:1098308842318:android:d4c5d3b8a9fe12a9b6e41f",
         "android_client_info": {
-          "package_name": "com.nepek.buyer_app"
+          "package_name": "com.nepek.nepsell"
         }
       },
       "oauth_client": [
         {
-          "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+          "client_id": "1098308842318-4lgichln46lr6td72jvtpcumgj9aagvc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIznVOBVJFFzA9mT_LGko8SNULhPEGj3k"
+          "current_key": "AIzaSyCeAC3KrdU3VNda0xGoCn2Ue5zfFwxadFw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "413884093288-2n9qbg9h76s5d9s1qb00i5dkoe6pbpnf.apps.googleusercontent.com",
+              "client_id": "1098308842318-4lgichln46lr6td72jvtpcumgj9aagvc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1098308842318-frno859q4cgnn3oksadkh5lumac8rhgi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nepek.www"
+              }
             }
           ]
         }

@@ -40,7 +40,6 @@ class AddImage extends StatelessWidget {
                     // height: MediaQuery.of(context).size.width * 0.7,
                     // width: double.infinity,
                     // fit: BoxFit.contain,
-                    // fit: BoxFit.fitWidth,
                   ),
           ),
         ),

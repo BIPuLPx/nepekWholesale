@@ -112,41 +112,42 @@ class GiveReviewProvider with ChangeNotifier {
     } else {
       PickedFile image =
           await picker.getImage(source: source, imageQuality: 100);
-      if (image != null) {
-        File croppedFile = await ImageCropper.cropImage(
-          sourcePath: image.path,
-          aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
-          maxHeight: 300,
-          maxWidth: 300,
-          compressQuality: 100,
-          compressFormat: ImageCompressFormat.png,
-          androidUiSettings: AndroidUiSettings(
-            statusBarColor: Colors.black,
-            toolbarColor: Colors.black,
-            toolbarWidgetColor: Colors.white,
-            hideBottomControls: true,
-            toolbarTitle: "Crop Review Image",
-          ),
-          iosUiSettings: IOSUiSettings(
-            aspectRatioLockEnabled: true,
-            title: "Crop Review Image",
-            // rotateButtonsHidden: true,
-            hidesNavigationBar: true,
-          ),
+      print(image);
+      // if (image != null) {
+      //   File croppedFile = await ImageCropper.cropImage(
+      //     sourcePath: image.path,
+      //     aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+      //     maxHeight: 300,
+      //     maxWidth: 300,
+      //     compressQuality: 100,
+      //     compressFormat: ImageCompressFormat.png,
+      //     androidUiSettings: AndroidUiSettings(
+      //       statusBarColor: Colors.black,
+      //       toolbarColor: Colors.black,
+      //       toolbarWidgetColor: Colors.white,
+      //       hideBottomControls: true,
+      //       toolbarTitle: "Crop Review Image",
+      //     ),
+      //     iosUiSettings: IOSUiSettings(
+      //       aspectRatioLockEnabled: true,
+      //       title: "Crop Review Image",
+      //       // rotateButtonsHidden: true,
+      //       hidesNavigationBar: true,
+      //     ),
+      //   );
+      final croppedFile = image;
+      print(image);
+      if (croppedFile != null) {
+        File compressedImage = await FlutterNativeImage.compressImage(
+          croppedFile.path,
+          quality: 50,
+          percentage: 30,
         );
-        if (croppedFile != null) {
-          File compressedImage = await FlutterNativeImage.compressImage(
-            croppedFile.path,
-            quality: 50,
-            percentage: 80,
-            targetWidth: 300,
-            targetHeight: 300,
-          );
-          String filename = basename(compressedImage.path);
-          setImg(compressedImage.path, index, filename);
-        }
-        deleteImage(File(image.path));
+        String filename = basename(compressedImage.path);
+        setImg(compressedImage.path, index, filename);
       }
+      deleteImage(File(image.path));
+      // }
     }
   }
 

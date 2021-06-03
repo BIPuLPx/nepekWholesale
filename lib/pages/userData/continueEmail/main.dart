@@ -43,41 +43,26 @@ class ContinueWithEmailRoot extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: Stack(
             children: [
-              Container(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                color: Colors.white,
-                height: 70,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Image.asset(
-                        'assets/others/nepek.png',
-                        height: 30,
+              (args['thirdPartyRoute'] != null)
+                  ? Positioned(
+                      right: 30,
+                      top: 30,
+                      child: IconButton(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        color: Colors.white,
+                        icon: Icon(
+                          Icons.close_rounded,
+                          size: 30,
+                          color: AppColors.officialMatch,
+                        ),
+                        onPressed: () => Navigator.pop(context),
                       ),
-                    ),
-                    (args['thirdPartyRoute'] != null)
-                        ? IconButton(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            color: Colors.white,
-                            icon: Icon(
-                              Icons.close_rounded,
-                              size: 30,
-                              color: AppColors.officialMatch,
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                          )
-                        : Container()
-                  ],
-                ),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                    )
+                  : Container(),
+              ListView(
+                physics: ClampingScrollPhysics(),
                 children: [
                   SizedBox(height: 30),
                   NepekText(

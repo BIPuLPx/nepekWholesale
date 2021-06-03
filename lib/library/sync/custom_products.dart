@@ -18,7 +18,7 @@ class SyncCustomProducts {
 
   Future<bool> testCustomProducts(String name) async {
     final key = _customProductBox.get('${name}key');
-    if (key.length == 0) {
+    if (key == null) {
       return false;
     } else {
       // print('here');

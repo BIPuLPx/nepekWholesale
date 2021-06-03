@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
-
 import 'navigate.dart';
 import 'on_message_popup.dart';
 
@@ -68,7 +67,6 @@ class _NotificationsState extends State<Notifications> {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      _saveNotification(message);
       _navigate(message.data);
     });
 
@@ -96,12 +94,12 @@ class _NotificationsState extends State<Notifications> {
 
   Future _sendToBackend(String token) async {
     final data = {
-      "entity_type": "seller",
+      "entity_type": "buyer",
       "entity_id": UserPreferences().getBuyerKey(),
       "device_token": token
     };
     final response = await http.post(
-      httpUri(peopleApi, 'sellers/device_token'),
+      httpUri(peopleApi, 'customers/device_token'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -113,7 +111,8 @@ class _NotificationsState extends State<Notifications> {
   }
 
   void checkTokenAdded() async {
-    if (UserPreferences().getDeviceToken() == null) {
+    if (UserPreferences().getDeviceToken() == null &&
+        UserPreferences().getLoggedIn() == true) {
       String fcmToken = await messaging.getToken();
       _sendToBackend(fcmToken);
     }

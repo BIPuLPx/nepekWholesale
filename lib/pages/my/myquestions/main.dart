@@ -24,10 +24,16 @@ class MyQnasLayout extends StatelessWidget {
                   padding: EdgeInsets.only(left: 15, right: 15),
                   color: darkTheme ? Colors.black : Colors.white,
                   child: InkWell(
-                    onTap: () => Navigator.pushNamed(context, 'view_product',
-                        arguments: {
-                          'product_id': qna['productID'],
-                        }),
+                    onTap: () {
+                      if (qna['answer'] == null)
+                        Navigator.pushNamed(context, 'view_product',
+                            arguments: {
+                              'product_id': qna['productID'],
+                            });
+                      else
+                        Navigator.pushNamed(context, 'view_qna',
+                            arguments: qna['_id']);
+                    },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

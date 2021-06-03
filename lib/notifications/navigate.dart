@@ -5,26 +5,25 @@ class Navigate {
   Navigate(this.homeContext);
 
   void navigate(data) {
-    print(data);
     switch (data['page']) {
-      case 'view_product':
-        _viewProduct(data);
-        break;
-
       case 'view_order':
         _vieworder(data);
         break;
 
-      case 'answer':
-        _answer(data);
+      case 'view_qna':
+        _viewQna(data);
         break;
 
-      case 'reply_review':
-        _replyReview(data);
+      case 'view_review':
+        _viewReview(data);
         break;
 
-      case 'transactions':
-        _transactions(data);
+      case 'give_review':
+        _giveReview(data);
+        break;
+
+      case 'returns':
+        _returns();
         break;
 
       default:
@@ -32,32 +31,21 @@ class Navigate {
     }
   }
 
-  void _transactions(data) =>
-      Navigator.of(homeContext).pushNamed('transactions');
-
-  void _replyReview(data) =>
-      Navigator.of(homeContext).pushNamed('reply_reviews', arguments: {
-        'refresh': () => print('refresh'),
-        'reviewID': data.review.ID
-      });
-
   void _vieworder(data) =>
       Navigator.of(homeContext).pushNamed('view_order', arguments: {
-        'order_id': data['buySysID'],
-        "refreshOrders": () => print('refresh'),
+        '_id': data['buySysID'],
       });
 
-  void _answer(data) =>
-      Navigator.of(homeContext).pushNamed('answer', arguments: {
-        "_id": data['qnaID'],
-        "refreshQna": () => print('refresh'),
-      });
+  void _viewQna(data) =>
+      Navigator.of(homeContext).pushNamed('view_qna', arguments: data['qsnID']);
 
-  void _viewProduct(data) =>
-      Navigator.of(homeContext).pushNamed('view_product', arguments: {
-        "productID": data['productID'],
-        "refreshStore": () => print('refresh'),
-      });
+  void _viewReview(data) => Navigator.of(homeContext)
+      .pushNamed('view_review', arguments: {'reviewID': data['reviewID']});
+
+  void _giveReview(data) => Navigator.of(homeContext).pushNamed('give_review',
+      arguments: {'id': data['buySysID'], 'refresh': () => print('refresh')});
+
+  void _returns() => Navigator.pushNamed(homeContext, 'my_returns');
 
   // _viewOrder(data) =>
   //     Navigator.of(homeContext).pushNamed('view_order', arguments: {
