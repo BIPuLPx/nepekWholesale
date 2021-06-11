@@ -9,8 +9,6 @@ class SpecificationsProvider with ChangeNotifier {
   var args;
 
   void clicked(Map val, bool keep) {
-    // print(val);
-    // print(keep);
     if (keep == true) {
       currentOptions.add(val['value']);
     } else {
@@ -25,7 +23,7 @@ class SpecificationsProvider with ChangeNotifier {
     isSending = true;
 
     notifyListeners();
-    args['changeSpecs'](currentOptions,allOptions,optionName).then((_)=>Navigator.of(context).pop());
-
+    args['changeSpecs'](currentOptions, allOptions, optionName)
+        .then((_) => Navigator.of(context).pop());
   }
 }

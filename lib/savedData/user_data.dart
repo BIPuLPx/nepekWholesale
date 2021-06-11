@@ -88,4 +88,10 @@ class UserPreferences {
   }
 
   getPkey() => _prefs.getString('pKey');
+
+  deviceTokenID(String type) {
+    _prefs.setString('deviceTokenID', type);
+  }
+
+  getdeviceTokenID() => _prefs.getString('deviceTokenID');
 }

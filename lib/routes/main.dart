@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/internet_checker/main.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:nepek_buyer/pages/buy/checkout/main.dart';
 import 'package:nepek_buyer/pages/buy/order_details/main.dart';
 import 'package:nepek_buyer/pages/buy/payment_methods/main.dart';
@@ -48,95 +50,223 @@ class RouteGenerator {
         );
 
       case 'profile':
-        return MaterialPageRoute(builder: (_) => Profile(args: args));
+        return PageTransition(
+          child: Profile(args: args),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'continue_with_email':
-        return MaterialPageRoute(builder: (_) => ContinueWithEmail(args: args));
+        return MaterialPageRoute(
+          builder: (_) => InternetChecker(
+            child: ContinueWithEmail(args: args),
+          ),
+        );
 
       case 'sign_up_with_email':
-        return MaterialPageRoute(builder: (_) => SignUpWithEmail());
+        return PageTransition(
+          child: InternetChecker(
+            child: SignUpWithEmail(),
+          ),
+          type: PageTransitionType.topToBottom,
+        );
 
       case 'search':
-        return MaterialPageRoute(builder: (_) => SearchPage());
+        return PageTransition(
+          child: InternetChecker(
+            child: SearchPage(),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'result':
-        return MaterialPageRoute(builder: (_) => ResultPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: ResultPage(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'filter_result':
-        return MaterialPageRoute(builder: (_) => FilterPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: FilterPage(args: args),
+          ),
+          type: PageTransitionType.topToBottom,
+        );
 
       case 'filter_price':
-        return MaterialPageRoute(builder: (_) => FilterPricePage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: FilterPricePage(args: args),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'filter_brands':
-        return MaterialPageRoute(builder: (_) => FilterBrandsPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: FilterBrandsPage(args: args),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'filter_options':
-        return MaterialPageRoute(
-            builder: (_) => FilterSpecificationsPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: FilterSpecificationsPage(args: args),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'view_product':
-        return MaterialPageRoute(
-          settings: RouteSettings(name: "view_product"),
-          builder: (_) => ViewProductPage(args: args),
+        return PageTransition(
+          child: InternetChecker(
+            child: ViewProductPage(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
         );
 
       case 'view_image':
-        return MaterialPageRoute(builder: (_) => ViewImageFull(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: ViewImageFull(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'cart':
-        return MaterialPageRoute(builder: (_) => CartTab(outside: true));
+        return PageTransition(
+          child: InternetChecker(
+            child: CartTab(outside: true),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'input_phone_number':
         return MaterialPageRoute(builder: (_) => VerifyPhoneNumber(args: args));
 
       case 'input_delivery_address':
-        return MaterialPageRoute(
-            builder: (_) => AddDeliveryAddress(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: AddDeliveryAddress(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       //MY
       case 'account':
-        return MaterialPageRoute(builder: (_) => AccountPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: AccountPage(args: args),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'address_book':
-        return MaterialPageRoute(builder: (_) => AddressBook(refresh: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: AddressBook(refresh: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'my_questions':
-        return MaterialPageRoute(builder: (_) => MyQuestions());
+        return PageTransition(
+          child: InternetChecker(
+            child: MyQuestions(),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'view_qna':
-        return MaterialPageRoute(builder: (_) => ViewQna(id: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: ViewQna(id: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'my_orders':
-        return MaterialPageRoute(builder: (_) => MyOrders());
+        return PageTransition(
+          child: InternetChecker(
+            child: MyOrders(),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'to_review':
-        return MaterialPageRoute(builder: (_) => ToReview());
+        return PageTransition(
+          child: InternetChecker(
+            child: ToReview(),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'give_review':
-        return MaterialPageRoute(builder: (_) => GiveReview(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: GiveReview(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'my_wishlists':
-        return MaterialPageRoute(builder: (_) => MyWishLists());
+        return PageTransition(
+          child: InternetChecker(
+            child: MyWishLists(),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
+      // return MaterialPageRoute(builder: (_) => MyWishLists());
 
       case 'view_order':
-        return MaterialPageRoute(builder: (_) => ViewOrder(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: ViewOrder(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'my_returns':
-        return MaterialPageRoute(builder: (_) => Returns());
+        return PageTransition(
+          child: InternetChecker(
+            child: Returns(),
+          ),
+          type: PageTransitionType.bottomToTop,
+        );
 
       case 'eligible_returns':
-        return MaterialPageRoute(builder: (_) => EligibleReturns(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: EligibleReturns(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       //Products
       case 'reviews':
-        return MaterialPageRoute(builder: (_) => ReviewsPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: ReviewsPage(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'qnas':
-        return MaterialPageRoute(builder: (_) => QnaPage(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: QnaPage(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'ask_a_qsn':
-        return MaterialPageRoute(builder: (_) => AskaQuestion(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: AskaQuestion(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'carasoul_landing':
         return MaterialPageRoute(builder: (_) => CarasoulLanding(args: args));
@@ -146,26 +276,46 @@ class RouteGenerator {
             builder: (_) => FeaturedBrandLanding(args: args));
 
       case 'checkout':
-        return MaterialPageRoute(builder: (_) => Checkout(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: Checkout(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'payment_method':
-        return MaterialPageRoute(
+        return PageTransition(
+          child: InternetChecker(
+            child: PaymentMethods(args: args),
+          ),
           settings: RouteSettings(name: "payment_method"),
-          builder: (_) => PaymentMethods(args: args),
+          type: PageTransitionType.rightToLeft,
         );
 
       case 'order_details':
-        return MaterialPageRoute(builder: (_) => OrderDetails(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: OrderDetails(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       case 'webview':
-        return MaterialPageRoute(builder: (_) => NepekWebView(args: args));
+        return PageTransition(
+          child: InternetChecker(
+            child: NepekWebView(args: args),
+          ),
+          type: PageTransitionType.rightToLeft,
+        );
 
       default:
         // return MaterialPageRoute(builder: (_) => SellerStore());
 
         return MaterialPageRoute(
           settings: RouteSettings(name: "home"),
-          builder: (_) => HomePage(),
+          builder: (_) => InternetChecker(
+            child: HomePage(),
+          ),
         );
     }
   }

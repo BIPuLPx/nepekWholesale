@@ -30,28 +30,26 @@ class WishListsLayout extends StatelessWidget {
       }
     }
 
-    return GestureDetector(
-      onTap: () {
-        ProductChanges().increaseClick(_product.id).then((value) {
-          if (value == 200) {
-            Navigator.pushNamed(context, 'view_product', arguments: {
-              'product_id': _product.id.toString(),
-              'product_uid': _product.imgDir.toString()
-            });
-          }
-        });
-      },
-      child: Card(
+    return Container(
+      margin: EdgeInsets.only(top: 15),
+      child: GestureDetector(
+        onTap: () async {
+          Navigator.pushNamed(context, 'view_product', arguments: {
+            'product_id': _product.id.toString(),
+          });
+          await ProductChanges().increaseClick(_product.id);
+        },
         child: Stack(
           children: [
             Container(
+              color: Colors.white,
               padding: EdgeInsets.all((10)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // mainAxisAlignment: MainAx,
                 children: [
                   Image.network(
-                    '$imageCdn/${_product.imgDir}/miniThumb/${_product.miniThumb}',
+                    '$imgUrl/productImages/${_product.imgDir}/miniThumbnail/${_product.miniThumb}',
                     height: 100,
                     width: 100,
                   ),

@@ -21,7 +21,7 @@ class SyncDeliveryAddresses {
     if (UserPreferences().getLoggedIn() != null &&
         UserPreferences().getLoggedIn() != false) {
       final response = await http.get(
-        httpUri(peopleApi, 'customers/my_delivery_addresses'),
+        httpUri(serviceOne, 'customers/my_delivery_addresses'),
         headers: tokenHeader(),
       );
       final resData = jsonDecode(response.body);
@@ -39,7 +39,7 @@ class SyncDeliveryAddresses {
     var fetchedData;
     var response;
     response = await http.get(
-      httpUri(peopleApi, 'delivery_address/get_all'),
+      httpUri(serviceOne, 'delivery_address/get_all'),
     );
     fetchedData = jsonDecode(response.body);
 
@@ -62,7 +62,7 @@ class SyncDeliveryAddresses {
       return false;
     } else {
       final response = await http.get(
-        httpUri(peopleApi, 'changes/get?of=delivery_address'),
+        httpUri(serviceOne, 'changes/get?of=delivery_address'),
       );
       final Map backendData = jsonDecode(response.body);
       final backEndkey = backendData['new_id'];

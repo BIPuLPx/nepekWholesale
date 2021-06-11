@@ -23,7 +23,7 @@ class SyncCustomProducts {
     } else {
       // print('here');
       final response = await http.get(
-          httpUri(productApi, 'custom_products/check_changed?type=$name'),
+          httpUri(serviceTwo, 'custom_products/check_changed?type=$name'),
           headers: {
             'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
           });
@@ -41,7 +41,7 @@ class SyncCustomProducts {
   Future crdlCustomProducts(String productID, String crdl) async {
     final response = await put(
         httpUri(
-            productApi, 'custom_products/$crdl?type=wishlist&key=$productID'),
+            serviceTwo, 'custom_products/$crdl?type=wishlist&key=$productID'),
         headers: {
           'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
         });
@@ -52,7 +52,7 @@ class SyncCustomProducts {
 
   Future getCustomProducts(String name) async {
     final response = await http.get(
-        httpUri(productApi, 'custom_products/get_raw?type=$name'),
+        httpUri(serviceTwo, 'custom_products/get_raw?type=$name'),
         headers: {
           'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
         });

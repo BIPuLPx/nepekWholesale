@@ -17,7 +17,7 @@ class ViewOrderProvider extends ChangeNotifier {
   Future getOrderData() async {
     // print(id);
     final response = await get(
-      httpUri(peopleApi, 'buy_system/buyer/single_order?key=$id'),
+      httpUri(serviceOne, 'buy_system/buyer/single_order?key=$id'),
       headers: tokenHeader(),
     );
     orderData = jsonDecode(response.body);

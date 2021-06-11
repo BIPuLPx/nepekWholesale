@@ -25,7 +25,7 @@ class ReviewsState extends ChangeNotifier {
     var response;
     response = await http.get(
       httpUri(
-        productApi,
+        serviceTwo,
         'reviews/buyer/reviews?key=$productId&limit=8&page=$nextPage',
       ),
     );

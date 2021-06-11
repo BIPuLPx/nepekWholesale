@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/empty_data/main.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -17,7 +18,7 @@ class MyQuestionsProvider with ChangeNotifier {
   Future fetchQna() async {
     // print('here');
     final response = await http.get(
-      httpUri(productApi, 'qna/buyer/own_qnas?type=normal'),
+      httpUri(serviceTwo, 'qna/buyer/own_qnas?type=normal'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
@@ -38,25 +39,9 @@ class MyQuestionsProvider with ChangeNotifier {
 class NoQnas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          SizedBox(height: 200),
-          Image.asset(
-            'assets/others/no_qnas.png',
-            height: 150,
-          ),
-          SizedBox(height: 30),
-          NepekText(
-            'No QNAs',
-            fontSize: 25,
-            fontWeight: FontWeight.w500,
-            color: AppColors.officialMatch,
-          ),
-        ],
-      ),
+    return EmptyData(
+      label: 'No QNAs',
+      asset: 'no_qnas',
     );
   }
 }

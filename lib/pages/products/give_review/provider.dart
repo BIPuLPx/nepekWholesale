@@ -41,7 +41,7 @@ class GiveReviewProvider with ChangeNotifier {
 
   Future getProduct() async {
     final res = await get(
-      httpUri(peopleApi, 'buy_system/buyer/to_review?type=single&id=$id'),
+      httpUri(serviceOne, 'buy_system/buyer/to_review?type=single&id=$id'),
       headers: tokenHeader(),
     );
     product = jsonDecode(res.body);
@@ -76,6 +76,7 @@ class GiveReviewProvider with ChangeNotifier {
   }
 
   void setImg(String path, int index, String imgName) {
+    print(index);
     for (var imgpath in imagePaths) {
       if (imagePaths.indexOf(imgpath) == index) {
         imgpath['imgPath'] = path;
@@ -113,28 +114,6 @@ class GiveReviewProvider with ChangeNotifier {
       PickedFile image =
           await picker.getImage(source: source, imageQuality: 100);
       print(image);
-      // if (image != null) {
-      //   File croppedFile = await ImageCropper.cropImage(
-      //     sourcePath: image.path,
-      //     aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
-      //     maxHeight: 300,
-      //     maxWidth: 300,
-      //     compressQuality: 100,
-      //     compressFormat: ImageCompressFormat.png,
-      //     androidUiSettings: AndroidUiSettings(
-      //       statusBarColor: Colors.black,
-      //       toolbarColor: Colors.black,
-      //       toolbarWidgetColor: Colors.white,
-      //       hideBottomControls: true,
-      //       toolbarTitle: "Crop Review Image",
-      //     ),
-      //     iosUiSettings: IOSUiSettings(
-      //       aspectRatioLockEnabled: true,
-      //       title: "Crop Review Image",
-      //       // rotateButtonsHidden: true,
-      //       hidesNavigationBar: true,
-      //     ),
-      //   );
       final croppedFile = image;
       print(image);
       if (croppedFile != null) {
@@ -147,7 +126,6 @@ class GiveReviewProvider with ChangeNotifier {
         setImg(compressedImage.path, index, filename);
       }
       deleteImage(File(image.path));
-      // }
     }
   }
 
@@ -198,7 +176,7 @@ class GiveReviewProvider with ChangeNotifier {
 class AddBackend {
   Future addReview(Map data) async {
     final response = await put(
-      httpUri(productApi, 'reviews/buyer/give_review'),
+      httpUri(serviceTwo, 'reviews/buyer/give_review'),
       body: jsonEncode(data),
       headers: tokenHeaderContentType(),
     );
@@ -215,7 +193,7 @@ class AddBackend {
     final no = imgs.length;
 
     final String imageUploadUrl =
-        '$productApi/reviews/buyer/upload?no=$no&key=$imgDir';
+        '$serviceTwo/reviews/buyer/upload?no=$no&key=$imgDir';
 
     final imageUpload = MultipartRequest('POST', Uri.parse(imageUploadUrl));
     imageUpload.headers.addAll(tokenHeader());

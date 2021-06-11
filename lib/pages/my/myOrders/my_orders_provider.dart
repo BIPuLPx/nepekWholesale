@@ -16,7 +16,7 @@ class MyOrdersProvider with ChangeNotifier {
 
   Future getOrders() async {
     final response = await get(
-      httpUri(peopleApi, 'buy_system/buyer/get_orders'),
+      httpUri(serviceOne, 'buy_system/buyer/get_orders'),
       headers: {"Authorization": "Bearer ${UserPreferences().getJwtToken()}"},
     );
     allOrders = jsonDecode(response.body);

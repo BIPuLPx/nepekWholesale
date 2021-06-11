@@ -13,7 +13,7 @@ class BackEnd {
       filterURL = 'products/fetch/get?type=filter&subcategory=$searchText';
     }
     final response = await http.post(
-      httpUri(productApi, filterURL),
+      httpUri(serviceTwo, filterURL),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

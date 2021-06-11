@@ -54,7 +54,7 @@ class PhoneInputState extends ChangeNotifier {
     // print(UserPreferences().getJwtToken());
     loadingPopUP(context, "Adding phone number");
     var response = await http.put(
-      httpUri(peopleApi, 'customers/addPhone'),
+      httpUri(serviceOne, 'customers/addPhone'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'

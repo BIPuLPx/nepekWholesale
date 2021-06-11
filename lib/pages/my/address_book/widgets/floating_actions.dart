@@ -25,13 +25,15 @@ class FloatingActions extends StatelessWidget {
                 label: 'Add New',
               )
             : SizedBox(),
-        SizedBox(width: 15),
         provider.deliveryAddresses.length > 1
-            ? NepekButton(
-                onClick: () => changeDefault(context, provider),
-                icon: NepekButtonIcon(Icons.edit, reversed: true),
-                label: 'Change Default',
-                reverse: true,
+            ? Container(
+                margin: EdgeInsets.only(left: 15),
+                child: NepekButton(
+                  onClick: () => changeDefault(context, provider),
+                  icon: NepekButtonIcon(Icons.edit, reversed: true),
+                  label: 'Change Default',
+                  reverse: true,
+                ),
               )
             : SizedBox()
       ],

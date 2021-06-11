@@ -35,13 +35,15 @@ class RecommendedProducts extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 5),
                 Wrap(
-                    spacing: width * 0.03,
-                    runSpacing: width * 0.03,
-                    children: provider.storeProducts
-                        .map((product) =>
-                            RecommendedProductContainer(product: product))
-                        .toList()),
+                  spacing: width * 0.03,
+                  runSpacing: width * 0.03,
+                  children: provider.similarProducts
+                      .map((product) =>
+                          RecommendedProductContainer(product: product))
+                      .toList(),
+                ),
               ],
             ),
           )

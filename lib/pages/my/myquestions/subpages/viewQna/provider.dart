@@ -15,7 +15,7 @@ class ViewQnaProvider with ChangeNotifier {
   getQna(String id) async {
     final response = await get(
       httpUri(
-        productApi,
+        serviceTwo,
         'qna/buyer/single_qna/$id',
       ),
     );

@@ -19,7 +19,7 @@ class ToReviewProvider with ChangeNotifier {
 
   Future getReviews() async {
     final res = await get(
-      httpUri(peopleApi, 'buy_system/buyer/to_review?type=$type'),
+      httpUri(serviceOne, 'buy_system/buyer/to_review?type=$type'),
       headers: tokenHeader(),
     );
     toReview = jsonDecode(res.body);

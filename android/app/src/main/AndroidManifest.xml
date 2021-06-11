@@ -60,6 +60,18 @@
                     <data android:scheme="@string/fb_login_protocol_scheme" />
                 </intent-filter>
             </activity>
+
+
+        <!-- Add custom icon to the notifications -->
+        <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@drawable/ic_notification" />
+        
+        <!-- Change the color of the icon -->
+        <meta-data
+        android:name="com.google.firebase.messaging.default_notification_color"
+        android:resource="@color/notification_icon" />
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

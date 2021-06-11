@@ -13,7 +13,7 @@ class ViewProductBottomAppBar extends StatelessWidget {
         elevation: 2,
         child: Container(
           // color: appBarColor,
-          padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 5),
+          padding: EdgeInsets.all(10),
           child: AddToCart(),
         ));
   }

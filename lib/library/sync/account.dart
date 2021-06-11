@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/library/account/signOut.dart';
@@ -14,7 +13,7 @@ class SyncAccount {
       final String pKey = _prefs.getPkey();
       final res = await get(
         httpUri(
-          peopleApi,
+          serviceOne,
           'customers/checkPkey?pKey=$pKey',
         ),
         headers: tokenHeader(),

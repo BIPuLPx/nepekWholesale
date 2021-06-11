@@ -14,7 +14,7 @@ Future _sendToBackend(String token) async {
     "device_token": token
   };
   final response = await post(
-    httpUri(peopleApi, 'customers/device_token'),
+    httpUri(serviceOne, 'customers/device_token'),
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     },

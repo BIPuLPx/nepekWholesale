@@ -16,7 +16,7 @@ class ReturnsProvider with ChangeNotifier {
 
   Future getReturns() async {
     final res = await get(
-      httpUri(peopleApi, 'buy_system/buyer/returning_products'),
+      httpUri(serviceOne, 'buy_system/buyer/returning_products'),
       headers: tokenHeader(),
     );
     packages = jsonDecode(res.body);

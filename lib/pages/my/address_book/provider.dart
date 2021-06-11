@@ -31,7 +31,7 @@ class AddressBookProvider with ChangeNotifier {
   Future changeDefault(BuildContext context, Map body) async {
     loadingPopUP(context, 'Changing Default Address');
     final res = await put(
-      httpUri(peopleApi, 'customers/default_shipping_address'),
+      httpUri(serviceOne, 'customers/default_shipping_address'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(body),
     );

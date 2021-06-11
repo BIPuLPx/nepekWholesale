@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/functions/duplicate.dart';
 import 'package:nepek_buyer/library/sync/custom_products.dart';
+import 'package:nepek_buyer/pages/products/viewProduct/product_not_available.dart';
 import 'package:nepek_buyer/pages/products/viewProduct/view_product_layout.dart';
 import 'dart:convert';
 import 'package:nepek_buyer/savedData/apis.dart';
@@ -63,45 +64,52 @@ class ViewProductState with ChangeNotifier {
   Future fetchProduct() async {
     var response;
     response =
-        await http.get(httpUri(productApi, 'products/fetch/single/$productID'));
-    final res = jsonDecode(response.body);
-    // print(res);
-    productID = res['_id'];
-    imgDir = res['imgDir'];
-    sellerID = res['seller_id'];
-    productBrand = res['brand'];
-    productName = res['productName'];
-    productRating = double.parse(res['rating'].toString());
-    noOfReviews = res['ratingNo'];
-    productPrice = res['price'].toString();
-    productOptions = res['options'];
-    productHighlights = res['highlights'];
-    productSpecifications = res['specifications'];
-    productReviews = res['reviews'];
-    imgUrl = res['imgUrl'];
-    productImgs = res['imgs'];
-    miniThumb = res['miniThumb'];
-    productVariants = res['variants'];
-    productQnas = res['qnas'];
-    storeName = res['storeName'];
-    subCategory = res['subcategory'];
-    // getQnames(res['qna']);
-    storeProducts = res['store_products'];
-    similarProducts = res['similar_products'];
-    initialFetch = true;
-    //
-    populateQty(res['qty']);
-    getWishLists();
-    result = ViewProductLayout();
-    if (productOptions.length > 0 && productVariants.length > 0) {
-      var initVariants =
-          _optionsAndVariants.init(productOptions, productVariants);
-      avVariants = initVariants['avVariants'];
-      availableOpt = initVariants['availableOpt'];
-      selectedOption = initVariants['selectedOption'];
-      indexedVariants = initVariants['indexedVariants'];
-      useEffect();
+        await http.get(httpUri(serviceTwo, 'products/fetch/single/$productID'));
+
+    if (response.statusCode == 200) {
+      final res = jsonDecode(response.body);
+
+      // print(res);
+      productID = res['_id'];
+      imgDir = res['imgDir'];
+      sellerID = res['seller_id'];
+      productBrand = res['brand'];
+      productName = res['productName'];
+      productRating = double.parse(res['rating'].toString());
+      noOfReviews = res['ratingNo'];
+      productPrice = res['price'].toString();
+      productOptions = res['options'];
+      productHighlights = res['highlights'];
+      productSpecifications = res['specifications'];
+      productReviews = res['reviews'];
+      imgUrl = res['imgUrl'];
+      productImgs = res['imgs'];
+      miniThumb = res['miniThumb'];
+      productVariants = res['variants'];
+      productQnas = res['qnas'];
+      storeName = res['storeName'];
+      subCategory = res['subcategory'];
+      // getQnames(res['qna']);
+      storeProducts = res['store_products'];
+      similarProducts = res['similar_products'];
+      initialFetch = true;
+      //
+      populateQty(res['qty']);
+      getWishLists();
+      result = ViewProductLayout();
+      if (productOptions.length > 0 && productVariants.length > 0) {
+        var initVariants =
+            _optionsAndVariants.init(productOptions, productVariants);
+        avVariants = initVariants['avVariants'];
+        availableOpt = initVariants['availableOpt'];
+        selectedOption = initVariants['selectedOption'];
+        indexedVariants = initVariants['indexedVariants'];
+        useEffect();
+      } else {
+        notifyListeners();
+      }
     } else {
+      result = ProductNotAvailable();
       notifyListeners();
     }
   }

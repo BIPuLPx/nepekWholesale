@@ -4,6 +4,7 @@ import 'package:nepek_buyer/pages/my/address_book/widgets/delivery_address.dart'
 import 'package:nepek_buyer/pages/my/address_book/widgets/floating_actions.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/empty_data/main.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 
@@ -50,24 +51,9 @@ class AddressBookRoot extends StatelessWidget {
                 SizedBox(height: 100)
               ],
             )
-          : Container(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  SizedBox(height: 250),
-                  Image.asset(
-                    'assets/others/no_delivery_addresses.png',
-                    height: 100,
-                  ),
-                  SizedBox(height: 20),
-                  NepekText(
-                    'No Delivery Addresses',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.officialMatch,
-                  ),
-                ],
-              ),
+          : EmptyData(
+              asset: 'no_delivery_addresses',
+              label: 'No Delivery Addresses',
             ),
       floatingActionButton: FloatingActions(),
     );

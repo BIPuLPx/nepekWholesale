@@ -1,12 +1,10 @@
 final bool deploy = false;
 
-final productApi = deploy ? domainProducts : localproduct;
-final peopleApi = deploy ? domainPeople : localPeople;
+final serviceTwo = deploy ? domainProducts : localproduct;
+final serviceOne = deploy ? domainPeople : localPeople;
 
 final localIP = '192.168.1.102';
 
-final imageCdn =
-    'https://skiteimages.ams3.digitaloceanspaces.com/productImages';
 final imgUrl = 'https://spaces01.nepek.com';
 
 final domainPeople = 'https://service01.nepek.com';

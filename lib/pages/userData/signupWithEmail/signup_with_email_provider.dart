@@ -32,7 +32,7 @@ class SignUpWithEmailProvider with ChangeNotifier {
     final data = {"displayName": name, "email": email, "password": password};
 
     final response = await http.post(
-      httpUri(peopleApi, 'customers/signup'),
+      httpUri(serviceOne, 'customers/signup'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -43,6 +43,7 @@ class SignUpWithEmailProvider with ChangeNotifier {
       Navigator.of(context).pop();
       sucessFulPopup(context, "Account created sucessfully");
     } else if (response.statusCode == 203) {
+      Navigator.of(context).pop();
       errorPopup(context, "Email already exists,\nEnter a new one");
     }
   }

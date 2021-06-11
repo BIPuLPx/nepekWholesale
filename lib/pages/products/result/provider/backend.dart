@@ -17,7 +17,7 @@ class BackEnd {
     }
 
     final response = await http.post(
-      httpUri(productApi, searchURL),
+      httpUri(serviceTwo, searchURL),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

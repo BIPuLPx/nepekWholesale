@@ -34,6 +34,7 @@ class ResultAppBar extends StatelessWidget {
 
     final result = Provider.of<ResultState>(context);
     final setSort = result.setSort;
+    final getSort = result.getSort;
 
     final filterPageArgs = {
       'resultargs': result.args,
@@ -66,7 +67,7 @@ class ResultAppBar extends StatelessWidget {
                     ? result.args['name']
                     : searchText,
               ),
-              _resultActions(itemColor, filterPageArgs, setSort),
+              _resultActions(itemColor, filterPageArgs, setSort, getSort),
             ],
           ),
         ),
@@ -96,7 +97,12 @@ class ResultAppBar extends StatelessWidget {
         ),
       );
 
-  Container _resultActions(Color color, Object filterPageArgs, setSort) =>
+  Container _resultActions(
+    Color color,
+    Object filterPageArgs,
+    setSort,
+    getSort,
+  ) =>
       Container(
         margin: EdgeInsets.only(left: 10, right: 10),
         child: Row(
@@ -120,7 +126,7 @@ class ResultAppBar extends StatelessWidget {
               label: 'Sort',
               iconSize: 12,
               onClick: () {
-                searchResultSort(resultContext, setSort);
+                searchResultSort(resultContext, setSort, getSort);
               },
             ),
             IconButton(

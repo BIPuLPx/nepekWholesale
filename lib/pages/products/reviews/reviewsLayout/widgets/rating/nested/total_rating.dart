@@ -10,14 +10,15 @@ class TotalRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final review = Provider.of<ReviewsState>(context);
-    print(review.ratingMetaData);
+    print(review.ratingMetaData['rating']);
     return Container(
       margin: EdgeInsets.only(bottom: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           RatingBar.builder(
-            initialRating: review.ratingMetaData['rating'],
+            // initialRating: 4,
+            initialRating: review.ratingMetaData['rating'].toDouble(),
             minRating: 1,
             direction: Axis.horizontal,
             allowHalfRating: true,

@@ -17,7 +17,8 @@ class CartNoListener extends StatelessWidget {
             ? icon
             : Stack(
                 // fit: StackFit.loose,
-                overflow: Overflow.visible,
+                // overflow: Overflow.visible,
+                clipBehavior: Clip.none,
                 children: [
                   icon,
                   Positioned(

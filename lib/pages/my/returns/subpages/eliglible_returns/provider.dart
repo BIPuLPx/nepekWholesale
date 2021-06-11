@@ -23,7 +23,7 @@ class EligibleReturnsProvider with ChangeNotifier {
 
   Future getPackages() async {
     final res = await get(
-      httpUri(peopleApi, 'buy_system/buyer/eligible_returns'),
+      httpUri(serviceOne, 'buy_system/buyer/eligible_returns'),
       headers: tokenHeader(),
     );
     packages = jsonDecode(res.body);
@@ -49,7 +49,7 @@ class EligibleReturnsProvider with ChangeNotifier {
       'return_reason': reason + otherReason,
     };
     final res = await put(
-      httpUri(peopleApi, 'buy_system/buyer/return_product'),
+      httpUri(serviceOne, 'buy_system/buyer/return_product'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(data),
     );

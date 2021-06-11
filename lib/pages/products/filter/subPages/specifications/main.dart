@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/pages/products/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/products/filter/styles/apply_button_subpages.dart';
 import 'package:nepek_buyer/pages/products/filter/styles/apply_spinkit.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/specifications/specifications_provider.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'package:nepek_buyer/styles/colors.dart';
@@ -39,7 +40,8 @@ class FilterSpecificationsRoot extends StatelessWidget {
     final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     // print(args);
     return Scaffold(
-      appBar: filterAppBar(context),
+      appBar: defaultAppBar(context, args['title'], darkTheme),
+      backgroundColor: Colors.white,
       body: Container(
         child: ListView(
           physics: BouncingScrollPhysics(),
@@ -63,21 +65,16 @@ class FilterSpecificationsRoot extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: SizedBox(
-          height: 50,
-          width: double.infinity,
-          child: FlatButton(
-            color: buttonColor,
-            onPressed: () {
-              if (provider.currentOptions.length > 0)
-                provider.apply(context);
-              else
-                Navigator.of(context).pop();
-            },
-            child: provider.isSending
-                ? applySpinKit(buttonTextColor)
-                : applyText(buttonTextColor),
-          ),
+        child: ApplyButtonSubPages(
+          onPressed: () {
+            if (provider.currentOptions.length > 0)
+              provider.apply(context);
+            else
+              Navigator.of(context).pop();
+          },
+          child: provider.isSending
+              ? applySpinKit(buttonTextColor)
+              : applyText(buttonTextColor),
         ),
       ),
     );

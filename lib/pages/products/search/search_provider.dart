@@ -14,7 +14,7 @@ class SearchState extends ChangeNotifier {
     // print(autoCompletes);
     var response;
     response =
-        await http.get(httpUri(productApi, 'products/autocomplete?term=$term'));
+        await http.get(httpUri(serviceTwo, 'products/autocomplete?term=$term'));
     final res = jsonDecode(response.body);
     autoCompletes = res;
     // print(res);

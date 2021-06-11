@@ -15,7 +15,7 @@ class SellerType extends StatelessWidget {
         color: Colors.white,
         child: Image.asset(
           'assets/others/nepek_sell.png',
-          height: 12,
+          height: 11,
         ),
       );
     else if (type == 1)
@@ -24,7 +24,7 @@ class SellerType extends StatelessWidget {
         color: Colors.white,
         child: Image.asset(
           'assets/others/elite_sell.png',
-          height: 12,
+          height: 11,
         ),
       );
     else

@@ -99,7 +99,7 @@ class _NotificationsState extends State<Notifications> {
       "device_token": token
     };
     final response = await http.post(
-      httpUri(peopleApi, 'customers/device_token'),
+      httpUri(serviceOne, 'customers/device_token'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -107,6 +107,7 @@ class _NotificationsState extends State<Notifications> {
     );
     if (response.statusCode == 200) {
       UserPreferences().deviceToken(true);
+      UserPreferences().deviceTokenID(token);
     }
   }
 
@@ -118,95 +119,3 @@ class _NotificationsState extends State<Notifications> {
     }
   }
 }
-
-// class Notifications {
-//   FlutterLocalNotificationjsPlugin fltNotification;
-//   final messaging = FirebaseMessaging.instance;
-
-//   void configureFcm(context) {
-//     'here');
-//     var androiInit = AndroidInitializationSettings('@mipmap/ic_launcher');
-
-//     var iosInit = IOSInitializationSettings();
-
-//     var initSetting = InitializationSettings(android: androiInit, iOS: iosInit);
-
-//     fltNotification = FlutterLocalNotificationsPlugin();
-
-//     fltNotification.initialize(initSetting);
-
-//     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-//       'Got a message whilst in the foreground!');
-//       'Message data: ${message.data}');
-
-//       if (message.notification != null) {
-//         'Message also contained a notification: ${message.notification}');
-//       }
-//       showNotification();
-//     });
-//   }
-//   // void configureFcm(context) {
-//   //   final _navigate = Navigate(context);
-//   //   configure(
-//   //     onMessage: (Map<String, dynamic> message) async {
-//   //       'onMessage : $message');
-//   //       showDialog(
-//   //         context: context,
-//   //         builder: (context) => AlertDialog(
-//   //           content: ListTile(
-//   //             title: Text(message['notification']['title']),
-//   //             subtitle: Text(message['notification']['body']),
-//   //           ),
-//   //           actions: <Widget>[
-//   //             FlatButton(
-//   //               child: Text('Ok'),
-//   //               onPressed: () => Navigator.of(context).pop(),
-//   //             ),
-//   //           ],
-//   //         ),
-//   //       );
-//   //     },
-//   //     onLaunch: (Map<String, dynamic> message) async {
-//   //       // message);
-//   //       'on Launch');
-//   //       _navigate.navigate(message['data']);
-//   //       // Navigator.of(context).pushNamed('view_order',arguments: {"orderKey":})
-//   //     },
-//   //     onResume: (Map<String, dynamic> message) async {
-//   //       // message);
-//   //       'on Resume');
-//   //       _navigate.navigate(message['data']);
-//   //     },
-//   //     // onBackgroundMessage:
-//   //   );
-//   // }
-
-//   void showNotification() async {
-//     var androidDetails =
-//         AndroidNotificationDetails('1', 'channelName', 'channel Description');
-
-//     var iosDetails = IOSNotificationDetails();
-
-//     var generalNotificationDetails =
-//         NotificationDetails(android: androidDetails, iOS: iosDetails);
-
-//     await fltNotification.show(0, 'title', 'body', generalNotificationDetails,
-//         payload: 'Notification');
-//   }
-
-//   void notitficationPermission() async {
-//     NotificationSettings settings = await messaging.requestPermission(
-//       alert: true,
-//       announcement: false,
-//       badge: true,
-//       carPlay: false,
-//       criticalAlert: false,
-//       provisional: false,
-//       sound: true,
-//     );
-//   }
-
-//   void _getDeviceToken() async {
-
-//   }
-// }

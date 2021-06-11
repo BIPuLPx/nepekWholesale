@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/products/filter/styles/apply_button_subpages.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/price/price_provider.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
@@ -37,7 +39,8 @@ class FilterPricePageRoot extends StatelessWidget {
     provider.init(args);
 
     return Scaffold(
-      appBar: filterAppBar(context),
+      appBar: defaultAppBar(context, 'Price', darktheme),
+      backgroundColor: Colors.white,
       body: Center(
         child: Container(
           margin: EdgeInsets.only(left: 10, right: 10),
@@ -66,19 +69,17 @@ class FilterPricePageRoot extends StatelessWidget {
         ),
       ),
       floatingActionButton: BottomAppBar(
-        child: SizedBox(
-          height: 42,
+        child: ApplyButtonSubPages(
           // width: double.infinity,
-          child: FlatButton(
-            color: buttonColor,
-            onPressed: () {
-              provider.changed(context);
-            },
-            child: Text('Apply',
-                style: GoogleFonts.poppins(
-                  color: buttonTextColor,
-                  fontWeight: FontWeight.w600,
-                )),
+          onPressed: () {
+            provider.changed(context);
+          },
+          child: Text(
+            'Apply',
+            style: GoogleFonts.poppins(
+              color: buttonTextColor,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),

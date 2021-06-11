@@ -17,6 +17,7 @@ class FilterItemContainer extends StatelessWidget {
       // decoration: BoxDecoration(
       margin: EdgeInsets.only(bottom: 10),
       decoration: const BoxDecoration(
+        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             width: 2.0,
@@ -38,14 +39,15 @@ class FilterItemContainer extends StatelessWidget {
       // Colors.grey
       child: Material(
         borderRadius: BorderRadius.circular(1.0),
+        color: Colors.white,
         // color: _size.white,
         child: InkWell(
           borderRadius: BorderRadius.circular(1.0),
           onTap: () {
             Navigator.pushNamed(context, route, arguments: args);
           },
-          splashColor: AppColors.inkWellSplash,
-          highlightColor: Colors.white10,
+          // splashColor: AppColors.inkWellSplash,
+          // highlightColor: Colors.white10,
           // splashFactory: InkSplash.splashFactory,
           child: Container(
             padding: EdgeInsets.all(10.0),

@@ -9,14 +9,14 @@ class HomePageSync {
 
   Future<void> getHomePageData() async {
     final response =
-        await http.get(httpUri(peopleApi, 'homescreen/buyer/layouts'));
+        await http.get(httpUri(serviceOne, 'homescreen/buyer/layouts'));
     final data = jsonDecode(response.body);
     _homePageBox.put('data', data);
   }
 
   Future<void> getCarousel() async {
     final response =
-        await http.get(httpUri(peopleApi, 'homescreen/buyer/carousels'));
+        await http.get(httpUri(serviceOne, 'homescreen/buyer/carousels'));
     final data = jsonDecode(response.body);
     _homePageBox.put('carousel', data);
   }

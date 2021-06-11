@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/pages/products/filter/styles/appBar.dart';
+import 'package:nepek_buyer/pages/products/filter/styles/apply_button_subpages.dart';
 import 'package:nepek_buyer/pages/products/filter/styles/apply_spinkit.dart';
+import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:provider/provider.dart';
-
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
-
 import 'brand_provider.dart';
 
 class FilterBrandsPage extends StatelessWidget {
@@ -43,7 +42,8 @@ class FilterBrandsPageRoot extends StatelessWidget {
     final buttonTextColor = darkTheme ? Colors.black : Colors.white;
     // print(widget.args)
     return Scaffold(
-      appBar: filterAppBar(context),
+      appBar: defaultAppBar(context, 'Brands', false),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
           physics: BouncingScrollPhysics(),
@@ -56,27 +56,22 @@ class FilterBrandsPageRoot extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: SizedBox(
-          height: 50,
-          width: double.infinity,
-          child: FlatButton(
-            color: buttonColor,
-            onPressed: () {
-              if (provider.currentBrands.length > 0)
-                provider.apply(context);
-              else
-                Navigator.pop(context);
-            },
-            child: provider.isApplying
-                ? applySpinKit(buttonTextColor)
-                : Text(
-                    'Apply',
-                    style: GoogleFonts.poppins(
-                      color: buttonTextColor,
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: ApplyButtonSubPages(
+          onPressed: () {
+            if (provider.currentBrands.length > 0)
+              provider.apply(context);
+            else
+              Navigator.pop(context);
+          },
+          child: provider.isApplying
+              ? applySpinKit(buttonTextColor)
+              : Text(
+                  'Apply',
+                  style: GoogleFonts.poppins(
+                    color: buttonTextColor,
+                    fontWeight: FontWeight.w600,
                   ),
-          ),
+                ),
         ),
       ),
     );

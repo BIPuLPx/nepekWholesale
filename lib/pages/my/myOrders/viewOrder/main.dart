@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
@@ -64,7 +62,7 @@ class ViewOrderLayout extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              OrderImage(order: order),
+              OrderImage(image: order['image']),
               SizedBox(height: 20),
               _status(order),
               SizedBox(height: 20),
@@ -200,20 +198,15 @@ class ViewOrderLayout extends StatelessWidget {
 }
 
 class OrderImage extends StatelessWidget {
-  const OrderImage({
-    Key key,
-    @required this.order,
-  }) : super(key: key);
-
-  final Map order;
+  final String image;
+  const OrderImage({Key key, this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
       child: NepekImageNetwork(
-        url:
-            '${order['imgUrl']}/productImages/${order['imgDir']}/miniThumbnail/${order['miniThumb']}',
+        url: image,
         height: 150,
         width: 150,
       ),

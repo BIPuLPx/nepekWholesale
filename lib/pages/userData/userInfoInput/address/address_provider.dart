@@ -54,11 +54,6 @@ class AddDeliveryAddressState extends ChangeNotifier {
     allAreas = deliveryAddressbox.get('areas');
     allCities = deliveryAddressbox.get('cities');
 
-    print(deliveryStates);
-    print(allDistricts);
-    print(allAreas);
-    print(allCities);
-
     if (args['type'] == 'edit') {
       initEdit(args['value']);
     } else {
@@ -193,7 +188,7 @@ class AddDeliveryAddressState extends ChangeNotifier {
   //   loadingPopUP(context, 'Adding Address');
   //   if (!isDuplicateAddress(context)) {
   //     var response = await http.put(
-  //       '$peopleApi/customers/shippingaddress?type=add',
+  //       '$serviceOne/customers/shippingaddress?type=add',
   //       headers: {
   //         'Content-Type': 'application/json; charset=UTF-8',
   //         'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'
@@ -258,7 +253,7 @@ class SendData {
 
   Future<int> addDeliveryAddress(Map data) async {
     final res = await http.put(
-      httpUri(peopleApi, 'customers/shippingaddress?type=add'),
+      httpUri(serviceOne, 'customers/shippingaddress?type=add'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(data),
     );
@@ -274,7 +269,7 @@ class SendData {
 
   Future<int> editDeliveryAddress(Map data) async {
     final res = await http.put(
-      httpUri(peopleApi, 'customers/edit_shipping_address'),
+      httpUri(serviceOne, 'customers/edit_shipping_address'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(data),
     );

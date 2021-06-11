@@ -19,7 +19,7 @@ class SyncClassification {
       return false;
     } else {
       final response = await http.get(httpUri(
-        productApi,
+        serviceTwo,
         'classification/get/check',
       ));
       final Map backendData = jsonDecode(response.body);
@@ -35,7 +35,7 @@ class SyncClassification {
   Future _fetchClassification() async {
     final classifyBox = Hive.box('classifications');
     var response;
-    response = await http.get(httpUri(productApi, 'classification/get/all'));
+    response = await http.get(httpUri(serviceTwo, 'classification/get/all'));
     final Map backendData = jsonDecode(response.body);
     classifyBox.put('categories_change', backendData['change']);
     classifyBox.put('classes', backendData['class']);

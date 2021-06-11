@@ -15,7 +15,7 @@ class WishListsProvider with ChangeNotifier {
 
   Future getMyWishLists() async {
     final response = await get(
-      httpUri(productApi, 'custom_products/get?type=wishlist'),
+      httpUri(serviceTwo, 'custom_products/get?type=wishlist'),
       headers: {'Authorization': 'Bearer ${UserPreferences().getJwtToken()}'},
     );
 

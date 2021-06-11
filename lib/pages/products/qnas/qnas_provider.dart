@@ -27,7 +27,7 @@ class QnasProvider with ChangeNotifier {
   Future fetchQnas() async {
     var response;
     response = await http.get(
-        httpUri(productApi, 'qna/buyer/qnas?key=$productId&limit=8&page=1'));
+        httpUri(serviceTwo, 'qna/buyer/qnas?key=$productId&limit=8&page=1'));
     var data = jsonDecode(response.body);
 
     qnas.addAll(data['qnas']);

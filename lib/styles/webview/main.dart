@@ -40,7 +40,9 @@ class _NepekWebViewState extends State<NepekWebView> {
           ),
           isLoading
               ? Center(
-                  child: NepekLogoLoader(),
+                  child: NepekLogoLoader(
+                    size: 50,
+                  ),
                 )
               : Stack(),
         ],

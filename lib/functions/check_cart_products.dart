@@ -32,7 +32,7 @@ Future isCartItemsAvailable() async {
         isAv = false;
     }
 
-    final res = await post(httpUri(productApi, 'cart_products/check'),
+    final res = await post(httpUri(serviceTwo, 'cart_products/check'),
         headers: contentTypeHeader(), body: jsonEncode(toSend));
 
     bool changedPrice = false;

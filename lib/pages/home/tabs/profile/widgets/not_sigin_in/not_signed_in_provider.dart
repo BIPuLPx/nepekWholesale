@@ -57,7 +57,7 @@ class NotSignedInState extends ChangeNotifier {
 /////////////
   Future backendVerify(BuildContext context, Map authData) async {
     final response = await http.post(
-      httpUri(peopleApi, '/customers/oauth'),
+      httpUri(serviceOne, '/customers/oauth'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -39,7 +39,7 @@ class ContinueWithEmailProvider with ChangeNotifier {
       loadingPopUP(context, "Signing In");
       final data = {"email": email, "password": password};
       final response = await http.post(
-        httpUri(peopleApi, 'customers/signin'),
+        httpUri(serviceOne, 'customers/signin'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },

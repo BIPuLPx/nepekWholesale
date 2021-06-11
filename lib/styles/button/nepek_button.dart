@@ -83,7 +83,7 @@ class NepekButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           splashColor: Colors.transparent,
-          highlightColor: Colors.purple.withOpacity(0.2),
+          highlightColor: Colors.blue.withOpacity(0.05),
           child: Container(
             padding: EdgeInsets.all(padding == null ? 10 : padding),
             decoration: BoxDecoration(

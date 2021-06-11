@@ -36,7 +36,7 @@ class CheckoutProvider with ChangeNotifier {
 
   Future getDeliveryCharge(String city) async {
     final res = await get(
-      httpUri(peopleApi, 'delivery_address/delivery_charge?id=$city'),
+      httpUri(serviceOne, 'delivery_address/delivery_charge?id=$city'),
     );
     deliveryCharge = jsonDecode(res.body)['delivery_charge'];
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/text/end_of_result.dart';
 import 'package:nepek_buyer/pages/products/result/styles/loading_more.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
@@ -21,7 +20,7 @@ class ResultState with ChangeNotifier {
   int nextPage = 1;
   Widget loadingMore = LoadingMore(value: 'Getting More Products');
   Widget loaded = EndOfResult(label: "All products loaded");
-  Map sortBy = {'sort': 'clicks', 'by': 'desc'};
+  Map sortBy = {'sort': 'clicks', 'by': '-1'};
   Map fetchedFilter;
   bool toFilter;
   Map lastFiltered = {};
@@ -92,13 +91,11 @@ class ResultState with ChangeNotifier {
   }
 
   Future refreshPageWithFilter(Map queryFilter1, Map lastFiltered1) async {
-    // print(queryFilter);
     queryFilter = queryFilter1;
     lastFiltered = lastFiltered1;
-    // bool isNextPage = true;
     nextPage = 1;
     loadingMore = LoadingMore(value: 'Getting More Products');
-    sortBy = {'sort': 'clicks', 'by': 'asc'};
+    sortBy = {'sort': 'clicks', 'by': '-1'};
     await fetchInitialSearch();
   }
 
@@ -108,5 +105,11 @@ class ResultState with ChangeNotifier {
     loadingMore = LoadingMore(value: 'Getting More Products');
     sortBy = {'sort': 'clicks', 'by': 'asc'};
     await fetchInitialSearch();
+  }
+
+  bool getSort(Map sortedBy) {
+    bool isSorted =
+        sortBy['sort'] == sortedBy['sort'] && sortBy['by'] == sortedBy['by'];
+    return isSorted;
   }
 }

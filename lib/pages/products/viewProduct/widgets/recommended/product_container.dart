@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/library/backend_changes/product_changes.dart';
 import 'package:nepek_buyer/library/product_class.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/container_with_shadow.dart';
@@ -17,8 +18,12 @@ class RecommendedProductContainer extends StatelessWidget {
     final Product _product = Product(product);
 
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, 'view_product',
-          arguments: {'product_id': _product.id}),
+      onTap: () async {
+        Navigator.pushNamed(context, 'view_product',
+            arguments: {'product_id': _product.id});
+
+        await ProductChanges().increaseClick(_product.id);
+      },
       child: Container(
         padding: EdgeInsets.all(5),
         width: width,

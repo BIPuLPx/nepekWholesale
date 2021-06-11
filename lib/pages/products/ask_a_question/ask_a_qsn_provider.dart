@@ -30,7 +30,7 @@ class AskaQuestionProvider with ChangeNotifier {
     } else {
       loadingPopUP(context, "Asking Question");
       final response = await http.post(
-        httpUri(productApi, 'qna/buyer/ask_question'),
+        httpUri(serviceTwo, 'qna/buyer/ask_question'),
         headers: tokenHeaderContentType(),
         body: jsonEncode(data),
       );

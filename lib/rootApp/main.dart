@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nepek_buyer/internet_checker/main.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/rootApp/root_app_provider.dart';
 import 'package:nepek_buyer/rootApp/widgets/ThemeSwitcher/main.dart';

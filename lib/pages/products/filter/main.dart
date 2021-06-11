@@ -28,7 +28,7 @@ class FilterPageRoot extends StatelessWidget {
     final filter = Provider.of<FilterProvider>(context);
 
     if (filter.initialState == false) {
-      print(args);
+      // print(args);
       filter.args = args;
       filter.fetchedFilter = {...args['fetchedFilter']};
       filter.queryFilter = {...args['queryFilter']};
@@ -48,22 +48,23 @@ class MainFilterPage extends StatelessWidget {
 
     // print(filter.queryFilter);
     // print(filter.fetchedFilter);
-    print(filter.totalProducts);
+    // print(filter.totalProducts);
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: filterAppBar(context),
         body: Container(
           margin: EdgeInsets.only(left: 10, right: 10),
           child: ListView(
             physics: BouncingScrollPhysics(),
             children: [
-              // SizedBox(height: 10),
+              SizedBox(height: 20),
               FilterItemContainer(
                 text: 'Price',
                 route: 'filter_price',
                 args: {
                   'fetchedFilter': filter.fetchedFilter['price'],
                   'queryFilter': filter.queryFilter['price'],
-                  // 'min': filter.filteredBy['price']['min'],
+                  // 'min': filter.prfilteredBy['price']['min'],
                   // 'max': filter.filteredBy['price']['max'],
                   'priceChanged': filter.priceChanged
                 },
@@ -98,6 +99,7 @@ class MainFilterPage extends StatelessWidget {
                         text: specification['name'],
                         route: 'filter_options',
                         args: {
+                          'title': specification['name'],
                           'queryFilter': filter.queryFilter['specifications'],
                           // 'fetchedFilter': specification,
                           'fetchedFilter':
@@ -109,12 +111,6 @@ class MainFilterPage extends StatelessWidget {
                                   : specification,
 
                           'changeSpecs': filter.specsChanged
-
-                          // 'name': options['name'],
-                          // 'values': options['values'],
-                          // 'currentValues':
-                          // filter.pickrequiredOptions(options['name']),
-                          // 'setOptions': filter.setOptions,
                         },
                         bottom:
                             filter.getSelectedSpecs(specification['values']),
@@ -142,31 +138,43 @@ class BottomNav extends StatelessWidget {
     return BottomAppBar(
       child: Container(
         // color: ,
-        height: 60,
-        padding: EdgeInsets.only(left: 10, right: 10),
+        height: 80,
+        padding: EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: 42,
-              child: OutlineButton(
+            Container(
+              height: 500,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  primary: buttonColor,
+                  // highlightColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(color: buttonColor, width: 1.5),
+                  ),
+                ),
                 // splashColor: AppColors().(),
-                highlightColor: Colors.white,
 
-                highlightedBorderColor: buttonColor,
-                borderSide: BorderSide(color: buttonColor, width: 1.5),
                 onPressed: () => provider.reset(context),
                 child: provider.setResetApply
                     ? applySpinKit(buttonColor)
                     : _buttonText(buttonColor, 'Reset'),
               ),
             ),
-            SizedBox(
-              height: 45,
+            Container(
               width: deviceWidth * 0.6,
-              child: FlatButton(
+              height: 50,
+              child: TextButton(
                   onPressed: () => provider.apply(context),
-                  color: buttonColor,
+                  style: TextButton.styleFrom(
+                    backgroundColor: buttonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                  ),
                   child: provider.setLoadingApply
                       ? applySpinKit(buttonTextColor)
                       : Row(

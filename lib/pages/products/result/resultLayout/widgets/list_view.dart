@@ -27,10 +27,10 @@ class ListLayout extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           onTap: () async {
-            await ProductChanges().increaseClick(result.products[index]['_id']);
             Navigator.pushNamed(context, 'view_product', arguments: {
               'product_id': result.products[index]['_id'].toString()
             });
+            await ProductChanges().increaseClick(result.products[index]['_id']);
           },
           child: GridTile(
             child: Container(

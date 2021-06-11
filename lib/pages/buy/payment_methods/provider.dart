@@ -45,7 +45,7 @@ class PaymentMethodProvider with ChangeNotifier {
     loadingPopUP(context, 'Ordering');
 
     final response = await http.post(
-      httpUri(peopleApi, 'buy_system/buyer/buy'),
+      httpUri(serviceOne, 'buy_system/buyer/buy'),
       headers: tokenHeaderContentType(),
       body: jsonEncode(buySysData),
     );
