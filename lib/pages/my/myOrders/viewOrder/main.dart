@@ -3,6 +3,7 @@ import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:nepek_buyer/styles/text/format_date.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
 import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
@@ -93,7 +94,7 @@ class ViewOrderLayout extends StatelessWidget {
               SizedBox(height: 5),
               leftRightData(
                 "Price",
-                'NPR ${order['price']}.00',
+                formatPrice(order['price']),
                 fontSize: 16,
               ),
               SizedBox(height: 5),
@@ -106,14 +107,14 @@ class ViewOrderLayout extends StatelessWidget {
               order['delivery_charge'] != null
                   ? leftRightData(
                       "Delivery Charge",
-                      'NPR ${order['delivery_charge']}.00',
+                      formatPrice(order['delivery_charge']),
                       fontSize: 16,
                     )
                   : SizedBox(),
               SizedBox(height: 5),
               leftRightData(
                 "Total",
-                'NPR $totalPrice.00',
+                formatPrice(totalPrice),
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
               ),

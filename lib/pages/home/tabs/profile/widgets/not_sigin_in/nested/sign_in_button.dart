@@ -22,8 +22,10 @@ class SignInButton extends StatelessWidget {
     final darkMode = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
       margin: EdgeInsets.only(top: 15),
-      child: RaisedButton(
-        color: darkMode ? Colors.grey[900] : Colors.white,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: darkMode ? Colors.grey[900] : Colors.white,
+        ),
         onPressed: () {
           signinFn(context);
           // signinFn();

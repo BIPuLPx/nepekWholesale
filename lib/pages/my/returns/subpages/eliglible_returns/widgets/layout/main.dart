@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/my/returns/subpages/eliglible_returns/provider.dart';
 import 'package:nepek_buyer/pages/my/returns/subpages/eliglible_returns/widgets/reason/main.dart';
 import 'package:nepek_buyer/styles/text/format_date.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
 import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class EligibleReturnsLayout extends StatelessWidget {
                     SizedBox(height: 10),
                     leftRightData(
                       'Price',
-                      'NPR ${e['price']}',
+                      formatPrice(e['price']),
                     ),
                     leftRightData(
                       'Qty',

@@ -13,8 +13,8 @@ class EachSubCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(6),
-      width: deviceWidth * 0.16,
+      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 2),
+      width: deviceWidth * 0.19,
       child: Material(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

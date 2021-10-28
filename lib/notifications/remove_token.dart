@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart';
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
@@ -11,6 +13,6 @@ removeNotificationToken(String token) async {
       'notification_token/remove',
     ),
     headers: contentTypeHeader(),
-    body: data,
+    body: jsonEncode(data),
   );
 }

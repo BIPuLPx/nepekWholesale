@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/functions/duplicate.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-
 import 'provider.dart';
 
 class PaymentMethodsRoot extends StatelessWidget {
@@ -95,7 +95,7 @@ class PaymentMethodsRoot extends StatelessWidget {
           style: _leftRightStyles(),
         ),
         Text(
-          'NPR ${args['total'].toString()}.00',
+          formatPrice(args['total']),
           style: _leftRightStyles(),
         ),
       ],

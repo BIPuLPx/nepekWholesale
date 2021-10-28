@@ -5,8 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:nepek_buyer/functions/token_header.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
-import 'package:nepek_buyer/savedData/user_data.dart';
-import 'package:nepek_buyer/styles/popUps/errorPopUp.dart';
 import 'package:nepek_buyer/styles/popUps/loading_popup.dart';
 import 'package:nepek_buyer/styles/popUps/sucessPopup.dart';
 import 'package:nepek_buyer/styles/toasts/error_toast.dart';

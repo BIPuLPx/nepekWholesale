@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'functions/change_default_address.dart';
+import 'package:nepek_buyer/pages/my/address_book/functions/change_default_address.dart';
 
 class AddressBookProvider with ChangeNotifier {
   Map defaultDeliveryAddress;

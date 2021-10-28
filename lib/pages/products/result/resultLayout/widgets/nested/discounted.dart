@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/container_with_shadow.dart';
 
 class PerOff extends StatelessWidget {
   final String off;

@@ -45,6 +45,7 @@ class ListLayout extends StatelessWidget {
                         url: result.products[index]['imgUrl'],
                         dir: result.products[index]['imgDir'],
                         imgName: result.products[index]['miniThumb'],
+                        sellerType: _product.storeType,
                       ),
                       SizedBox(width: 15),
                       Expanded(

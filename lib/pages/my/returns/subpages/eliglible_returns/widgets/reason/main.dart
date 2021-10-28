@@ -76,6 +76,8 @@ class _ReasonSelectorState extends State<ReasonSelector> {
 
     return Column(
       children: [
+        NepekText(reason),
+        SizedBox(height: 10),
         Container(
           height: 50,
           width: width,

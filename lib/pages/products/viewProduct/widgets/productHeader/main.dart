@@ -13,6 +13,7 @@ class ProductHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ViewProductState>(context);
+    // print(product.store);
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(top: 10, left: 15, right: 15, bottom: 10),

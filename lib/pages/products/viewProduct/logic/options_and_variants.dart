@@ -134,6 +134,9 @@ class OptionsAndVariants {
   }
 
   getCurrentPriceAndQuantity(variants, currentOptions) {
+    print('here');
+    print(variants);
+    print(currentOptions);
     if (variants.length > 0 && currentOptions.length > 0) {
       final optionsLength = currentOptions.length;
       final variantLength = variants[0]['variants'].length;

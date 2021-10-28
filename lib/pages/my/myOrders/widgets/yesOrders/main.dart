@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-import 'package:nepek_buyer/styles/text/format_date.dart';
-import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
-import 'package:nepek_buyer/styles/text/trimName.dart';
 import 'package:provider/provider.dart';
 
 import '../../my_orders_provider.dart';
@@ -40,10 +35,4 @@ class MyOrdersLayout extends StatelessWidget {
               .toList(),
     );
   }
-
-  _statusDates(String type, String ddate) {
-    return ddate == null ? Container() : leftRightData(type, formatDate(ddate));
-  }
-
-  TextStyle _heading() => GoogleFonts.poppins(fontWeight: FontWeight.w700);
 }

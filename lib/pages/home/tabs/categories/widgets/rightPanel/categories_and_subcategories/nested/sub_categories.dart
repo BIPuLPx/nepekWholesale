@@ -6,17 +6,21 @@ class SubCategories extends StatelessWidget {
   SubCategories({this.subCategories});
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: subCategories
-          .map(
-            (subCategory) => EachSubCategory(
-              imgName: subCategory['imageName'],
-              imgdir: subCategory['imgDir'],
-              text: subCategory['label'],
-              id: subCategory['_id'],
-            ),
-          )
-          .toList(),
+    return Center(
+      child: Wrap(
+        // crossAxisAlignment: WrapCrossAlignment.center,
+        // alignment: WrapAlignment.center,
+        children: subCategories
+            .map(
+              (subCategory) => EachSubCategory(
+                imgName: subCategory['imageName'],
+                imgdir: subCategory['imgDir'],
+                text: subCategory['label'],
+                id: subCategory['_id'],
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

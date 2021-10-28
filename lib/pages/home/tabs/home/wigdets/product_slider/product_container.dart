@@ -5,6 +5,8 @@ import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:nepek_buyer/styles/rating.dart';
 import 'package:nepek_buyer/styles/seller_type.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -128,23 +130,17 @@ Positioned _price(rating, price, oldPrice) {
                   // fontWeight: FontWeight.w600,
                   ),
             ),
-            Text(
-              '${price.toString()}.00',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                fontSize: 17,
-              ),
+            NepekText(
+              formatPrice(price),
+              fontWeight: FontWeight.w600,
+              fontSize: 17,
             ),
           ],
         ),
         oldPrice != null
-            ? Text(
-                'NPR $oldPrice.00',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                  decoration: TextDecoration.lineThrough,
-                ),
+            ? NepekText(
+                formatPrice(oldPrice),
+                fontSize: 12,
               )
             : SizedBox(),
         rating == 0

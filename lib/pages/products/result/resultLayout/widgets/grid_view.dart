@@ -17,81 +17,82 @@ class GridLayout extends StatelessWidget {
     final bool isOff =
         _product.oldPrice != null && _product.oldPrice > _product.price;
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        // color: Colors.red,
-        color: Colors.white,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          onTap: () async {
-            Navigator.pushNamed(context, 'view_product', arguments: {
-              'product_id': result.products[index]['_id'].toString()
-            });
-            await ProductChanges().increaseClick(result.products[index]['_id']);
-          },
-          child: GridTile(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              child: Stack(
-                clipBehavior: Clip.none,
-                // overflow: Overflow.visible,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ResultProductImage(
-                        url: result.products[index]['imgUrl'],
-                        dir: result.products[index]['imgDir'],
-                        imgName: result.products[index]['miniThumb'],
-                      ),
-                      SizedBox(height: 10),
-                      Expanded(
-                        child: Container(
-                          child: ProductName(name: _product.productName),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    left: -8,
-                    top: -8,
-                    child: isOff ? PerOff(off: _product.off) : Container(),
-                  ),
-                  Positioned(
-                    bottom: 60,
-                    child: Column(
+    return Stack(
+      // fit: StackFit.v,
+      children: [
+        Material(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onTap: () async {
+              Navigator.pushNamed(context, 'view_product', arguments: {
+                'product_id': result.products[index]['_id'].toString()
+              });
+              await ProductChanges()
+                  .increaseClick(result.products[index]['_id']);
+            },
+            child: GridTile(
+              child: Container(
+                padding: EdgeInsets.all(8),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  // overflow: Overflow.visible,
+                  children: [
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ProductPrice(price: _product.price),
-                        isOff
-                            ? OldPrice(price: _product.oldPrice)
-                            : Container(),
+                        ResultProductImage(
+                          url: result.products[index]['imgUrl'],
+                          dir: result.products[index]['imgDir'],
+                          imgName: result.products[index]['miniThumb'],
+                          sellerType: _product.storeType,
+                        ),
+                        SizedBox(height: 10),
+                        Expanded(
+                          child: Container(
+                            child: ProductName(name: _product.productName),
+                          ),
+                        ),
                       ],
                     ),
-                  )
-                ], //just for testing, will fill with image later
+                    Positioned(
+                      left: -8,
+                      top: -8,
+                      child: isOff ? PerOff(off: _product.off) : Container(),
+                    ),
+                    Positioned(
+                      bottom: 60,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ProductPrice(price: _product.price),
+                          isOff
+                              ? OldPrice(price: _product.oldPrice)
+                              : Container(),
+                        ],
+                      ),
+                    )
+                  ], //just for testing, will fill with image later
+                ),
               ),
-            ),
-            footer: Container(
-              padding: EdgeInsets.all(5),
-              child: Row(
-                children: [
-                  Rating(
-                    rating: result.products[index]['rating'].toDouble(),
-                    no: result.products[index]['ratingNo'],
-                  ),
-                ],
+              footer: Container(
+                padding: EdgeInsets.all(5),
+                child: Row(
+                  children: [
+                    Rating(
+                      rating: result.products[index]['rating'].toDouble(),
+                      no: result.products[index]['ratingNo'],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:nepek_buyer/library/product_class.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/container_with_shadow.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 
 import 'wishlists_provider.dart';
@@ -116,32 +118,22 @@ class WishListsLayout extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       textBaseline: TextBaseline.alphabetic,
       children: [
-        Text(
-          'NPR  ',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        Text(
-          _product.price.toString(),
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500,
-          ),
+        NepekText(
+          formatPrice(_product.price),
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
         ),
       ],
     );
   }
 
   Widget _oldPrice(String of, Product _product) {
-    return Text(
-      'NPR ${_product.oldPrice}.00',
-      style: GoogleFonts.poppins(
-        fontWeight: FontWeight.w600,
-        fontSize: 11,
-        color: Colors.grey,
-        decoration: TextDecoration.lineThrough,
-      ),
+    return NepekText(
+      formatPrice(_product.oldPrice),
+      fontWeight: FontWeight.w600,
+      fontSize: 11,
+      color: Colors.grey,
+      decoration: TextDecoration.lineThrough,
     );
   }
 }

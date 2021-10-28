@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
 import 'package:provider/provider.dart';
 import '../../checkout_provider.dart';
@@ -22,7 +24,7 @@ class CheckoutLayoutCalculations extends StatelessWidget {
               .map<Widget>(
                 (e) => _checkoutCalculations(
                   e['name'],
-                  'NPR ${e['price']}.00',
+                  formatPrice(e['price']),
                   products.indexOf(e),
                   products.length,
                 ),
@@ -32,6 +34,17 @@ class CheckoutLayoutCalculations extends StatelessWidget {
         SizedBox(height: 10),
         Container(height: 2, color: Colors.grey),
         SizedBox(height: 10),
+        Column(
+          children: [
+            NepekText("How fast do you want your delivery ?"),
+            // Row(
+            //   children: [
+            _radio(provider, 'Standard Delivery', context),
+            _radio(provider, 'Quick Delivery', context),
+            // ],
+            // )
+          ],
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -40,15 +53,17 @@ class CheckoutLayoutCalculations extends StatelessWidget {
               style: _bill(false),
             ),
             Text(
-              'NPR ${provider.deliveryCharge}.00',
+              formatPrice(provider.deliveryCharge),
               style: _bill(false),
             )
           ],
         ),
         SizedBox(height: 10),
         Container(height: 2, color: AppColors.officialMatchThird),
-        _mainHeading("Total (${products.length} $items)",
-            'NPR ${provider.totalPrice.toString()}.00'),
+        _mainHeading(
+          "Total (${products.length} $items)",
+          formatPrice(provider.totalPrice),
+        ),
         Align(
             alignment: Alignment.bottomRight,
             child: Text(
@@ -62,8 +77,7 @@ class CheckoutLayoutCalculations extends StatelessWidget {
     );
   }
 
-  Container _checkoutCalculations(
-      String left, String right, int index, int totalItems) {
+  Container _checkoutCalculations(String left, String right, int index, int totalItems) {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
       child: Column(
@@ -99,6 +113,25 @@ class CheckoutLayoutCalculations extends StatelessWidget {
           Text(left, style: _bill(true)),
           Text(right, style: _bill(true)),
         ],
+      ),
+    );
+  }
+
+  Widget _radio(CheckoutProvider provider, value, BuildContext context) {
+    return GestureDetector(
+      onTap: () => provider.changeFreeDelivery(context),
+      child: Container(
+        child: Row(
+          children: [
+            Radio(
+              groupValue: provider.getCurrentDeliveryMethod(),
+              value: value,
+              onChanged: (value) => provider.changeFreeDelivery(context),
+              activeColor: AppColors.officialMatch,
+            ),
+            Text(value),
+          ],
+        ),
       ),
     );
   }

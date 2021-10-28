@@ -3,9 +3,7 @@ import 'package:nepek_buyer/pages/my/address_book/provider.dart';
 import 'package:nepek_buyer/pages/my/address_book/widgets/delivery_address.dart';
 import 'package:nepek_buyer/pages/my/address_book/widgets/floating_actions.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/empty_data/main.dart';
-import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 
 class AddressBook extends StatelessWidget {

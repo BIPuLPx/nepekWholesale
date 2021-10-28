@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 categoryAppBar(context, bool darkTheme) {
-  final deviceWidth = MediaQuery.of(context).size.width;
-  // final bool darkTheme = Provider.of
   return PreferredSize(
     preferredSize: Size.fromHeight(65.0),
     child: AppBar(

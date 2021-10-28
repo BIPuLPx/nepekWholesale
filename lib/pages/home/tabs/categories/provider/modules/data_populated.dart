@@ -19,11 +19,11 @@ class DataPopulated extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: totalWidth * 0.35,
+              width: totalWidth * 0.25,
               child: LeftPanel(),
             ),
             SizedBox(
-              width: totalWidth * 0.65,
+              width: totalWidth * 0.75,
               child: RightPanel(),
             )
           ],

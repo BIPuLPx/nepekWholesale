@@ -60,7 +60,7 @@ class _ResultLayoutState extends State<ResultLayout> {
     final result = Provider.of<ResultState>(context);
     var size = MediaQuery.of(context).size;
     final double itemHeightList = (size.height) / 9;
-    final double itemHeightGrid = (size.height) / 2;
+    final double itemHeightGrid = (size.height) / 2.05;
     final double itemWidth = size.width / 2;
     // final currentScroll = _scrollController.position.pixels;
 
@@ -107,8 +107,7 @@ class _ResultLayoutState extends State<ResultLayout> {
                 crossAxisSpacing: 10,
                 crossAxisCount: listType == 'grid' ? 2 : 1,
                 childAspectRatio: (itemWidth /
-                    (listType == 'grid' ? itemHeightGrid : itemHeightList) *
-                    1.01),
+                    (listType == 'grid' ? itemHeightGrid : itemHeightList)),
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {

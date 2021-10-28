@@ -5,6 +5,8 @@ import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/container_with_shadow.dart';
 import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:nepek_buyer/styles/seller_type.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
 
 class GridContainer extends StatelessWidget {
@@ -75,13 +77,11 @@ class GridContainer extends StatelessWidget {
 _oldPrice(price) {
   return Container(
     // margin: EdgeInsets.only(top: 5),
-    child: Text(
-      'NPR $price.00',
-      style: GoogleFonts.poppins(
-        fontSize: 12,
-        decoration: TextDecoration.lineThrough,
-        color: Colors.grey,
-      ),
+    child: NepekText(
+      formatPrice(price),
+      fontSize: 12,
+      decoration: TextDecoration.lineThrough,
+      color: Colors.grey,
     ),
   );
 }
@@ -108,12 +108,9 @@ Widget _price(price) {
           // fontWeight: FontWeight.w600,
         ),
       ),
-      Text(
-        '${price.toString()}.00',
-        style: GoogleFonts.poppins(
-          fontWeight: FontWeight.w600,
-          fontSize: 13,
-        ),
+      NepekText(
+        formatPrice(price),
+        fontSize: 13,
       ),
     ],
   );

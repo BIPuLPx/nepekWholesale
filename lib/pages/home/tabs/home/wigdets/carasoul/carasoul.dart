@@ -11,8 +11,7 @@ class FrontCarasoul extends StatefulWidget {
   _FrontCarasoulState createState() => _FrontCarasoulState();
 }
 
-class _FrontCarasoulState extends State<FrontCarasoul>
-    with AutomaticKeepAliveClientMixin {
+class _FrontCarasoulState extends State<FrontCarasoul> with AutomaticKeepAliveClientMixin {
   // final List images = [
   //   "https://k.nooncdn.com/cms/pages/20200716/abf4444484c38bb83b7904fd0da79641/en_slider-01.gif",
   //   "https://k.nooncdn.com/cms/pages/20200716/ce62ea4055d312dad38b0c6fee2aed94/en_slider-01.gif",
@@ -71,7 +70,8 @@ class _FrontCarasoulState extends State<FrontCarasoul>
           options: CarouselOptions(
             viewportFraction: 3,
             autoPlay: true,
-            height: MediaQuery.of(context).size.height * 0.12,
+            height: MediaQuery.of(context).size.width * 0.2929,
+            // width: MediaQuery.of(context).size.width,,
             autoPlayInterval: Duration(seconds: 4),
             initialPage: currentIndex,
             // autoPlayAnimationDuration: Duration(milliseconds: 500),
@@ -86,10 +86,9 @@ class _FrontCarasoulState extends State<FrontCarasoul>
                     onTap: () => _goto(data),
                     child: NepekImageNetwork(
                       wide: true,
-                      height: MediaQuery.of(context).size.height * 0.1,
+                      height: MediaQuery.of(context).size.width * 0.2929,
                       width: MediaQuery.of(context).size.width,
-                      url:
-                          '$imgUrl/homeScreen/carousel/${data['imgDir']}/${data['img']}',
+                      url: '$imgUrl/homeScreen/carousel/${data['imgDir']}/${data['img']}',
                     ),
                   ),
                 );

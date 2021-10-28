@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nepek_buyer/styles/network_image.dart';
 import 'package:nepek_buyer/styles/text/format_date.dart';
 import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
@@ -50,24 +49,7 @@ class OrderProduct extends StatelessWidget {
                   trimName(order['productName'], 20),
                 ),
                 SizedBox(height: 3),
-                // leftRightData(
-                //   "Price",
-                //   'NPR ${order['price']}.00',
-                // ),
-                // SizedBox(height: 3),
-                // leftRightData(
-                //   "Qty",
-                //   '${order['qty']} Nos.',
-                // ),
-                // SizedBox(height: 3),
-                // order['delivery_charge'] != null
-                //     ? leftRightData(
-                //         "Delivery Charge",
-                //         'NPR ${order['delivery_charge']}.',
-                //       )
-                //     : Container(),
                 _status(order),
-                // _products(order),
               ],
             ),
           ),

@@ -30,6 +30,7 @@ class ReturnsProvider with ChangeNotifier {
   }
 
   refresh() {
-    print('refresh');
+    body = logoLoader();
+    getReturns();
   }
 }

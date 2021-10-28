@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
-import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 class DeliveryAddressDefaultOrder extends StatelessWidget {

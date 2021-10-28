@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
+import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 class ProductPrice extends StatelessWidget {
   final int price;
@@ -11,19 +12,10 @@ class ProductPrice extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(
-          'NPR ',
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        Text(
-          '${price.toString()}.00',
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+        NepekText(
+          formatPrice(price),
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
         ),
       ],
     );

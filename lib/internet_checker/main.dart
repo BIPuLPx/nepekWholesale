@@ -32,8 +32,8 @@ class _InternetCheckerState extends State<InternetChecker> {
   }
 
   Future _check() async {
-    _server('service01.nepek.com')
-        .then((_) => _server('service02.nepek.com'))
+    _server('service-01.nepek.com')
+        .then((_) => _server('service-02.nepek.com'))
         .then((_) {
       if (availableServers.length == 2) {
         setState(() {

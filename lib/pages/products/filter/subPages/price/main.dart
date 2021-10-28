@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/pages/products/filter/styles/appBar.dart';
 import 'package:nepek_buyer/pages/products/filter/styles/apply_button_subpages.dart';
 import 'package:nepek_buyer/pages/products/filter/subPages/price/price_provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
 class FilterPricePage extends StatelessWidget {
@@ -30,8 +28,8 @@ class FilterPricePageRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    final Color buttonColor =
-        darktheme ? Colors.white : AppColors.officialMatch;
+    // final Color buttonColor =
+    //     darktheme ? Colors.white : AppColors.officialMatch;
     final Color buttonTextColor = darktheme ? Colors.black : Colors.white;
 
     final PriceProvider provider = Provider.of(context);

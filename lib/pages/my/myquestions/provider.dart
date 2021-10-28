@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/my/myquestions/main.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/empty_data/main.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
-import 'package:nepek_buyer/styles/text/normal_text.dart';
 
 class MyQuestionsProvider with ChangeNotifier {
   bool initFetch = false;

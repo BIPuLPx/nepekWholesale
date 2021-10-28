@@ -117,11 +117,11 @@ class ViewProductState with ChangeNotifier {
   useEffect() {
     activeOptions = _optionsAndVariants.getActiveOptions(
         avVariants, selectedOption, indexedVariants);
-    if (selectedOption.length == activeOptions.length)
-      currentPriceAndQty = _optionsAndVariants.getCurrentPriceAndQuantity(
-        avVariants,
-        selectedOption,
-      );
+
+    currentPriceAndQty = _optionsAndVariants.getCurrentPriceAndQuantity(
+      avVariants,
+      selectedOption,
+    );
     optImg = _optionsAndVariants.getOptImage(availableOpt, selectedOption);
     productPrice = currentPriceAndQty['price'].toString();
     qtyToBuy = '1';
@@ -225,7 +225,6 @@ class ViewProductState with ChangeNotifier {
   bool isWishListed() => wishLists.contains(productID);
 
   void toggleFav(BuildContext context) async {
-    print(wishLists);
     if (UserPreferences().getLoggedIn() != true) {
       showErrorToast(context, "Please sign in");
       Navigator.pushNamed(context, 'profile',

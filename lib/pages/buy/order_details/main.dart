@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
 import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
-import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/appBars/default_app_bar.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
-
 import 'provider.dart';
 import 'widgets/default_delivery_area.dart';
 import 'widgets/no_default_address.dart';
@@ -30,25 +26,17 @@ class OrderDetailsRoot extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: 10),
-            provider.defaultDeliveryAddress.length > 0
-                ? DeliveryAddressDefaultOrder(
-                    add: provider.defaultDeliveryAddress)
-                : NoDefaultAddress(),
+            provider.defaultDeliveryAddress.length > 0 ? DeliveryAddressDefaultOrder(add: provider.defaultDeliveryAddress) : NoDefaultAddress(),
             SizedBox(height: 50),
             NepekButton(
               onClick: () {
                 Navigator.pushNamed(
                   context,
                   'account',
-                  arguments: {
-                    'checkProfile': () => provider.refresh(),
-                    'hideLogout': true
-                  },
+                  arguments: {'checkProfile': () => provider.refresh(), 'hideLogout': true},
                 );
               },
-              label: provider.defaultDeliveryAddress.length > 0
-                  ? 'Change Default Address'
-                  : 'Add Default Address',
+              label: provider.defaultDeliveryAddress.length > 0 ? 'Change Default Address' : 'Add Default Address',
               icon: NepekButtonIcon(
                 Icons.location_on_outlined,
                 reversed: true,
@@ -65,8 +53,7 @@ class OrderDetailsRoot extends StatelessWidget {
     );
   }
 
-  BottomAppBar _proceedToCheckout(
-      OrderDetailsProvider provider, BuildContext context, bool darktheme) {
+  BottomAppBar _proceedToCheckout(OrderDetailsProvider provider, BuildContext context, bool darktheme) {
     return BottomAppBar(
       child: Container(
           padding: EdgeInsets.all(10),

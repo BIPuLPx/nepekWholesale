@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/products/result/provider/main.dart';
 import 'package:nepek_buyer/pages/products/result/sort/main.dart';
 import 'package:nepek_buyer/styles/button/nepek_button.dart';
-import 'package:nepek_buyer/styles/button/nepek_button_icon.dart';
 import 'package:provider/provider.dart';
 
 // import 'package:nepek_buyer/iconsClass/bottom_nav_icons_icons.dart';

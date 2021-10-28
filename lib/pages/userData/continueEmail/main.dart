@@ -43,24 +43,6 @@ class ContinueWithEmailRoot extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: Stack(
             children: [
-              (args['thirdPartyRoute'] != null)
-                  ? Positioned(
-                      right: 30,
-                      top: 30,
-                      child: IconButton(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        color: Colors.white,
-                        icon: Icon(
-                          Icons.close_rounded,
-                          size: 30,
-                          color: AppColors.officialMatch,
-                        ),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    )
-                  : Container(),
               ListView(
                 physics: ClampingScrollPhysics(),
                 children: [
@@ -99,6 +81,24 @@ class ContinueWithEmailRoot extends StatelessWidget {
                   _signUp(darkTheme, context)
                 ],
               ),
+              (args['thirdPartyRoute'] != null)
+                  ? Positioned(
+                      right: 0,
+                      top: 30,
+                      child: IconButton(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        color: Colors.white,
+                        icon: Icon(
+                          Icons.close_rounded,
+                          size: 30,
+                          color: AppColors.officialMatch,
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    )
+                  : Container(),
             ],
           ),
         ),

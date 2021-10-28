@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/pages/my/returns/provider.dart';
 import 'package:nepek_buyer/styles/text/format_date.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
 import 'package:nepek_buyer/styles/text/left_right_data.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class YesReturns extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 SizedBox(height: 10),
-                leftRightData('Price', 'NPR ${e['price']}'),
+                // leftRightData('Price', formatPrice(e['price'])),
                 leftRightData('Qty', '${e['qty']} Nos.'),
                 leftRightData('Returned In', formatDate(e['returned_date'])),
                 leftRightData('Reason', e['return_reason'])

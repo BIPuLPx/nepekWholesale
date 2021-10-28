@@ -22,7 +22,7 @@ class ProductOptions extends StatelessWidget {
           Image(provider: provider),
           SizedBox(height: 20),
           Price(provider: provider),
-          // SizedBox(height: 10),
+          SizedBox(height: 10),
           Variants(provider: provider),
           SizedBox(height: 20),
           Qty(provider)

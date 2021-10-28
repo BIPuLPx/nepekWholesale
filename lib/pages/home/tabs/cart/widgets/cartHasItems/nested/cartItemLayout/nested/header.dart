@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepek_buyer/pages/home/tabs/cart/widgets/cartHasItems/nested/cartItemLayout/nested/product_image.dart';
+import 'package:nepek_buyer/styles/text/format_price.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:nepek_buyer/styles/text/trimName.dart';
 
@@ -117,12 +118,10 @@ class ProductPrice extends StatelessWidget {
             // color: Colors.black54,
           ),
         ),
-        Text(
-          '$price.00',
-          style: GoogleFonts.poppins(
-            fontSize: 13,
-            // fontWeight: FontWeight.w600,
-          ),
+        NepekText(
+          formatPrice(price),
+          fontSize: 13,
+          // fontWeight: FontWeight.w600,
         ),
         SizedBox(width: 10),
         NepekText(

@@ -26,23 +26,27 @@ class ClassesText extends StatelessWidget {
                 : getColors(darkMode)['unselected'],
             width: 4.0,
           ),
+          // top: BorderSide(
+          //   color: Colors.grey.shade400,
+          //   width: currentID == index ? 0 : 0.5,
+          // ),
         ),
       ),
       child: Material(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-        ),
+        // borderRadius: BorderRadius.only(
+        //   topRight: Radius.circular(10),
+        //   bottomRight: Radius.circular(10),
+        // ),
         color: currentID == index
             ? getColors(darkMode)['selected']
             : getColors(darkMode)['unselected'],
         child: InkWell(
-          customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10),
-              bottomRight: Radius.circular(10),
-            ),
-          ),
+          // customBorder: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.only(
+          //     topRight: Radius.circular(10),
+          //     bottomRight: Radius.circular(10),
+          //   ),
+          // ),
           onTap: () {
             changeID(index);
             classClicked(cls);

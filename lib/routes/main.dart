@@ -120,6 +120,7 @@ class RouteGenerator {
 
       case 'view_product':
         return PageTransition(
+          settings: RouteSettings(name: 'view_product'),
           child: InternetChecker(
             child: ViewProductPage(args: args),
           ),

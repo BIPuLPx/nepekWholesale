@@ -10,13 +10,22 @@ class CategoryAndSubCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 10, bottom: 20),
+      // child: ExpansionTile(
+      //   title: CategoryHeading(heading: catAndSubCat['label']),
+      //   children: [
+      //     SubCategories(
+      //       subCategories: catAndSubCat['subCategories'],
+      //     )
+      //   ],
+      // ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisAlignment: Mai,
         children: [
           Align(
             child: CategoryHeading(heading: catAndSubCat['label']),
-          alignment: Alignment.topLeft,
+            alignment: Alignment.topLeft,
           ),
           SubCategories(
             subCategories: catAndSubCat['subCategories'],

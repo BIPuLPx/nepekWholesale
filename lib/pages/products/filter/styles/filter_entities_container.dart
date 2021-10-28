@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/extensions.dart';
 
 class FilterItemContainer extends StatelessWidget {

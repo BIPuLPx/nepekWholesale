@@ -29,7 +29,7 @@ class AskaQuestionRoot extends StatelessWidget {
     final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     final AskaQuestionProvider provider = Provider.of(context);
     provider.args = args;
-    final width = MediaQuery.of(context).size.width * 0.5;
+    // final width = MediaQuery.of(context).size.width * 0.5;
     // print(args);
     return Scaffold(
       appBar: defaultAppBar(context, 'Ask Question', darktheme),
