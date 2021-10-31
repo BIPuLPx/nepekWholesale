@@ -93,6 +93,7 @@ flutter:
     - assets/product/
     - animations/
     - assets/noProductsFound/
+    - assets/homepage/top_part/
 
 
 
