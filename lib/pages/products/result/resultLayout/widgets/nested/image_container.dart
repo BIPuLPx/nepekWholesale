@@ -12,13 +12,16 @@ class ResultProductImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(sellerType);
+    // print(sellerType);
+    // print("hello");
     return Stack(
       children: <Widget>[
         Center(
           child: NepekImageNetwork(
             // height: 150,
-            url: '$url/productImages/$dir/miniThumbnail/$imgName',
+            // url: '$url/productImages/$dir/miniThumbnail/$imgName',
+            url:
+                'https://gallery.thelongestwayhome.com/img/s/v-2/p1256974636-3.jpg',
           ),
         ),
         Positioned(

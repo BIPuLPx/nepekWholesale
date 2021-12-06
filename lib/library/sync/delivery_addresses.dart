@@ -7,7 +7,7 @@ import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:http/http.dart' as http;
 
 class SyncDeliveryAddresses {
-  Box _userDeliveryAreas = Hive.box('userDeliveryAreas');
+  Box _userAddress = Hive.box('userAddress');
 
   start() async {
     await _testDeliveryAddress().then(
@@ -27,9 +27,9 @@ class SyncDeliveryAddresses {
       final resData = jsonDecode(response.body);
 
       if (resData != null) {
-        _userDeliveryAreas.put('deliveryAreas', resData['deliveryAreas']);
+        _userAddress.put('deliveryAreas', resData['deliveryAreas']);
         if (resData['deliveryAreas'].length > 0)
-          _userDeliveryAreas.put(
+          _userAddress.put(
               'default_delivery_area', resData['default_delivery_area']);
       }
     }

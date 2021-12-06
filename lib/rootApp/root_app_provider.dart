@@ -32,7 +32,7 @@ class RootProvider with ChangeNotifier {
     await Hive.openBox('deliveryAddresses');
     await Hive.openBox('homeScreen');
     await Hive.openBox('customProducts');
-    await Hive.openBox('userDeliveryAreas');
+    await Hive.openBox('userAddress');
     await Hive.openBox('notifications');
   }
 

@@ -6,7 +6,7 @@ import 'package:nepek_buyer/savedData/user_data.dart';
 import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 
 class AccountState extends ChangeNotifier {
-  final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
+  final Box userAddress = Hive.box('userAddress');
   var args;
   bool initState = false;
   String displayName;
@@ -15,9 +15,8 @@ class AccountState extends ChangeNotifier {
   Map defaultDeliveryAddress;
 
   void getUserData() {
-    deliveryAddresses = userDeliveryAreas.get('deliveryAreas') ?? [];
-    defaultDeliveryAddress =
-        userDeliveryAreas.get('default_delivery_area') ?? {};
+    deliveryAddresses = userAddress.get('deliveryAreas') ?? [];
+    defaultDeliveryAddress = userAddress.get('default_delivery_area') ?? {};
     displayName = UserPreferences().getDisplayName();
   }
 

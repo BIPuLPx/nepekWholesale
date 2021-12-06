@@ -29,9 +29,6 @@ class ProfileRoot extends StatelessWidget {
         profile.externalRoute = args['page'];
       }
     }
-
-    // final bool darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
-    // print(args);
     return Container(child: profile.currentScreen);
   }
 }

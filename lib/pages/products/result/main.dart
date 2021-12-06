@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'provider/main.dart';
 
 class ResultPage extends StatelessWidget {
@@ -20,17 +19,19 @@ class ResultRoot extends StatelessWidget {
   ResultRoot({this.args});
   @override
   Widget build(BuildContext context) {
-    final result = Provider.of<ResultState>(context);
-    print(args);
-    if (result.initialFetch == false) {
-      result.args = args;
-      // result.queryFilter = {...args['queryFilter']};
-      result.searchText = args['query'];
-      result.fetchInitialSearch();
-      result.initialFetch = true;
+    final provider = Provider.of<ResultState>(context);
+    if (provider.initialFetch == false) {
+      provider.args = args;
+      // print(args);
+      // provider.queryFilter = {...args['queryFilter'] ?? {}};
+      provider.searchText = args['query']['name'];
+      provider.fetchInitialSearch();
+      provider.initialFetch = true;
     }
     return Scaffold(
-      body: result.result,
+      body:
+          //  Container(),
+          provider.result,
     );
   }
 }

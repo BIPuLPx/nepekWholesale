@@ -3,10 +3,10 @@ import 'package:nepek_buyer/pages/products/result/provider/main.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
-
 import 'appBar.dart';
 import 'widgets/grid_view.dart';
 import 'widgets/list_view.dart';
+import 'widgets/top_part/main.dart';
 
 class ResultLayout extends StatefulWidget {
   @override
@@ -78,7 +78,6 @@ class _ResultLayoutState extends State<ResultLayout> {
     }
 
     _scrollController.addListener(_onScroll);
-
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: CustomScrollView(
@@ -96,9 +95,15 @@ class _ResultLayoutState extends State<ResultLayout> {
           // SizedBox(height: 10),
           //
           SliverList(
-              delegate: SliverChildListDelegate([
-            Container(height: 10),
-          ])),
+            delegate: SliverChildListDelegate(
+              [
+                Container(height: 10),
+                result.classifiedList.length > 0
+                    ? ClassificationWrapper()
+                    : Container(),
+              ],
+            ),
+          ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             sliver: SliverGrid(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:nepek_buyer/library/account/notification_token.dart';
 import 'package:nepek_buyer/library/sync/custom_products.dart';
-import 'package:nepek_buyer/notifications/main.dart';
 import 'package:nepek_buyer/savedData/apis.dart';
 import 'package:nepek_buyer/savedData/httpUri.dart';
 import 'package:nepek_buyer/savedData/user_data.dart';
@@ -14,7 +13,7 @@ import 'package:nepek_buyer/styles/toasts/sucess_toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContinueWithEmailProvider with ChangeNotifier {
-  final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
+  final Box userAddress = Hive.box('userAddress');
   String thirdPartyRoute;
   bool initState = false;
   Function refresh;
@@ -51,24 +50,20 @@ class ContinueWithEmailProvider with ChangeNotifier {
         checkNotifyTokenAdded();
         UserPreferences().jwtToken(resData['token']);
         UserPreferences().displayName(resData['data']['displayName']);
-        UserPreferences().buyerKey(resData['data']['_id']);
+        UserPreferences().customerKey(resData['data']['_id']);
         UserPreferences().email(resData['data']['email']);
         UserPreferences().pKey(resData['data']['pKey']);
 
-        userDeliveryAreas.put(
-            'deliveryAreas', resData['data']['deliveryAreas']);
-        if (resData['data']['deliveryAreas'].length > 0)
-          userDeliveryAreas.put('default_delivery_area',
-              resData['data']['default_delivery_area']);
-
+        userAddress.add(resData['data']['address']);
         UserPreferences().loggedIn(true);
         SyncCustomProducts().syncWishListsWithBackend();
         sucessToast(context, 'Signed In');
 
         if (thirdPartyRoute == null)
           Navigator.of(context).pop();
-        else
-          Navigator.popUntil(context, ModalRoute.withName(thirdPartyRoute));
+        else if (thirdPartyRoute == 'add_listing')
+          Navigator.pushReplacementNamed(context, 'add_listing');
+        // Navigator.popUntil(context, ModalRoute.withName(thirdPartyRoute));
         refresh();
       } else if (response.statusCode == 203) {
         Navigator.of(context).pop();

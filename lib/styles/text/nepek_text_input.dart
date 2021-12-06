@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:intl/intl.dart';
 import '../colors.dart';
 import 'normal_text.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 
 class NepekTextInput extends StatefulWidget {
   final String labelText;
@@ -17,22 +18,26 @@ class NepekTextInput extends StatefulWidget {
   final bool autofocus;
   final bool background;
   final String hint;
+  final controller;
+  final bool isPrice;
 
-  const NepekTextInput({
-    Key key,
-    this.labelText,
-    this.obscureText,
-    this.onChanged,
-    this.validator,
-    this.numKeyboard,
-    this.focusNode,
-    this.maxlines,
-    this.minlines,
-    this.initialValue,
-    this.autofocus,
-    this.background,
-    this.hint,
-  }) : super(key: key);
+  const NepekTextInput(
+      {Key key,
+      this.labelText,
+      this.obscureText,
+      this.onChanged,
+      this.validator,
+      this.numKeyboard,
+      this.focusNode,
+      this.maxlines,
+      this.minlines,
+      this.initialValue,
+      this.autofocus,
+      this.background,
+      this.hint,
+      this.controller,
+      this.isPrice})
+      : super(key: key);
 
   @override
   _NepekTextInputState createState() => _NepekTextInputState();
@@ -41,18 +46,18 @@ class NepekTextInput extends StatefulWidget {
 class _NepekTextInputState extends State<NepekTextInput> {
   bool _obscure;
   String val = '';
-  TextEditingController _controller = new TextEditingController();
+  final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
+    locale: 'hi',
+    decimalDigits: 0,
+    symbol: 'NPR ',
+  );
   @override
   void initState() {
     setState(() {
       _obscure = widget.obscureText ?? false;
-      _controller.text = widget.initialValue == null ? '' : widget.initialValue;
     });
     super.initState();
   }
-
-  void reset() =>
-      _controller.text = widget.initialValue == null ? '' : widget.initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -66,18 +71,27 @@ class _NepekTextInputState extends State<NepekTextInput> {
       // padding: EdgeInsets.symmetric(vertical: 13),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           NepekText(
             widget.labelText,
-            fontSize: 15,
+            fontSize: 17,
             fontWeight: FontWeight.w500,
           ),
           SizedBox(height: 8),
           TextFormField(
             autofocus: widget.autofocus == null ? false : widget.autofocus,
-            initialValue: widget.initialValue,
+            // initialValue: 'akak',
             // key: Key(widget.initialValue),
-            // controller: _controller,
+            inputFormatters: widget.isPrice == true
+                ? [
+                    CurrencyTextInputFormatter(
+                      locale: 'hi',
+                      decimalDigits: 0,
+                      symbol: 'NPR ',
+                    )
+                  ]
+                : [],
             focusNode: widget.focusNode ?? null,
             keyboardType: widget.numKeyboard == true
                 ? TextInputType.number

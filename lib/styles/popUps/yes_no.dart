@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nepek_buyer/styles/colors.dart';
 
-Future<void> yesNoPopUp(context, String title, String content,
-    {Function yesFn, Function noFn, String yes, String no}) async {
+import '../colors.dart';
+
+Future<void> yesNoPopUp(dialogContext, String title, var yesFn) async {
   return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
+    context: dialogContext,
+    barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          title: Text(
-            title,
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-          ),
-          actions: [
-            TextButton(
-              child: Text(
-                yes == null ? 'Okay' : yes,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.officialMatch,
-                ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: Text(
+          'Sure ?',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+        ),
+        actions: [
+          TextButton(
+            child: Text(
+              'Yes',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
+                color: Colors.red,
               ),
-              onPressed: yesFn,
             ),
-            TextButton(
-              child: Text(
-                no == null ? 'No' : no,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.red,
-                ),
+            onPressed: yesFn,
+          ),
+          TextButton(
+            child: Text(
+              'No',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
+                color: AppColors.officialMatch,
               ),
-              onPressed: noFn,
             ),
-            SizedBox(width: 5),
-          ],
-          content: Text(
-            content,
-            style: GoogleFonts.poppins(),
-          ));
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ],
+        content: Text(
+          title,
+          style: GoogleFonts.poppins(),
+        ),
+      );
     },
   );
 }

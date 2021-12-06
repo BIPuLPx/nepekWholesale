@@ -249,7 +249,7 @@ class Validator {
 }
 
 class SendData {
-  final Box userDeliveryAreas = Hive.box('userDeliveryAreas');
+  final Box userAddress = Hive.box('userAddress');
 
   Future<int> addDeliveryAddress(Map data) async {
     final res = await http.put(
@@ -260,9 +260,8 @@ class SendData {
 
     final resData = jsonDecode(res.body);
 
-    userDeliveryAreas.put('deliveryAreas', resData['deliveryAreas']);
-    userDeliveryAreas.put(
-        'default_delivery_area', resData['default_delivery_area']);
+    userAddress.put('deliveryAreas', resData['deliveryAreas']);
+    userAddress.put('default_delivery_area', resData['default_delivery_area']);
 
     return res.statusCode;
   }
@@ -276,9 +275,8 @@ class SendData {
 
     final resData = jsonDecode(res.body);
 
-    userDeliveryAreas.put('deliveryAreas', resData['deliveryAreas']);
-    userDeliveryAreas.put(
-        'default_delivery_area', resData['default_delivery_area']);
+    userAddress.put('deliveryAreas', resData['deliveryAreas']);
+    userAddress.put('default_delivery_area', resData['default_delivery_area']);
 
     return res.statusCode;
   }

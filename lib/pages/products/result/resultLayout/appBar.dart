@@ -61,11 +61,7 @@ class ResultAppBar extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _queryText(
-                result.args['type'] == 'subcategory'
-                    ? result.args['name']
-                    : searchText,
-              ),
+              _queryText(searchText),
               _resultActions(itemColor, filterPageArgs, setSort, getSort),
             ],
           ),
@@ -151,16 +147,16 @@ class ResultAppBar extends StatelessWidget {
       );
 
   List<Widget> _actions(Color color) => [
-        IconButton(
-          icon: CartNoListener(
-            icon: Image.asset(
-              'assets/bottomNavBar/cart.png',
-              height: 20,
-              color: color,
-            ),
-          ),
-          onPressed: () => Navigator.pushNamed(resultContext, 'cart'),
-        ),
+        // IconButton(
+        //   icon: CartNoListener(
+        //     icon: Image.asset(
+        //       'assets/bottomNavBar/cart.png',
+        //       height: 20,
+        //       color: color,
+        //     ),
+        //   ),
+        //   onPressed: () => Navigator.pushNamed(resultContext, 'cart'),
+        // ),
         IconButton(
           icon: Icon(
             Icons.search,

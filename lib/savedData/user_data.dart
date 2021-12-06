@@ -30,11 +30,11 @@ class UserPreferences {
 
   getDisplayName() => _prefs.getString('displayName');
 
-  buyerKey(String value) {
-    _prefs.setString('buyerKey', value);
+  customerKey(String value) {
+    _prefs.setString('customerKey', value);
   }
 
-  getBuyerKey() => _prefs.getString('buyerKey');
+  getBuyerKey() => _prefs.getString('customerKey');
 
   email(String value) {
     _prefs.setString('email', value);

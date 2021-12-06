@@ -5,6 +5,7 @@ import 'package:nepek_buyer/styles/text/normal_text.dart';
 import 'package:provider/provider.dart';
 import 'package:nepek_buyer/styles/colors.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
+import 'address/input_delivery_address/main.dart';
 import 'signup_with_email_provider.dart';
 
 class SignUpWithEmail extends StatelessWidget {
@@ -18,6 +19,19 @@ class SignUpWithEmail extends StatelessWidget {
 }
 
 class SignUpWithEmailRoot extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<SignUpWithEmailProvider>(context);
+
+    if (!provider.initInjection) {
+      provider.makeInitinjection();
+    }
+
+    return provider.body;
+  }
+}
+
+class SignUpWithEmailLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final darktheme = Provider.of<DarkThemeProvider>(context).darkTheme;
@@ -34,10 +48,10 @@ class SignUpWithEmailRoot extends StatelessWidget {
               children: [
                 ListView(
                   children: [
-                    SizedBox(height: 120),
+                    SizedBox(height: 80),
                     NepekText(
                       'Create a nepek account',
-                      fontSize: 20,
+                      fontSize: 22,
                       fontWeight: FontWeight.w600,
                       // color: AppColors.officialMatch,
                     ),
@@ -57,7 +71,6 @@ class SignUpWithEmailRoot extends StatelessWidget {
                       background: true,
                       initialValue: provider.email,
                     ),
-                    SizedBox(height: 20),
                     NepekTextInput(
                       labelText: 'Password',
                       obscureText: true,
@@ -75,6 +88,7 @@ class SignUpWithEmailRoot extends StatelessWidget {
                       background: true,
                       initialValue: provider.rePassword,
                     ),
+                    InputDeliveryAddress()
                   ],
                 ),
                 Container(

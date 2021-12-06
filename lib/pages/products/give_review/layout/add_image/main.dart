@@ -14,7 +14,7 @@ class AddImage extends StatelessWidget {
     //     if (provider.validateImages(context)) {
     //       product.miniThumb = provider.miniThumb;
     //       product.currentImages = provider.imagePaths;
-    //       product.injectProductData();
+    //       product.injectListingData();
     //       product.setNextScreen(context, 6);
     //     }
     //   },

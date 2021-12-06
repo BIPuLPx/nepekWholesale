@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nepek_buyer/internet_checker/main.dart';
+import 'package:nepek_buyer/pages/add_listing/main.dart';
+import 'package:nepek_buyer/pages/classificaton/main.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:nepek_buyer/pages/buy/checkout/main.dart';
-import 'package:nepek_buyer/pages/buy/order_details/main.dart';
-import 'package:nepek_buyer/pages/buy/payment_methods/main.dart';
 import 'package:nepek_buyer/pages/carasoulLanding/main.dart';
 import 'package:nepek_buyer/pages/featuredBrandLanding/main.dart';
 import 'package:nepek_buyer/pages/home/main.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/main.dart';
-import 'package:nepek_buyer/pages/home/tabs/cart/main.dart';
-import 'package:nepek_buyer/pages/my/address_book/main.dart';
 import 'package:nepek_buyer/pages/my/myOrders/main.dart';
 import 'package:nepek_buyer/pages/my/myOrders/viewOrder/main.dart';
 import 'package:nepek_buyer/pages/my/myWishLists/main.dart';
@@ -47,6 +44,17 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: "home"),
           builder: (_) => HomePage(),
+        );
+
+      case 'add_listing':
+        return MaterialPageRoute(
+          builder: (_) => AddListing(),
+        );
+
+      case 'classification':
+        return PageTransition(
+          child: ClassificationPage(args: args),
+          type: PageTransitionType.leftToRight,
         );
 
       case 'profile':
@@ -135,14 +143,6 @@ class RouteGenerator {
           type: PageTransitionType.rightToLeft,
         );
 
-      case 'cart':
-        return PageTransition(
-          child: InternetChecker(
-            child: CartTab(outside: true),
-          ),
-          type: PageTransitionType.rightToLeft,
-        );
-
       case 'input_phone_number':
         return MaterialPageRoute(builder: (_) => VerifyPhoneNumber(args: args));
 
@@ -161,14 +161,6 @@ class RouteGenerator {
             child: AccountPage(args: args),
           ),
           type: PageTransitionType.bottomToTop,
-        );
-
-      case 'address_book':
-        return PageTransition(
-          child: InternetChecker(
-            child: AddressBook(refresh: args),
-          ),
-          type: PageTransitionType.rightToLeft,
         );
 
       case 'my_questions':
@@ -274,31 +266,7 @@ class RouteGenerator {
 
       case 'featured_brand_landing':
         return MaterialPageRoute(
-            builder: (_) => FeaturedBrandLanding(args: args));
-
-      case 'checkout':
-        return PageTransition(
-          child: InternetChecker(
-            child: Checkout(args: args),
-          ),
-          type: PageTransitionType.rightToLeft,
-        );
-
-      case 'payment_method':
-        return PageTransition(
-          child: InternetChecker(
-            child: PaymentMethods(args: args),
-          ),
-          settings: RouteSettings(name: "payment_method"),
-          type: PageTransitionType.rightToLeft,
-        );
-
-      case 'order_details':
-        return PageTransition(
-          child: InternetChecker(
-            child: OrderDetails(args: args),
-          ),
-          type: PageTransitionType.rightToLeft,
+          builder: (_) => FeaturedBrandLanding(args: args),
         );
 
       case 'webview':

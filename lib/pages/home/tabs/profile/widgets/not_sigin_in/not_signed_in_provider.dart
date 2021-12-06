@@ -66,7 +66,7 @@ class NotSignedInState extends ChangeNotifier {
     final backendData = jsonDecode(response.body);
     UserPreferences().jwtToken(backendData['token']);
     UserPreferences().displayName(backendData['data']['displayName']);
-    UserPreferences().buyerKey(backendData['data']['uid']);
+    UserPreferences().customerKey(backendData['data']['uid']);
     UserPreferences().loggedIn(true);
     sucessToast(context, 'Sucessfully Signed In');
     checkLogged();

@@ -6,6 +6,15 @@ import 'package:provider/provider.dart';
 import 'package:nepek_buyer/pages/home/tabs/profile/widgets/signed_in/widgets/routesContainer.dart';
 import 'package:nepek_buyer/styles/darkThemes/dark_theme_provider.dart';
 
+// Listings
+//Active
+//In Review
+//Expired
+//Declined
+
+//Profile
+//Questions
+
 class SignedIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -60,45 +69,23 @@ class SignedIn extends StatelessWidget {
                   icon: 'account',
                 ),
                 tile2: RoutesContainer(
-                  label: 'my Questions',
+                  label: 'my listings',
                   icon: 'questions',
-                  route: 'my_questions',
+                  route: 'my_listings',
                 ),
               ),
               LeftRightTile(
                 tile1: RoutesContainer(
-                  label: 'My orders',
+                  label: 'Questions',
                   icon: 'orders',
-                  route: 'my_orders',
+                  route: 'questions',
                 ),
                 tile2: RoutesContainer(
-                  label: 'to review',
+                  label: 'help',
                   icon: 'reviews',
-                  route: 'to_review',
+                  route: 'help',
                 ),
               ),
-              LeftRightTile(
-                tile1: RoutesContainer(
-                  label: 'My returns',
-                  icon: 'returns',
-                  route: 'my_returns',
-                ),
-                tile2: RoutesContainer(
-                  route: 'my_wishlists',
-                  label: 'my wishlists',
-                  icon: 'wishlists',
-                ),
-              ),
-              // LeftRightTile(
-              //   tile1: RoutesContainer(
-              //     icon: 'contactUs',
-              //     label: 'Contact Us',
-              //   ),
-              //   tile2: RoutesContainer(
-              //     icon: 'aboutUs',
-              //     label: 'About Us',
-              //   ),
-              // ),
             ],
           ),
         ),

@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:nepek_buyer/styles/text/end_of_result.dart';
 import 'package:nepek_buyer/pages/products/result/styles/loading_more.dart';
 import 'package:nepek_buyer/styles/spinkit.dart';
-
 import 'backend.dart';
 import 'frontend.dart';
 
 class ResultState with ChangeNotifier {
+  PopulateClassification _populateClassification = PopulateClassification();
   var args;
   final _backend = BackEnd();
   final _frontend = FrontEnd();
@@ -36,17 +37,24 @@ class ResultState with ChangeNotifier {
     "specifications": []
   };
 
+//
+  List classifiedList;
+  String argsTo;
+//
+
   void setSort(Map sort) {
     sortBy = sort;
     result = spinkit;
     notifyListeners();
     fetchInitialSearch();
   }
+  // {"for": "categories", ..._class},
 
   Future fetchInitialSearch() async {
+    await queryFromArgs(args);
     await _backend
-        .searchProducts(args['type'], args['query'], sortBy['sort'],
-            sortBy['by'], 1, toFilter, queryFilter)
+        .searchProducts(
+            args, sortBy['sort'], sortBy['by'], 1, toFilter, queryFilter)
         .then((res) async {
       products = res['products'];
       productsNo = res['totalProductsNo'];
@@ -71,8 +79,8 @@ class ResultState with ChangeNotifier {
 
   Future infiniteScroll(int page) async {
     _backend
-        .searchProducts(args['type'], args['query'], sortBy['sort'],
-            sortBy['by'], page, toFilter, queryFilter)
+        .searchProducts(
+            args, sortBy['sort'], sortBy['by'], page, toFilter, queryFilter)
         .then((res) async {
       if (res['products'].length > 0) {
         products.addAll(res['products']);
@@ -111,5 +119,53 @@ class ResultState with ChangeNotifier {
     bool isSorted =
         sortBy['sort'] == sortedBy['sort'] && sortBy['by'] == sortedBy['by'];
     return isSorted;
+  }
+
+  // getargsType(args) {
+  //   final argsType = args['type'];
+  //   if (argsType == 'categories') {
+  //     return {'for': 'categories', 'qurey': args['_id']};
+  //   }
+// }
+
+  queryFromArgs(args) {
+    final argsFrom = args['from'];
+    switch (argsFrom) {
+      case 'class':
+        classifiedList =
+            _populateClassification.categories(args['query']['_id']);
+        argsTo = 'subCategory';
+        break;
+
+      case 'category':
+        classifiedList =
+            _populateClassification.subcategories(args['query']['_id']);
+        argsTo = '';
+        break;
+
+      default:
+        classifiedList = [];
+        argsTo = '';
+        break;
+    }
+  }
+}
+
+class PopulateClassification {
+  Box classifications = Hive.box('classifications');
+
+  List categories(String classID) {
+    final allCategories = classifications.get('categories');
+    final categoriesFiltered =
+        allCategories.where((classs) => classs['class_id'] == classID).toList();
+    return categoriesFiltered;
+  }
+
+  List subcategories(categoryID) {
+    final allSubCategories = classifications.get('subcategories');
+    final categoriesFiltered = allSubCategories
+        .where((subcategory) => subcategory['category_id'] == categoryID)
+        .toList();
+    return categoriesFiltered;
   }
 }
